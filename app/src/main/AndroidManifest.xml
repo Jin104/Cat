@@ -13,16 +13,27 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".Knowledge.Language.LanguageActivity"
+            android:theme="@style/AppTheme.NoWindowNoTitle"/>
+        <activity
+            android:name=".Knowledge.Language.LanguageFace"
+            android:theme="@style/AppTheme.NoWindowNoTitle"/>
+        <activity
+            android:name=".Knowledge.Language.LanguageBody"
+            android:theme="@style/AppTheme.NoWindowNoTitle"/>
+        <activity
+            android:name=".Knowledge.Language.LanguageTail"
+            android:theme="@style/AppTheme.NoWindowNoTitle" />
+
+        <activity android:name=".LoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Knowledge.Language.LanguageActivity" />
-        <activity android:name=".Knowledge.Language.LanguageFace" />
-        <activity android:name=".Knowledge.Language.LanguageBody" />
-        <activity android:name=".Knowledge.Language.LanguageTail"></activity>
     </application>
 
 </manifest>
