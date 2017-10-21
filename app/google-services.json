@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "871606249951",
+    "firebase_url": "https://mobileswcat.firebaseio.com",
+    "project_id": "mobileswcat",
+    "storage_bucket": "mobileswcat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871606249951:android:af407886dd130375",
+        "android_client_info": {
+          "package_name": "com.jin.cat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "871606249951-sbgoukhl9l3ftspq4595plevufh67bp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXrapHD_6cIIJvd8NamJOylHqKEgtIIYM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -19,7 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Knowledge.Language.LanguageActivity"></activity>
+        <activity android:name=".Knowledge.Language.LanguageActivity" />
+        <activity android:name=".Knowledge.Language.LanguageFace" />
+        <activity android:name=".Knowledge.Language.LanguageBody" />
+        <activity android:name=".Knowledge.Language.LanguageTail"></activity>
     </application>
 
 </manifest>
