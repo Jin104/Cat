@@ -35,7 +35,8 @@
         <activity android:name=".Dictionary.DictionaryLonghair" />
         <activity android:name=".Dictionary.DictionaryMiddlehair" />
         <activity android:name=".Dictionary.DictionaryShorthair" />
-        <activity android:name=".Dictionary.DictionaryAdapter"></activity>
+        <activity android:name=".Dictionary.DictionaryAdapter" />
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>

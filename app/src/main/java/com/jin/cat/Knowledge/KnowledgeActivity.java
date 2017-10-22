@@ -56,18 +56,6 @@ public class KnowledgeActivity extends Fragment {
                         break;
                     case 6:
                         break;
-                    case 7:
-                        break;
-                    case 8:
-                        break;
-                    case 9:
-                        break;
-                    case 10:
-                        break;
-                    case 11:
-                        break;
-                    case 12:
-                        break;
                     default:
                         break;
                 }
@@ -79,17 +67,11 @@ public class KnowledgeActivity extends Fragment {
     private List<ItemObject> getAllItemObject(){
         List<ItemObject> items = new ArrayList<>();
         items.add(new ItemObject(R.drawable.one,"행동언어", "고양이의 행동언어"));
-        items.add(new ItemObject(R.drawable.two,"Someone like you", "Adele Adkins"));
-        items.add(new ItemObject(R.drawable.three,"Ride", "Ciara"));
-        items.add(new ItemObject(R.drawable.four,"Paparazzi", "Lady Gaga"));
-        items.add(new ItemObject(R.drawable.five,"Forever", "Chris Brown"));
-        items.add(new ItemObject(R.drawable.six,"Stay", "Rihanna"));
-        items.add(new ItemObject(R.drawable.seven,"Marry me", "Jason Derulo"));
-        items.add(new ItemObject(R.drawable.eight,"Waka Waka", "Shakira"));
-        items.add(new ItemObject(R.drawable.nine,"Dark Horse", "Katy Perry"));
-        items.add(new ItemObject(R.drawable.three,"Dip It Low", "Christina Milian"));
-        items.add(new ItemObject(R.drawable.six,"Dip It Low", "Christina Milian"));
-        items.add(new ItemObject(R.drawable.five,"Dip It Low", "Christina Milian"));
+        items.add(new ItemObject(R.drawable.two,"사료", "고양이의 사료"));
+        items.add(new ItemObject(R.drawable.three,"마사지", "고양이의 마사지"));
+        items.add(new ItemObject(R.drawable.four,"건강", "고양이의 건강"));
+        items.add(new ItemObject(R.drawable.five,"간식", "고양이의 간식"));
+        items.add(new ItemObject(R.drawable.six,"먹으면 안되는 것", "고양이가 먹으면 안되는 것"));
         return items;
     }
 //    @Override

@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:gravity="center"
-            android:text="경고"
+            android:text="고양이 입양은 신중히"
             android:layout_marginBottom="20dp"
             android:textSize="20dp" />
 

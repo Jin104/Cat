@@ -25,7 +25,7 @@ public class DictionaryLonghair extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.long1:
-                startActivity(new Intent(this, Dialog.class));
+                //startActivity(new Intent(this, Dialog.class));
                 break;
         }
     }

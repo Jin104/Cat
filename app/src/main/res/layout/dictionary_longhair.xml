@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_long">
 
+    >
+    <!--android:background="@drawable/bg_long"-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -22,9 +24,9 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/round_button"
                 android:text="장모냥1"
-                android:onClick="mOnPopupClick"
-                android:textSize="13dp" />
 
+                android:textSize="13dp" />
+            <!--android:onClick="mOnPopupClick"-->
             <Button
                 android:id="@+id/long2"
                 android:layout_width="105dp"

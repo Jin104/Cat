@@ -17,8 +17,9 @@ public class LoadingActivity extends Activity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                //startActivity(intent);
+                startActivity(new Intent(getBaseContext(), LoginActivity.class));
                 finish();
             }
         }, 500);
