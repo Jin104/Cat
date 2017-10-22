@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_short">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/short1"
+                android:layout_width="105dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_button"
+                android:text="단모냥1"
+                android:textSize="13dp" />
+
+            <Button
+                android:id="@+id/short2"
+                android:layout_width="105dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="60dp"
+                android:background="@drawable/round_button"
+                android:text="단모냥2"
+                android:textSize="13dp" />
+
+            <Button
+                android:id="@+id/short3"
+                android:layout_width="105dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="120dp"
+                android:background="@drawable/round_button"
+                android:text="단모냥3"
+                android:textSize="13dp" />
+
+            <Button
+                android:id="@+id/short4"
+                android:layout_width="105dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="180dp"
+                android:background="@drawable/round_button"
+                android:text="단모냥4"
+                android:textSize="13dp" />
+
+            <Button
+                android:id="@+id/short5"
+                android:layout_width="105dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/round_button"
+                android:text="단모냥5"
+                android:textSize="13dp" />
+
+            <Button
+                android:id="@+id/short6"
+                android:layout_width="105dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/round_button"
+                android:text="단모냥6"
+                android:textSize="13dp" />
+
+            <Button
+                android:id="@+id/short7"
+                android:layout_width="105dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/round_button"
+                android:text="단모냥7"
+                android:textSize="13dp" />
+
+            <Button
+                android:id="@+id/short8"
+                android:layout_width="105dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/round_button"
+                android:text="단모냥8"
+                android:textSize="13dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
