@@ -13,7 +13,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.jin.cat.Dictionary.DictionaryActivity;
 import com.jin.cat.Knowledge.KnowledgeActivity;
+import com.jin.cat.Map.MapActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -112,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 //        @Override
 //        public View onCreateView(LayoutInflater inflater, ViewGroup container,
 //                                 Bundle savedInstanceState) {
-//            View rootView = inflater.inflate(R.layout.activity_tab1, container, false);
+//            View rootView = inflater.inflate(R.layout.dictionary, container, false);
 //            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
 //            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
 //            return rootView;
@@ -136,13 +138,13 @@ public class MainActivity extends AppCompatActivity {
 //            return PlaceholderFragment.newInstance(position + 1);
             switch(position){
                 case 0:
-                    Tab1Activity tab1 = new Tab1Activity();
+                    DictionaryActivity tab1 = new DictionaryActivity();
                     return tab1;
                 case 1:
                     KnowledgeActivity tab2 = new KnowledgeActivity();
                     return tab2;
                 case 2:
-                    Tab3Activity tab3 = new Tab3Activity();
+                    MapActivity tab3 = new MapActivity();
                     return tab3;
                 default:
                     return null;

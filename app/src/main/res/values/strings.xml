@@ -3,8 +3,8 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
-    <string name="app_name_language">Language ggg</string>
-
+    <string name="app_name_language">Language</string>
+    <string name="app_name_dictionary">Dictionary</string>
     <string-array name="countries">
         <item>머리</item>
         <item>몸통</item>
