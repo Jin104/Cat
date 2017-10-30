@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.jin.cat.Knowledge.Health.HealthActivity;
 import com.jin.cat.Knowledge.Language.LanguageActivity;
 import com.jin.cat.R;
 
@@ -49,6 +50,8 @@ public class KnowledgeActivity extends Fragment {
                     case 2:
                         break;
                     case 3:
+                        Intent intent3 = new Intent(getActivity(), HealthActivity.class);
+                        startActivity(intent3);
                         break;
                     case 4:
                         break;

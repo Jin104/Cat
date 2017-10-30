@@ -24,7 +24,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/round_button"
                 android:text="장모냥1"
-
+                android:onClick="mOnPopupClick"
                 android:textSize="13dp" />
             <!--android:onClick="mOnPopupClick"-->
             <Button

@@ -5,9 +5,18 @@
 
     <string name="app_name_language">Language</string>
     <string name="app_name_dictionary">Dictionary</string>
+    <string name="app_name_health">Health</string>
     <string-array name="countries">
         <item>머리</item>
         <item>몸통</item>
         <item>꼬리</item>
+    </string-array>
+    <string-array name="healthItem">
+        <item>토</item>
+        <item>응가</item>
+        <item>질병</item>
+        <item>중성화</item>
+        <item>외상</item>
+        <item>기타</item>
     </string-array>
 </resources>

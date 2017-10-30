@@ -25,6 +25,9 @@
         <activity
             android:name=".Knowledge.Language.LanguageTail"
             android:theme="@style/AppTheme.NoWindowNoTitle" />
+        <activity
+            android:name=".Knowledge.Health.HealthActivity"
+            android:theme="@style/AppTheme.NoWindowNoTitle" />
         <activity android:name=".LoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,8 +38,7 @@
         <activity android:name=".Dictionary.DictionaryLonghair" />
         <activity android:name=".Dictionary.DictionaryMiddlehair" />
         <activity android:name=".Dictionary.DictionaryShorthair" />
-        <activity android:name=".Dictionary.DictionaryAdapter" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity"/>
     </application>
 
 </manifest>

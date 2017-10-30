@@ -14,8 +14,8 @@ public class LanguageTail extends AppCompatActivity {
 
     String[] countryNames = {"상태1", "상태2"};
     String[] countryImfo = {"아아" , "으어어이씨"};
-    int[] countryFlags = {R.drawable.language1,
-            R.drawable.language2};
+    int[] countryFlags = {R.drawable.cat_three,
+            R.drawable.cat_three};
 
 
     @Override
