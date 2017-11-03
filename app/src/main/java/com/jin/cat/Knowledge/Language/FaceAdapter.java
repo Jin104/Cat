@@ -13,52 +13,44 @@ import android.widget.TextView;
 import com.jin.cat.R;
 
 /**
- * Created by inhye on 2017-10-25.
+ * Created by inhye on 2017-11-01.
  */
 
-public class LanguageAdapter2 extends ArrayAdapter<String> {
+public class FaceAdapter extends ArrayAdapter<String> {
 
     String[] names;
-    String[] imfo;
     int[] flags;
     Context mContext;
 
-    public LanguageAdapter2(Context context, String[] countryNames,String[] countryImfo, int[] countryFlags) {
-        super(context, R.layout.language_list2_type);
+    public FaceAdapter(Context context, String[] countryNames, int[] countryFlags) {
+        super(context, R.layout.health_list);
         this.names = countryNames;
-        this.imfo = countryImfo;
         this.flags = countryFlags;
         this.mContext = context;
     }
 
     @Override
-    public int getCount()
-    {
+    public int getCount() {
         return names.length;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        ViewHolder mViewHolder = new ViewHolder();
-
+        FaceAdapter.ViewHolder mViewHolder = new FaceAdapter.ViewHolder();
         if (convertView == null)
         {
             LayoutInflater mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.language_list2_type, parent, false);
-
-            mViewHolder.mFlag = (ImageView) convertView.findViewById(R.id.imageView);
-            mViewHolder.mName = (TextView) convertView.findViewById(R.id.tvState);
-            mViewHolder.mImfo = (TextView) convertView.findViewById(R.id.tvImfo);
+            convertView = mInflater.inflate(R.layout.health_list, parent, false);
+            mViewHolder.mFlag = (ImageView) convertView.findViewById(R.id.healthImage);
+            mViewHolder.mName = (TextView) convertView.findViewById(R.id.healthName);
             convertView.setTag(mViewHolder);
         }
-        else
-        {
-            mViewHolder = (ViewHolder) convertView.getTag();
+        else {
+            mViewHolder = (FaceAdapter.ViewHolder) convertView.getTag();
         }
         mViewHolder.mFlag.setImageResource(flags[position]);
         mViewHolder.mName.setText(names[position]);
-        mViewHolder.mImfo.setText(imfo[position]);
 
         return convertView;
     }
@@ -66,6 +58,5 @@ public class LanguageAdapter2 extends ArrayAdapter<String> {
     static class ViewHolder {
         ImageView mFlag;
         TextView mName;
-        TextView mImfo;
     }
 }

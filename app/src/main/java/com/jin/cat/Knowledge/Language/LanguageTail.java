@@ -13,7 +13,7 @@ public class LanguageTail extends AppCompatActivity {
     ListView mListView;
 
     String[] countryNames = {"상태1", "상태2"};
-    String[] countryImfo = {"아아" , "으어어이씨"};
+    String[] countryImfo = {"아아" , "으어어"};
     int[] countryFlags = {R.drawable.cat_three,
             R.drawable.cat_three};
 
