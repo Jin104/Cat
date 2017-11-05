@@ -1,132 +1,128 @@
 package com.jin.cat.Dictionary.Longhair;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.jin.cat.Knowledge.Health.HealthActivity;
-import com.jin.cat.Knowledge.Knowledge;
-import com.jin.cat.Knowledge.KnowledgeFragment;
-import com.jin.cat.Knowledge.Language.LanguageActivity;
+import android.view.MenuItem;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.jin.cat.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Integer.valueOf;
+public class LonghairActivity extends AppCompatActivity {
 
-public class LonghairActivity extends AppCompatActivity{
+
+    private RecyclerView recyclerView;
+    private List<Longhair> result;
+    private LonghairAdapter adapter;
+
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //Permission StrictMode
+        if(android.os.Build.VERSION.SDK_INT > 9){
+
+            StrictMode.ThreadPolicy policy =
+                    new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_longhair);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.longhair_list_view);
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference("Cats").child("Long");
+
+        result = new ArrayList<>();
+
+        recyclerView = (RecyclerView) findViewById(R.id.longhair_list_view);
+        recyclerView.setHasFixedSize(true);
         GridLayoutManager gridLayout = new GridLayoutManager(LonghairActivity.this, 2);
         recyclerView.setLayoutManager(gridLayout);
-        recyclerView.setHasFixedSize(true);
 
-        LonghairActivity.LonghairAdapter mAdapter = new LonghairActivity.LonghairAdapter(LonghairActivity.this, getLonghairData());
-        recyclerView.setAdapter(mAdapter);
+
+        adapter = new LonghairAdapter(result);
+        recyclerView.setAdapter(adapter);
+
+        updateList();
 
     }
 
+    public boolean onContextItemSelected(MenuItem item) {
 
-    public List<Longhair> getLonghairData() {
-        List<Longhair> longList = new ArrayList<Longhair>();
-        longList.add(new Longhair("고양이 사전", R.drawable.one));
-        longList.add(new Longhair("고양이 행동언어", R.drawable.two));
-        longList.add(new Longhair("고양이 마사지", R.drawable.three));
-        longList.add(new Longhair("고양이가 먹으면 안되는 음식", R.drawable.four));
-        longList.add(new Longhair("고양이 건강", R.drawable.five));
-        longList.add(new Longhair("고양이 사료", R.drawable.six));
-        return longList;
+        switch (item.getItemId()) {
+            case 0:
+                break;
+            case 1:
+                break;
+        }
+        return super.onContextItemSelected(item);
     }
 
-    public class LonghairAdapter extends RecyclerView.Adapter<LonghairActivity.LonghairViewHolder>{
+    private void updateList() {
 
-        private final String TAG = LonghairActivity.LonghairViewHolder.class.getSimpleName();
+        reference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                result.add(dataSnapshot.getValue(Longhair.class));
+                adapter.notifyDataSetChanged();
+            }
 
-        private Context context;
-        private List<Longhair> knowLists;
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                Longhair longhair = dataSnapshot.getValue(Longhair.class);
 
-        public LonghairAdapter(Context context, List<Longhair> knowLists) {
-            this.context = context;
-            this.knowLists = knowLists;
-        }
+                int index = getItemIndex(longhair);
 
-        @Override
-        public LonghairViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context).inflate(R.layout.row_dictionary_cat, parent, false);
+                result.set(index, longhair);
+                adapter.notifyItemChanged(index);
+            }
 
-            return new LonghairActivity.LonghairViewHolder(view);
-        }
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Longhair longhair = dataSnapshot.getValue(Longhair.class);
 
-        @Override
-        public void onBindViewHolder(LonghairActivity.LonghairViewHolder holder, final int position) {
+                int index = getItemIndex(longhair);
 
-            final Longhair listObject = knowLists.get(position);
-            holder.listCover.setImageResource(listObject.getLonghairImage());
-            holder.listTitle.setText(listObject.getLonghairTitle());
+                result.remove(index);
+                adapter.notifyItemRemoved(index);
+            }
 
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-                    switch (valueOf(position)){
+            }
 
-                        case 0:
-                            break;
-                        case 1:
-                            startActivity(new Intent(LonghairActivity.this, LanguageActivity.class));
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                        case 4:
-                            startActivity(new Intent(LonghairActivity.this, HealthActivity.class));
-                            break;
-                        case 5:
-                            break;
-                        case 6:
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            });
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-        }
-
-        @Override
-        public int getItemCount() {
-            return knowLists.size();
-        }
+            }
+        });
     }
 
+    private int getItemIndex(Longhair longhair) {
 
-    public class LonghairViewHolder extends RecyclerView.ViewHolder{
+        int index = -1;
 
-        public TextView listTitle;
-        public ImageView listCover;
-
-        public LonghairViewHolder(View itemView) {
-            super(itemView);
-
-            listTitle = (TextView)itemView.findViewById(R.id.cat_list_title);
-            listCover = (ImageView)itemView.findViewById(R.id.cat_list_image);
+        for (int i = 0; i < result.size(); i++) {
+            if (result.get(i).key.equals(longhair.key)) {
+                index = i;
+                break;
+            }
         }
+        return index;
     }
+
 }

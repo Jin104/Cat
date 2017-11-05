@@ -6,19 +6,15 @@ package com.jin.cat.Dictionary.Longhair;
 
 public class Longhair {
 
-    private int longhairImage;
-    private String longhairTitle;
+    String image;
+    String name;
+    String key;
 
-    public Longhair(String longhairTitle, int longhairImage) {
-        this.longhairImage = longhairImage;
-        this.longhairTitle = longhairTitle;
-    }
+    public Longhair(){}
 
-    public int getLonghairImage() {
-        return longhairImage;
-    }
-
-    public String getLonghairTitle() {
-        return longhairTitle;
+    public Longhair(String image, String name, String key) {
+        this.image = image;
+        this.name = name;
+        this.key = key;
     }
 }
