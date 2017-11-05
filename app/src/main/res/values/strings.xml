@@ -16,6 +16,7 @@
     <string name="app_name_language">Language</string>
     <string name="app_name_dictionary">Dictionary</string>
     <string name="app_name_health">Health</string>
+    <string name="app_name_massage">Massage</string>
     <string-array name="countries">
         <item>머리</item>
         <item>몸통</item>
