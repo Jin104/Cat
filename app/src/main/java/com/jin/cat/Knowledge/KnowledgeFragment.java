@@ -39,18 +39,18 @@ public class KnowledgeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_knowledge, container, false);
 
-        RecyclerView playlistRecyclerView = (RecyclerView)view.findViewById(R.id.knowledge_list_view);
+        RecyclerView knowlistRecyclerView = (RecyclerView)view.findViewById(R.id.knowledge_list_view);
         GridLayoutManager gridLayout = new GridLayoutManager(getActivity(), 2);
-        playlistRecyclerView.setLayoutManager(gridLayout);
-        playlistRecyclerView.setHasFixedSize(true);
+        knowlistRecyclerView.setLayoutManager(gridLayout);
+        knowlistRecyclerView.setHasFixedSize(true);
 
-        KnowledgeAdapter mAdapter = new KnowledgeAdapter(getActivity(), getTestData());
-        playlistRecyclerView.setAdapter(mAdapter);
+        KnowledgeAdapter mAdapter = new KnowledgeAdapter(getActivity(), getKnowledgeData());
+        knowlistRecyclerView.setAdapter(mAdapter);
 
         return view;
     }
 
-    public List<Knowledge> getTestData() {
+    public List<Knowledge> getKnowledgeData() {
         List<Knowledge> knowList = new ArrayList<Knowledge>();
         knowList.add(new Knowledge("사전", "고양이 사전", R.drawable.one));
         knowList.add(new Knowledge("행동언어", "고양이 행동언어", R.drawable.two));

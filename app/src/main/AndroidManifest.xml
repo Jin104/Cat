@@ -35,10 +35,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Dictionary.DictionaryLonghair" />
+        <activity android:name=".Dictionary.Longhair.LonghairActivity" />
         <activity android:name=".Dictionary.DictionaryMiddlehair" />
         <activity android:name=".Dictionary.DictionaryShorthair" />
         <activity android:name=".LoginActivity"/>
+        <activity android:name=".Dictionary.Dialog"/>
     </application>
 
 </manifest>

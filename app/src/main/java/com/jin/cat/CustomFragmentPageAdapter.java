@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.jin.cat.Dictionary.DictionaryActivity;
+import com.jin.cat.Dictionary.DictionaryFragment;
 import com.jin.cat.Knowledge.KnowledgeFragment;
 
 public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
@@ -22,7 +22,7 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new DictionaryActivity();
+                return new DictionaryFragment();
             case 1:
                 return new KnowledgeFragment();
             case 2:
