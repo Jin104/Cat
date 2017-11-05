@@ -2,26 +2,13 @@ package com.jin.cat.Dictionary;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ListView;
 
-import com.jin.cat.Knowledge.ItemObject;
-import com.jin.cat.Knowledge.KnowledgeAdapter;
-import com.jin.cat.Knowledge.Language.LanguageActivity;
-import com.jin.cat.Knowledge.Language.LanguageAdapter;
-import com.jin.cat.Knowledge.Language.LanguageBody;
-import com.jin.cat.Knowledge.Language.LanguageFace;
-import com.jin.cat.Knowledge.Language.LanguageTail;
 import com.jin.cat.R;
 
 import java.util.ArrayList;
@@ -74,15 +61,15 @@ public class DictionaryActivity extends Fragment {
 
     private List<DictionaryItem> getAllDictionaryAdapter(){
         List<DictionaryItem> items = new ArrayList<>();
-        items.add(new DictionaryItem(R.drawable.long_hair,"장모종"));
-        items.add(new DictionaryItem(R.drawable.mid_hair,"중모종"));
-        items.add(new DictionaryItem(R.drawable.short_hair,"단모종"));
+        items.add(new DictionaryItem(R.drawable.one,"장모종"));
+        items.add(new DictionaryItem(R.drawable.two,"중모종"));
+        items.add(new DictionaryItem(R.drawable.three,"단모종"));
         return items;
     }
 //    @Override
 //    public View onCreateView(LayoutInflater inflater, ViewGroup container,
 //                             Bundle savedInstanceState) {
-//        View rootView = inflater.inflate(R.layout.knowledge, container, false);
+//        View rootView = inflater.inflate(R.layout.fragment_knowledge, container, false);
 //        return rootView;
 //    }
 }

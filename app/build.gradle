@@ -5,7 +5,7 @@ android {
     buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.jin.cat"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -20,8 +20,8 @@ android {
 }
 
 ext {
-    SUPPORT_LIB_VER = '26.0.1'
-    GOOGLE_LIB_VER = '11.0.0'
+    SUPPORT_LIB_VER = '26.1.0'
+    GOOGLE_LIB_VER = '11.0.4'
 }
 
 dependencies {
@@ -29,17 +29,36 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "com.google.firebase:firebase-database:$GOOGLE_LIB_VER"
+
     compile "com.android.support:appcompat-v7:$SUPPORT_LIB_VER"
     compile "com.android.support:design:$SUPPORT_LIB_VER"
-    compile "com.android.support:support-vector-drawable:$SUPPORT_LIB_VER"
+    compile "com.android.support:cardview-v7:$SUPPORT_LIB_VER"
+    compile "com.android.support:recyclerview-v7:$SUPPORT_LIB_VER"
     compile "com.android.support:support-v4:$SUPPORT_LIB_VER"
+    compile "com.android.support:support-v13:$SUPPORT_LIB_VER"
+    compile "com.android.support:support-vector-drawable:$SUPPORT_LIB_VER"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+
+    compile 'com.firebaseui:firebase-ui-database:0.4.0'
+    compile "com.google.firebase:firebase-core:$GOOGLE_LIB_VER"
+    compile "com.google.firebase:firebase-database:$GOOGLE_LIB_VER"
+    compile "com.google.firebase:firebase-storage:$GOOGLE_LIB_VER"
+    compile "com.google.firebase:firebase-crash:$GOOGLE_LIB_VER"
     compile "com.google.firebase:firebase-auth:$GOOGLE_LIB_VER"
     compile "com.google.firebase:firebase-messaging:$GOOGLE_LIB_VER"
     compile "com.google.android.gms:play-services-auth:$GOOGLE_LIB_VER"
-    compile "com.android.support:cardview-v7:$SUPPORT_LIB_VER"
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
     compile 'commons-io:commons-io:2.0.1'
+    compile 'com.google.code.gson:gson:2.6.1'
+    compile 'com.intuit.sdp:sdp-android:1.0.3'
+    compile 'com.mcxiaoke.volley:library:1.0.19'
+    compile 'de.hdodenhof:circleimageview:1.2.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.5.+'
+    compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC1'
+
     testCompile 'junit:junit:4.12'
 }
 
