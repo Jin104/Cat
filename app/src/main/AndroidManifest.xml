@@ -28,6 +28,29 @@
         <activity
             android:name=".Knowledge.Health.HealthActivity"
             android:theme="@style/AppTheme.NoWindowNoTitle" />
+        <activity
+            android:name=".Knowledge.Massage.MassageActivity"
+            android:theme="@style/AppTheme.NoWindowNoTitle"/>
+        <activity
+            android:name=".Knowledge.Massage.MassageBasic"
+            android:label="기본"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Knowledge.Massage.MassageEtc"
+            android:label="기타"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Knowledge.Massage.MassageLymph"
+            android:label="림프"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Knowledge.Massage.MassageRelax"
+            android:label="릴랙스"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Knowledge.Massage.MassageTrouble"
+            android:label="트러블"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
