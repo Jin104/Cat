@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.jin.cat.Knowledge.Health.HealthActivity;
 import com.jin.cat.Knowledge.Language.LanguageActivity;
+import com.jin.cat.Knowledge.Massage.MassageActivity;
 import com.jin.cat.R;
 
 import java.util.ArrayList;
@@ -100,6 +101,7 @@ public class KnowledgeFragment extends Fragment {
                             startActivity(new Intent(getActivity(), LanguageActivity.class));
                             break;
                         case 2:
+                            startActivity(new Intent(getActivity(), MassageActivity.class));
                             break;
                         case 3:
                             break;
