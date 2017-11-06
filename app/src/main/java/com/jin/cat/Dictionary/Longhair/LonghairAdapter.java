@@ -50,10 +50,9 @@ public class LonghairAdapter extends RecyclerView.Adapter<LonghairAdapter.Longha
     public void onBindViewHolder(final LonghairAdapter.LonghairViewHolder holder, final int position) {
 
         Longhair longhair = lists.get(position);
-      //  holder.setImage(LonghairAdapter.this, longh);
 
-        //holder.setImage(, longhair.image);
-        holder.setImage2(longhair.image);
+        Context context = holder.listCover.getContext();
+        holder.setImage(context, longhair.image);
         holder.listTitle.setText(longhair.name);
 
         holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
@@ -86,24 +85,6 @@ public class LonghairAdapter extends RecyclerView.Adapter<LonghairAdapter.Longha
 
         public void setImage(Context context, String image) {
             Picasso.with(context).load(image).into(listCover);
-        }
-
-        @SuppressLint("NewApi")
-        public void setImage2(String image){
-
-            try {
-                URL url = new URL(image);
-                URLConnection conn = url.openConnection();
-                conn.connect();
-                BufferedInputStream bis = new BufferedInputStream(conn.getInputStream());
-                Bitmap bm = BitmapFactory.decodeStream(bis);
-                bis.close();
-                listCover.setImageBitmap(bm);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
 
         public void setTitle(String title){

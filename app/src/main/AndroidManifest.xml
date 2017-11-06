@@ -65,6 +65,12 @@
         <activity android:name=".Dictionary.DictionaryShorthair" />
         <activity android:name=".LoginActivity"/>
         <activity android:name=".Dictionary.Dialog"/>
+        <activity android:name=".Knowledge.Health.HealthOne" />
+        <activity android:name=".Knowledge.Health.HealthTwo" />
+        <activity android:name=".Knowledge.Health.HealthThree" />
+        <activity android:name=".Knowledge.Health.HealthFour" />
+        <activity android:name=".Knowledge.Health.HealthFive" />
+        <activity android:name=".Knowledge.Health.HealthSix" />
     </application>
 
 </manifest>

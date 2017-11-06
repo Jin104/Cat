@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 //import android.widget.ListView;
 
@@ -16,12 +18,14 @@ import com.jin.cat.R;
 public class HealthActivity extends AppCompatActivity {
 
     Toolbar mToolbar;
-//    ListView mListView;
     GridView mGridView;
 
-//    Intent mfrist;
-//    Intent msecond;
-//    Intent mThird;
+    Intent mfrist;
+    Intent msecond;
+    Intent mthird;
+    Intent mfourth;
+    Intent mfifth;
+    Intent msixth;
 
     String[] countryNames = {"토", "응가", "질병", "중성화", "외상", "기타"};
     int[] countryFlags = {R.drawable.cat_one,
@@ -37,9 +41,13 @@ public class HealthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.health);
 
-  //      mfrist = new Intent(HealthActivity.this, LanguageFace.class);
-  //      msecond = new Intent(HealthActivity.this, LanguageBody.class);
-  //      mThird = new Intent(HealthActivity.this, LanguageTail.class);
+        mfrist = new Intent(HealthActivity.this, HealthOne.class);
+        msecond = new Intent(HealthActivity.this, HealthTwo.class);
+        mthird = new Intent(HealthActivity.this, HealthThree.class);
+        mfourth = new Intent(HealthActivity.this, HealthFour.class);
+        mfifth = new Intent(HealthActivity.this, HealthFive.class);
+        msixth = new Intent(HealthActivity.this, HealthSix.class);
+
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar3);
         mToolbar.setTitle(getResources().getString(R.string.app_name_health));
@@ -51,7 +59,7 @@ public class HealthActivity extends AppCompatActivity {
         mGridView.setAdapter(myAdapter);
 //        mListView.setAdapter(myAdapter);
 
- /*       mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0)
@@ -59,8 +67,14 @@ public class HealthActivity extends AppCompatActivity {
                 else if (position == 1)
                     startActivity(msecond);
                 else if (position == 2)
-                    startActivity(mThird);
+                    startActivity(mthird);
+                else if (position == 3)
+                    startActivity(mfourth);
+                else if (position == 4)
+                    startActivity(mfifth);
+                else if (position == 5)
+                    startActivity(msixth);
             }
-        });*/
+        });
     }
 }
