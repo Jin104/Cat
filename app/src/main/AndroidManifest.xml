@@ -60,8 +60,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Dictionary.Longhair.LonghairActivity" />
-        <activity android:name=".Dictionary.Shorthair.ShorthairActivity"/>
+        <activity android:name=".Dictionary.LonghairActivity" />
+        <activity android:name=".Dictionary.ShorthairActivity"/>
+        <activity android:name=".Dictionary.MiddlehairActivity"/>
         <activity android:name=".LoginActivity"/>
         <activity android:name=".Knowledge.Health.HealthOne" />
         <activity android:name=".Knowledge.Health.HealthTwo" />

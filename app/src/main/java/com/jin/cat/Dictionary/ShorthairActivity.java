@@ -1,4 +1,4 @@
-package com.jin.cat.Dictionary.Shorthair;
+package com.jin.cat.Dictionary;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,9 +11,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.jin.cat.Dictionary.Cat;
-import com.jin.cat.Dictionary.Longhair.LonghairActivity;
-import com.jin.cat.Dictionary.Longhair.LonghairAdapter;
+import com.jin.cat.Dictionary.Model.Cat;
+import com.jin.cat.Dictionary.Adapter.CatListAdapter;
 import com.jin.cat.R;
 
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ public class ShorthairActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<Cat> result;
-    private ShorthairAdapter adapter;
+    private CatListAdapter adapter;
 
     private FirebaseDatabase database;
     private DatabaseReference reference;
@@ -33,20 +32,25 @@ public class ShorthairActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shorthair);
+        setContentView(R.layout.activity_cat_list);
+
+        setTitle("단모종");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Cats").child("Short");
 
         result = new ArrayList<>();
 
-        recyclerView = (RecyclerView) findViewById(R.id.shorthair_list_view);
+        recyclerView = (RecyclerView) findViewById(R.id.cat_list_view);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager gridLayout = new GridLayoutManager(ShorthairActivity.this, 2);
         recyclerView.setLayoutManager(gridLayout);
 
 
-        adapter = new ShorthairAdapter(result);
+        adapter = new CatListAdapter(result);
         recyclerView.setAdapter(adapter);
 
         updateList();

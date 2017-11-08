@@ -1,7 +1,5 @@
-package com.jin.cat.Dictionary.Longhair;
+package com.jin.cat.Dictionary;
 
-import android.app.ActionBar;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,7 +10,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.jin.cat.Dictionary.Cat;
+import com.jin.cat.Dictionary.Model.Cat;
+import com.jin.cat.Dictionary.Adapter.CatListAdapter;
 import com.jin.cat.R;
 
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ public class LonghairActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<Cat> result;
-    private LonghairAdapter adapter;
+    private CatListAdapter adapter;
 
     private FirebaseDatabase database;
     private DatabaseReference reference;
@@ -33,7 +32,7 @@ public class LonghairActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_longhair);
+        setContentView(R.layout.activity_cat_list);
 
         setTitle("장모종");
 
@@ -44,13 +43,13 @@ public class LonghairActivity extends AppCompatActivity {
 
         result = new ArrayList<>();
 
-        recyclerView = (RecyclerView) findViewById(R.id.longhair_list_view);
+        recyclerView = (RecyclerView) findViewById(R.id.cat_list_view);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager gridLayout = new GridLayoutManager(LonghairActivity.this, 2);
         recyclerView.setLayoutManager(gridLayout);
 
 
-        adapter = new LonghairAdapter(result);
+        adapter = new CatListAdapter(result);
         recyclerView.setAdapter(adapter);
 
         updateList();

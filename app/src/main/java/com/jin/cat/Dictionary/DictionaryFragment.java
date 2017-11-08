@@ -12,8 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jin.cat.Dictionary.Longhair.LonghairActivity;
-import com.jin.cat.Dictionary.Shorthair.ShorthairActivity;
+import com.jin.cat.Dictionary.Model.Dictionary;
 import com.jin.cat.R;
 
 import java.util.ArrayList;
@@ -90,7 +89,7 @@ public class DictionaryFragment extends Fragment {
                             startActivity(new Intent(getActivity(), LonghairActivity.class));
                             break;
                         case 1:
-                            startActivity(new Intent(getActivity(), DictionaryMiddlehair.class));
+                            startActivity(new Intent(getActivity(), MiddlehairActivity.class));
                             break;
                         case 2:
                             startActivity(new Intent(getActivity(), ShorthairActivity.class));
