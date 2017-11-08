@@ -62,10 +62,7 @@
         </activity>
         <activity android:name=".Dictionary.Longhair.LonghairActivity" />
         <activity android:name=".Dictionary.Shorthair.ShorthairActivity"/>
-        <activity android:name=".Dictionary.DictionaryMiddlehair" />
-        <activity android:name=".Dictionary.DictionaryShorthair" />
         <activity android:name=".LoginActivity"/>
-        <activity android:name=".Dictionary.Dialog"/>
         <activity android:name=".Knowledge.Health.HealthOne" />
         <activity android:name=".Knowledge.Health.HealthTwo" />
         <activity android:name=".Knowledge.Health.HealthThree" />

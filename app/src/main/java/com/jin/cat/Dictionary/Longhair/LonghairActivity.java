@@ -1,5 +1,6 @@
 package com.jin.cat.Dictionary.Longhair;
 
+import android.app.ActionBar;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,6 +35,10 @@ public class LonghairActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_longhair);
 
+        setTitle("장모종");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Cats").child("Long");
 
@@ -41,7 +46,7 @@ public class LonghairActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.longhair_list_view);
         recyclerView.setHasFixedSize(true);
-        GridLayoutManager gridLayout = new GridLayoutManager(LonghairActivity.this, 3);
+        GridLayoutManager gridLayout = new GridLayoutManager(LonghairActivity.this, 2);
         recyclerView.setLayoutManager(gridLayout);
 
 
@@ -50,6 +55,16 @@ public class LonghairActivity extends AppCompatActivity {
 
         updateList();
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public boolean onContextItemSelected(MenuItem item) {
