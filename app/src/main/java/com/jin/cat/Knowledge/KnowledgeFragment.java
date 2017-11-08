@@ -9,11 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.jin.cat.Knowledge.Food.FoodActivity;
 import com.jin.cat.Knowledge.Health.HealthActivity;
 import com.jin.cat.Knowledge.Language.LanguageActivity;
 import com.jin.cat.Knowledge.Massage.MassageActivity;
@@ -109,6 +108,7 @@ public class KnowledgeFragment extends Fragment {
                             startActivity(new Intent(getActivity(), HealthActivity.class));
                             break;
                         case 5:
+                            startActivity(new Intent(getActivity(), FoodActivity.class));
                             break;
                         case 6:
                             break;
