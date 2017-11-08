@@ -1,10 +1,12 @@
 package com.jin.cat.Dictionary;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -54,8 +56,8 @@ public class ShorthairActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         updateList();
-
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -69,10 +71,13 @@ public class ShorthairActivity extends AppCompatActivity {
 
     public boolean onContextItemSelected(MenuItem item) {
 
+        Toast.makeText(ShorthairActivity.this, "0",Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
             case 0:
+                Toast.makeText(ShorthairActivity.this, "0",Toast.LENGTH_SHORT).show();
                 break;
             case 1:
+                Toast.makeText(ShorthairActivity.this, "1",Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onContextItemSelected(item);

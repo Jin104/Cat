@@ -19,8 +19,8 @@ public class FoodActivity extends AppCompatActivity {
 
     String[] countryNames = {"건 식", "습 식"};
     int[] countryFlags = {
-            R.drawable.food_two,
-            R.drawable.food_one,};
+            R.drawable.one,
+            R.drawable.two,};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

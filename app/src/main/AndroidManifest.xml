@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jin.cat">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -32,7 +32,7 @@
             android:theme="@style/AppTheme.NoWindowNoTitle" />
         <activity
             android:name=".Knowledge.Massage.MassageActivity"
-            android:theme="@style/AppTheme.NoWindowNoTitle"/>
+            android:theme="@style/AppTheme.NoWindowNoTitle" />
         <activity
             android:name=".Knowledge.Massage.MassageBasic"
             android:label="기본"
@@ -61,15 +61,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".Dictionary.LonghairActivity" />
-        <activity android:name=".Dictionary.ShorthairActivity"/>
-        <activity android:name=".Dictionary.MiddlehairActivity"/>
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".Dictionary.ShorthairActivity" />
+        <activity android:name=".Dictionary.MiddlehairActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".Knowledge.Health.HealthOne" />
         <activity android:name=".Knowledge.Health.HealthTwo" />
         <activity android:name=".Knowledge.Health.HealthThree" />
         <activity android:name=".Knowledge.Health.HealthFour" />
         <activity android:name=".Knowledge.Health.HealthFive" />
         <activity android:name=".Knowledge.Health.HealthSix" />
+        <activity android:name=".Dictionary.CatDescActivity"></activity>
     </application>
 
 </manifest>

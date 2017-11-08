@@ -7,6 +7,7 @@ package com.jin.cat.Dictionary.Model;
 public class Cat {
 
     private String key;
+    private String hair;
     private String name;
     private String image;
     private String country;
@@ -16,8 +17,9 @@ public class Cat {
 
     public Cat(){}
 
-    public Cat(String key, String name, String image, String country, String origin, String looks, String personality) {
+    public Cat(String key, String hair, String name, String image, String country, String origin, String looks, String personality) {
         this.key = key;
+        this.hair = hair;
         this.name = name;
         this.image = image;
         this.country = country;
@@ -28,6 +30,10 @@ public class Cat {
 
     public String getKey() {
         return key;
+    }
+
+    public String getHair() {
+        return hair;
     }
 
     public String getName() {
