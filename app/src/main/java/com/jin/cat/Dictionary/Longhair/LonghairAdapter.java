@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.jin.cat.Dictionary.Cat;
 import com.jin.cat.R;
 import com.squareup.picasso.Picasso;
 
@@ -34,10 +35,10 @@ public class LonghairAdapter extends RecyclerView.Adapter<LonghairAdapter.Longha
 
     private final String TAG = LonghairAdapter.LonghairViewHolder.class.getSimpleName();
 
-    private List<Longhair> lists;
+    private List<Cat> lists;
 
-    public LonghairAdapter(List<Longhair> knowLists) {
-        this.lists = knowLists;
+    public LonghairAdapter(List<Cat> lists) {
+        this.lists = lists;
     }
 
     @Override
@@ -49,11 +50,11 @@ public class LonghairAdapter extends RecyclerView.Adapter<LonghairAdapter.Longha
     @Override
     public void onBindViewHolder(final LonghairAdapter.LonghairViewHolder holder, final int position) {
 
-        Longhair longhair = lists.get(position);
+        Cat cat = lists.get(position);
 
         Context context = holder.listCover.getContext();
-        holder.setImage(context, longhair.image);
-        holder.listTitle.setText(longhair.name);
+        holder.setImage(context, cat.getImage());
+        holder.listTitle.setText(cat.getName());
 
         holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
