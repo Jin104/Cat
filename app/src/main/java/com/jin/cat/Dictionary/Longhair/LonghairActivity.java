@@ -11,6 +11,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.jin.cat.Dictionary.Cat;
 import com.jin.cat.R;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class LonghairActivity extends AppCompatActivity {
 
 
     private RecyclerView recyclerView;
-    private List<Longhair> result;
+    private List<Cat> result;
     private LonghairAdapter adapter;
 
     private FirebaseDatabase database;
@@ -40,7 +41,7 @@ public class LonghairActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.longhair_list_view);
         recyclerView.setHasFixedSize(true);
-        GridLayoutManager gridLayout = new GridLayoutManager(LonghairActivity.this, 2);
+        GridLayoutManager gridLayout = new GridLayoutManager(LonghairActivity.this, 3);
         recyclerView.setLayoutManager(gridLayout);
 
 
@@ -67,25 +68,25 @@ public class LonghairActivity extends AppCompatActivity {
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                result.add(dataSnapshot.getValue(Longhair.class));
+                result.add(dataSnapshot.getValue(Cat.class));
                 adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                Longhair longhair = dataSnapshot.getValue(Longhair.class);
+                Cat cat = dataSnapshot.getValue(Cat.class);
 
-                int index = getItemIndex(longhair);
+                int index = getItemIndex(cat);
 
-                result.set(index, longhair);
+                result.set(index, cat);
                 adapter.notifyItemChanged(index);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Longhair longhair = dataSnapshot.getValue(Longhair.class);
+                Cat cat = dataSnapshot.getValue(Cat.class);
 
-                int index = getItemIndex(longhair);
+                int index = getItemIndex(cat);
 
                 result.remove(index);
                 adapter.notifyItemRemoved(index);
@@ -103,12 +104,12 @@ public class LonghairActivity extends AppCompatActivity {
         });
     }
 
-    private int getItemIndex(Longhair longhair) {
+    private int getItemIndex(Cat cat) {
 
         int index = -1;
 
         for (int i = 0; i < result.size(); i++) {
-            if (result.get(i).key.equals(longhair.key)) {
+            if (result.get(i).getKey().equals(cat.getKey())) {
                 index = i;
                 break;
             }

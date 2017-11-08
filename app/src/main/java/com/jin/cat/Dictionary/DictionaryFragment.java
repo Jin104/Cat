@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jin.cat.Dictionary.Longhair.LonghairActivity;
+import com.jin.cat.Dictionary.Shorthair.ShorthairActivity;
 import com.jin.cat.R;
 
 import java.util.ArrayList;
@@ -92,7 +93,7 @@ public class DictionaryFragment extends Fragment {
                             startActivity(new Intent(getActivity(), DictionaryMiddlehair.class));
                             break;
                         case 2:
-                            startActivity(new Intent(getActivity(), DictionaryShorthair.class));
+                            startActivity(new Intent(getActivity(), ShorthairActivity.class));
                             break;
                         default:
                             break;
