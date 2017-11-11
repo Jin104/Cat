@@ -2,6 +2,7 @@ package com.jin.cat.Dictionary;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +18,8 @@ import com.jin.cat.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static java.lang.Integer.valueOf;
 
@@ -47,9 +50,9 @@ public class DictionaryFragment extends Fragment {
 
     private List<Dictionary> getDictionaryData(){
         List<Dictionary> dictionList = new ArrayList<Dictionary>();
-        dictionList.add(new Dictionary(R.drawable.one,"장모종"));
-        dictionList.add(new Dictionary(R.drawable.two,"중모종"));
-        dictionList.add(new Dictionary(R.drawable.three,"단모종"));
+        dictionList.add(new Dictionary(R.drawable.dictionary_cat3,"장모종","20 cats"));
+        dictionList.add(new Dictionary(R.drawable.dictionary_cat2,"중모종", "15 cats"));
+        dictionList.add(new Dictionary(R.drawable.dictionary_cat1,"단모종", "10 cats"));
         return dictionList;
     }
 
@@ -78,6 +81,7 @@ public class DictionaryFragment extends Fragment {
             final Dictionary dictionlistObject = dictionLists.get(position);
             holder.dictionListCover.setImageResource(dictionlistObject.getDictionaryImage());
             holder.dictionListTitle.setText(dictionlistObject.getDictionaryTitle());
+            holder.dictionListCount.setText(dictionlistObject.getDictionaryCount());
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -112,12 +116,19 @@ public class DictionaryFragment extends Fragment {
 
         public TextView dictionListTitle;
         public ImageView dictionListCover;
+        public TextView dictionListCount;
 
         public DictionaryViewHolder(View itemView) {
             super(itemView);
 
+            Typeface typeFace = Typeface.createFromAsset(getActivity().getAssets(), "fonts/NanumBarunGothicBold.otf");
+
             dictionListTitle = (TextView)itemView.findViewById(R.id.dictionary_title);
             dictionListCover = (ImageView)itemView.findViewById(R.id.dictionary_image);
+            dictionListCount = (TextView)itemView.findViewById(R.id.dictionary_cat_count);
+
+            dictionListTitle.setTypeface(typeFace);
+            dictionListCount.setTypeface(typeFace);
         }
     }
 

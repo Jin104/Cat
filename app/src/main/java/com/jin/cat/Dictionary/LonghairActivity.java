@@ -1,5 +1,6 @@
 package com.jin.cat.Dictionary;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,8 @@ import com.jin.cat.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class LonghairActivity extends AppCompatActivity {
 
@@ -131,6 +134,11 @@ public class LonghairActivity extends AppCompatActivity {
             }
         }
         return index;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
 }

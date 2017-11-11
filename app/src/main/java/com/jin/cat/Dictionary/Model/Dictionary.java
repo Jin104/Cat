@@ -8,10 +8,12 @@ public class Dictionary {
 
     private int dictionaryImage;
     private String dictionaryTitle;
+    private String dictionaryCount;
 
-    public Dictionary(int dictionaryImage, String dictionaryTitle) {
+    public Dictionary(int dictionaryImage, String dictionaryTitle, String dictionaryCount) {
         this.dictionaryImage = dictionaryImage;
         this.dictionaryTitle = dictionaryTitle;
+        this.dictionaryCount = dictionaryCount;
     }
 
     public int getDictionaryImage() {
@@ -22,4 +24,7 @@ public class Dictionary {
         return dictionaryTitle;
     }
 
+    public String getDictionaryCount() {
+        return dictionaryCount;
+    }
 }

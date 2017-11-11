@@ -2,6 +2,7 @@ package com.jin.cat.Knowledge;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -136,9 +137,15 @@ public class KnowledgeFragment extends Fragment {
         public KnowledgeViewHolder(View itemView) {
             super(itemView);
 
+            Typeface typeFace1 = Typeface.createFromAsset(getActivity().getAssets(), "fonts/NanumBarunGothicBold.otf");
+            Typeface typeFace2 = Typeface.createFromAsset(getActivity().getAssets(), "fonts/NanumBarunGothic.otf");
+
             knowListTitle = (TextView)itemView.findViewById(R.id.knowledge_list_title);
             knowListDesc = (TextView)itemView.findViewById(R.id.knowledge_list_desc);
             knowListCover = (ImageView)itemView.findViewById(R.id.knowledge_list_image);
+
+            knowListTitle.setTypeface(typeFace1);
+            knowListDesc.setTypeface(typeFace2);
         }
     }
 

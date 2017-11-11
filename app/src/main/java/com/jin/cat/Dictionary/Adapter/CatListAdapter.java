@@ -49,6 +49,7 @@ public class CatListAdapter extends RecyclerView.Adapter<CatListAdapter.CatViewH
         final Context context = holder.listCover.getContext();
         holder.setImage(context, cat.getImage());
         holder.listTitle.setText(cat.getName());
+        holder.listTitleEng.setText(cat.getKey());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +72,7 @@ public class CatListAdapter extends RecyclerView.Adapter<CatListAdapter.CatViewH
     public static class CatViewHolder extends RecyclerView.ViewHolder{
 
         public TextView listTitle;
+        public TextView listTitleEng;
         public ImageView listCover;
 
 
@@ -78,6 +80,7 @@ public class CatListAdapter extends RecyclerView.Adapter<CatListAdapter.CatViewH
             super(itemView);
 
             listTitle = (TextView) itemView.findViewById(R.id.cat_list_title);
+            listTitleEng = (TextView) itemView.findViewById(R.id.cat_list_title_eng);
             listCover = (ImageView) itemView.findViewById(R.id.cat_list_image);
         }
 
@@ -88,6 +91,8 @@ public class CatListAdapter extends RecyclerView.Adapter<CatListAdapter.CatViewH
         public void setTitle(String title){
             listTitle.setText(title);
         }
+
+        public void setTitleEng(String title){listTitleEng.setText(title);}
     }
 }
 

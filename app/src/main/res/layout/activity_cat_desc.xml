@@ -43,26 +43,54 @@
             android:layout_alignTop="@+id/imageButton"
             android:layout_alignParentEnd="true" />
 
-        <Button
-            android:layout_marginTop="@dimen/_2sdp"
-            android:layout_marginLeft="@dimen/_4sdp"
-            android:layout_marginRight="@dimen/_4sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="COMMENT"
+        <LinearLayout
+            android:id="@+id/linearlayout"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:id="@+id/cat_comment"
-            android:textColor="@color/colorWhite"
-            android:background="@color/colorMainDarker2"/>
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:gravity="center">
+                <Button
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
+                    android:layout_marginBottom="@dimen/_1sdp"
+                    android:paddingLeft="@dimen/_15sdp"
+                    android:paddingRight="@dimen/_15sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_27sdp"
+                    android:text="ADD TO FAVORITES"
+                    android:textSize="@dimen/_9sdp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@color/colorAccent"
+                    android:elevation="1dp"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:onClick="addFavoritesButtonClicked"/>
 
+                <Button
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
+                    android:layout_marginBottom="@dimen/_1sdp"
+                    android:paddingLeft="@dimen/_15sdp"
+                    android:paddingRight="@dimen/_15sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_27sdp"
+                    android:text="ADD TO COMMENT"
+                    android:textSize="@dimen/_9sdp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@color/colorMainDarker2"
+                    android:elevation="1dp"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:onClick="addCommentButtonClicked"/>
+
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/cat_image"
             android:orientation="vertical"
-            android:layout_above="@+id/cat_comment">
+            android:layout_above="@+id/linearlayout">
 
             <LinearLayout
                 android:layout_marginLeft="@dimen/_8sdp"
@@ -75,10 +103,10 @@
 
                 <TextView
                     tools:ignore="MissingPrefix"
+                    fontPath="fonts/NanumBarunGothicBold.otf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="아메리칸 숏헤어"
-                    fontPath="fonts/NanumBarunGothicBold.otf"
+                    android:text="고양이 이름"
                     android:textSize="@dimen/_17sdp"
                     android:id="@+id/cat_name"
                     />
@@ -87,7 +115,7 @@
                     tools:ignore="MissingPrefix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="American Shorthair"
+                    android:text="고양이 영어 이름"
                     fontPath="fonts/NanumBarunGothic.otf"
                     android:textSize="@dimen/_12sdp"
                     android:id="@+id/cat_name_eng"
@@ -120,7 +148,7 @@
                         tools:ignore="MissingPrefix"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="aaaaa"
+                        android:text="abcd"
                         fontPath="fonts/NanumBarunGothic.otf"
                         android:textSize="@dimen/_11sdp"
                         android:id="@+id/cat_country"
@@ -149,7 +177,7 @@
                         fontPath="fonts/NanumBarunGothic.otf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="1920년대 영국에서 북아메리카 대륙으로 배를 타고 건너온 청교도들이 배의 쥐를 잡는 용도로 태워 데려온 것으로 보인다. 이후 이 고양이를 미국 토착 고양이와 교배시키며 그 기준을 확립하였다."
+                        android:text="abcd"
                         android:textSize="@dimen/_11sdp"
                         tools:ignore="MissingPrefix" />
 
@@ -176,7 +204,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_8sdp"
-                        android:text="중대형종으로 몸이 짧고 근육이 잘 발달하였다. 암컷은 수컷보다 작다. 머리는 폭이 넓고 둥글다. 양 귀 사이는 넓으며 귀 끝부분이 약간 둥글다. 짧고 광택이 나는 털이 온몸에 빽빽하게 나 있으며, 털의 굵기가 계절에 따라 달라진다. 색은 매우 다양하나 가장 많은 것은 갈색이나 적갈색의 줄무늬가 있는 것이다."
+                        android:text="abcd"
                         android:textSize="@dimen/_11sdp"
                         tools:ignore="MissingPrefix" />
 
@@ -197,12 +225,12 @@
                         tools:ignore="MissingPrefix" />
 
                     <TextView
-                        android:layout_marginLeft="@dimen/_8sdp"
                         android:id="@+id/cat_personality"
                         fontPath="fonts/NanumBarunGothic.otf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="겁이 없는 성격으로 두려움이 없기 때문에 뛰어다니고 노는 것을 무척 좋아한다. 온화하고 명랑한 편으로 모난 구석이 없으며 아이들과도 잘 지내고, 다른 동물들과도 잘 지내기 때문에 키우기 어렵지 않다."
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:text="abcd"
                         android:textSize="@dimen/_11sdp"
                         tools:ignore="MissingPrefix" />
 
@@ -229,7 +257,7 @@
                         fontPath="fonts/NanumBarunGothic.otf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="식욕이 왕성해 비만증에 걸리기 쉽다. 털 숱이 많이 때문에 일주일에 2-3회 빗질을 해준다."
+                        android:text="abcd"
                         android:textSize="@dimen/_11sdp"
                         tools:ignore="MissingPrefix" />
                 </LinearLayout>

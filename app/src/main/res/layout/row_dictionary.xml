@@ -4,29 +4,53 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
-    <LinearLayout
+    <android.support.v7.widget.CardView
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:elevation="@dimen/_1sdp">
 
-        <ImageView
-            android:id="@+id/dictionary_image"
-            android:layout_width="@dimen/_135sdp"
-            android:layout_height="@dimen/_135sdp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/one" />
-
-        <TextView
-            android:id="@+id/dictionary_title"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/colorMain"
-        />
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_margin="@dimen/_6sdp"
+                android:id="@+id/dictionary_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_135sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/one" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:id="@+id/dictionary_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="고양이 이름"
+                android:textSize="@dimen/_20sdp"
+                android:layout_above="@+id/dictionary_cat_count"
+                android:layout_alignStart="@+id/dictionary_image"
+                android:textColor="@color/colorWhite"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_2sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20 마리"
+                android:textSize="@dimen/_13sdp"
+                android:layout_alignBottom="@+id/dictionary_image"
+                android:layout_alignStart="@+id/dictionary_image"
+                android:id="@+id/dictionary_cat_count"
+                android:textColor="@color/colorWhite"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
 
 </LinearLayout>

@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/_8sdp"
-    android:paddingLeft="@dimen/_4sdp"
-    android:paddingRight="@dimen/_4sdp"
+    android:paddingLeft="@dimen/_2sdp"
+    android:paddingRight="@dimen/_2sdp"
     android:orientation="vertical">
 
     <ImageView
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/_8sdp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorMainDarker2"
         android:orientation="vertical">
 
         <TextView
@@ -27,9 +27,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="사전"
+            android:textSize="@dimen/_12sdp"
             android:textColor="@color/colorWhite"/>
 
         <TextView
+            android:layout_marginTop="@dimen/_2sdp"
             android:id="@+id/knowledge_list_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

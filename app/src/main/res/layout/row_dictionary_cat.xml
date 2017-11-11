@@ -1,37 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v7.widget.CardView android:layout_marginTop="@dimen/_3sdp"
+    android:layout_marginBottom="@dimen/_3sdp"
+    android:layout_marginLeft="@dimen/_3sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginBottom="@dimen/_8sdp"
-    android:paddingLeft="@dimen/_4sdp"
-    android:paddingRight="@dimen/_4sdp">
+    android:elevation="@dimen/_1sdp"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/cat_list_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/one"
-        android:contentDescription="@string/app_name"/>
 
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_10sdp"
-        android:background="#7E838C"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_8sdp">
+
+        <ImageView
+            android:id="@+id/cat_list_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:src="@drawable/one"
+            android:contentDescription="@string/app_name"/>
 
         <TextView
+            tools:ignore="MissingPrefix"
+            fontPath="fonts/NanumBarunGothicBold.otf"
+            android:layout_marginTop="@dimen/_6sdp"
             android:id="@+id/cat_list_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="사전"
-            android:textColor="@color/colorWhite"/>
+            android:textSize="@dimen/_13sdp"
+            android:textColor="@color/colorBlack"/>
 
+        <TextView
+            android:id="@+id/cat_list_title_eng"
+            tools:ignore="MissingPrefix"
+            fontPath="fonts/NanumBarunGothic.otf"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="American cat"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/colorPrimary"/>
 
     </LinearLayout>
 
+</android.support.v7.widget.CardView>
 
-
-</LinearLayout>
