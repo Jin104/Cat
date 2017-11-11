@@ -18,7 +18,6 @@ import com.jin.cat.R;
 
 public class HealthActivity extends AppCompatActivity {
 
-    Toolbar mToolbar;
 //    ListView mListView;
     GridView mGridView;
 
@@ -44,8 +43,7 @@ public class HealthActivity extends AppCompatActivity {
   //      msecond = new Intent(HealthActivity.this, LanguageBody.class);
   //      mThird = new Intent(HealthActivity.this, LanguageTail.class);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar3);
-        mToolbar.setTitle(getResources().getString(R.string.app_name_health));
+        setTitle("Health");
 
 //        mListView = (ListView) findViewById(R.id.listView3);
         mGridView = (GridView)findViewById(R.id.gridview3);

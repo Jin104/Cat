@@ -19,4 +19,5 @@ public class Constants {
 
     public static final String CAT_KEY = "Cats";
     public static final String CAT_LONG = "Long";
+    public static final String CAT_SHORT = "Short";
 }

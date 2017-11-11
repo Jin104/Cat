@@ -9,7 +9,6 @@ import com.jin.cat.R;
 
 public class LanguageTail extends AppCompatActivity {
 
-    Toolbar mToolbar;
     ListView mListView;
 
     String[] countryNames = {"상태1", "상태2"};
@@ -23,8 +22,7 @@ public class LanguageTail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.language);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar2);
-        mToolbar.setTitle("꼬리언어");
+        setTitle("꼬리언어");
 
         mListView = (ListView) findViewById(R.id.listView2);
         LanguageAdapter2 myAdapter = new LanguageAdapter2(LanguageTail.this, countryNames,countryImfo, countryFlags);

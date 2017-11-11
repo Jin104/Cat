@@ -11,7 +11,6 @@ import com.jin.cat.R;
 
 public class FoodActivity extends AppCompatActivity {
 
-    Toolbar mToolbar;
     ListView mListView;
 
     Intent mfrist;
@@ -30,8 +29,7 @@ public class FoodActivity extends AppCompatActivity {
 //        mfrist = new Intent(FoodActivity.this, .class);
 //        msecond = new Intent(FoodActivity.this, .class);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar2);
-        mToolbar.setTitle("Food");
+        setTitle("Food");
 
         mListView = (ListView) findViewById(R.id.listView2);
         LanguageAdapter myAdapter = new LanguageAdapter(FoodActivity.this, countryNames, countryFlags);

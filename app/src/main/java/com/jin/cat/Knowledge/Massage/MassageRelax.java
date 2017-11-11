@@ -22,8 +22,8 @@ public class MassageRelax extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.massage2);
- //       Toolbar mToolbar = (Toolbar)findViewById(R.id.toolbar5);
- //       mToolbar.setTitle("릴랙스");
+
+        setTitle("릴랙스");
 
         ImageButton btn = (ImageButton) findViewById(R.id.scroll_to_top_btn);
 

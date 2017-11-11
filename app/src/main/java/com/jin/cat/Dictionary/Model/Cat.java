@@ -14,10 +14,11 @@ public class Cat {
     private String origin;
     private String looks;
     private String personality;
+    private String manage;
 
     public Cat(){}
 
-    public Cat(String key, String hair, String name, String image, String country, String origin, String looks, String personality) {
+    public Cat(String key, String hair, String name, String image, String country, String origin, String looks, String personality, String manage) {
         this.key = key;
         this.hair = hair;
         this.name = name;
@@ -26,6 +27,7 @@ public class Cat {
         this.origin = origin;
         this.looks = looks;
         this.personality = personality;
+        this.manage = manage;
     }
 
     public String getKey() {
@@ -58,5 +60,9 @@ public class Cat {
 
     public String getPersonality() {
         return personality;
+    }
+
+    public String getManage() {
+        return manage;
     }
 }

@@ -54,20 +54,12 @@ public class CatListAdapter extends RecyclerView.Adapter<CatListAdapter.CatViewH
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, CatDescActivity.class);
-                intent.putExtra("name", cat.getName());
+                intent.putExtra("key", cat.getKey());
                 intent.putExtra("hair", cat.getHair());
 
                 context.startActivity(intent);
             }
         });
-//        holder.itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
-//            @Override
-//            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-//
-//
-//
-//            }
-//        });
 
     }
 

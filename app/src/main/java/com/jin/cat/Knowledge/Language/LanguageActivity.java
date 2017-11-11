@@ -12,7 +12,6 @@ import com.jin.cat.R;
 
 public class LanguageActivity extends AppCompatActivity {
 
-    Toolbar mToolbar;
     ListView mListView;
 
     Intent mfrist;
@@ -35,8 +34,7 @@ public class LanguageActivity extends AppCompatActivity {
         msecond = new Intent(LanguageActivity.this, LanguageBody.class);
         mThird = new Intent(LanguageActivity.this, LanguageTail.class);
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar2);
-        mToolbar.setTitle(getResources().getString(R.string.app_name_language));
+        setTitle("Language");
 
         mListView = (ListView) findViewById(R.id.listView2);
         LanguageAdapter myAdapter = new LanguageAdapter(LanguageActivity.this, countryNames, countryFlags);

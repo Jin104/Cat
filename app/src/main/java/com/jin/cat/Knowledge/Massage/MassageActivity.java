@@ -29,8 +29,7 @@ public class MassageActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.massage);
 
-        Toolbar  mToolbar = (Toolbar) findViewById(R.id.toolbar4);
-        mToolbar.setTitle(getResources().getString(R.string.app_name_massage));
+        setTitle("Massage");
 
         for(int tvId: tv) {
             TextView textView = (TextView)findViewById(tvId);

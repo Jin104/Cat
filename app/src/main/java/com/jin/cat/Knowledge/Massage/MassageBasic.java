@@ -25,8 +25,8 @@ public class MassageBasic extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.massage2);
-//        Toolbar mToolbar = (Toolbar)findViewById(R.id.toolbar5);
-//        mToolbar.setTitle("기본");
+
+        setTitle("기본");
 
         ImageButton btn = (ImageButton) findViewById(R.id.scroll_to_top_btn);
 
@@ -34,7 +34,6 @@ public class MassageBasic extends AppCompatActivity {
         MassageAdapter2 adapter;
 
         adapter = new MassageAdapter2();
-
 
         final  ListView listView = (ListView)findViewById(R.id.listView5);
         listView.setAdapter(adapter);

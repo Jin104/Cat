@@ -16,43 +16,28 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Knowledge.Language.LanguageActivity"
-            android:theme="@style/AppTheme.NoWindowNoTitle" />
+            android:name=".Knowledge.Language.LanguageActivity"/>
         <activity
-            android:name=".Knowledge.Language.LanguageFace"
-            android:theme="@style/AppTheme.NoWindowNoTitle" />
+            android:name=".Knowledge.Language.LanguageFace" />
         <activity
-            android:name=".Knowledge.Language.LanguageBody"
-            android:theme="@style/AppTheme.NoWindowNoTitle" />
+            android:name=".Knowledge.Language.LanguageBody" />
         <activity
-            android:name=".Knowledge.Language.LanguageTail"
-            android:theme="@style/AppTheme.NoWindowNoTitle" />
+            android:name=".Knowledge.Language.LanguageTail" />
         <activity
-            android:name=".Knowledge.Health.HealthActivity"
-            android:theme="@style/AppTheme.NoWindowNoTitle" />
+            android:name=".Knowledge.Health.HealthActivity" />
         <activity
-            android:name=".Knowledge.Massage.MassageActivity"
-            android:theme="@style/AppTheme.NoWindowNoTitle" />
+            android:name=".Knowledge.Massage.MassageActivity" />
         <activity
-            android:name=".Knowledge.Massage.MassageBasic"
-            android:label="기본"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".Knowledge.Massage.MassageBasic"/>
         <activity
-            android:name=".Knowledge.Massage.MassageEtc"
-            android:label="기타"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".Knowledge.Massage.MassageEtc"/>
         <activity
-            android:name=".Knowledge.Massage.MassageLymph"
-            android:label="림프"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".Knowledge.Massage.MassageLymph"/>
         <activity
-            android:name=".Knowledge.Massage.MassageRelax"
-            android:label="릴랙스"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".Knowledge.Massage.MassageRelax" />
         <activity
-            android:name=".Knowledge.Massage.MassageTrouble"
-            android:label="트러블"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".Knowledge.Massage.MassageTrouble" />
+
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,17 +45,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".Dictionary.LonghairActivity" />
         <activity android:name=".Dictionary.ShorthairActivity" />
         <activity android:name=".Dictionary.MiddlehairActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".Knowledge.Health.HealthOne" />
-        <activity android:name=".Knowledge.Health.HealthTwo" />
-        <activity android:name=".Knowledge.Health.HealthThree" />
-        <activity android:name=".Knowledge.Health.HealthFour" />
-        <activity android:name=".Knowledge.Health.HealthFive" />
-        <activity android:name=".Knowledge.Health.HealthSix" />
-        <activity android:name=".Dictionary.CatDescActivity"></activity>
+        <activity android:name=".Dictionary.CatDescActivity"
+            android:theme="@style/AppTheme.NoWindowNoTitle" />
+        <activity android:name=".Knowledge.Food.FoodActivity"/>
     </application>
 
 </manifest>

@@ -48,7 +48,7 @@ dependencies {
     compile "com.google.android.gms:play-services-auth:$GOOGLE_LIB_VER"
 
     //Add Library
-    //인헤가 한거
+    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.firebaseui:firebase-ui-database:0.4.0'
     compile 'commons-io:commons-io:2.0.1'
