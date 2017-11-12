@@ -2,21 +2,20 @@ package com.jin.cat.Dictionary;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.jin.cat.Dictionary.Model.Cat;
+import com.jin.cat.models.Cat;
 import com.jin.cat.R;
 import com.jin.cat.Utils.FirebaseUtils;
 import com.squareup.picasso.Picasso;
@@ -43,14 +42,18 @@ public class CatDescActivity extends AppCompatActivity {
         final TextView personality = (TextView)findViewById(R.id.cat_personality);
         final TextView manage = (TextView)findViewById(R.id.cat_manage);
 
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference ref = database.child("Cats").child(hair);
+        TextView comment = (TextView)findViewById(R.id.cat_go_comment);
 
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        SpannableStringBuilder builder = new SpannableStringBuilder(">");
+        builder.setSpan(new ForegroundColorSpan(Color.parseColor("#ff0000")), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        comment.append(builder);
+
+
+        FirebaseUtils.getCatRef().child(hair).child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Context context = image.getContext();
-                Cat cat = dataSnapshot.child(key).getValue(Cat.class);
+                Cat cat = dataSnapshot.getValue(Cat.class);
 
                 Picasso.with(context).load(cat.getImage()).into(image);
                 name.setText(cat.getName());
@@ -75,8 +78,13 @@ public class CatDescActivity extends AppCompatActivity {
 
     }
 
-    public void addCommentButtonClicked(View view){
+    public void backButtonClicked(View view){
+        finish();
+    }
 
+    public void addCommentViewClicked(View view){
+        Intent intent = new Intent(CatDescActivity.this, CommentActivity.class);
+        startActivity(intent);
     }
 
     @Override

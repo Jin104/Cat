@@ -1,4 +1,4 @@
-package com.jin.cat.Dictionary.Model;
+package com.jin.cat.models;
 
 /**
  * Created by rakha on 2017-10-22.

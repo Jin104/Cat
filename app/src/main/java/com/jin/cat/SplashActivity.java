@@ -1,6 +1,7 @@
 package com.jin.cat;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
@@ -8,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -30,10 +33,16 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run(){
-                Intent startActivityIntent = new Intent(SplashActivity.this, MainActivity.class);
+                Intent startActivityIntent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(startActivityIntent);
                 SplashActivity.this.finish();
             }
         }, SPLASH_DISPLAY_LENGTH);
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
 }

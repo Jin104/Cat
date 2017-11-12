@@ -11,7 +11,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.jin.cat.Dictionary.Model.Cat;
+import com.jin.cat.models.Cat;
 import com.jin.cat.Dictionary.Adapter.CatListAdapter;
 import com.jin.cat.R;
 

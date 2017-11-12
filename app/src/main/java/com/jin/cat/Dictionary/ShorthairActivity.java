@@ -1,6 +1,5 @@
 package com.jin.cat.Dictionary;
 
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,7 +12,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.jin.cat.Dictionary.Model.Cat;
+import com.jin.cat.models.Cat;
 import com.jin.cat.Dictionary.Adapter.CatListAdapter;
 import com.jin.cat.R;
 

@@ -1,4 +1,4 @@
-package com.jin.cat.Dictionary;
+package com.jin.cat.ui.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,13 +13,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jin.cat.Dictionary.Model.Dictionary;
+import com.jin.cat.Dictionary.LonghairActivity;
+import com.jin.cat.Dictionary.MiddlehairActivity;
+import com.jin.cat.Dictionary.ShorthairActivity;
+import com.jin.cat.models.Dictionary;
 import com.jin.cat.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static java.lang.Integer.valueOf;
 
