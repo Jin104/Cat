@@ -1,11 +1,11 @@
-package com.jin.cat;
+package com.jin.cat.adapter;
 
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.jin.cat.ui.fragments.DictionaryFragment;
+import com.jin.cat.fragments.DictionaryFragment;
 import com.jin.cat.Knowledge.KnowledgeFragment;
 import com.jin.cat.Map.MapActivity;
 

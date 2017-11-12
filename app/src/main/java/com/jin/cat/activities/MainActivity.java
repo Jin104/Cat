@@ -1,4 +1,4 @@
-package com.jin.cat;
+package com.jin.cat.activities;
 
 
 import android.content.Intent;
@@ -22,6 +22,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.jin.cat.R;
+import com.jin.cat.fragments.TapFragment;
+import com.jin.cat.utils.FirebaseUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -124,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
             mAuth = FirebaseAuth.getInstance();
             mAuth.signOut();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            finish();
         }
 
         return super.onOptionsItemSelected(item);

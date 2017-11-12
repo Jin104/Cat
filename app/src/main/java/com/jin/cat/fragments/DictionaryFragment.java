@@ -1,4 +1,4 @@
-package com.jin.cat.ui.fragments;
+package com.jin.cat.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,11 +13,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jin.cat.Dictionary.LonghairActivity;
-import com.jin.cat.Dictionary.MiddlehairActivity;
-import com.jin.cat.Dictionary.ShorthairActivity;
+import com.jin.cat.activities.LoginActivity;
+import com.jin.cat.activities.LonghairActivity;
+import com.jin.cat.activities.MiddlehairActivity;
+import com.jin.cat.activities.ShorthairActivity;
 import com.jin.cat.models.Dictionary;
 import com.jin.cat.R;
+import com.jin.cat.utils.FirebaseUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,10 @@ public class DictionaryFragment extends Fragment {
 
         DictionaryAdapter mAdapter = new DictionaryAdapter(getActivity(), getDictionaryData());
         dictionlistRecyclerView.setAdapter(mAdapter);
+
+        if(FirebaseUtils.getCurrentUser() == null ){
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+        }
 
         return view;
     }

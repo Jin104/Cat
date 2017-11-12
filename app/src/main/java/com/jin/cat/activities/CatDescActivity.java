@@ -1,4 +1,4 @@
-package com.jin.cat.Dictionary;
+package com.jin.cat.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,12 +17,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.jin.cat.models.Cat;
 import com.jin.cat.R;
-import com.jin.cat.Utils.FirebaseUtils;
+import com.jin.cat.utils.FirebaseUtils;
 import com.squareup.picasso.Picasso;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class CatDescActivity extends AppCompatActivity {
+
+    private String hairId;
+    private String catId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +33,8 @@ public class CatDescActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cat_desc);
 
         Intent intent = getIntent();
-        String hair = intent.getExtras().getString("hair");
-        final String key = intent.getExtras().getString("key");
+        hairId = intent.getExtras().getString("hair");
+        catId = intent.getExtras().getString("key");
 
         final ImageView image = (ImageView)findViewById(R.id.cat_image);
         final TextView name = (TextView)findViewById(R.id.cat_name);
@@ -49,7 +52,7 @@ public class CatDescActivity extends AppCompatActivity {
         comment.append(builder);
 
 
-        FirebaseUtils.getCatRef().child(hair).child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseUtils.getCatRef().child(hairId).child(catId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Context context = image.getContext();
@@ -84,6 +87,8 @@ public class CatDescActivity extends AppCompatActivity {
 
     public void addCommentViewClicked(View view){
         Intent intent = new Intent(CatDescActivity.this, CommentActivity.class);
+        intent.putExtra("hairId",hairId);
+        intent.putExtra("catId",catId);
         startActivity(intent);
     }
 

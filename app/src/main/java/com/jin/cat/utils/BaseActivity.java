@@ -1,9 +1,7 @@
-package com.jin.cat.Utils;
+package com.jin.cat.utils;
 
 import android.app.Application;
 import android.content.Context;
-import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 
 import com.jin.cat.R;
 

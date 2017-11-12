@@ -1,4 +1,4 @@
-package com.jin.cat.Utils;
+package com.jin.cat.utils;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -18,6 +18,10 @@ import java.util.ArrayList;
  */
 
 public class FirebaseUtils {
+
+    public static DatabaseReference getCatCommentRef(String hairId, String catId){
+        return FirebaseDatabase.getInstance().getReference(Constants.COMMENTS_KEY).child(hairId).child(catId);
+    }
 
     public static DatabaseReference getCatRef(){
         return FirebaseDatabase.getInstance().getReference(Constants.CAT_KEY);

@@ -1,4 +1,4 @@
-package com.jin.cat;
+package com.jin.cat.fragments;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.jin.cat.R;
+import com.jin.cat.adapter.CustomFragmentPageAdapter;
 
 public class TapFragment extends Fragment {
     private static final String TAG = TapFragment.class.getSimpleName();

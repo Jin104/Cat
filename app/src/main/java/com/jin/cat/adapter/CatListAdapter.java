@@ -1,4 +1,4 @@
-package com.jin.cat.Dictionary.Adapter;
+package com.jin.cat.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jin.cat.Dictionary.CatDescActivity;
+import com.jin.cat.activities.CatDescActivity;
 import com.jin.cat.models.Cat;
 import com.jin.cat.R;
 import com.squareup.picasso.Picasso;
