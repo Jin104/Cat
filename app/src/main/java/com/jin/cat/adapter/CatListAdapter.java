@@ -22,8 +22,6 @@ import java.util.List;
 
 public class CatListAdapter extends RecyclerView.Adapter<CatListAdapter.CatViewHolder>{
 
-
-
     private final String TAG = CatListAdapter.CatViewHolder.class.getSimpleName();
 
     private List<Cat> lists;

@@ -43,6 +43,10 @@ public class FirebaseUtils {
         return FirebaseDatabase.getInstance().getReference(Constants.POST_LIKED_KEY);
     }
 
+    public static DatabaseReference getCatLikedRef(String hairId, String catId){
+        return FirebaseDatabase.getInstance().getReference(Constants.CAT_LIKED_KEY).child(hairId).child(catId);
+    }
+
     public static DatabaseReference getPostLikedRef(String postId){
         return getPostLikedRef().child(getCurrentUser().getUid()).child(postId);
     }

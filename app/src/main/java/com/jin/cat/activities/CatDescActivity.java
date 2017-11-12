@@ -3,17 +3,23 @@ package com.jin.cat.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jin.cat.models.Cat;
 import com.jin.cat.R;
@@ -26,7 +32,7 @@ public class CatDescActivity extends AppCompatActivity {
 
     private String hairId;
     private String catId;
-
+    private ImageButton favoritesBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +50,7 @@ public class CatDescActivity extends AppCompatActivity {
         final TextView looks = (TextView)findViewById(R.id.cat_looks);
         final TextView personality = (TextView)findViewById(R.id.cat_personality);
         final TextView manage = (TextView)findViewById(R.id.cat_manage);
+        favoritesBtn =(ImageButton)findViewById(R.id.cat_like_btn);
 
         TextView comment = (TextView)findViewById(R.id.cat_go_comment);
 
@@ -56,7 +63,7 @@ public class CatDescActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Context context = image.getContext();
-                Cat cat = dataSnapshot.getValue(Cat.class);
+                final Cat cat = dataSnapshot.getValue(Cat.class);
 
                 Picasso.with(context).load(cat.getImage()).into(image);
                 name.setText(cat.getName());
@@ -66,6 +73,23 @@ public class CatDescActivity extends AppCompatActivity {
                 looks.setText(cat.getLooks());
                 personality.setText(cat.getPersonality());
                 manage.setText(cat.getManage());
+
+                favoritesBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(FirebaseUtils.getCurrentUser()!=null){
+                            addFavoritesButtonClicked(cat.getKey());
+                        }else{
+                            Snackbar.make(v,  Html.fromHtml("<font color=\"#ffffff\">로그인 하시겠습니까?</font>"), 2000).setActionTextColor(Color.parseColor("#FF0000")).setAction("YES", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    startActivity(new Intent(CatDescActivity.this, LoginActivity.class));
+                                }
+                            }).show();
+                        }
+                    }
+                });
+
             }
 
             @Override
@@ -75,9 +99,32 @@ public class CatDescActivity extends AppCompatActivity {
         });
 
 
+
     }
 
-    public void addFavoritesButtonClicked(View view){
+    public void addFavoritesButtonClicked(final String catId){
+        DatabaseReference mDatabaseLike = FirebaseDatabase.getInstance().getReference().child("Cat_Liked").child(hairId);
+        mDatabaseLike.keepSynced(true);
+
+        FirebaseUtils.getCatLikedRef(hairId, catId)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        if(dataSnapshot.getValue()!=null){
+                            FirebaseUtils.getCatLikedRef(hairId, catId).child(FirebaseUtils.getCurrentUser().getUid()).setValue(null);
+                            favoritesBtn.setImageResource(R.drawable.icon_dislike);
+                        }else{
+                            FirebaseUtils.getCatLikedRef(hairId, catId).child(FirebaseUtils.getCurrentUser().getUid()).setValue(true);
+                            favoritesBtn.setImageResource(R.drawable.icon_like);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
 
     }
 

@@ -22,4 +22,5 @@ public class Constants {
     public static final String CAT_SHORT = "Short";
 
     public static final String CAT_COMMENTS_KEY = "Cat Comments";
+    public static final String CAT_LIKED_KEY = "Cat_Liked";
 }

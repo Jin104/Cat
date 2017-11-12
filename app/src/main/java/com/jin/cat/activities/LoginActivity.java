@@ -1,12 +1,19 @@
 package com.jin.cat.activities;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -30,11 +37,17 @@ import com.jin.cat.R;
 import com.jin.cat.fragments.DictionaryFragment;
 import com.jin.cat.models.User;
 import com.jin.cat.utils.FirebaseUtils;
+import com.squareup.picasso.Picasso;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
-    private SignInButton mSinginBtn;
+    private static LayoutInflater inflater;
+    private static View view;
+    private static TextView profileName;
 
+    private SignInButton mSinginBtn;
     private GoogleApiClient mGoogleApiClient;
 
     private FirebaseAuth mFirebaseAuth;
@@ -44,15 +57,30 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        view = inflater.inflate(R.layout.activity_main, null);
+
+
         Button guestBtn = (Button)findViewById(R.id.guest_btn);
         guestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new DictionaryFragment(); // Fragment 생성
-                Bundle bundle = new Bundle(1); // 파라미터는 전달할 데이터 개수
-                bundle.putString("guest", "1"); // key , value
+                Fragment fragment = new DictionaryFragment();
+                Bundle bundle = new Bundle(1);
+                bundle.putString("guest", "1");
                 fragment.setArguments(bundle);
+                finish();
+            }
+        });
 
+        ImageView guestView = (ImageView)findViewById(R.id.guest_view);
+        guestView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new DictionaryFragment();
+                Bundle bundle = new Bundle(1);
+                bundle.putString("guest", "1");
+                fragment.setArguments(bundle);
                 finish();
             }
         });
@@ -131,10 +159,14 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
                 mDatabase.child("Users").child(user.getUid()).setValue(user);
 
-                Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_LONG).show();
-                //startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

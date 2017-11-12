@@ -77,7 +77,7 @@ public class CommentActivity extends AppCompatActivity {
         databaseReference = database.getInstance().getReference().child("Cat Comments").child(hairId).child(catId);
 
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
-        mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
+
 
         mCommentList = (RecyclerView) findViewById(R.id.comment_list);
         mCommentList.setHasFixedSize(true);
@@ -127,9 +127,6 @@ public class CommentActivity extends AppCompatActivity {
             commentUsername = (TextView) itemView.findViewById(R.id.comment_username);
             commentTime = (TextView) itemView.findViewById(R.id.comment_time);
             commentDesc = (TextView) itemView.findViewById(R.id.comment_desc);
-
-            commentImage.setBackground(new ShapeDrawable(new OvalShape()));
-            commentImage.setClipToOutline(true);
         }
 
         public void setUsername(String name){
@@ -156,7 +153,7 @@ public class CommentActivity extends AppCompatActivity {
                 final String commentId = FirebaseUtils.getUid();
 
                 mComment = new Comment();
-
+                mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
                 mDatabaseUsers.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {

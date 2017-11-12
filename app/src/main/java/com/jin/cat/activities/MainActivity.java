@@ -1,6 +1,7 @@
 package com.jin.cat.activities;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
@@ -19,12 +20,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.jin.cat.R;
 import com.jin.cat.fragments.TapFragment;
 import com.jin.cat.utils.FirebaseUtils;
+import com.squareup.picasso.Picasso;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -59,8 +64,24 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View header = navigationView.inflateHeaderView(R.layout.nav_header_cat);
+
+        ImageView profileImg = (ImageView) header.findViewById(R.id.nav_profile_img);
         TextView profileName = (TextView) header.findViewById(R.id.profile_name);
-        profileName.setText("User");
+        TextView profileEmail = (TextView) header.findViewById(R.id.profile_email);
+
+        if(FirebaseUtils.getCurrentUser()!=null){
+
+            Picasso.with(profileImg.getContext()).load(FirebaseUtils.getCurrentUser().getPhotoUrl()).into(profileImg);
+            profileName.setText(FirebaseUtils.getCurrentUser().getDisplayName());
+            profileEmail.setText(FirebaseUtils.getCurrentUser().getEmail());
+
+        }else{
+            Picasso.with(profileImg.getContext()).load("https://firebasestorage.googleapis.com/v0/b/mobileswcat.appspot.com/o/ic_account_circle_white_24dp.png?alt=media&token=e6b0f24a-0cc4-4bc9-9193-48b2d75d4472").into(profileImg);
+            profileName.setText("Guest");
+            profileEmail.setText("Guest");
+        }
+
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -121,16 +142,39 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }else if(id == R.id.logout){
-            mAuth = FirebaseAuth.getInstance();
-            mAuth.signOut();
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        switch (id){
+            case R.id.menu_login:
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                return true;
+
+            case R.id.menu_logout:
+                mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        if(FirebaseUtils.getCurrentUser()!=null){
+            menu.getItem(0).setVisible(false);
+            menu.getItem(1).setVisible(true);
+        }else{
+            menu.getItem(0).setVisible(true);
+            menu.getItem(1).setVisible(false);
+        }
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
 }

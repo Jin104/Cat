@@ -25,7 +25,8 @@
             android:layout_marginTop="@dimen/_50sdp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_200sdp"
-            android:src="@drawable/dictionary_cat2"
+            android:scaleType="fitXY"
+            android:src="@drawable/dictionary_cat3"
             android:layout_below="@+id/textView"
             android:layout_alignParentStart="true" />
 
