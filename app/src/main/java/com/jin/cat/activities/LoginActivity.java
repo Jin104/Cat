@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -43,9 +45,6 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
-    private static LayoutInflater inflater;
-    private static View view;
-    private static TextView profileName;
 
     private SignInButton mSinginBtn;
     private GoogleApiClient mGoogleApiClient;
@@ -56,11 +55,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = inflater.inflate(R.layout.activity_main, null);
-
-
         Button guestBtn = (Button)findViewById(R.id.guest_btn);
         guestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +63,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 Bundle bundle = new Bundle(1);
                 bundle.putString("guest", "1");
                 fragment.setArguments(bundle);
+
                 finish();
             }
         });
@@ -81,6 +76,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 Bundle bundle = new Bundle(1);
                 bundle.putString("guest", "1");
                 fragment.setArguments(bundle);
+
                 finish();
             }
         });
@@ -160,6 +156,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 mDatabase.child("Users").child(user.getUid()).setValue(user);
 
                 Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+
                 finish();
             }
         });

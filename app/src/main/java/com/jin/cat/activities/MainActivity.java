@@ -40,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
     private Fragment fragment = null;
     private FirebaseAuth mAuth;
 
+    private static NavigationView navigationView;
+    private static View header;
+    private static TextView profileName;
+    private static ImageView profileImg;
+    private static TextView profileEmail;
+
+
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,25 +70,12 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.main_container_wrapper, fragment);
         fragmentTransaction.commit();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        View header = navigationView.inflateHeaderView(R.layout.nav_header_cat);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        header = navigationView.inflateHeaderView(R.layout.nav_header_cat);
 
-        ImageView profileImg = (ImageView) header.findViewById(R.id.nav_profile_img);
-        TextView profileName = (TextView) header.findViewById(R.id.profile_name);
-        TextView profileEmail = (TextView) header.findViewById(R.id.profile_email);
-
-        if(FirebaseUtils.getCurrentUser()!=null){
-
-            Picasso.with(profileImg.getContext()).load(FirebaseUtils.getCurrentUser().getPhotoUrl()).into(profileImg);
-            profileName.setText(FirebaseUtils.getCurrentUser().getDisplayName());
-            profileEmail.setText(FirebaseUtils.getCurrentUser().getEmail());
-
-        }else{
-            Picasso.with(profileImg.getContext()).load("https://firebasestorage.googleapis.com/v0/b/mobileswcat.appspot.com/o/ic_account_circle_white_24dp.png?alt=media&token=e6b0f24a-0cc4-4bc9-9193-48b2d75d4472").into(profileImg);
-            profileName.setText("Guest");
-            profileEmail.setText("Guest");
-        }
-
+        profileImg = (ImageView) header.findViewById(R.id.nav_profile_img);
+        profileName = (TextView) header.findViewById(R.id.profile_name);
+        profileEmail = (TextView) header.findViewById(R.id.profile_email);
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -117,6 +112,23 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+
+        if(FirebaseUtils.getCurrentUser()!=null){
+
+            Picasso.with(profileImg.getContext()).load(FirebaseUtils.getCurrentUser().getPhotoUrl()).into(profileImg);
+            profileName.setText(FirebaseUtils.getCurrentUser().getDisplayName());
+            profileEmail.setText(FirebaseUtils.getCurrentUser().getEmail());
+
+        }else{
+            Picasso.with(profileImg.getContext()).load("https://firebasestorage.googleapis.com/v0/b/mobileswcat.appspot.com/o/ic_account_circle_white_24dp.png?alt=media&token=e6b0f24a-0cc4-4bc9-9193-48b2d75d4472").into(profileImg);
+            profileName.setText("Guest");
+            profileEmail.setText("Guest");
+        }
+        super.onResume();
     }
 
     @Override

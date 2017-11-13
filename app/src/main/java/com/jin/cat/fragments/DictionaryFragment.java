@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.jin.cat.activities.LoginActivity;
 import com.jin.cat.activities.LonghairActivity;
+import com.jin.cat.activities.MainActivity;
 import com.jin.cat.activities.MiddlehairActivity;
 import com.jin.cat.activities.ShorthairActivity;
 import com.jin.cat.models.Dictionary;
@@ -47,6 +49,7 @@ public class DictionaryFragment extends Fragment {
 
         DictionaryAdapter mAdapter = new DictionaryAdapter(getActivity(), getDictionaryData());
         dictionlistRecyclerView.setAdapter(mAdapter);
+
 
         if(FirebaseUtils.getCurrentUser() == null ){
             startActivity(new Intent(getActivity(), LoginActivity.class));
