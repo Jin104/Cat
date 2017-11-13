@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorLighter"
-    tools:context="com.jin.cat.Knowledge.KnowledgeFragment">
+    tools:context="com.jin.cat.fragments.KnowledgeFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/knowledge_list_view"

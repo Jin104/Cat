@@ -1,4 +1,4 @@
-package com.jin.cat.Knowledge;
+package com.jin.cat.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,7 @@ import com.jin.cat.Knowledge.Health.HealthActivity;
 import com.jin.cat.Knowledge.Language.LanguageActivity;
 import com.jin.cat.Knowledge.Massage.MassageActivity;
 import com.jin.cat.R;
+import com.jin.cat.models.Knowledge;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,12 +54,12 @@ public class KnowledgeFragment extends Fragment {
 
     public List<Knowledge> getKnowledgeData() {
         List<Knowledge> knowList = new ArrayList<Knowledge>();
-        knowList.add(new Knowledge("사전", "고양이 사전", R.drawable.one));
-        knowList.add(new Knowledge("행동언어", "고양이 행동언어", R.drawable.two));
-        knowList.add(new Knowledge("마사지", "고양이 마사지", R.drawable.three));
-        knowList.add(new Knowledge("먹으면안되는 음식", "고양이가 먹으면 안되는 음식", R.drawable.four));
-        knowList.add(new Knowledge("건강", "고양이 건강", R.drawable.five));
-        knowList.add(new Knowledge("사료", "고양이 사료", R.drawable.six));
+        knowList.add(new Knowledge("사전", "고양이 사전", R.drawable.cat1));
+        knowList.add(new Knowledge("행동언어", "고양이 행동언어", R.drawable.cat2));
+        knowList.add(new Knowledge("마사지", "고양이 마사지", R.drawable.cat3));
+        knowList.add(new Knowledge("먹으면안되는 음식", "고양이가 먹으면 안되는 음식", R.drawable.cat4));
+        knowList.add(new Knowledge("건강", "고양이 건강", R.drawable.cat5));
+        knowList.add(new Knowledge("사료", "고양이 사료", R.drawable.cat6));
         return knowList;
     }
 

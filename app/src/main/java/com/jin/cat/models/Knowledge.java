@@ -1,4 +1,4 @@
-package com.jin.cat.Knowledge;
+package com.jin.cat.models;
 
 public class Knowledge {
 
