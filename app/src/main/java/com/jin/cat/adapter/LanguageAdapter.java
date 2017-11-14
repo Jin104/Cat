@@ -1,4 +1,4 @@
-package com.jin.cat.Knowledge.Language;
+package com.jin.cat.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

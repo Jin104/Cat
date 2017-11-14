@@ -3,10 +3,9 @@ package com.jin.cat.Knowledge.Food;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
 
-import com.jin.cat.Knowledge.Language.LanguageAdapter;
+import com.jin.cat.adapter.LanguageAdapter;
 import com.jin.cat.R;
 
 public class FoodActivity extends AppCompatActivity {
@@ -24,7 +23,7 @@ public class FoodActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.language);
+        setContentView(R.layout.activity_language);
 
 //        mfrist = new Intent(FoodActivity.this, .class);
 //        msecond = new Intent(FoodActivity.this, .class);

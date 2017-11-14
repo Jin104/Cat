@@ -1,13 +1,13 @@
-package com.jin.cat.Knowledge.Language;
+package com.jin.cat.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.widget.GridView;
 
+import com.jin.cat.Knowledge.Language.FaceAdapter;
 import com.jin.cat.R;
 
-public class LanguageFace extends AppCompatActivity {
+public class LanguageFaceActivity extends AppCompatActivity {
 
     GridView mGridView;
 
@@ -23,12 +23,12 @@ public class LanguageFace extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.health);
+        setContentView(R.layout.row_gridview);
 
         setTitle("얼굴언어");
 
-        mGridView = (GridView)findViewById(R.id.gridview3);
-        FaceAdapter myAdapter = new FaceAdapter(LanguageFace.this, countryNames, countryFlags);
+        mGridView = (GridView)findViewById(R.id.row_gridview);
+        FaceAdapter myAdapter = new FaceAdapter(LanguageFaceActivity.this, countryNames, countryFlags);
 
         mGridView.setAdapter(myAdapter);
     }

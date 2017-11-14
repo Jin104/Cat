@@ -4,7 +4,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
 android:background="@color/colorLighter"
-tools:context="com.jin.cat.Knowledge.Language.LanguageActivity">
+tools:context="com.jin.cat.activities.LanguageActivity">
 
 <android.support.v7.widget.RecyclerView
     android:id="@+id/dictionary_list_view"

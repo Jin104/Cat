@@ -1,13 +1,13 @@
-package com.jin.cat.Knowledge.Language;
+package com.jin.cat.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
 
+import com.jin.cat.Knowledge.Language.LanguageAdapter2;
 import com.jin.cat.R;
 
-public class LanguageTail extends AppCompatActivity {
+public class LanguageTailActivity extends AppCompatActivity {
 
     ListView mListView;
 
@@ -20,12 +20,12 @@ public class LanguageTail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.language);
+        setContentView(R.layout.activity_language);
 
         setTitle("꼬리언어");
 
-        mListView = (ListView) findViewById(R.id.listView2);
-        LanguageAdapter2 myAdapter = new LanguageAdapter2(LanguageTail.this, countryNames,countryImfo, countryFlags);
+        mListView = (ListView) findViewById(R.id.row_gridview);
+        LanguageAdapter2 myAdapter = new LanguageAdapter2(LanguageTailActivity.this, countryNames,countryImfo, countryFlags);
 
         mListView.setAdapter(myAdapter);
     }

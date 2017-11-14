@@ -31,10 +31,10 @@
             android:name=".activities.LoginActivity"
             android:theme="@style/AppTheme.NoWindowNoTitle"/>
 
-        <activity android:name=".Knowledge.Language.LanguageActivity" />
-        <activity android:name=".Knowledge.Language.LanguageFace" />
-        <activity android:name=".Knowledge.Language.LanguageBody" />
-        <activity android:name=".Knowledge.Language.LanguageTail" />
+        <activity android:name=".activities.LanguageActivity" />
+        <activity android:name=".activities.LanguageFaceActivity" />
+        <activity android:name=".activities.LanguageBodyActivity" />
+        <activity android:name=".activities.LanguageTailActivity" />
         <activity android:name=".Knowledge.Health.HealthActivity" />
         <activity android:name=".Knowledge.Massage.MassageActivity" />
         <activity android:name=".Knowledge.Massage.MassageBasic" />

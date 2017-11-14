@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.jin.cat.Knowledge.Food.FoodActivity;
 import com.jin.cat.Knowledge.Health.HealthActivity;
-import com.jin.cat.Knowledge.Language.LanguageActivity;
+import com.jin.cat.activities.LanguageActivity;
 import com.jin.cat.Knowledge.Massage.MassageActivity;
 import com.jin.cat.R;
 import com.jin.cat.models.Knowledge;

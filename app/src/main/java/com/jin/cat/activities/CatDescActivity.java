@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -98,13 +99,35 @@ public class CatDescActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    @Override
+    protected void onResume() {
 
+        if(FirebaseUtils.getCurrentUser()!=null) {
+            FirebaseUtils.getCatLikedRef(hairId, catId)
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            if (dataSnapshot.getValue() != null) {
+                                favoritesBtn.setImageResource(R.drawable.icon_like);
+                            } else {
+                                favoritesBtn.setImageResource(R.drawable.icon_dislike);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+        }
+        super.onResume();
     }
 
     public void addFavoritesButtonClicked(final String catId){
-        DatabaseReference mDatabaseLike = FirebaseDatabase.getInstance().getReference().child("Cat_Liked").child(hairId);
-        mDatabaseLike.keepSynced(true);
 
         FirebaseUtils.getCatLikedRef(hairId, catId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {

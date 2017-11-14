@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jin.cat.Knowledge.Language.LanguageActivity">
+    tools:context="com.jin.cat.activities.LanguageActivity">
 
 
     <GridView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/gridview3"
+        android:id="@+id/row_gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"

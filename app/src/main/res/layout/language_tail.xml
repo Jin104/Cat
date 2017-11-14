@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jin.cat.Knowledge.Language.LanguageTail">
+    tools:context="com.jin.cat.activities.LanguageTailActivity">
 
 </android.support.constraint.ConstraintLayout>

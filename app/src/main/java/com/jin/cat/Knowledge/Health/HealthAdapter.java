@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jin.cat.Knowledge.Language.LanguageAdapter;
 import com.jin.cat.R;
 
 /**
