@@ -24,7 +24,7 @@ public class LanguageTailActivity extends AppCompatActivity {
 
         setTitle("꼬리언어");
 
-        mListView = (ListView) findViewById(R.id.row_gridview);
+        mListView = (ListView) findViewById(R.id.listView2);
         LanguageAdapter2 myAdapter = new LanguageAdapter2(LanguageTailActivity.this, countryNames,countryImfo, countryFlags);
 
         mListView.setAdapter(myAdapter);
