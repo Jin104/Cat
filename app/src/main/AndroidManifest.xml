@@ -6,19 +6,17 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:hardwareAccelerated="false"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,11 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.LoginActivity"
-            android:theme="@style/AppTheme.NoWindowNoTitle"/>
-
+            android:theme="@style/AppTheme.NoWindowNoTitle" />
         <activity android:name=".activities.LanguageActivity" />
         <activity android:name=".activities.LanguageFaceActivity" />
         <activity android:name=".activities.LanguageBodyActivity" />
@@ -42,7 +38,6 @@
         <activity android:name=".Knowledge.Massage.MassageLymph" />
         <activity android:name=".Knowledge.Massage.MassageRelax" />
         <activity android:name=".Knowledge.Massage.MassageTrouble" />
-
         <activity android:name=".activities.LonghairActivity" />
         <activity android:name=".activities.ShorthairActivity" />
         <activity android:name=".activities.MiddlehairActivity" />
@@ -51,7 +46,8 @@
             android:name=".activities.CatDescActivity"
             android:theme="@style/AppTheme.NoWindowNoTitle" />
         <activity android:name=".Knowledge.Food.FoodActivity" />
-        <activity android:name=".activities.CommentActivity"></activity>
+        <activity android:name=".activities.CommentActivity" />
+        <activity android:name=".Knowledge.Food.FoodOneActivity"></activity>
     </application>
 
 </manifest>

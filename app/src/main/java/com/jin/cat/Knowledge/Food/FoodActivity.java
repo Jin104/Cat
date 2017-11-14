@@ -3,10 +3,12 @@ package com.jin.cat.Knowledge.Food;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.jin.cat.adapter.LanguageAdapter;
 import com.jin.cat.R;
+import com.jin.cat.adapter.LanguageAdapter;
 
 public class FoodActivity extends AppCompatActivity {
 
@@ -25,7 +27,7 @@ public class FoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
 
-//        mfrist = new Intent(FoodActivity.this, .class);
+        mfrist = new Intent(FoodActivity.this, FoodOneActivity.class);
 //        msecond = new Intent(FoodActivity.this, .class);
 
         setTitle("Food");
@@ -35,14 +37,14 @@ public class FoodActivity extends AppCompatActivity {
 
         mListView.setAdapter(myAdapter);
 
-//        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                if (position == 0)
-//                    startActivity(mfrist);
-//                else if (position == 1)
-//                    startActivity(msecond);
-//            }
-//        });
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0)
+                    startActivity(mfrist);
+                else if (position == 1)
+                    startActivity(msecond);
+            }
+        });
     }
 }
