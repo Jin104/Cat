@@ -3,10 +3,9 @@ package com.jin.cat.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.design.widget.NavigationView;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -15,15 +14,12 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.jin.cat.models.Cat;
 import com.jin.cat.R;
+import com.jin.cat.models.Cat;
 import com.jin.cat.utils.FirebaseUtils;
 import com.squareup.picasso.Picasso;
 
@@ -34,6 +30,7 @@ public class CatDescActivity extends AppCompatActivity {
     private String hairId;
     private String catId;
     private ImageButton favoritesBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

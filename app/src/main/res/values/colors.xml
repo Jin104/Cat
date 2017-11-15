@@ -11,4 +11,19 @@
     <color name="colorMain">#D3D6DB</color>
     <color name="colorMainDarker">#BBBFC3</color>
     <color name="colorMainDarker2">#7E838C</color>
+
+    <array name="array_dot_active">
+        <item>@color/colorBlack</item>
+        <item>@color/colorBlack</item>
+        <item>@color/colorBlack</item>
+        <item>@color/colorBlack</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/colorWhite</item>
+        <item>@color/colorWhite</item>
+        <item>@color/colorWhite</item>
+        <item>@color/colorWhite</item>
+    </array>
+
 </resources>

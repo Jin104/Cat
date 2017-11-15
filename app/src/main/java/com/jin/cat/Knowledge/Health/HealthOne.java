@@ -17,7 +17,7 @@ import java.util.List;
 
 public class HealthOne extends AppCompatActivity {
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {

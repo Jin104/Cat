@@ -18,10 +18,10 @@ import com.jin.cat.R;
 
 public class LanguageAdapter2 extends ArrayAdapter<String> {
 
-    String[] names;
-    String[] imfo;
-    int[] flags;
-    Context mContext;
+    private String[] names;
+    private String[] imfo;
+    private int[] flags;
+    private Context mContext;
 
     public LanguageAdapter2(Context context, String[] countryNames,String[] countryImfo, int[] countryFlags) {
         super(context, R.layout.language_list2_type);

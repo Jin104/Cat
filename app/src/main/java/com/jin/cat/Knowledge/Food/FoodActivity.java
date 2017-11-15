@@ -7,18 +7,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.jin.cat.Knowledge.Food.IntroSlider.WelcomeActivity;
 import com.jin.cat.R;
 import com.jin.cat.adapter.LanguageAdapter;
 
 public class FoodActivity extends AppCompatActivity {
+    private boolean isFirstOne = true;
+    private boolean isFirstTwo = true;
 
-    ListView mListView;
+    private ListView mListView;
 
-    Intent mfrist;
-    Intent msecond;
+    private Intent welcomeOneIntent;
+    private Intent oneIntent;
 
-    String[] countryNames = {"건 식", "습 식"};
-    int[] countryFlags = {
+    private Intent welcomeTwoIntent;
+    private Intent twoIntent;
+
+    private String[] countryNames = {"건 식", "습 식"};
+    private int[] countryFlags = {
             R.drawable.one,
             R.drawable.two,};
 
@@ -27,8 +33,11 @@ public class FoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
 
-        mfrist = new Intent(FoodActivity.this, FoodOneActivity.class);
-//        msecond = new Intent(FoodActivity.this, .class);
+        welcomeOneIntent = new Intent(FoodActivity.this, WelcomeActivity.class);
+        oneIntent = new Intent(FoodActivity.this, FoodOneActivity.class);
+
+        welcomeTwoIntent = new Intent(FoodActivity.this, WelcomeActivity.class);
+        twoIntent = new Intent(FoodActivity.this, FoodOneActivity.class);
 
         setTitle("Food");
 
@@ -40,10 +49,22 @@ public class FoodActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0)
-                    startActivity(mfrist);
-                else if (position == 1)
-                    startActivity(msecond);
+                if (position == 0) {
+                    if (isFirstOne) {
+                        startActivity(welcomeOneIntent);
+                        isFirstOne = false;
+                    } else {
+                        startActivity(oneIntent);
+                    }
+                }
+                else if (position == 1) {
+                    if (isFirstTwo) {
+                        startActivity(welcomeTwoIntent);
+                        isFirstTwo = false;
+                    } else {
+                        startActivity(twoIntent);
+                    }
+                }
             }
         });
     }

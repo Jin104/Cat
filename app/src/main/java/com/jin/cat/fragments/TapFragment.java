@@ -17,8 +17,10 @@ public class TapFragment extends Fragment {
     private static final String TAG = TapFragment.class.getSimpleName();
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
     public TapFragment() {
     }
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

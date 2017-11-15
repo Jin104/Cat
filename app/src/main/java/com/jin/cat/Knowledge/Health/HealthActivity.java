@@ -17,15 +17,15 @@ import com.jin.cat.R;
 
 public class HealthActivity extends AppCompatActivity {
 
-//    ListView mListView;
-    GridView mGridView;
+    //    ListView mListView;
+    private GridView mGridView;
 
-    Intent mfrist;
+    private Intent mfrist;
 //    Intent msecond;
 //    Intent mThird;
 
-    String[] countryNames = {"토", "응가", "질병", "중성화", "외상", "기타"};
-    int[] countryFlags = {R.drawable.cat_one,
+    private String[] countryNames = {"토", "응가", "질병", "중성화", "외상", "기타"};
+    private int[] countryFlags = {R.drawable.cat_one,
             R.drawable.cat_two,
             R.drawable.cat_three,
             R.drawable.cat_one,
@@ -39,13 +39,13 @@ public class HealthActivity extends AppCompatActivity {
         setContentView(R.layout.row_gridview);
 
         mfrist = new Intent(HealthActivity.this, HealthOne.class);
-  //      msecond = new Intent(HealthActivity.this, LanguageBodyActivity.class);
-  //      mThird = new Intent(HealthActivity.this, LanguageTailActivity.class);
+        //      msecond = new Intent(HealthActivity.this, LanguageBodyActivity.class);
+        //      mThird = new Intent(HealthActivity.this, LanguageTailActivity.class);
 
         setTitle("Health");
 
 //        mListView = (ListView) findViewById(R.id.listView3);
-        mGridView = (GridView)findViewById(R.id.row_gridview);
+        mGridView = (GridView) findViewById(R.id.row_gridview);
         HealthAdapter myAdapter = new HealthAdapter(HealthActivity.this, countryNames, countryFlags);
 
         mGridView.setAdapter(myAdapter);

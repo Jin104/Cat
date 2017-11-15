@@ -9,11 +9,11 @@ import com.jin.cat.R;
 
 public class LanguageTailActivity extends AppCompatActivity {
 
-    ListView mListView;
+    private ListView mListView;
 
-    String[] countryNames = {"상태1", "상태2"};
-    String[] countryImfo = {"아아" , "으어어"};
-    int[] countryFlags = {R.drawable.cat_three,
+    private String[] countryNames = {"상태1", "상태2"};
+    private String[] countryImfo = {"아아" , "으어어"};
+    private int[] countryFlags = {R.drawable.cat_three,
             R.drawable.cat_three};
 
 

@@ -13,10 +13,10 @@ import com.jin.cat.R;
 
 public class LanguageActivity extends AppCompatActivity {
 
-    ListView mListView;
+    private ListView mListView;
 
-    String[] countryNames = {"머리", "몸짓", "꼬리"};
-    int[] countryFlags = {
+    private String[] countryNames = {"머리", "몸짓", "꼬리"};
+    private int[] countryFlags = {
             R.drawable.cat_one,
             R.drawable.cat_two,
             R.drawable.cat_three};

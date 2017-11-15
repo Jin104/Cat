@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +24,7 @@ public class MassageAdapter2 extends BaseAdapter {
     //MassageAdapter2의 생성자
     public MassageAdapter2() {}
 
-    //Adapter에 사용되는 데이터으 개수를 리턴
+    //Adapter에 사용되는 데이터의 개수를 리턴
     @Override
     public int getCount() {
         return massageItemList.size();

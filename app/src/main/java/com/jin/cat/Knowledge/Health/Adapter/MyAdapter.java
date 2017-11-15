@@ -21,7 +21,7 @@ import java.util.List;
 
 public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder,TitleChildViewHolder>{
 
-    LayoutInflater inflater;
+    private LayoutInflater inflater;
 
     public MyAdapter(Context context, List<ParentObject> parentItemList) {
         super(context, parentItemList);

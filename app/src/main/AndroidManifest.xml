@@ -47,7 +47,9 @@
             android:theme="@style/AppTheme.NoWindowNoTitle" />
         <activity android:name=".Knowledge.Food.FoodActivity" />
         <activity android:name=".activities.CommentActivity" />
-        <activity android:name=".Knowledge.Food.FoodOneActivity"></activity>
+        <activity android:name=".Knowledge.Food.FoodOneActivity"/>
+        <activity android:name=".Knowledge.Food.IntroSlider.WelcomeActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

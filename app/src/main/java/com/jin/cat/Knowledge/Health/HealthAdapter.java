@@ -18,9 +18,9 @@ import com.jin.cat.R;
 
 public class HealthAdapter extends ArrayAdapter<String> {
 
-    String[] names;
-    int[] flags;
-    Context mContext;
+    private String[] names;
+    private int[] flags;
+    private Context mContext;
 
     public HealthAdapter(Context context, String[] countryNames, int[] countryFlags) {
         super(context, R.layout.health_list);

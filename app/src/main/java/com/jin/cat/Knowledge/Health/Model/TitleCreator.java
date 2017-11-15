@@ -10,8 +10,8 @@ import java.util.List;
  */
 
 public class TitleCreator {
-    static TitleCreator _titleCreator;
-    List<TitleParent> _titleParents;
+    private static TitleCreator _titleCreator;
+    private List<TitleParent> _titleParents;
 
     public TitleCreator(Context context) {
         _titleParents = new ArrayList<>();

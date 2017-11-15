@@ -9,10 +9,10 @@ import com.jin.cat.R;
 
 public class LanguageFaceActivity extends AppCompatActivity {
 
-    GridView mGridView;
+    private GridView mGridView;
 
-    String[] countryNames = {"첫번째", "두번째", "세번째", "네번째", "다섯번째", "여섯번째","일곱번째"};
-    int[] countryFlags = {R.drawable.one,
+    private String[] countryNames = {"첫번째", "두번째", "세번째", "네번째", "다섯번째", "여섯번째","일곱번째"};
+    private int[] countryFlags = {R.drawable.one,
             R.drawable.two,
             R.drawable.three,
             R.drawable.four,
