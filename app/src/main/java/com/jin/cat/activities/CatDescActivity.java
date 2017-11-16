@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.jin.cat.R;
+import com.jin.cat.adapter.ViewPagerAdapter;
 import com.jin.cat.models.Cat;
 import com.jin.cat.utils.FirebaseUtils;
 import com.squareup.picasso.Picasso;
@@ -30,6 +33,7 @@ public class CatDescActivity extends AppCompatActivity {
     private String hairId;
     private String catId;
     private ImageButton favoritesBtn;
+    private ViewPagerAdapter viewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +44,11 @@ public class CatDescActivity extends AppCompatActivity {
         hairId = intent.getExtras().getString("hair");
         catId = intent.getExtras().getString("key");
 
-        final ImageView image = (ImageView)findViewById(R.id.cat_image);
+        //image
+        final ViewPager viewPager = (ViewPager)findViewById(R.id.cat_view_pager);
+        final TextView textView = (TextView)findViewById(R.id.textView);
+
+        //final ImageView image = (ImageView)findViewById(R.id.cat_image);
         final TextView name = (TextView)findViewById(R.id.cat_name);
         final TextView nameEng= (TextView)findViewById(R.id.cat_name_eng);
         final TextView country = (TextView)findViewById(R.id.cat_country);
@@ -60,10 +68,10 @@ public class CatDescActivity extends AppCompatActivity {
         FirebaseUtils.getCatRef().child(hairId).child(catId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Context context = image.getContext();
+                //Context context = image.getContext();
                 final Cat cat = dataSnapshot.getValue(Cat.class);
 
-                Picasso.with(context).load(cat.getImage()).into(image);
+                //Picasso.with(context).load(cat.getImage()).into(image);
                 name.setText(cat.getName());
                 nameEng.setText(cat.getKey());
                 country.setText(cat.getCountry());
@@ -71,6 +79,16 @@ public class CatDescActivity extends AppCompatActivity {
                 looks.setText(cat.getLooks());
                 personality.setText(cat.getPersonality());
                 manage.setText(cat.getManage());
+
+                String[] data={
+                        cat.getImage(),
+                        cat.getImage1(),
+                        cat.getImage2()
+                };
+
+                viewPagerAdapter = new ViewPagerAdapter(getBaseContext(), data);
+                viewPager.setOffscreenPageLimit(2);
+                viewPager.setAdapter(viewPagerAdapter);
 
                 favoritesBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -95,6 +113,35 @@ public class CatDescActivity extends AppCompatActivity {
 
             }
         });
+
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                textView.setText("");
+                for (int i = 0; i < viewPagerAdapter.getCount(); i++) {
+                    Spannable word = new SpannableString(" " + ".");
+                    if (i == position) {
+                        word.setSpan(new ForegroundColorSpan(Color.DKGRAY), 0, word.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    } else {
+                        word.setSpan(new ForegroundColorSpan(Color.BLACK), 0, word.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    }
+                    textView.append(word);
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+
 
     }
 
