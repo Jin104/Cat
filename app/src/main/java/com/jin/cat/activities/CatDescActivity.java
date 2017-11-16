@@ -103,6 +103,7 @@ public class CatDescActivity extends AppCompatActivity {
 
         if(FirebaseUtils.getCurrentUser()!=null) {
             FirebaseUtils.getCatLikedRef(hairId, catId)
+                    .child(FirebaseUtils.getCurrentUser().getUid())
                     .addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -127,6 +128,7 @@ public class CatDescActivity extends AppCompatActivity {
     public void addFavoritesButtonClicked(final String catId){
 
         FirebaseUtils.getCatLikedRef(hairId, catId)
+                .child(FirebaseUtils.getCurrentUser().getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
