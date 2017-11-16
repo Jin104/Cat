@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.jin.cat.Knowledge.Food.IntroSlider.WelcomeActivity;
+import com.jin.cat.Knowledge.Food.IntroSlider.WelcomeActivity_Two;
 import com.jin.cat.R;
 import com.jin.cat.adapter.LanguageAdapter;
 
@@ -36,8 +37,8 @@ public class FoodActivity extends AppCompatActivity {
         welcomeOneIntent = new Intent(FoodActivity.this, WelcomeActivity.class);
         oneIntent = new Intent(FoodActivity.this, FoodOneActivity.class);
 
-        welcomeTwoIntent = new Intent(FoodActivity.this, WelcomeActivity.class);
-        twoIntent = new Intent(FoodActivity.this, FoodOneActivity.class);
+        welcomeTwoIntent = new Intent(FoodActivity.this, WelcomeActivity_Two.class);
+        twoIntent = new Intent(FoodActivity.this, FoodTwoActivity.class);
 
         setTitle("Food");
 

@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLighter"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="com.jin.cat.activities.LonghairActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/menuToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:background="@color/colorPrimary"
+        android:contentInsetLeft="10dp"
+        android:contentInsetRight="10dp"
+        android:contentInsetStart="10dp"
+        android:minHeight="?attr/actionBarSize"
+        android:padding="0dp"
+        android:weightSum="1"
+        app:contentInsetLeft="10dp"
+        app:contentInsetRight="10dp"
+        app:contentInsetStart="10dp">
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="right"
+            android:layout_marginEnd="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="0.13"
+            app:srcCompat="@android:drawable/ic_menu_help" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ListView
+            android:id="@+id/listView7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1.31"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="8dp" />
+    </LinearLayout>
+
+</LinearLayout>

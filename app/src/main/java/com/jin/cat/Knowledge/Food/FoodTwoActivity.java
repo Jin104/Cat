@@ -8,29 +8,26 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.jin.cat.Knowledge.Food.IntroSlider.PrefManager;
-import com.jin.cat.Knowledge.Food.IntroSlider.WelcomeActivity;
+import com.jin.cat.Knowledge.Food.IntroSlider.WelcomeActivity_Two;
 import com.jin.cat.R;
 import com.jin.cat.adapter.LanguageAdapter;
 
-public class FoodOneActivity extends AppCompatActivity {
+public class FoodTwoActivity extends AppCompatActivity {
 
     private ListView mListView;
 
     private String[] countryNames = {"먹이1", "먹이2", "먹이3"};
     private int[] countryFlags = {
-            R.drawable.food_one,
-            R.drawable.food_one,
-            R.drawable.food_one};
+            R.drawable.food_two,
+            R.drawable.food_two,
+            R.drawable.food_two};
 
-   // ListView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_one);
+        setContentView(R.layout.activity_food_two);
 
-
-
-        findViewById(R.id.imageButton3).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.imageButton4).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
 
@@ -38,16 +35,16 @@ public class FoodOneActivity extends AppCompatActivity {
 
                 prefManager.setFirstTimeLaunch(true);
 
-                startActivity(new Intent(FoodOneActivity.this, WelcomeActivity.class));
+                startActivity(new Intent(FoodTwoActivity.this, WelcomeActivity_Two.class));
                 finish();
             }
         });
 
 
-        setTitle("건식");
+        setTitle("습식");
 
-        mListView = (ListView) findViewById(R.id.listView6);
-        LanguageAdapter myAdapter = new LanguageAdapter(FoodOneActivity.this, countryNames, countryFlags);
+        mListView = (ListView) findViewById(R.id.listView7);
+        LanguageAdapter myAdapter = new LanguageAdapter(FoodTwoActivity.this, countryNames, countryFlags);
 
         mListView.setAdapter(myAdapter);
 

@@ -47,9 +47,14 @@
             android:theme="@style/AppTheme.NoWindowNoTitle" />
         <activity android:name=".Knowledge.Food.FoodActivity" />
         <activity android:name=".activities.CommentActivity" />
-        <activity android:name=".Knowledge.Food.FoodOneActivity"/>
-        <activity android:name=".Knowledge.Food.IntroSlider.WelcomeActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Knowledge.Food.FoodOneActivity" />
+        <activity
+            android:name=".Knowledge.Food.IntroSlider.WelcomeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Knowledge.Food.IntroSlider.WelcomeActivity_Two"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Knowledge.Food.FoodTwoActivity"></activity>
     </application>
 
 </manifest>
