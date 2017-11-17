@@ -36,7 +36,7 @@ public class HealthActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.row_gridview);
+        setContentView(R.layout.activity_language_list);
 
         mfrist = new Intent(HealthActivity.this, HealthOne.class);
         //      msecond = new Intent(HealthActivity.this, LanguageBodyActivity.class);

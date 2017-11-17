@@ -23,7 +23,7 @@ public class LanguageAdapter extends ArrayAdapter<String> {
     private Context mContext;
 
     public LanguageAdapter(Context context, String[] countryNames, int[] countryFlags) {
-        super(context, R.layout.language_list);
+        super(context, R.layout.row_language);
         this.names = countryNames;
         this.flags = countryFlags;
         this.mContext = context;
@@ -41,7 +41,7 @@ public class LanguageAdapter extends ArrayAdapter<String> {
         if (convertView == null)
         {
             LayoutInflater mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.language_list, parent, false);
+            convertView = mInflater.inflate(R.layout.row_language, parent, false);
             mViewHolder.mFlag = (ImageView) convertView.findViewById(R.id.languageImage);
             mViewHolder.mName = (TextView) convertView.findViewById(R.id.languageName);
             convertView.setTag(mViewHolder);

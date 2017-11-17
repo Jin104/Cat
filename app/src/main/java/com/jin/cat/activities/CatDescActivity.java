@@ -122,9 +122,9 @@ public class CatDescActivity extends AppCompatActivity {
                 for (int i = 0; i < viewPagerAdapter.getCount(); i++) {
                     Spannable word = new SpannableString(" " + ".");
                     if (i == position) {
-                        word.setSpan(new ForegroundColorSpan(Color.DKGRAY), 0, word.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        word.setSpan(new ForegroundColorSpan(Color.rgb(255,81,81)), 0, word.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     } else {
-                        word.setSpan(new ForegroundColorSpan(Color.BLACK), 0, word.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        word.setSpan(new ForegroundColorSpan(Color.rgb(71,73,79)), 0, word.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     }
                     textView.append(word);
                 }

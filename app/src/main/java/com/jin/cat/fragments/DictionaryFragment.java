@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,11 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jin.cat.activities.CatListActivity;
 import com.jin.cat.activities.LoginActivity;
-import com.jin.cat.activities.LonghairActivity;
-import com.jin.cat.activities.MainActivity;
-import com.jin.cat.activities.MiddlehairActivity;
-import com.jin.cat.activities.ShorthairActivity;
 import com.jin.cat.models.Dictionary;
 import com.jin.cat.R;
 import com.jin.cat.utils.FirebaseUtils;
@@ -33,6 +29,8 @@ import static java.lang.Integer.valueOf;
  */
 
 public class DictionaryFragment extends Fragment {
+
+    private Intent intent;
 
     public DictionaryFragment(){
 
@@ -50,10 +48,11 @@ public class DictionaryFragment extends Fragment {
         DictionaryAdapter mAdapter = new DictionaryAdapter(getActivity(), getDictionaryData());
         dictionlistRecyclerView.setAdapter(mAdapter);
 
-
         if(FirebaseUtils.getCurrentUser() == null ){
             startActivity(new Intent(getActivity(), LoginActivity.class));
         }
+
+        intent = new Intent(getActivity(), CatListActivity.class);
 
         return view;
     }
@@ -100,17 +99,22 @@ public class DictionaryFragment extends Fragment {
                     switch (valueOf(position)){
 
                         case 0:
-                            startActivity(new Intent(getActivity(), LonghairActivity.class));
+                            intent.putExtra("contentId", "Long");
+                            intent.putExtra("title","장모종");
                             break;
+
                         case 1:
-                            startActivity(new Intent(getActivity(), MiddlehairActivity.class));
+                            intent.putExtra("contentId", "Middle");
+                            intent.putExtra("title","중모종");
                             break;
+
                         case 2:
-                            startActivity(new Intent(getActivity(), ShorthairActivity.class));
-                            break;
-                        default:
+                            intent.putExtra("contentId", "Short");
+                            intent.putExtra("title","단모종");
                             break;
                     }
+
+                    startActivity(intent);
                 }
             });
 

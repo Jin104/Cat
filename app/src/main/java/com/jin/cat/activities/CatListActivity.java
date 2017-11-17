@@ -1,7 +1,9 @@
 package com.jin.cat.activities;
 
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -11,14 +13,16 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.jin.cat.models.Cat;
-import com.jin.cat.adapter.CatListAdapter;
 import com.jin.cat.R;
+import com.jin.cat.adapter.CatListAdapter;
+import com.jin.cat.models.Cat;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MiddlehairActivity extends AppCompatActivity {
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
+public class CatListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<Cat> result;
@@ -34,19 +38,22 @@ public class MiddlehairActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cat_list);
 
-        setTitle("중모종");
+        Intent intent = getIntent();
+        String contentId = intent.getExtras().getString("contentId");
+        String title = intent.getExtras().getString("title");
+
+        setTitle(title);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference("Cats").child("Middle");
+        reference = database.getReference("Cats").child(contentId);
 
         result = new ArrayList<>();
 
         recyclerView = (RecyclerView) findViewById(R.id.cat_list_view);
         recyclerView.setHasFixedSize(true);
-        GridLayoutManager gridLayout = new GridLayoutManager(MiddlehairActivity.this, 2);
+        GridLayoutManager gridLayout = new GridLayoutManager(CatListActivity.this, 2);
         recyclerView.setLayoutManager(gridLayout);
 
 
@@ -130,5 +137,10 @@ public class MiddlehairActivity extends AppCompatActivity {
             }
         }
         return index;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

@@ -1,62 +1,67 @@
 package com.jin.cat.activities;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.jin.cat.models.Cat;
-import com.jin.cat.adapter.CatListAdapter;
 import com.jin.cat.R;
+import com.jin.cat.adapter.LanguageListAdapter;
+import com.jin.cat.models.Language;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class LonghairActivity extends AppCompatActivity {
+/**
+ * Created by rakha on 2017-11-17.
+ */
 
+public class LanguageListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private List<Cat> result;
-    private CatListAdapter adapter;
+    private List<Language> result;
+    private LanguageListAdapter adapter;
 
     private FirebaseDatabase database;
     private DatabaseReference reference;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cat_list);
+        setContentView(R.layout.activity_language_list);
 
-        setTitle("장모종");
+        Intent intent = getIntent();
+        String contentId = intent.getExtras().getString("contentId");
+
+        setTitle(contentId+"언어");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference("Cats").child("Long");
+        reference = database.getReference("Knowledge").child("Language").child(contentId);
 
         result = new ArrayList<>();
 
-        recyclerView = (RecyclerView) findViewById(R.id.cat_list_view);
+        recyclerView = (RecyclerView) findViewById(R.id.language_list_view);
         recyclerView.setHasFixedSize(true);
-        GridLayoutManager gridLayout = new GridLayoutManager(LonghairActivity.this, 2);
+        GridLayoutManager gridLayout = new GridLayoutManager(LanguageListActivity.this, 2);
         recyclerView.setLayoutManager(gridLayout);
 
 
-        adapter = new CatListAdapter(result);
+        adapter = new LanguageListAdapter(result);
         recyclerView.setAdapter(adapter);
 
         updateList();
-
     }
 
     @Override
@@ -85,25 +90,25 @@ public class LonghairActivity extends AppCompatActivity {
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                result.add(dataSnapshot.getValue(Cat.class));
+                result.add(dataSnapshot.getValue(Language.class));
                 adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                Cat cat = dataSnapshot.getValue(Cat.class);
+                Language language = dataSnapshot.getValue(Language.class);
 
-                int index = getItemIndex(cat);
+                int index = getItemIndex(language);
 
-                result.set(index, cat);
+                result.set(index, language);
                 adapter.notifyItemChanged(index);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Cat cat = dataSnapshot.getValue(Cat.class);
+                Language language = dataSnapshot.getValue(Language.class);
 
-                int index = getItemIndex(cat);
+                int index = getItemIndex(language);
 
                 result.remove(index);
                 adapter.notifyItemRemoved(index);
@@ -121,12 +126,12 @@ public class LonghairActivity extends AppCompatActivity {
         });
     }
 
-    private int getItemIndex(Cat cat) {
+    private int getItemIndex(Language language) {
 
         int index = -1;
 
         for (int i = 0; i < result.size(); i++) {
-            if (result.get(i).getKey().equals(cat.getKey())) {
+            if (result.get(i).getKey().equals(language.getKey())) {
                 index = i;
                 break;
             }
@@ -138,5 +143,4 @@ public class LonghairActivity extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
-
 }

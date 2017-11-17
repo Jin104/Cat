@@ -15,11 +15,9 @@ public class LanguageActivity extends AppCompatActivity {
 
     private ListView mListView;
 
-    private String[] countryNames = {"머리", "몸짓", "꼬리"};
+    private String[] countryNames = {"수염"};
     private int[] countryFlags = {
-            R.drawable.cat_one,
-            R.drawable.cat_two,
-            R.drawable.cat_three};
+            R.drawable.cat_one};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +32,20 @@ public class LanguageActivity extends AppCompatActivity {
 
         mListView.setAdapter(myAdapter);
 
+        final Intent intent = new Intent(LanguageActivity.this, LanguageListActivity.class);
+
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0)
-                    startActivity(new Intent(LanguageActivity.this, LanguageFaceActivity.class));
-                else if (position == 1)
-                    startActivity(new Intent(LanguageActivity.this, LanguageBodyActivity.class));
-                else if (position == 2)
-                    startActivity(new Intent(LanguageActivity.this, LanguageTailActivity.class));
+
+                switch (position){
+
+                    case 0:
+                        intent.putExtra("contentId", "수염");
+                        break;
+                }
+
+                startActivity(intent);
             }
         });
     }

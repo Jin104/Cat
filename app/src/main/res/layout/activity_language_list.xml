@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorLighter"
-    tools:context="com.jin.cat.activities.CatListActivity">
+    tools:context="com.jin.cat.activities.LanguageListActivity">
 
     <android.support.v7.widget.RecyclerView
         android:layout_margin="@dimen/_5sdp"
-        android:id="@+id/cat_list_view"
+        android:id="@+id/language_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_8sdp"
@@ -17,3 +17,6 @@
         android:scrollbars="none" />
 
 </LinearLayout>
+
+
+
