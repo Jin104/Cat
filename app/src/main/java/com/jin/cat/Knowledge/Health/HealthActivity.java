@@ -36,7 +36,7 @@ public class HealthActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_language_list);
+        setContentView(R.layout.row_girdview);
 
         mfrist = new Intent(HealthActivity.this, HealthOne.class);
         //      msecond = new Intent(HealthActivity.this, LanguageBodyActivity.class);
@@ -45,7 +45,7 @@ public class HealthActivity extends AppCompatActivity {
         setTitle("Health");
 
 //        mListView = (ListView) findViewById(R.id.listView3);
-        mGridView = (GridView) findViewById(R.id.row_gridview);
+        mGridView = (GridView) findViewById(R.id.row_grid_view);
         HealthAdapter myAdapter = new HealthAdapter(HealthActivity.this, countryNames, countryFlags);
 
         mGridView.setAdapter(myAdapter);
