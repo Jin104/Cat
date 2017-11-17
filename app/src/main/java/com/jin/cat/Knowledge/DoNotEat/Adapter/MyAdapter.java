@@ -33,6 +33,7 @@ class MyViewHolderWithoutChild extends RecyclerView.ViewHolder implements View.O
 
     public TextView textView;
 
+    //Toast
     ItemClickListener itemClickListener;
 
     public MyViewHolderWithoutChild(View itemView) {
@@ -42,6 +43,7 @@ class MyViewHolderWithoutChild extends RecyclerView.ViewHolder implements View.O
         itemView.setOnClickListener(this);
     }
 
+    //Toast
     public void setItemClickListener(ItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
@@ -66,13 +68,16 @@ class MyViewHolderWithChild extends RecyclerView.ViewHolder implements View.OnCl
         childButton = (RelativeLayout)itemView.findViewById(R.id.childButton);
         expandableLayout = (ExpandableLinearLayout) itemView.findViewById(R.id.expandableLayout);
 
+        //Toast
         itemView.setOnClickListener(this);
     }
 
+    //Toast
     public void setItemClickListener(ItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
 
+    //Toast
     @Override
     public void onClick(View view) {
         itemClickListener.onClick(view, getAdapterPosition(), false);
@@ -124,7 +129,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 viewHolder.setIsRecyclable(false);
                 viewHolder.textView.setText(item.getText());
 
-                //Set Event
+                //Toast, Set Event
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
@@ -158,6 +163,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 });
 
                 viewHolder.childButton.setRotation(expandState.get(position)?180f:0f);
+                //Toast
                 viewHolder.childButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -165,6 +171,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     }
                 });
 
+                //Toast
                 viewHolder.textViewChild.setText(items.get(position).getSubText());
                 viewHolder.textViewChild.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -173,7 +180,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     }
                 });
 
-                //Set Event
+                //Toast, Set Event
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {

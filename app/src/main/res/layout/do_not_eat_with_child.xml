@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/childButton"
             android:padding="8dp"
-            android:text="This is child item"
+            android:textStyle="bold"
             android:layout_alignParentTop="true"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
