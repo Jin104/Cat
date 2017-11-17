@@ -12,6 +12,9 @@
     <color name="colorMainDarker">#BBBFC3</color>
     <color name="colorMainDarker2">#7E838C</color>
 
+    <!-- DoNotEat -->
+    <color name="colorRow">#B0191919</color>
+
     <array name="array_dot_active">
         <item>@color/colorBlack</item>
         <item>@color/colorBlack</item>

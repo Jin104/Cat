@@ -62,6 +62,9 @@ dependencies {
     compile 'com.bignerdranch.android:expandablerecyclerview:1.0.3'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC1'
+
+    //DoNotEat에 필요한 Library
+    compile 'com.github.aakira:expandable-layout:1.6.0@aar'
 }
 
 apply plugin: 'com.google.gms.google-services'

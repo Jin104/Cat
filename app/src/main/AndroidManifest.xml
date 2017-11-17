@@ -42,6 +42,8 @@
         <activity android:name=".activities.ShorthairActivity" />
         <activity android:name=".activities.MiddlehairActivity" />
         <activity android:name=".Knowledge.Health.HealthOne" />
+        <activity android:name=".Knowledge.DoNotEat.DoNotEatActivity" />
+        <activity android:name=".Knowledge.DoNotEat.DoNotEatMeat" />
         <activity
             android:name=".activities.CatDescActivity"
             android:theme="@style/AppTheme.NoWindowNoTitle" />
