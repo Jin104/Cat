@@ -26,6 +26,7 @@ public class DoNotEatMeat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_do_not_eat);
+        setTitle("육류");
 
         list = (RecyclerView)findViewById(R.id.recycler);
         list.setHasFixedSize(true);
