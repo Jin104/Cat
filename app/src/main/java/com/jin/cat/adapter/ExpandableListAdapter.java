@@ -1,9 +1,8 @@
-package com.jin.cat.Knowledge.DoNotEat.Adapter;
+package com.jin.cat.adapter;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,16 +11,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.aakira.expandablelayout.ExpandableLayout;
-import com.github.aakira.expandablelayout.ExpandableLayoutListener;
 import com.github.aakira.expandablelayout.ExpandableLayoutListenerAdapter;
 import com.github.aakira.expandablelayout.ExpandableLinearLayout;
 import com.github.aakira.expandablelayout.Utils;
-import com.jin.cat.Knowledge.DoNotEat.Interface.ItemClickListener;
-import com.jin.cat.Knowledge.DoNotEat.Model.Item;
+import com.jin.cat.interfaces.ItemClickListener;
+import com.jin.cat.models.ExpandableList;
 import com.jin.cat.R;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -29,14 +24,14 @@ import java.util.List;
  * Created by sunmoon on 2017-11-17.
  */
 
-class MyViewHolderWithoutChild extends RecyclerView.ViewHolder implements View.OnClickListener {
+class ExpandableListViewHolderWithoutChild extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView textView;
 
     //Toast
     ItemClickListener itemClickListener;
 
-    public MyViewHolderWithoutChild(View itemView) {
+    public ExpandableListViewHolderWithoutChild(View itemView) {
         super(itemView);
         textView = (TextView)itemView.findViewById(R.id.textView);
 
@@ -53,7 +48,7 @@ class MyViewHolderWithoutChild extends RecyclerView.ViewHolder implements View.O
     }
 }
 
-class MyViewHolderWithChild extends RecyclerView.ViewHolder implements View.OnClickListener {
+class ExpandableListViewHolderWithChild extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView textView, textViewChild;
     public RelativeLayout childButton;
@@ -61,7 +56,7 @@ class MyViewHolderWithChild extends RecyclerView.ViewHolder implements View.OnCl
 
     ItemClickListener itemClickListener;
 
-    public MyViewHolderWithChild(View itemView) {
+    public ExpandableListViewHolderWithChild(View itemView) {
         super(itemView);
         textView = (TextView)itemView.findViewById(R.id.textView);
         textViewChild = (TextView)itemView.findViewById(R.id.textViewChild);
@@ -84,13 +79,13 @@ class MyViewHolderWithChild extends RecyclerView.ViewHolder implements View.OnCl
     }
 }
 
-public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    List<Item> items;
+    List<ExpandableList> items;
     Context context;
     SparseBooleanArray expandState = new SparseBooleanArray();
 
-    public MyAdapter(List<Item> items) {
+    public ExpandableListAdapter(List<ExpandableList> items) {
         this.items = items;
         for(int i=0; i<items.size(); i++)
             expandState.append(i, false);
@@ -109,13 +104,13 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.context = parent.getContext();
         if(viewType==0) { //without item
             LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.do_not_eat_without_child, parent, false);
-            return new MyViewHolderWithoutChild(view);
+            View view = inflater.inflate(R.layout.expandableList_without_child, parent, false);
+            return new ExpandableListViewHolderWithoutChild(view);
         }
         else {
             LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.do_not_eat_with_child, parent, false);
-            return new MyViewHolderWithChild(view);
+            View view = inflater.inflate(R.layout.expandableList_with_child, parent, false);
+            return new ExpandableListViewHolderWithChild(view);
         }
     }
 
@@ -124,26 +119,26 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         switch (holder.getItemViewType()) {
             case 0:
             {
-                MyViewHolderWithoutChild viewHolder = (MyViewHolderWithoutChild)holder;
-                Item item = items.get(position);
+                ExpandableListViewHolderWithoutChild viewHolder = (ExpandableListViewHolderWithoutChild)holder;
+                ExpandableList item = items.get(position);
                 viewHolder.setIsRecyclable(false);
-                viewHolder.textView.setText(item.getText());
+                viewHolder.textView.setText(item.getTitle());
 
                 //Toast, Set Event
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(context, "Without child click : "+items.get(position).getText(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Without child click : "+items.get(position).getTitle(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
             break;
             case 1:
             {
-                final MyViewHolderWithChild viewHolder = (MyViewHolderWithChild)holder;
-                Item item = items.get(position);
+                final ExpandableListViewHolderWithChild viewHolder = (ExpandableListViewHolderWithChild)holder;
+                ExpandableList item = items.get(position);
                 viewHolder.setIsRecyclable(false);
-                viewHolder.textView.setText(item.getText());
+                viewHolder.textView.setText(item.getTitle());
 
                 viewHolder.expandableLayout.setInRecyclerView(true);
                 viewHolder.expandableLayout.setExpanded(expandState.get(position));
@@ -163,6 +158,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 });
 
                 viewHolder.childButton.setRotation(expandState.get(position)?180f:0f);
+
                 //Toast
                 viewHolder.childButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -172,11 +168,11 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 });
 
                 //Toast
-                viewHolder.textViewChild.setText(items.get(position).getSubText());
+                viewHolder.textViewChild.setText(items.get(position).getDesc());
                 viewHolder.textViewChild.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(context, ""+items.get(position).getSubText(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, ""+items.get(position).getDesc(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -184,7 +180,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(context, "With child click : "+items.get(position).getText(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "With child click : "+items.get(position).getTitle(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }

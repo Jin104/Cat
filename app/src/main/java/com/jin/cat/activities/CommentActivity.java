@@ -74,7 +74,7 @@ public class CommentActivity extends AppCompatActivity {
         editComment = (EditText)findViewById(R.id.edit_comment);
         commentSend = (ImageButton)findViewById(R.id.comment_send);
 
-        databaseReference = database.getInstance().getReference().child("Cat Comments").child(hairId).child(catId);
+        databaseReference = database.getInstance().getReference().child("Cat_Comments").child(hairId).child(catId);
 
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 

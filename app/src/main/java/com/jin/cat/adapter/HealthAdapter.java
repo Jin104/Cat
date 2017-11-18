@@ -1,4 +1,4 @@
-package com.jin.cat.Knowledge.Health;
+package com.jin.cat.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -23,7 +23,7 @@ public class HealthAdapter extends ArrayAdapter<String> {
     private Context mContext;
 
     public HealthAdapter(Context context, String[] countryNames, int[] countryFlags) {
-        super(context, R.layout.health_list);
+        super(context, R.layout.row_health);
         this.names = countryNames;
         this.flags = countryFlags;
         this.mContext = context;
@@ -41,7 +41,7 @@ public class HealthAdapter extends ArrayAdapter<String> {
         if (convertView == null)
         {
             LayoutInflater mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.health_list, parent, false);
+            convertView = mInflater.inflate(R.layout.row_health, parent, false);
             mViewHolder.mFlag = (ImageView) convertView.findViewById(R.id.healthImage);
             mViewHolder.mName = (TextView) convertView.findViewById(R.id.healthName);
             convertView.setTag(mViewHolder);

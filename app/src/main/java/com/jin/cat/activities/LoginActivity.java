@@ -145,8 +145,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 String photoUrl = null;
                 if (account.getPhotoUrl() != null) {
                     user.setImageUrl(account.getPhotoUrl().toString());
-                }else{
-                    user.setImageUrl("https://firebasestorage.googleapis.com/v0/b/mobileswcat.appspot.com/o/ic_account_circle_white_24dp.png?alt=media&token=e6b0f24a-0cc4-4bc9-9193-48b2d75d4472");
                 }
 
                 user.setEmail(account.getEmail());

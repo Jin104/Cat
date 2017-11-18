@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:id="@+id/one" android:checkableBehavior="single">
+    <group android:id="@+id/one">
         <item
-            android:id="@+id/nav_library"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/music_library" />
+            android:id="@+id/nav_like"
+            android:icon="@drawable/icon_dislike"
+            android:title="좋아요 누른 고양이" />
     </group>
 
     <group android:id="@+id/two" android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_friend"
+            android:id="@+id/nav_comment"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Friend" />
+            android:title="내가 남긴 댓글" />
     </group>
 
     <group android:id="@+id/three" android:checkableBehavior="single">

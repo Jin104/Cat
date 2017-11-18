@@ -15,7 +15,8 @@ import android.widget.TextView;
 
 import com.jin.cat.Knowledge.DoNotEat.DoNotEatActivity;
 import com.jin.cat.Knowledge.Food.FoodActivity;
-import com.jin.cat.Knowledge.Health.HealthActivity;
+import com.jin.cat.activities.CareActivity;
+import com.jin.cat.activities.HealthActivity;
 import com.jin.cat.activities.LanguageActivity;
 import com.jin.cat.Knowledge.Massage.MassageActivity;
 import com.jin.cat.R;
@@ -55,12 +56,12 @@ public class KnowledgeFragment extends Fragment {
 
     public List<Knowledge> getKnowledgeData() {
         List<Knowledge> knowList = new ArrayList<Knowledge>();
-        knowList.add(new Knowledge("사전", "고양이 사전", R.drawable.cat1));
         knowList.add(new Knowledge("행동언어", "고양이 행동언어", R.drawable.cat2));
         knowList.add(new Knowledge("마사지", "고양이 마사지", R.drawable.cat3));
-        knowList.add(new Knowledge("먹으면안되는 음식", "고양이가 먹으면 안되는 음식", R.drawable.cat4));
         knowList.add(new Knowledge("건강", "고양이 건강", R.drawable.cat5));
+        knowList.add(new Knowledge("관리", "고양이 관리", R.drawable.cat4));
         knowList.add(new Knowledge("사료", "고양이 사료", R.drawable.cat6));
+        knowList.add(new Knowledge("성", "고양이 성", R.drawable.cat1));
         return knowList;
     }
 
@@ -98,23 +99,22 @@ public class KnowledgeFragment extends Fragment {
                     switch (valueOf(position)){
 
                         case 0:
-                            break;
-                        case 1:
                             startActivity(new Intent(getActivity(), LanguageActivity.class));
                             break;
-                        case 2:
+                        case 1:
                             startActivity(new Intent(getActivity(), MassageActivity.class));
                             break;
-                        case 3:
-                            startActivity(new Intent(getActivity(), DoNotEatActivity.class));
-                            break;
-                        case 4:
+                        case 2:
                             startActivity(new Intent(getActivity(), HealthActivity.class));
                             break;
-                        case 5:
+                        case 3:
+                            startActivity(new Intent(getActivity(), CareActivity.class));
+                            break;
+                        case 4:
                             startActivity(new Intent(getActivity(), FoodActivity.class));
                             break;
-                        case 6:
+                        case 5:
+                            startActivity(new Intent(getActivity(), DoNotEatActivity.class));
                             break;
                         default:
                             break;

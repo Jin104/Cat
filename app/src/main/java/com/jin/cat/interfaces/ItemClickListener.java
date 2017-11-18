@@ -1,4 +1,4 @@
-package com.jin.cat.Knowledge.DoNotEat.Interface;
+package com.jin.cat.interfaces;
 
 import android.view.View;
 

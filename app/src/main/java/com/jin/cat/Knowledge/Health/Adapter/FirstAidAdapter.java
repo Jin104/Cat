@@ -19,11 +19,11 @@ import java.util.List;
  * Created by inhye on 2017-11-08.
  */
 
-public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder,TitleChildViewHolder>{
+public class FirstAidAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder,TitleChildViewHolder>{
 
     private LayoutInflater inflater;
 
-    public MyAdapter(Context context, List<ParentObject> parentItemList) {
+    public FirstAidAdapter(Context context, List<ParentObject> parentItemList) {
         super(context, parentItemList);
         inflater = LayoutInflater.from(context);
     }
@@ -51,7 +51,6 @@ public class MyAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolder,T
     public void onBindChildViewHolder(TitleChildViewHolder titleChildViewHolder, int i, Object o) {
         TitleChild title = (TitleChild)o;
         titleChildViewHolder.option1.setText(title.getOption1());
-        titleChildViewHolder.option2.setText(title.getOption2());
 
     }
 }

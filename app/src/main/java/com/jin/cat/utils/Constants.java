@@ -12,7 +12,7 @@ public class Constants {
     public static final String POST_IMAGES = "Post_Images";
     public static final String MY_POSTS = "My_Posts";
     public static final String EXTRA_POST = "Post";
-    public static final String COMMENTS_KEY = "Cat Comments";
+    public static final String COMMENTS_KEY = "Cat_Comments";
     public static final String USER_RECORD = "User_Record";
     public static final String USERS_KEY = "Users";
     public static final String NUM_COMMENTS_KEY = "numComments";
@@ -21,6 +21,6 @@ public class Constants {
     public static final String CAT_LONG = "Long";
     public static final String CAT_SHORT = "Short";
 
-    public static final String CAT_COMMENTS_KEY = "Cat Comments";
+    public static final String CAT_COMMENTS_KEY = "Cat_Comments";
     public static final String CAT_LIKED_KEY = "Cat_Liked";
 }

@@ -28,14 +28,14 @@
             android:name=".activities.LoginActivity"
             android:theme="@style/AppTheme.NoWindowNoTitle" />
         <activity android:name=".activities.LanguageActivity" />
-        <activity android:name=".Knowledge.Health.HealthActivity" />
+        <activity android:name=".activities.HealthActivity" />
         <activity android:name=".Knowledge.Massage.MassageActivity" />
         <activity android:name=".Knowledge.Massage.MassageBasic" />
         <activity android:name=".Knowledge.Massage.MassageEtc" />
         <activity android:name=".Knowledge.Massage.MassageLymph" />
         <activity android:name=".Knowledge.Massage.MassageRelax" />
         <activity android:name=".Knowledge.Massage.MassageTrouble" />
-        <activity android:name=".Knowledge.Health.HealthOne" />
+        <activity android:name=".Knowledge.Health.FirstAidActivity" />
         <activity android:name=".Knowledge.DoNotEat.DoNotEatActivity" />
         <activity android:name=".Knowledge.DoNotEat.DoNotEatMeat" />
         <activity
@@ -52,7 +52,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Knowledge.Food.FoodTwoActivity" />
         <activity android:name=".activities.LanguageListActivity" />
-        <activity android:name=".activities.CatListActivity"></activity>
+        <activity android:name=".activities.CatListActivity" />
+        <activity android:name=".activities.CareActivity" />
+        <activity android:name=".activities.CareDescActivity"></activity>
     </application>
 
 </manifest>

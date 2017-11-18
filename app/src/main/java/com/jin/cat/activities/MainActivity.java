@@ -83,14 +83,11 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 int id = item.getItemId();
 
-                if (id == R.id.nav_library) {
-                    fragment = new TapFragment();
-                } else if (id == R.id.nav_friend) {
-//                    fragment = new ChatFragment();
-//                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//                    transaction.replace(R.id.main_container_wrapper, fragment);
-//                    transaction.addToBackStack(null);
-//                    transaction.commit();
+                if (id == R.id.nav_like) {
+
+                    //fragment = new TapFragment();
+                } else if (id == R.id.nav_comment) {
+
 
                 } else if (id == R.id.nav_my_post_list) {
                    // Intent intent = new Intent(MainActivity.this, MyPostActivity.class);
@@ -124,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             profileEmail.setText(FirebaseUtils.getCurrentUser().getEmail());
 
         }else{
-            Picasso.with(profileImg.getContext()).load("https://firebasestorage.googleapis.com/v0/b/mobileswcat.appspot.com/o/ic_account_circle_white_24dp.png?alt=media&token=e6b0f24a-0cc4-4bc9-9193-48b2d75d4472").into(profileImg);
+            profileImg.setImageResource(R.drawable.icon_user);
             profileName.setText("Guest");
             profileEmail.setText("Guest");
         }

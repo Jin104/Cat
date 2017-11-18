@@ -1,7 +1,8 @@
-package com.jin.cat.Knowledge.DoNotEat;
+package com.jin.cat.activities;
 
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -12,17 +13,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jin.cat.adapter.ExpandableListAdapter;
-import com.jin.cat.models.ExpandableList;
 import com.jin.cat.R;
+import com.jin.cat.models.ExpandableList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by sunmoon on 2017-11-17.
- */
-
-public class DoNotEatMeat extends AppCompatActivity {
+public class CareDescActivity extends AppCompatActivity {
 
     private RecyclerView list;
     private RecyclerView.LayoutManager layoutManager;
@@ -32,15 +29,21 @@ public class DoNotEatMeat extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference reference;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_do_not_eat);
-        setTitle("육류");
+        setContentView(R.layout.activity_care_desc);
+
+        Intent intent = getIntent();
+        String contentId = intent.getExtras().getString("contentId");
+        String title = intent.getExtras().getString("title");
+
+        setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference("Knowledge").child("Health").child("응급처치");
+        reference = database.getReference("Knowledge").child("Care").child(contentId);
 
         list = (RecyclerView)findViewById(R.id.recycler);
         list.setHasFixedSize(true);

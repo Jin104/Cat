@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
-import com.jin.cat.Knowledge.Health.Adapter.MyAdapter;
+import com.jin.cat.Knowledge.Health.Adapter.FirstAidAdapter;
 import com.jin.cat.Knowledge.Health.Model.TitleChild;
 import com.jin.cat.Knowledge.Health.Model.TitleCreator;
 import com.jin.cat.Knowledge.Health.Model.TitleParent;
@@ -15,25 +15,25 @@ import com.jin.cat.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HealthOne extends AppCompatActivity {
+public class FirstAidActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        ((MyAdapter)recyclerView.getAdapter()).onSaveInstanceState(outState);
+        ((FirstAidAdapter)recyclerView.getAdapter()).onSaveInstanceState(outState);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_health_one);
+        setContentView(R.layout.activity_firstaid);
 
         recyclerView = (RecyclerView)findViewById(R.id.myRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        MyAdapter adapter = new MyAdapter(this,initData());
+        FirstAidAdapter adapter = new FirstAidAdapter(this,initData());
         adapter.setParentClickableViewAnimationDefaultDuration();
         adapter.setParentAndIconExpandOnClick(true);
 
@@ -53,4 +53,6 @@ public class HealthOne extends AppCompatActivity {
         }
         return parentObject;
     }
+
+
 }
