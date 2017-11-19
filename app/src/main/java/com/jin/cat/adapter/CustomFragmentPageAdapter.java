@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.jin.cat.fragments.DictionaryFragment;
 import com.jin.cat.fragments.KnowledgeFragment;
-import com.jin.cat.activities.MapActivity;
+import com.jin.cat.fragments.MapFragment;
 
 public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
 
@@ -27,7 +27,7 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
             case 1:
                 return new KnowledgeFragment();
             case 2:
-                return new MapActivity();
+                return new MapFragment();
         }
         return null;
     }
