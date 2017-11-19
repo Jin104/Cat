@@ -104,12 +104,12 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         this.context = parent.getContext();
         if(viewType==0) { //without item
             LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.expandableList_without_child, parent, false);
+            View view = inflater.inflate(R.layout.expandablelist_without_child, parent, false);
             return new ExpandableListViewHolderWithoutChild(view);
         }
         else {
             LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.expandableList_with_child, parent, false);
+            View view = inflater.inflate(R.layout.expandablelist_with_child, parent, false);
             return new ExpandableListViewHolderWithChild(view);
         }
     }
