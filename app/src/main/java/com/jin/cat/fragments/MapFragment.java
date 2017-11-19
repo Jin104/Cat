@@ -1,4 +1,4 @@
-package com.jin.cat.activities;
+package com.jin.cat.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,7 +12,7 @@ import com.jin.cat.R;
  * Created by rakha on 2017-10-21.
  */
 
-public class MapActivity extends Fragment {
+public class MapFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
