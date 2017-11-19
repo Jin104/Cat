@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jin.cat">
-
+<!--이유미 첫 커밋 테스트-->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
