@@ -35,6 +35,8 @@ public class CatDescActivity extends AppCompatActivity {
     private ImageButton favoritesBtn;
     private ViewPagerAdapter viewPagerAdapter;
 
+    private Cat cat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +71,7 @@ public class CatDescActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //Context context = image.getContext();
-                final Cat cat = dataSnapshot.getValue(Cat.class);
+                cat = dataSnapshot.getValue(Cat.class);
 
                 //Picasso.with(context).load(cat.getImage()).into(image);
                 name.setText(cat.getName());
@@ -183,9 +185,11 @@ public class CatDescActivity extends AppCompatActivity {
                         if(dataSnapshot.getValue()!=null){
                             FirebaseUtils.getCatLikedRef(hairId, catId).child(FirebaseUtils.getCurrentUser().getUid()).setValue(null);
                             favoritesBtn.setImageResource(R.drawable.icon_dislike);
+                            FirebaseUtils.getMyCatListRef(FirebaseUtils.getCurrentUser().getUid()).child(catId).setValue(null);
                         }else{
                             FirebaseUtils.getCatLikedRef(hairId, catId).child(FirebaseUtils.getCurrentUser().getUid()).setValue(true);
                             favoritesBtn.setImageResource(R.drawable.icon_like);
+                            FirebaseUtils.getMyCatListRef(FirebaseUtils.getCurrentUser().getUid()).child(catId).setValue(cat);
                         }
                     }
 

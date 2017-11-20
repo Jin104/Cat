@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jin.cat">
-<!--이유미 첫 커밋 테스트-->
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -36,8 +40,7 @@
         <activity android:name=".Knowledge.Massage.MassageRelax" />
         <activity android:name=".Knowledge.Massage.MassageTrouble" />
         <activity android:name=".Knowledge.Health.FirstAidActivity" />
-        <activity android:name=".Knowledge.DoNotEat.DoNotEatActivity" />
-        <activity android:name=".Knowledge.DoNotEat.DoNotEatMeat" />
+        <activity android:name=".activities.SexActivity" />
         <activity
             android:name=".activities.CatDescActivity"
             android:theme="@style/AppTheme.NoWindowNoTitle" />
@@ -54,7 +57,8 @@
         <activity android:name=".activities.LanguageListActivity" />
         <activity android:name=".activities.CatListActivity" />
         <activity android:name=".activities.CareActivity" />
-        <activity android:name=".activities.CareDescActivity"></activity>
+        <activity android:name=".activities.CareDescActivity" />
+        <activity android:name=".activities.LikeCatListActivity"></activity>
     </application>
 
 </manifest>
