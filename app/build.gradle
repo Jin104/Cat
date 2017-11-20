@@ -47,9 +47,10 @@ dependencies {
     compile "com.google.firebase:firebase-messaging:$GOOGLE_LIB_VER"
     compile "com.google.android.gms:play-services-auth:$GOOGLE_LIB_VER"
 
+    //Map
     //Add Library
 
-    //DoNotEat에 필요한 Library
+    compile 'com.naver.maps.open:naver-map-api:2.1.2@aar'
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.firebaseui:firebase-ui-database:0.4.0'

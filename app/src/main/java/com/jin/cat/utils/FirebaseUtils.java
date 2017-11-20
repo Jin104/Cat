@@ -19,6 +19,10 @@ import java.util.ArrayList;
 
 public class FirebaseUtils {
 
+    public static DatabaseReference getMyCatListRef(String userId){
+        return FirebaseDatabase.getInstance().getReference("User_Liked_Cat").child(userId);
+    }
+
     public static DatabaseReference getLanguageRef(String contentId){
         return FirebaseDatabase.getInstance().getReference("Knowledge").child("Language").child(contentId);
     }

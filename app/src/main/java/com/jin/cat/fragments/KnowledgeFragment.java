@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jin.cat.Knowledge.DoNotEat.DoNotEatActivity;
+import com.jin.cat.activities.SexActivity;
 import com.jin.cat.Knowledge.Food.FoodActivity;
 import com.jin.cat.activities.CareActivity;
 import com.jin.cat.activities.HealthActivity;
@@ -114,7 +114,7 @@ public class KnowledgeFragment extends Fragment {
                             startActivity(new Intent(getActivity(), FoodActivity.class));
                             break;
                         case 5:
-                            startActivity(new Intent(getActivity(), DoNotEatActivity.class));
+                            startActivity(new Intent(getActivity(), SexActivity.class));
                             break;
                         default:
                             break;

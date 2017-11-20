@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
 
                 if (id == R.id.nav_like) {
-
+                    startActivity(new Intent(MainActivity.this, LikeCatListActivity.class));
                     //fragment = new TapFragment();
                 } else if (id == R.id.nav_comment) {
 
