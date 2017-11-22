@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jin.cat.activities.CatListActivity;
 import com.jin.cat.activities.LoginActivity;
@@ -37,6 +38,15 @@ public class DictionaryFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(Context context) {
+        if(FirebaseUtils.getCurrentUser() == null ){
+            Toast.makeText(getActivity(),"!!!!!",Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+        }
+        super.onAttach(context);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dictionary, container, false);
 
@@ -48,9 +58,7 @@ public class DictionaryFragment extends Fragment {
         DictionaryAdapter mAdapter = new DictionaryAdapter(getActivity(), getDictionaryData());
         dictionlistRecyclerView.setAdapter(mAdapter);
 
-        if(FirebaseUtils.getCurrentUser() == null ){
-            startActivity(new Intent(getActivity(), LoginActivity.class));
-        }
+
 
         intent = new Intent(getActivity(), CatListActivity.class);
 
