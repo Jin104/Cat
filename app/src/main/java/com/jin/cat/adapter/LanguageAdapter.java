@@ -1,6 +1,8 @@
 package com.jin.cat.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -17,6 +19,9 @@ import com.jin.cat.R;
  */
 
 public class LanguageAdapter extends ArrayAdapter<String> {
+
+    private int width = 512;
+    private int height = 512;
 
     private String[] names;
     private int[] flags;
@@ -49,7 +54,16 @@ public class LanguageAdapter extends ArrayAdapter<String> {
         else {
             mViewHolder = (ViewHolder) convertView.getTag();
         }
-        mViewHolder.mFlag.setImageResource(flags[position]);
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(mContext.getResources(), flags[position], options);
+        options.inSampleSize = setSimpleSize(options, width, height);
+        options.inJustDecodeBounds = false;
+        Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), flags[position], options);
+
+
+        mViewHolder.mFlag.setImageBitmap(bitmap);
         mViewHolder.mName.setText(names[position]);
 
         return convertView;
@@ -58,5 +72,21 @@ public class LanguageAdapter extends ArrayAdapter<String> {
     static class ViewHolder {
         ImageView mFlag;
         TextView mName;
+    }
+
+    private int setSimpleSize(BitmapFactory.Options options, int requestWidth, int requestHeight){
+
+        int originalWidth = options.outWidth;
+        int originalHeight = options.outHeight;
+
+        int size = 1;
+
+        while(requestWidth < originalWidth || requestHeight < originalHeight){
+            originalWidth = originalWidth / 2;
+            originalHeight = originalHeight / 2;
+
+            size = size * 2;
+        }
+        return size;
     }
 }

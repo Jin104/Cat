@@ -18,9 +18,13 @@ public class LanguageActivity extends AppCompatActivity {
 
     private ListView mListView;
 
-    private String[] countryNames = {"수염"};
+    private String[] countryNames = {"귀","눈","수염","몸","꼬리"};
     private int[] countryFlags = {
-            R.drawable.cat_one};
+
+            R.drawable.language_ear, R.drawable.language_eye, R.drawable.language_whiskers,
+            R.drawable.language_body, R.drawable.language_tail};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +48,23 @@ public class LanguageActivity extends AppCompatActivity {
                 switch (position){
 
                     case 0:
+                        intent.putExtra("contentId", "귀");
+                        break;
+                    case 1:
+                        intent.putExtra("contentId", "눈");
+                        break;
+                    case 2:
                         intent.putExtra("contentId", "수염");
                         break;
+                    case 3:
+                        intent.putExtra("contentId", "몸");
+                        break;
+                    case 4:
+                        intent.putExtra("contentId", "꼬리");
+                        break;
+                    default:
+                        break;
+
                 }
 
                 startActivity(intent);
