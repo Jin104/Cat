@@ -6,7 +6,7 @@
     android:background="@color/colorLighter"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="com.jin.cat.activities.LonghairActivity">
+    tools:context=".activities.CatDescActivity">
 
 
     <android.support.v7.widget.Toolbar
@@ -42,19 +42,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="프리미엄" />
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오가닉" />
+        </LinearLayout>
+
+
+
 
         <ListView
             android:id="@+id/listView7"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_weight="1.31"
-            tools:layout_editor_absoluteX="2dp"
-            tools:layout_editor_absoluteY="8dp" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </LinearLayout>

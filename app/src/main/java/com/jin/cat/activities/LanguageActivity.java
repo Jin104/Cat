@@ -1,5 +1,6 @@
 package com.jin.cat.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +9,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.jin.cat.adapter.LanguageAdapter;
 import com.jin.cat.R;
+import com.jin.cat.adapter.LanguageAdapter;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class LanguageActivity extends AppCompatActivity {
 
@@ -58,5 +61,10 @@ public class LanguageActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

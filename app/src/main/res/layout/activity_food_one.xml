@@ -2,11 +2,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/colorLighter"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="com.jin.cat.activities.LonghairActivity">
+    tools:context=".activities.CatDescActivity">
 
 
     <android.support.v7.widget.Toolbar
@@ -39,22 +39,40 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
 
-        <ListView
-            android:id="@+id/listView6"
+
+
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_weight="1.31"
-            tools:layout_editor_absoluteX="2dp"
-            tools:layout_editor_absoluteY="8dp" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/checkBox1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="first" />
+
+                <CheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="second" />
+            </LinearLayout>
+
+
+
+            <ListView
+                android:id="@+id/listView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 </LinearLayout>
