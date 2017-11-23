@@ -40,6 +40,11 @@
         <activity android:name=".Knowledge.Massage.MassageRelax" />
         <activity android:name=".Knowledge.Massage.MassageTrouble" />
         <activity android:name=".activities.SexActivity" />
+
+        <activity android:name=".fragments.FragmentMapActivity"
+            android:configChanges="keyboardHidden|orientation"/>
+
+
         <activity
             android:name=".activities.CatDescActivity"
             android:theme="@style/AppTheme.NoWindowNoTitle" />
