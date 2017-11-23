@@ -18,7 +18,6 @@ import com.jin.cat.Knowledge.Food.FoodActivity;
 import com.jin.cat.activities.CareActivity;
 import com.jin.cat.activities.HealthActivity;
 import com.jin.cat.activities.LanguageActivity;
-import com.jin.cat.Knowledge.Massage.MassageActivity;
 import com.jin.cat.R;
 import com.jin.cat.models.Knowledge;
 
@@ -57,7 +56,6 @@ public class KnowledgeFragment extends Fragment {
     public List<Knowledge> getKnowledgeData() {
         List<Knowledge> knowList = new ArrayList<Knowledge>();
         knowList.add(new Knowledge("행동언어", "고양이 행동언어", R.drawable.cat2));
-        knowList.add(new Knowledge("마사지", "고양이 마사지", R.drawable.cat3));
         knowList.add(new Knowledge("건강", "고양이 건강", R.drawable.cat5));
         knowList.add(new Knowledge("관리", "고양이 관리", R.drawable.cat4));
         knowList.add(new Knowledge("사료", "고양이 사료", R.drawable.cat6));
@@ -102,18 +100,15 @@ public class KnowledgeFragment extends Fragment {
                             startActivity(new Intent(getActivity(), LanguageActivity.class));
                             break;
                         case 1:
-                            startActivity(new Intent(getActivity(), MassageActivity.class));
-                            break;
-                        case 2:
                             startActivity(new Intent(getActivity(), HealthActivity.class));
                             break;
-                        case 3:
+                        case 2:
                             startActivity(new Intent(getActivity(), CareActivity.class));
                             break;
-                        case 4:
+                        case 3:
                             startActivity(new Intent(getActivity(), FoodActivity.class));
                             break;
-                        case 5:
+                        case 4:
                             startActivity(new Intent(getActivity(), SexActivity.class));
                             break;
                         default:

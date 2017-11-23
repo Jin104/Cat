@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.jin.cat.adapter.HealthAdapter;
-import com.jin.cat.Knowledge.Health.FirstAidActivity;
+import com.jin.cat.Knowledge.Food.Health.HealthOneActivity;
 import com.jin.cat.R;
+import com.jin.cat.adapter.HealthAdapter;
 
 
 /**
@@ -22,9 +22,9 @@ public class HealthActivity extends AppCompatActivity {
     private ListView mListView;
 
     private String[] countryNames = {"응급처치","예방접종","병"};
-    private int[] countryFlags = {R.drawable.cat_one,
-            R.drawable.cat_two,
-            R.drawable.cat_three};
+    private int[] countryFlags = {R.drawable.cat,
+            R.drawable.cat1,
+            R.drawable.cat2};
 
 
     @Override
@@ -48,7 +48,7 @@ public class HealthActivity extends AppCompatActivity {
                 switch (position){
 
                     case 0:
-                        startActivity(new Intent(HealthActivity.this, FirstAidActivity.class));
+                        startActivity(new Intent(HealthActivity.this, HealthOneActivity.class));
                         break;
                 }
 
@@ -106,7 +106,7 @@ public class HealthActivity extends AppCompatActivity {
 //        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.row_girdview);
 //
-//        mfrist = new Intent(HealthActivity.this, FirstAidActivity.class);
+//        mfrist = new Intent(HealthActivity.this, .class);
 //        //      msecond = new Intent(HealthActivity.this, LanguageBodyActivity.class);
 //        //      mThird = new Intent(HealthActivity.this, LanguageTailActivity.class);
 //

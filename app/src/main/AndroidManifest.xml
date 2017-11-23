@@ -39,7 +39,6 @@
         <activity android:name=".Knowledge.Massage.MassageLymph" />
         <activity android:name=".Knowledge.Massage.MassageRelax" />
         <activity android:name=".Knowledge.Massage.MassageTrouble" />
-        <activity android:name=".Knowledge.Health.FirstAidActivity" />
         <activity android:name=".activities.SexActivity" />
         <activity
             android:name=".activities.CatDescActivity"
@@ -58,7 +57,8 @@
         <activity android:name=".activities.CatListActivity" />
         <activity android:name=".activities.CareActivity" />
         <activity android:name=".activities.CareDescActivity" />
-        <activity android:name=".activities.LikeCatListActivity"></activity>
+        <activity android:name=".activities.LikeCatListActivity" />
+        <activity android:name=".Knowledge.Food.Health.HealthOneActivity"></activity>
     </application>
 
 </manifest>
