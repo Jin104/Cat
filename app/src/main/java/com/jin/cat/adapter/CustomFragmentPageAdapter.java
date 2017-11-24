@@ -8,12 +8,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.jin.cat.fragments.DictionaryFragment;
 import com.jin.cat.fragments.KnowledgeFragment;
 import com.jin.cat.fragments.MapFragment;
+import com.jin.cat.fragments.MyCatFragment;
 
 public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
 
     private static final String TAG = CustomFragmentPageAdapter.class.getSimpleName();
 
-    private static final int FRAGMENT_COUNT = 3;
+    private static final int FRAGMENT_COUNT = 4;
 
     public CustomFragmentPageAdapter(FragmentManager fm) {
         super(fm);
@@ -23,10 +24,12 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new DictionaryFragment();
+                return new MyCatFragment();
             case 1:
-                return new KnowledgeFragment();
+                return new DictionaryFragment();
             case 2:
+                return new KnowledgeFragment();
+            case 3:
                 return new MapFragment();
         }
         return null;
@@ -41,10 +44,12 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position){
             case 0:
-                return "DICTIONARY";
+                return "My Cat";
             case 1:
-                return "KNOWLEDGE";
+                return "DICTIONARY";
             case 2:
+                return "KNOWLEDGE";
+            case 3:
                 return "MAP";
         }
         return null;

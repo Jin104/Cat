@@ -55,11 +55,11 @@ public class KnowledgeFragment extends Fragment {
 
     public List<Knowledge> getKnowledgeData() {
         List<Knowledge> knowList = new ArrayList<Knowledge>();
-        knowList.add(new Knowledge("행동언어", "고양이 행동언어", R.drawable.cat2));
-        knowList.add(new Knowledge("건강", "고양이 건강", R.drawable.cat5));
-        knowList.add(new Knowledge("관리", "고양이 관리", R.drawable.cat4));
-        knowList.add(new Knowledge("사료", "고양이 사료", R.drawable.cat6));
-        knowList.add(new Knowledge("성", "고양이 성", R.drawable.cat1));
+        knowList.add(new Knowledge("고양이몸짓의 의미", R.drawable.cat2));
+        knowList.add(new Knowledge("응급처치, 예방", R.drawable.cat5));
+        knowList.add(new Knowledge("관리", R.drawable.cat4));
+        knowList.add(new Knowledge("사료", R.drawable.cat6));
+        knowList.add(new Knowledge("성", R.drawable.cat1));
         return knowList;
     }
 
@@ -88,7 +88,6 @@ public class KnowledgeFragment extends Fragment {
             final Knowledge playlistObject = knowLists.get(position);
             holder.knowListCover.setImageResource(playlistObject.getKnowledgeImage());
             holder.knowListTitle.setText(playlistObject.getKnowledgeTitle());
-            holder.knowListDesc.setText(playlistObject.getKnowledgeDesc());
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -129,21 +128,17 @@ public class KnowledgeFragment extends Fragment {
     public class KnowledgeViewHolder extends RecyclerView.ViewHolder{
 
         public TextView knowListTitle;
-        public TextView knowListDesc;
         public ImageView knowListCover;
 
         public KnowledgeViewHolder(View itemView) {
             super(itemView);
 
-            Typeface typeFace1 = Typeface.createFromAsset(getActivity().getAssets(), "fonts/NanumBarunGothicBold.otf");
-            Typeface typeFace2 = Typeface.createFromAsset(getActivity().getAssets(), "fonts/NanumBarunGothic.otf");
+            Typeface typeFace1 = Typeface.createFromAsset(getActivity().getAssets(), "fonts/NanumBarunGothic.otf");
 
             knowListTitle = (TextView)itemView.findViewById(R.id.knowledge_list_title);
-            knowListDesc = (TextView)itemView.findViewById(R.id.knowledge_list_desc);
             knowListCover = (ImageView)itemView.findViewById(R.id.knowledge_list_image);
 
             knowListTitle.setTypeface(typeFace1);
-            knowListDesc.setTypeface(typeFace2);
         }
     }
 
