@@ -78,7 +78,6 @@ public class CommentActivity extends AppCompatActivity {
 
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-
         mCommentList = (RecyclerView) findViewById(R.id.comment_list);
         mCommentList.setHasFixedSize(true);
         mCommentList.setLayoutManager(new LinearLayoutManager(CommentActivity.this));

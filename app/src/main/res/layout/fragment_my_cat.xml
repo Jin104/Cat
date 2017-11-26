@@ -4,9 +4,130 @@
     android:layout_height="match_parent"
     tools:context="com.jin.cat.fragments.MyCatFragment">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorWhite">
+
+        <!--<TextView-->
+            <!--android:id="@+id/textView1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="My Cat"-->
+            <!--android:paddingTop="@dimen/_4sdp"-->
+            <!--android:paddingRight="@dimen/_4sdp"-->
+            <!--android:paddingBottom="@dimen/_4sdp"-->
+            <!--android:paddingLeft="@dimen/_8sdp"/>-->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorGray2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGray0"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/add_mycat"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_add"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_55sdp"
+                android:orientation="horizontal"
+                android:scrollbars="none">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorGray2" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="기본 정보"
+            android:padding="@dimen/_4sdp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorGray2" />
+
+        <FrameLayout
+            android:id="@+id/fragment_mycat_basic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGray0">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_20sdp"
+                android:gravity="center"
+                android:text="고양이를 선택해주세요."/>
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorGray2" />
+
+        <LinearLayout
+            android:padding="@dimen/_4sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView_tap1"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="예방접종"/>
+
+            <TextView
+                android:id="@+id/textView_tap2"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="상세정보"/>
+
+            <TextView
+                android:id="@+id/textView_tap3"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="포토앨범"/>
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorGray2" />
+        <FrameLayout
+            android:id="@+id/fragment_mycat_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </FrameLayout>
+
+
+    </LinearLayout>
+
 
 </FrameLayout>

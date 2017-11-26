@@ -40,7 +40,6 @@ public class DictionaryFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         if(FirebaseUtils.getCurrentUser() == null ){
-            Toast.makeText(getActivity(),"!!!!!",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getActivity(), LoginActivity.class));
         }
         super.onAttach(context);

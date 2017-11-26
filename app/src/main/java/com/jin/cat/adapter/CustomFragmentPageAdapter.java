@@ -44,7 +44,7 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position){
             case 0:
-                return "My Cat";
+                return "MY CAT";
             case 1:
                 return "DICTIONARY";
             case 2:
