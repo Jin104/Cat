@@ -12,19 +12,19 @@ import com.jin.cat.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MyCatDetailFragment extends Fragment {
+public class MyCatTodayFragment extends Fragment {
 
 
-    public MyCatDetailFragment() {
-        // Required empty public constructor
+    public MyCatTodayFragment() {
+
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_cat_detail, container, false);
+
+        return inflater.inflate(R.layout.fragment_my_cat_today, container, false);
     }
 
 }

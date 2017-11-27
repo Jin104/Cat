@@ -183,8 +183,12 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
 
                         FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),myCat.getUid())
                                 .setValue(myCat);
+
+
                     }
                 });
+
+                dismiss();
 
             }else{
                 Toast.makeText(getActivity(),"성별을 선택해주세요",Toast.LENGTH_SHORT).show();

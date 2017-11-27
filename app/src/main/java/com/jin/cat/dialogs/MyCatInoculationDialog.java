@@ -25,6 +25,8 @@ import java.util.ArrayList;
 
 public class MyCatInoculationDialog extends DialogFragment implements View.OnClickListener{
 
+
+
     private View mRootView;
     private Spinner mSpinner;
     private EditText mEditYear;
@@ -49,7 +51,8 @@ public class MyCatInoculationDialog extends DialogFragment implements View.OnCli
 
         ArrayList<String>list = new ArrayList<>();
         list.add("종합백신(FVRCP)");
-        list.add("백혈병");
+        list.add("백혈병(FeLV)");
+        list.add("광견병(Rabies)");
 
         mSpinner = (Spinner)mRootView.findViewById(R.id.spinner_type);
         SpinnerAdapter spinnerAdapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, list);
@@ -91,6 +94,8 @@ public class MyCatInoculationDialog extends DialogFragment implements View.OnCli
             inoculation.setUid(str);
             FirebaseUtils.getMyCatRef(userId, catId)
                     .child("inoculation").child(type).child(str).setValue(inoculation);
+
+            dismiss();
         }else{
             Toast.makeText(getActivity(), "입력을 완료해주세요.", Toast.LENGTH_SHORT).show();
         }
