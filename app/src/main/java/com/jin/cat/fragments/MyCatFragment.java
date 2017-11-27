@@ -1,6 +1,8 @@
 package com.jin.cat.fragments;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jin.cat.R;
+import com.jin.cat.activities.LoginActivity;
 import com.jin.cat.dialogs.MyCatDialog;
 import com.jin.cat.models.MyCat;
 import com.jin.cat.utils.FirebaseUtils;
@@ -43,6 +46,13 @@ public class MyCatFragment extends Fragment {
     public MyCatFragment() {
     }
 
+    @Override
+    public void onAttach(Context context) {
+        if(FirebaseUtils.getCurrentUser() == null ){
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+        }
+        super.onAttach(context);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,7 +72,10 @@ public class MyCatFragment extends Fragment {
         //linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid());
+        if(FirebaseUtils.getCurrentUser() != null){
+
+            mDatabase = FirebaseDatabase.getInstance().getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid());
+        }
 
         CircleImageView circleImageView = (CircleImageView)view.findViewById(R.id.add_mycat);
         circleImageView.setOnClickListener(new View.OnClickListener() {
@@ -99,53 +112,55 @@ public class MyCatFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        FirebaseRecyclerAdapter<MyCat, MyCatViewHolder> FBRA = new FirebaseRecyclerAdapter<MyCat, MyCatViewHolder>(
+        if(FirebaseUtils.getCurrentUser() != null) {
+            FirebaseRecyclerAdapter<MyCat, MyCatViewHolder> FBRA = new FirebaseRecyclerAdapter<MyCat, MyCatViewHolder>(
 
-                MyCat.class,
-                R.layout.row_mycat_list,
-                MyCatViewHolder.class,
-                mDatabase
-        ) {
+                    MyCat.class,
+                    R.layout.row_mycat_list,
+                    MyCatViewHolder.class,
+                    mDatabase
+            ) {
 
-            @Override
-            protected void populateViewHolder(MyCatViewHolder viewHolder, final MyCat model, final int position) {
+                @Override
+                protected void populateViewHolder(MyCatViewHolder viewHolder, final MyCat model, final int position) {
 
-                Glide.with(getActivity())
-                        .load(model.getImage())
-                        .into(viewHolder.catImage);
+                    Glide.with(getActivity())
+                            .load(model.getImage())
+                            .into(viewHolder.catImage);
 
-                viewHolder.setCatName(model.getName());
+                    viewHolder.setCatName(model.getName());
 
-                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        isChecked = true;
-                        Bundle bundle = new Bundle();
-                        bundle.putString("catId",model.getUid());
-                        catId = model.getUid();
+                    viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            isChecked = true;
+                            Bundle bundle = new Bundle();
+                            bundle.putString("catId", model.getUid());
+                            catId = model.getUid();
 
-                        Fragment fragment;
-                        fragment = new MyCatDescFragment();
-                        fragment.setArguments(bundle);
-                        FragmentManager fragmentManager = getFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace( R.id.fragment_mycat_basic, fragment );
-                        fragmentTransaction.commit();
+                            Fragment fragment;
+                            fragment = new MyCatDescFragment();
+                            fragment.setArguments(bundle);
+                            FragmentManager fragmentManager = getFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragment_mycat_basic, fragment);
+                            fragmentTransaction.commit();
 
-                        Fragment fragment1;
-                        fragment1 = new MyCatInoculationFragment();
-                        fragment1.setArguments(bundle);
-                        FragmentManager fragmentManager1 = getFragmentManager();
-                        FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
-                        fragmentTransaction1.replace( R.id.fragment_mycat_detail, fragment1 );
-                        fragmentTransaction1.commit();
-                        //Toast.makeText(getActivity(),model.getName(),Toast.LENGTH_SHORT).show();
-                    }
-                });
+                            Fragment fragment1;
+                            fragment1 = new MyCatInoculationFragment();
+                            fragment1.setArguments(bundle);
+                            FragmentManager fragmentManager1 = getFragmentManager();
+                            FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
+                            fragmentTransaction1.replace(R.id.fragment_mycat_detail, fragment1);
+                            fragmentTransaction1.commit();
+                            //Toast.makeText(getActivity(),model.getName(),Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
-            }
-        };
-        recyclerView.setAdapter(FBRA);
+                }
+            };
+            recyclerView.setAdapter(FBRA);
+        }
 
     }
 

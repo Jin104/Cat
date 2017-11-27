@@ -38,14 +38,6 @@ public class DictionaryFragment extends Fragment {
     }
 
     @Override
-    public void onAttach(Context context) {
-        if(FirebaseUtils.getCurrentUser() == null ){
-            startActivity(new Intent(getActivity(), LoginActivity.class));
-        }
-        super.onAttach(context);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dictionary, container, false);
 

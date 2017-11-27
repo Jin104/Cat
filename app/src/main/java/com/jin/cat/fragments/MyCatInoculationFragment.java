@@ -46,20 +46,23 @@ public class MyCatInoculationFragment extends Fragment {
     private FirebaseDatabase database;
     private DatabaseReference reference;
 
+    private RecyclerView recyclerView;
+    private DatabaseReference mInoculationReference;
+    private InoculationAdapter mAdapter;
+
     public MyCatInoculationFragment() {
-        // Required empty public constructor
+
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view =  inflater.inflate(R.layout.fragment_my_cat_inoculation, container, false);
 
         final String catId = getArguments().getString("catId");
 
-        //final TextView textView = (TextView)view.findViewById(R.id.textView);
 
         ImageButton imageButton = (ImageButton)view.findViewById(R.id.add_inoculation);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +79,7 @@ public class MyCatInoculationFragment extends Fragment {
 
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid()).child(catId).child("inoculation").child("종합백신(FVRCP)");
+        mInoculationReference = database.getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid()).child(catId).child("inoculation").child("종합백신(FVRCP)");
 
         result1 = new ArrayList<>();
 
@@ -85,135 +89,133 @@ public class MyCatInoculationFragment extends Fragment {
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView1.setLayoutManager(linearLayoutManager);
 
-        adapter1 = new InoculationAdapter(result1);
-        recyclerView1.setAdapter(adapter1);
-
-        updateList();
 
         return view;
     }
 
     @Override
-    public boolean onContextItemSelected(MenuItem item) {
+    public void onStart() {
+        super.onStart();
 
-        Toast.makeText(getActivity(), "삭제", Toast.LENGTH_SHORT).show();
-        switch (item.getItemId()){
-            case 0:
-                Toast.makeText(getActivity(), "삭제?", Toast.LENGTH_SHORT).show();
-                //removeInoculation(item.getGroupId());
-                break;
-            case 1:
-                Toast.makeText(getActivity(), "삭제??", Toast.LENGTH_SHORT).show();
-                break;
+        mAdapter = new InoculationAdapter(getActivity(), mInoculationReference);
+        recyclerView1.setAdapter(mAdapter);
+
+    }
+
+    private static class InoculationViewHolder extends RecyclerView.ViewHolder{
+
+        public TextView inocView;
+
+
+        public InoculationViewHolder(View itemView) {
+            super(itemView);
+
+            inocView = itemView.findViewById(R.id.textView_inoculation);
         }
-
-        return true;
     }
 
+    private static class InoculationAdapter extends RecyclerView.Adapter<InoculationViewHolder>{
 
+        private Context mContext;
+        private DatabaseReference mDatabaseReference;
+        private ChildEventListener mChildEventListener;
 
-    private void updateList() {
+        private List<String> mInoculationId = new ArrayList<>();
+        private List<Inoculation> mInoculation = new ArrayList<>();
 
-        reference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                result1.add(dataSnapshot.getValue(Inoculation.class));
-                adapter1.notifyDataSetChanged();
-            }
+        public InoculationAdapter(final Context context, DatabaseReference ref){
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                Inoculation item = dataSnapshot.getValue(Inoculation.class);
+            mContext = context;
+            mDatabaseReference = ref;
 
-                int index = getItemIndex(item);
+            ChildEventListener childEventListener = new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    Inoculation inoculation = dataSnapshot.getValue(Inoculation.class);
 
-                result1.set(index, item);
-                adapter1.notifyItemChanged(index);
+                    mInoculationId.add(dataSnapshot.getKey());
+                    mInoculation.add(inoculation);
+                    notifyItemInserted(mInoculation.size()-1);
+                }
 
-            }
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                    Inoculation newInoculation = dataSnapshot.getValue(Inoculation.class);
+                    String inoculationKey = dataSnapshot.getKey();
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Inoculation item = dataSnapshot.getValue(Inoculation.class);
+                    int inoculationIndex = mInoculationId.indexOf(inoculationKey);
+                    if(inoculationIndex>-1){
+                        mInoculation.set(inoculationIndex, newInoculation);
+                        notifyItemChanged(inoculationIndex);
+                    }else{
 
-                int index = getItemIndex(item);
+                    }
+                }
 
-                result1.remove(index);
-                adapter1.notifyItemRemoved(index);
-            }
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+                    String inoculationKey = dataSnapshot.getKey();
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                    int inoculationIndex = mInoculationId.indexOf(inoculationKey);
+                    if(inoculationIndex>-1){
+                        mInoculationId.remove(inoculationIndex);
+                        mInoculation.remove(inoculationIndex);
+                        notifyItemRemoved(inoculationIndex);
+                    }else{
 
-            }
+                    }
+                }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-            }
-        });
-    }
+                }
 
-    private int getItemIndex(Inoculation item) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-        int index = -1;
+                }
+            };
+            ref.addChildEventListener(childEventListener);
 
-        for (int i = 0; i < result1.size(); i++) {
-            if (result1.get(i).getKey().equals(item.getKey())) {
-                index = i;
-                break;
-            }
-        }
-        return index;
-    }
-
-    private void removeInoculation(int position){
-        reference.child(result1.get(position).getDate()).removeValue();
-        //Toast.makeText(getContext(), result1.get(position).getDate(), Toast.LENGTH_SHORT).show();
-    }
-
-    public class InoculationAdapter extends RecyclerView.Adapter<MyCatInoculationFragment.InoculationViewHolder>{
-
-        private List<Inoculation> list;
-        private Context context;
-
-        public InoculationAdapter(List<Inoculation> list) {
-            this.list = list;
-        }
-
-        @Override
-        public MyCatInoculationFragment.InoculationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            context = parent.getContext();
-
-            return new MyCatInoculationFragment.InoculationViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.row_inoculation, parent, false));
+            mChildEventListener = childEventListener;
         }
 
         @Override
-        public void onBindViewHolder(final MyCatInoculationFragment.InoculationViewHolder holder, final int position) {
+        public InoculationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            LayoutInflater inflater = LayoutInflater.from(mContext);
+            View view = inflater.inflate(R.layout.row_inoculation, parent, false);
+            return new InoculationViewHolder(view);
+        }
 
-            final Inoculation inoculation = list.get(position);
+        @Override
+        public void onBindViewHolder(InoculationViewHolder holder, int position) {
+            final Inoculation inoculation = mInoculation.get(position);
+            holder.inocView.setText(inoculation.getDate());
 
-            holder.textView.setText(inoculation.getDate());
-
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+            holder.inocView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder ab = new AlertDialog.Builder(context);
+                    AlertDialog.Builder ab = new AlertDialog.Builder(mContext);
                     ab.setTitle("알림");
                     ab.setMessage("삭제하시겠습니까?");
 
                     ab.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(getContext(), "삭제~~", Toast.LENGTH_SHORT).show();
-                            removeInoculation(position);
+
+                            mDatabaseReference.child(inoculation.getUid()).removeValue();
+                            //Toast.makeText(mContext, get, Toast.LENGTH_SHORT).show();
+                            //DatabaseReference ref = new MyCatInoculationFragment().getmInoculationReference();
+                            //ref.child(inoculation.getUid()).removeValue();
+                            //inoculation.setUid(null);
                         }
                     });
 
                     ab.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(getContext(), "아뇨~~", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, "아뇨~~", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -221,26 +223,18 @@ public class MyCatInoculationFragment extends Fragment {
                     ab.show();
                 }
             });
-
         }
 
         @Override
         public int getItemCount() {
-            return list.size();
+            return mInoculation.size();
         }
 
-
-
-    }
-
-    class InoculationViewHolder extends RecyclerView.ViewHolder{
-
-        TextView textView;
-
-        public InoculationViewHolder(View itemView) {
-            super(itemView);
-
-            textView = (TextView)itemView.findViewById(R.id.textView_inoculation);
+        public void cleanupListener(){
+            if(mChildEventListener!=null){
+                mDatabaseReference.removeEventListener(mChildEventListener);
+            }
         }
     }
+
 }

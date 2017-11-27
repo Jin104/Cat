@@ -85,10 +85,12 @@ public class MyCatInoculationDialog extends DialogFragment implements View.OnCli
 
         if(!TextUtils.isEmpty(year) && !TextUtils.isEmpty(month) && !TextUtils.isEmpty(day)){
 
+            String str = FirebaseUtils.getUid();
             inoculation = new Inoculation();
             inoculation.setDate(year+"."+month+"."+day);
+            inoculation.setUid(str);
             FirebaseUtils.getMyCatRef(userId, catId)
-                    .child("inoculation").child(type).child(FirebaseUtils.getUid()).setValue(inoculation);
+                    .child("inoculation").child(type).child(str).setValue(inoculation);
         }else{
             Toast.makeText(getActivity(), "입력을 완료해주세요.", Toast.LENGTH_SHORT).show();
         }

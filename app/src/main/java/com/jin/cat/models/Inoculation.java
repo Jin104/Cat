@@ -8,12 +8,22 @@ public class Inoculation {
 
     private String date;
     private String key;
+    private String uid;
 
     public Inoculation(){}
 
-    public Inoculation(String date, String key) {
+    public Inoculation(String date, String key, String uid) {
         this.date = date;
         this.key = key;
+        this.uid = uid;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getDate() {
