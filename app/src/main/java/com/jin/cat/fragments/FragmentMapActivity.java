@@ -14,9 +14,7 @@ public class FragmentMapActivity extends FragmentActivity {
 
     private NMapView mMapView;
 
-    /**
-     * Called when the activity is first created.
-     */
+
 //    @Override
 //    public void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
@@ -39,6 +37,8 @@ public class FragmentMapActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         init_map();
+
+
 
     }
 

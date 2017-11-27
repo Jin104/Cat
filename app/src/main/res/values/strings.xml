@@ -12,6 +12,8 @@
     <string name="sound_cloud">Sound Cloud</string>
     <string name="music_library">Library</string>
 
+    <string name="hello">Hello World, NMapViewer!</string>
+    <string name="str_done">완료</string>
 
     <string name="app_name_language">Language</string>
     <string name="app_name_dictionary">Dictionary</string>
