@@ -53,6 +53,7 @@
         <activity android:name=".activities.CareDescActivity" />
         <activity android:name=".activities.LikeCatListActivity" />
         <activity android:name=".Knowledge.Food.Health.HealthOneActivity"></activity>
+        <activity android:name=".activities.VaccinationActivity" />
 
     </application>
 
