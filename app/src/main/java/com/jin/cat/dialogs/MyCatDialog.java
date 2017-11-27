@@ -22,6 +22,9 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -54,14 +57,15 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
     //private EditText mEditTextNumber;
     private RadioButton mRadioButtonMale;
     private RadioButton mRadioButtonFemale;
-    private Spinner mSpinnerYear;
-    private Spinner mSinnerMonth;
-    private Spinner mSinnerDay;
+    private EditText mEditYear;
+    private EditText mEditMonth;
+    private EditText mEditDay;
 
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
         myCat = new MyCat();
 
         mRootView = getActivity().getLayoutInflater().inflate(R.layout.dialog_mycat, null);
@@ -73,44 +77,83 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
         mRadioButtonFemale = (RadioButton)mRootView.findViewById(R.id.radio_female);
         //mButton = (Button)mRootView.findViewById(R.id.doneBtn);
         //mButton.setEnabled(true);
+        mEditYear = (EditText)mRootView.findViewById(R.id.edit_year);
+        mEditMonth = (EditText)mRootView.findViewById(R.id.edit_month);
+        mEditDay = (EditText)mRootView.findViewById(R.id.edit_day);
 
         mStorageRef = FirebaseStorage.getInstance().getReference().child(Constants.USER_CAT_IMAGES);
 
+
+        Bundle mArgs = getArguments();
+        if(mArgs!=null)
+        {
+            String catId = mArgs.getString("catId");
+            //mImageButton.setImageURI(FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(), catId));
+            FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(), catId)
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            myCat = dataSnapshot.getValue(MyCat.class);
+                            mEditTextName.setText(myCat.getName());
+                            mEditTextType.setText(myCat.getType());
+                            mEditYear.setText(myCat.getYear());
+                            mEditMonth.setText(myCat.getMonth());
+                            mEditDay.setText(myCat.getDay());
+                            if(myCat.getSex().equals("암컷")){
+                                mRadioButtonFemale.setChecked(true);
+                                mRadioButtonMale.setChecked(false);
+                            }else if(myCat.getSex().equals("수컷")){
+                                mRadioButtonMale.setChecked(true);
+                                mRadioButtonFemale.setChecked(false);
+                            }
+                            String url = myCat.getImage();
+                            //mImageButton.setImageURI(url);
+                            mImageButton.setBackground(null);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+        }
 
         mRootView.findViewById(R.id.image_btn_cat).setOnClickListener(this);
         mRootView.findViewById(R.id.doneBtn).setOnClickListener(this);
         builder.setView(mRootView);
 
-        long time = System.currentTimeMillis();
-        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy");
-        String nowTime = dayTime.format(new Date(time));
+//        long time = System.currentTimeMillis();
+//        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy");
+//        String nowTime = dayTime.format(new Date(time));
 
-        final ArrayList<Integer> year = new ArrayList<>();
-        for(int i=1996;i<Integer.parseInt(nowTime)+1;i++){
-            year.add(i);
-        }
-
-        final ArrayList<Integer> month = new ArrayList<>();
-        for(int i=1;i<13;i++){
-            month.add(i);
-        }
-
-        final ArrayList<Integer> day = new ArrayList<>();
-        for(int i=1;i<32;i++){
-            day.add(i);
-        }
-
-        mSpinnerYear = (Spinner)mRootView.findViewById(R.id.spinner_year);
-        SpinnerAdapter spinnerYearAdapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, year);
-        mSpinnerYear.setAdapter(spinnerYearAdapter);
-
-        mSinnerMonth = (Spinner)mRootView.findViewById(R.id.spinner_month);
-        SpinnerAdapter spinnerMonthAdapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, month);
-        mSinnerMonth.setAdapter(spinnerMonthAdapter);
-
-        mSinnerDay = (Spinner)mRootView.findViewById(R.id.spinner_day);
-        SpinnerAdapter spinnerDayAdapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, day);
-        mSinnerDay.setAdapter(spinnerDayAdapter);
+//        final ArrayList<Integer> year = new ArrayList<>();
+//        for(int i=1996;i<Integer.parseInt(nowTime)+1;i++){
+//            year.add(i);
+//        }
+//
+//        final ArrayList<Integer> month = new ArrayList<>();
+//        for(int i=1;i<13;i++){
+//            month.add(i);
+//        }
+//
+//        final ArrayList<Integer> day = new ArrayList<>();
+//        for(int i=1;i<32;i++){
+//            day.add(i);
+//        }
+//
+//        mSpinnerYear = (Spinner)mRootView.findViewById(R.id.spinner_year);
+//        SpinnerAdapter spinnerYearAdapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, year);
+//        mSpinnerYear.setAdapter(spinnerYearAdapter);
+//
+//        mSinnerMonth = (Spinner)mRootView.findViewById(R.id.spinner_month);
+//        SpinnerAdapter spinnerMonthAdapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, month);
+//        mSinnerMonth.setAdapter(spinnerMonthAdapter);
+//
+//        mSinnerDay = (Spinner)mRootView.findViewById(R.id.spinner_day);
+//        SpinnerAdapter spinnerDayAdapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, day);
+//        mSinnerDay.setAdapter(spinnerDayAdapter);
 
         return builder.create();
     }
@@ -151,10 +194,9 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
 
         final String name = mEditTextName.getText().toString().trim();
         final String type = mEditTextType.getText().toString().trim();
-        //final String number = mEditTextNumber.getText().toString().trim();
-        final String year = mSpinnerYear.getSelectedItem().toString();
-        final String month = mSinnerMonth.getSelectedItem().toString();
-        final String day = mSinnerDay.getSelectedItem().toString();
+        final String year = mEditYear.getText().toString().trim();
+        final String month = mEditMonth.getText().toString().trim();
+        final String day = mEditDay.getText().toString().trim();
         final String uid = FirebaseUtils.getUid();
 
         if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(type) && mSelectedUri!=null){

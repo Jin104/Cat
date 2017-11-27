@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.jin.cat.R;
+import com.jin.cat.dialogs.MyCatDialog;
 import com.jin.cat.models.MyCat;
 import com.jin.cat.utils.FirebaseUtils;
 import com.squareup.picasso.Picasso;
@@ -38,7 +40,7 @@ public class MyCatDescFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_cat_desc, container, false);
 
-        String catId = getArguments().getString("catId");
+        final String catId = getArguments().getString("catId");
 
         final ImageView image = (ImageView)view.findViewById(R.id.imageView_cat);
         final TextView name = (TextView)view.findViewById(R.id.textView_catName);
@@ -47,6 +49,8 @@ public class MyCatDescFragment extends Fragment {
         final TextView age = (TextView)view.findViewById(R.id.textView_catAge);
         final TextView humanAge = (TextView)view.findViewById(R.id.textView_catHumanAge);
         final TextView type = (TextView)view.findViewById(R.id.textView_catType);
+
+        final ImageButton imageButton = (ImageButton)view.findViewById(R.id.imagebtn_update);
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         final Calendar todayCal = Calendar.getInstance();
@@ -99,6 +103,18 @@ public class MyCatDescFragment extends Fragment {
 
                     }
                 });
+
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle args = new Bundle();
+                args.putString("catId", catId);
+                MyCatDialog dialogFragment = new MyCatDialog();
+                dialogFragment.setArguments(args);
+                dialogFragment.show(getFragmentManager(), "Sample Dialog Fragment");
+            }
+        });
 
         return view;
     }

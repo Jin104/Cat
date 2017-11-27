@@ -227,7 +227,7 @@ public class MyCatInoculationFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder ab = new AlertDialog.Builder(mContext);
-                    ab.setTitle("알림");
+                    ab.setTitle("주의");
                     ab.setMessage("삭제하시겠습니까?");
 
                     ab.setPositiveButton("YES", new DialogInterface.OnClickListener() {
