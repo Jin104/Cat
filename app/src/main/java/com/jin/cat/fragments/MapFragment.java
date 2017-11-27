@@ -1,5 +1,6 @@
 package com.jin.cat.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,6 +13,7 @@ import com.jin.cat.R;
 import com.nhn.android.maps.NMapCompassManager;
 import com.nhn.android.maps.NMapContext;
 import com.nhn.android.maps.NMapController;
+import com.nhn.android.maps.NMapLocationManager;
 import com.nhn.android.maps.NMapView;
 import com.nhn.android.maps.maplib.NGeoPoint;
 import com.nhn.android.maps.nmapmodel.NMapError;
@@ -24,7 +26,6 @@ import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
 
 public class MapFragment extends Fragment {
 
-    private static final String LOG_TAG = "NMapCalloutCustomOverlay";
     private NMapContext mMapContext;
     private NMapView mMapView;
     private  NMapController mMapController;
@@ -35,35 +36,34 @@ public class MapFragment extends Fragment {
     private NMapCompassManager mapCompassManager;
     private  NMapViewrResourceProvider mMapViewReourceProvider;
 
-
-
+    private static final String LOG_TAG = "NMapViewer";
     private static final String CLIENT_ID = "h0jOnpEEU05opv5JOxw9";// 애플리케이션 클라이언트 아이디 값
 
-    private NMapView findMapView(View v) {
-
-        if (!(v instanceof ViewGroup)) {
-            return null;
-        }
-
-        ViewGroup vg = (ViewGroup)v;
-        if (vg instanceof NMapView) {
-            return (NMapView)vg;
-        }
-
-        for (int i = 0; i < vg.getChildCount(); i++) {
-
-            View child = vg.getChildAt(i);
-            if (!(child instanceof ViewGroup)) {
-                continue;
-            }
-
-            NMapView mapView = findMapView(child);
-            if (mapView != null) {
-                return mapView;
-            }
-        }
-        return null;
-    }
+//    private NMapView findMapView(View v) {
+//
+//        if (!(v instanceof ViewGroup)) {
+//            return null;
+//        }
+//
+//        ViewGroup vg = (ViewGroup)v;
+//        if (vg instanceof NMapView) {
+//            return (NMapView)vg;
+//        }
+//
+//        for (int i = 0; i < vg.getChildCount(); i++) {
+//
+//            View child = vg.getChildAt(i);
+//            if (!(child instanceof ViewGroup)) {
+//                continue;
+//            }
+//
+//            NMapView mapView = findMapView(child);
+//            if (mapView != null) {
+//                return mapView;
+//            }
+//        }
+//        return null;
+//    }
 
 
     @Override
@@ -76,14 +76,14 @@ public class MapFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mMapContext =  new NMapContext(super.getActivity());
+       mMapContext =  new NMapContext(super.getActivity());
         mMapContext.onCreate();
+
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
 //        NMapView mapView = findMapView(super.getView());
 //        if (mapView == null) {
 //            throw new IllegalArgumentException("NMapFragment dose not have an instance of NMapView.");
@@ -93,7 +93,6 @@ public class MapFragment extends Fragment {
 //
 //        // mapView.setClientId(CLIENT_ID);// 클라이언트 아이디 설정
 //        mMapContext.setupMapView(mapView);
-
         mMapView = (NMapView)getView().findViewById(R.id.mapView);
 
         mMapView.setClientId(CLIENT_ID);// 클라이언트 아이디 설정
@@ -139,4 +138,8 @@ public class MapFragment extends Fragment {
         mMapContext.onDestroy();
         super.onDestroy();
     }
+
+
+
+
 }
