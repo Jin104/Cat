@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -75,7 +76,6 @@ public class CatListActivity extends AppCompatActivity {
     }
 
     public boolean onContextItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
             case 0:
                 break;

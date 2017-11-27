@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="@dimen/_230sdp"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite">
+
+
+    <ImageButton
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_gravity="center"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_130sdp"
+        android:background="@drawable/add_image"
+        android:scaleType="fitCenter"
+        android:id="@+id/image_btn_cat"/>
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="wrap_content"
+            android:text="이름"/>
+
+
+        <EditText
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_cat_name"
+            android:hint="cat name"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="wrap_content"
+            android:text="성별"/>
+
+        <RadioGroup
+            android:id="@+id/radiogroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/radio_male"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="wrap_content"
+            android:text="수컷" />
+
+        <RadioButton
+            android:id="@+id/radio_female"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="wrap_content"
+            android:text="암컷" />
+        </RadioGroup>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="wrap_content"
+            android:text="생일"/>
+
+        <Spinner
+            android:id="@+id/spinner_year"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner_month"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner_day"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="wrap_content"
+            android:text="품종"/>
+
+
+        <EditText
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_cat_type"
+            android:hint="cat name"/>
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="@dimen/_50sdp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="등록번호"/>-->
+
+
+        <!--<EditText-->
+            <!--android:layout_width="@dimen/_150sdp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/edit_cat_number"-->
+            <!--android:hint="cat name"/>-->
+    <!--</LinearLayout>-->
+
+    <Button
+        android:id="@+id/doneBtn"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_27sdp"
+        android:text="등록"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorAccent"/>
+
+</LinearLayout>

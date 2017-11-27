@@ -18,6 +18,14 @@
     <color name="colorMainDarker">#BBBFC3</color>
     <color name="colorMainDarker2">#7E838C</color>
 
+    <color name="colorGray0">#f8f8f9</color>
+    <color name="colorGray1">#f2f2f2</color>
+    <color name="colorGray2">#bfbfbf</color>
+    <color name="colorGray3">#9E9E9E</color>
+    <color name="colorGray4">#949494</color>
+    <color name="colorGray5">#535353</color>
+    <color name="colorGray6">#252525</color>
+
     <!-- DoNotEat -->
     <color name="colorRow">#B0191919</color>
 
