@@ -32,6 +32,7 @@ import com.jin.cat.R;
 import com.jin.cat.models.MyCat;
 import com.jin.cat.utils.Constants;
 import com.jin.cat.utils.FirebaseUtils;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
     private View mRootView;
     private StorageReference mStorageRef;
 
+    private Button mButton;
     private ImageButton mImageButton;
     private EditText mEditTextName;
     private EditText mEditTextType;
@@ -60,6 +62,8 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
     private EditText mEditYear;
     private EditText mEditMonth;
     private EditText mEditDay;
+
+    private String catId;
 
     @NonNull
     @Override
@@ -80,6 +84,7 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
         mEditYear = (EditText)mRootView.findViewById(R.id.edit_year);
         mEditMonth = (EditText)mRootView.findViewById(R.id.edit_month);
         mEditDay = (EditText)mRootView.findViewById(R.id.edit_day);
+        mButton = (Button)mRootView.findViewById(R.id.doneBtn);
 
         mStorageRef = FirebaseStorage.getInstance().getReference().child(Constants.USER_CAT_IMAGES);
 
@@ -87,7 +92,7 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
         Bundle mArgs = getArguments();
         if(mArgs!=null)
         {
-            String catId = mArgs.getString("catId");
+            catId = mArgs.getString("catId");
             //mImageButton.setImageURI(FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(), catId));
             FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(), catId)
                     .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -107,8 +112,9 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
                                 mRadioButtonFemale.setChecked(false);
                             }
                             String url = myCat.getImage();
-                            //mImageButton.setImageURI(url);
+                            Picasso.with(getContext()).load(url).into(mImageButton);
                             mImageButton.setBackground(null);
+                            mButton.setText("수정완료");
                         }
 
                         @Override
@@ -116,8 +122,6 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
 
                         }
                     });
-
-
         }
 
         mRootView.findViewById(R.id.image_btn_cat).setOnClickListener(this);
@@ -165,7 +169,12 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
                 selectImage();
                 break;
             case R.id.doneBtn:
-                sendMyCat();
+                if(mButton.getText()=="수정완료"){
+                    modifyMyCat();
+                }
+                else{
+                    sendMyCat();
+                }
                 break;
         }
     }
@@ -190,7 +199,6 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
     }
 
     public void sendMyCat(){
-
 
         final String name = mEditTextName.getText().toString().trim();
         final String type = mEditTextType.getText().toString().trim();
@@ -225,8 +233,6 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
 
                         FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),myCat.getUid())
                                 .setValue(myCat);
-
-
                     }
                 });
 
@@ -239,8 +245,66 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
         }else{
             Toast.makeText(getActivity(), "입력을 완료해주세요", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void modifyMyCat(){
+        final String name = mEditTextName.getText().toString().trim();
+        final String type = mEditTextType.getText().toString().trim();
+        final String year = mEditYear.getText().toString().trim();
+        final String month = mEditMonth.getText().toString().trim();
+        final String day = mEditDay.getText().toString().trim();
+
+        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(type)){
+
+            if(mRadioButtonMale.isChecked() || mRadioButtonFemale.isChecked()){
+
+                FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),catId)
+                        .child("name").setValue(name);
+
+                FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),catId)
+                        .child("day").setValue(day);
 
 
 
+                FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),catId)
+                        .child("month").setValue(month);
+
+                FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),catId)
+                        .child("type").setValue(type);
+
+                FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),catId)
+                        .child("year").setValue(year);
+
+
+                if(mRadioButtonMale.isChecked())
+                    FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),catId)
+                            .child("sex").setValue("수컷");
+                else if(mRadioButtonFemale.isChecked())
+                    FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),catId)
+                            .child("sex").setValue("암컷");
+
+
+                if(mSelectedUri!=null) {
+                    StorageReference filepath = mStorageRef.child(mSelectedUri.getLastPathSegment());
+                    filepath.putFile(mSelectedUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            String downloadUrl = taskSnapshot.getDownloadUrl().toString();
+
+                            FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(), catId)
+                                    .child("image").setValue(downloadUrl);
+                        }
+                    });
+                }
+
+                dismiss();
+
+            }else{
+                Toast.makeText(getActivity(),"성별을 선택해주세요",Toast.LENGTH_SHORT).show();
+            }
+
+        }else{
+            Toast.makeText(getActivity(), "입력을 완료해주세요", Toast.LENGTH_SHORT).show();
+        }
     }
 }

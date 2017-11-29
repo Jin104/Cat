@@ -5,15 +5,132 @@
     tools:context="com.jin.cat.fragments.MyCatTodayFragment">
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="상세설명~" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@color/colorGray0">
+
+            <TextView
+                android:layout_margin="@dimen/_4sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="하루 섭취 음수량"/>
+
+            <TextView
+                android:layout_margin="@dimen/_4sdp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:text="100"/>
+
+            <TextView
+                android:layout_margin="@dimen/_4sdp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ml"/>
+        </LinearLayout>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@color/colorGray0">
+
+            <TextView
+                android:layout_margin="@dimen/_4sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="하루 기초 대사량"/>
+
+            <TextView
+                android:layout_margin="@dimen/_4sdp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:text="100"/>
+
+            <TextView
+                android:layout_margin="@dimen/_4sdp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kcal"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@color/colorGray0">
+
+            <TextView
+                android:layout_margin="@dimen/_4sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="하루 섭취 권장량"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner">
+            </Spinner>
+
+            <TextView
+                android:layout_margin="@dimen/_4sdp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:text="100"/>
+
+            <TextView
+                android:layout_margin="@dimen/_4sdp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kcal"/>
+        </LinearLayout>
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:gravity="center"-->
+            <!--android:background="@color/colorGray0">-->
+
+            <!--<TextView-->
+                <!--android:layout_margin="@dimen/_4sdp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="하루 섭취 권장 사료양"/>-->
+
+            <!--<TextView-->
+                <!--android:layout_margin="@dimen/_4sdp"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/colorAccent"-->
+                <!--android:text="100"/>-->
+
+            <!--<TextView-->
+                <!--android:layout_margin="@dimen/_4sdp"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="g"/>-->
+        <!--</LinearLayout>-->
     </LinearLayout>
 
 </FrameLayout>

@@ -41,19 +41,6 @@
             app:srcCompat="@drawable/icon_back" />
 
 
-        <ImageButton
-            android:id="@+id/cat_like_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:background="#00ffffff"
-            android:onClick="addFavoritesButtonClicked"
-            app:srcCompat="@drawable/icon_dislike"
-            android:layout_alignTop="@+id/imageButton"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="12dp" />
-
         <LinearLayout
             android:id="@+id/linearlayout"
             android:layout_width="match_parent"
@@ -122,9 +109,11 @@
             android:background="@color/colorWhite"
             android:orientation="vertical">
 
-
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_4sdp"
                 android:layout_marginLeft="@dimen/_8sdp"
@@ -151,6 +140,18 @@
                     tools:ignore="MissingPrefix" />
             </LinearLayout>
 
+            <ImageButton
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_centerInParent="true"
+                android:id="@+id/cat_like_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00ffffff"
+                android:layout_alignParentRight="true"
+                android:onClick="addFavoritesButtonClicked"
+                app:srcCompat="@drawable/icon_dislike" />
+
+            </RelativeLayout>
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

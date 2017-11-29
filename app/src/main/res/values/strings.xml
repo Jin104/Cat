@@ -33,7 +33,15 @@
         <item>기타</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="type">
+        <item>운동량이 많고 활발한 성묘</item>
+        <item>중성화를 받지 않은 성묘</item>
+        <item>중성화를 받은 성묘(일반)</item>
+        <item>비만 20% 미만 성묘</item>
+        <item>체중 감량이 필요한 성묘</item>
+        <item>고령묘(Senior)</item>
+    </string-array>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--<string name="hello_blank_fragment">Hello blank fragment</string>-->
