@@ -19,10 +19,10 @@ import com.nhn.android.maps.overlay.NMapPOIitem;
 import com.nhn.android.mapviewer.overlay.NMapResourceProvider;
 
 /**
- * Created by dldba on 2017-11-27.
+ * Created by dldba on 2017-11-30.
  */
 
-public class NMapViewrResourceProvider extends NMapResourceProvider implements
+public class NMapViewerResourceProvider extends NMapResourceProvider implements
         NMapCalloutCustomOldOverlay.ResourceProvider {
     private static final String LOG_TAG = "NMapViewerResourceProvider";
     private static final boolean DEBUG = false;
@@ -44,7 +44,7 @@ public class NMapViewrResourceProvider extends NMapResourceProvider implements
     private final Rect mTempRect = new Rect();
     private final Paint mTextPaint = new Paint();
 
-    public NMapViewrResourceProvider(Context context)
+    public NMapViewerResourceProvider(Context context)
     {
         super(context);
         mTextPaint.setAntiAlias(true);

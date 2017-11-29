@@ -34,7 +34,7 @@ public class MapFragment extends Fragment {
 
     private NMapMyLocationOverlay mMyLocationOverlay;
     private NMapCompassManager mapCompassManager;
-    private  NMapViewrResourceProvider mMapViewReourceProvider;
+    private  NMapViewerResourceProvider mMapViewReourceProvider;
 
     private static final String LOG_TAG = "NMapViewer";
     private static final String CLIENT_ID = "h0jOnpEEU05opv5JOxw9";// 애플리케이션 클라이언트 아이디 값
