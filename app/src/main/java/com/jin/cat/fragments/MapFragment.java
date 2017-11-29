@@ -64,19 +64,93 @@ public class MapFragment extends Fragment {
 //        }
 //        return null;
 //    }
-
+//
+//
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        return inflater.inflate(R.layout.fragment1, container, false);
+//       // throw new IllegalArgumentException("onCreateView should be implemented in the subclass of NMapFragment.");
+//    }
+//
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//       mMapContext =  new NMapContext(super.getActivity());
+//        mMapContext.onCreate();
+//
+//    }
+//
+//    @Override
+//    public void onActivityCreated(Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+////        NMapView mapView = findMapView(super.getView());
+////        if (mapView == null) {
+////            throw new IllegalArgumentException("NMapFragment dose not have an instance of NMapView.");
+////        }
+////
+////        //NMapView mapView = (NMapView)getView().findViewById(R.id.mapView);
+////
+////        // mapView.setClientId(CLIENT_ID);// 클라이언트 아이디 설정
+////        mMapContext.setupMapView(mapView);
+//        mMapView = (NMapView)getView().findViewById(R.id.mapView);
+//
+//        mMapView.setClientId(CLIENT_ID);// 클라이언트 아이디 설정
+//
+//        mMapContext.setupMapView(mMapView);
+//    }
+//
+//    @Override
+//    public void onStart(){
+//        super.onStart();
+//        mMapContext.onStart();
+//        //mMapView.setOnMapStateChangeListener(this);
+//
+//    }
+//
+//
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        mMapContext.onResume();
+//    }
+//
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        mMapContext.onPause();
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        mMapContext.onStop();
+//        super.onStop();
+//    }
+//
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//    }
+//
+//    @Override
+//    public void onDestroy() {
+//        mMapContext.onDestroy();
+//        super.onDestroy();
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+       // return (NMapViewer)getActivity().onCreate();
         return inflater.inflate(R.layout.fragment1, container, false);
-       // throw new IllegalArgumentException("onCreateView should be implemented in the subclass of NMapFragment.");
+        // throw new IllegalArgumentException("onCreateView should be implemented in the subclass of NMapFragment.");
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       mMapContext =  new NMapContext(super.getActivity());
+        mMapContext =  new NMapContext(super.getActivity());
         mMapContext.onCreate();
 
     }

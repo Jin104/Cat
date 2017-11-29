@@ -84,7 +84,7 @@ public class NMapViewer extends NMapActivity {
     private NMapPOIdataOverlay mFloatingPOIdataOverlay;
     private NMapPOIitem mFloatingPOIitem;
 
-    private static boolean USE_XML_LAYOUT = false;
+    private static boolean USE_XML_LAYOUT = true;
 
     /** Called when the activity is first created. */
     @Override
