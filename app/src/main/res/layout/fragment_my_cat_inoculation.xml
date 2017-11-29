@@ -1,0 +1,107 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jin.cat.fragments.MyCatInoculationFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/colorGray0">
+
+            <TextView
+                android:layout_margin="@dimen/_4sdp"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:text="필수예방접종"/>
+
+            <TextView
+                android:layout_margin="@dimen/_4sdp"
+                android:gravity="center"
+                android:layout_weight="10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="날짜"/>
+
+            <ImageButton
+                android:id="@+id/add_inoculation"
+                android:padding="@dimen/_2sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_width="@dimen/_20sdp"
+                android:scaleType="fitCenter"
+                android:background="@color/colorGray0"
+                android:src="@drawable/icon_add"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/_4sdp"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:text="종합백신(FVRCP)"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_margin="@dimen/_4sdp"
+                android:id="@+id/recycler1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/_4sdp"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:text="백혈병(FeLV)"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_margin="@dimen/_4sdp"
+                android:id="@+id/recycler2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_margin="@dimen/_4sdp"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:text="광견병(Rabies)"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_margin="@dimen/_4sdp"
+                android:id="@+id/recycler3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

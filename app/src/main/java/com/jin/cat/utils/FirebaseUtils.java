@@ -19,6 +19,14 @@ import java.util.ArrayList;
 
 public class FirebaseUtils {
 
+    public static StorageReference getMyCatImagesRef(){
+        return FirebaseStorage.getInstance().getReference(Constants.USER_CAT_IMAGES);
+    }
+
+    public static DatabaseReference getMyCatRef(String userId, String catId){
+        return FirebaseDatabase.getInstance().getReference("User_Cat").child(userId).child(catId);
+    }
+
     public static DatabaseReference getMyCatListRef(String userId){
         return FirebaseDatabase.getInstance().getReference("User_Liked_Cat").child(userId);
     }

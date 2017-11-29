@@ -35,23 +35,11 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:background="#00ffffff"
             android:onClick="backButtonClicked"
             app:srcCompat="@drawable/icon_back" />
 
-
-        <ImageButton
-            android:layout_marginTop="@dimen/_8sdp"
-            android:id="@+id/cat_like_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/imageButton"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:background="#00ffffff"
-            android:onClick="addFavoritesButtonClicked"
-            app:srcCompat="@drawable/icon_dislike" />
 
         <LinearLayout
             android:id="@+id/linearlayout"
@@ -121,9 +109,11 @@
             android:background="@color/colorWhite"
             android:orientation="vertical">
 
-
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_4sdp"
                 android:layout_marginLeft="@dimen/_8sdp"
@@ -150,6 +140,18 @@
                     tools:ignore="MissingPrefix" />
             </LinearLayout>
 
+            <ImageButton
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_centerInParent="true"
+                android:id="@+id/cat_like_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00ffffff"
+                android:layout_alignParentRight="true"
+                android:onClick="addFavoritesButtonClicked"
+                app:srcCompat="@drawable/icon_dislike" />
+
+            </RelativeLayout>
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

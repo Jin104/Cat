@@ -3,11 +3,13 @@ package com.jin.cat.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jin.cat.activities.CatDescActivity;
 import com.jin.cat.models.Cat;
@@ -45,7 +47,6 @@ public class CatListAdapter extends RecyclerView.Adapter<CatListAdapter.CatViewH
         holder.setImage(context, cat.getImage());
         holder.listTitle.setText(cat.getName());
         holder.listTitleEng.setText(cat.getKey());
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

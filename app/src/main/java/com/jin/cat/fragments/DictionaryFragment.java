@@ -12,13 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.jin.cat.activities.CatListActivity;
-import com.jin.cat.activities.LoginActivity;
-import com.jin.cat.models.Dictionary;
 import com.jin.cat.R;
-import com.jin.cat.utils.FirebaseUtils;
+import com.jin.cat.activities.CatListActivity;
+import com.jin.cat.models.Dictionary;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,15 +32,6 @@ public class DictionaryFragment extends Fragment {
 
     public DictionaryFragment(){
 
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        if(FirebaseUtils.getCurrentUser() == null ){
-            Toast.makeText(getActivity(),"!!!!!",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getActivity(), LoginActivity.class));
-        }
-        super.onAttach(context);
     }
 
     @Override
@@ -67,9 +55,9 @@ public class DictionaryFragment extends Fragment {
 
     private List<Dictionary> getDictionaryData(){
         List<Dictionary> dictionList = new ArrayList<Dictionary>();
-        dictionList.add(new Dictionary(R.drawable.dictionary_cat3,"장모종","20 cats"));
-        dictionList.add(new Dictionary(R.drawable.dictionary_cat2,"중모종", "15 cats"));
-        dictionList.add(new Dictionary(R.drawable.dictionary_cat1,"단모종", "10 cats"));
+        dictionList.add(new Dictionary(R.drawable.dictionary_cat3,"장모종","17 cats"));
+        dictionList.add(new Dictionary(R.drawable.dictionary_cat2,"중모종", "5 cats"));
+        dictionList.add(new Dictionary(R.drawable.dictionary_cat1,"단모종", "32 cats"));
         return dictionList;
     }
 
