@@ -140,6 +140,17 @@
                 android:layout_alignTop="@+id/textView8"
                 android:layout_toEndOf="@+id/textView5"/>
 
+            <ImageButton
+                android:id="@+id/imagebtn_update"
+                android:padding="@dimen/_2sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_width="@dimen/_20sdp"
+                android:scaleType="fitCenter"
+                android:background="@color/colorGray0"
+                app:srcCompat="@drawable/icon_add"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true" />
+
 
         </RelativeLayout>
 </LinearLayout>

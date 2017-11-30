@@ -34,6 +34,11 @@
         <activity android:name=".activities.LanguageActivity" />
         <activity android:name=".activities.HealthActivity" />
         <activity android:name=".activities.SexActivity" />
+
+        <activity android:name=".fragments.FragmentMapActivity"
+            android:configChanges="keyboardHidden|orientation"/>
+
+
         <activity
             android:name=".activities.CatDescActivity"
             android:theme="@style/AppTheme.NoWindowNoTitle" />

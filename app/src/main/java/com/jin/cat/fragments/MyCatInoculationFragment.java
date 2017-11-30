@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.jin.cat.R;
 import com.jin.cat.dialogs.MyCatInoculationDialog;
 import com.jin.cat.models.Inoculation;
@@ -36,24 +38,29 @@ import java.util.List;
  */
 public class MyCatInoculationFragment extends Fragment {
 
-    private LinearLayoutManager linearLayoutManager;
-    private MyCat myCat;
-    private Inoculation inoculation;
-    private List<Inoculation> result1;
+    //private LinearLayoutManager linearLayoutManager;
     private RecyclerView recyclerView1;
-    private InoculationAdapter adapter1;
+    private RecyclerView recyclerView2;
+    private RecyclerView recyclerView3;
+
 
     private FirebaseDatabase database;
-    private DatabaseReference reference;
 
-    private RecyclerView recyclerView;
-    private DatabaseReference mInoculationReference;
-    private InoculationAdapter mAdapter;
+    private DatabaseReference mFVRCPReference;
+    private DatabaseReference mFeLVReference;
+    private DatabaseReference mRabiesReference;
+    private InoculationAdapter mAdapter1;
+    private InoculationAdapter mAdapter2;
+    private InoculationAdapter mAdapter3;
 
     public MyCatInoculationFragment() {
 
     }
 
+    private void refresh(){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(this).attach(this).commit();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,17 +85,21 @@ public class MyCatInoculationFragment extends Fragment {
         });
 
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid()).child(catId).child("inoculation").child("종합백신(FVRCP)");
-        mInoculationReference = database.getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid()).child(catId).child("inoculation").child("종합백신(FVRCP)");
-
-        result1 = new ArrayList<>();
+        mFVRCPReference = database.getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid()).child(catId).child("inoculation").child("종합백신(FVRCP)");
+        mFeLVReference = database.getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid()).child(catId).child("inoculation").child("백혈병(FeLV)");
+        mRabiesReference = database.getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid()).child(catId).child("inoculation").child("광견병(Rabies)");
 
         recyclerView1 = (RecyclerView)view.findViewById(R.id.recycler1);
         recyclerView1.setHasFixedSize(true);
-        linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView1.setLayoutManager(linearLayoutManager);
+        recyclerView1.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
+        recyclerView2 = (RecyclerView)view.findViewById(R.id.recycler2);
+        recyclerView2.setHasFixedSize(true);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+        recyclerView3 = (RecyclerView)view.findViewById(R.id.recycler3);
+        recyclerView3.setHasFixedSize(true);
+        recyclerView3.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         return view;
     }
@@ -97,9 +108,24 @@ public class MyCatInoculationFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        mAdapter = new InoculationAdapter(getActivity(), mInoculationReference);
-        recyclerView1.setAdapter(mAdapter);
+        mAdapter1 = new InoculationAdapter(getActivity(), mFVRCPReference);
+        recyclerView1.setAdapter(mAdapter1);
 
+        mAdapter2 = new InoculationAdapter(getActivity(), mFeLVReference);
+        recyclerView2.setAdapter(mAdapter2);
+
+        mAdapter3 = new InoculationAdapter(getActivity(), mRabiesReference);
+        recyclerView3.setAdapter(mAdapter3);
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        mAdapter1.cleanupListener();
+        mAdapter2.cleanupListener();
+        mAdapter3.cleanupListener();
     }
 
     private static class InoculationViewHolder extends RecyclerView.ViewHolder{
@@ -114,7 +140,7 @@ public class MyCatInoculationFragment extends Fragment {
         }
     }
 
-    private static class InoculationAdapter extends RecyclerView.Adapter<InoculationViewHolder>{
+    private class InoculationAdapter extends RecyclerView.Adapter<InoculationViewHolder>{
 
         private Context mContext;
         private DatabaseReference mDatabaseReference;
@@ -127,6 +153,7 @@ public class MyCatInoculationFragment extends Fragment {
 
             mContext = context;
             mDatabaseReference = ref;
+            Query query = mDatabaseReference.orderByChild("date");
 
             ChildEventListener childEventListener = new ChildEventListener() {
                 @Override
@@ -176,9 +203,12 @@ public class MyCatInoculationFragment extends Fragment {
 
                 }
             };
-            ref.addChildEventListener(childEventListener);
+            query.addChildEventListener(childEventListener);
 
             mChildEventListener = childEventListener;
+
+
+
         }
 
         @Override
@@ -197,29 +227,22 @@ public class MyCatInoculationFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder ab = new AlertDialog.Builder(mContext);
-                    ab.setTitle("알림");
+                    ab.setTitle("주의");
                     ab.setMessage("삭제하시겠습니까?");
 
                     ab.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-
                             mDatabaseReference.child(inoculation.getUid()).removeValue();
-                            //Toast.makeText(mContext, get, Toast.LENGTH_SHORT).show();
-                            //DatabaseReference ref = new MyCatInoculationFragment().getmInoculationReference();
-                            //ref.child(inoculation.getUid()).removeValue();
-                            //inoculation.setUid(null);
                         }
                     });
 
                     ab.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(mContext, "아뇨~~", Toast.LENGTH_SHORT).show();
+
                         }
                     });
-
-
                     ab.show();
                 }
             });
