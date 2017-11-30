@@ -55,8 +55,8 @@ public class KnowledgeFragment extends Fragment {
 
     public List<Knowledge> getKnowledgeData() {
         List<Knowledge> knowList = new ArrayList<Knowledge>();
-        knowList.add(new Knowledge("고양이몸짓의 의미", R.drawable.cat2));
-        knowList.add(new Knowledge("응급처치, 예방", R.drawable.cat5));
+        knowList.add(new Knowledge("고양이몸짓의 의미", R.drawable.if_cat_paper_185526));
+        knowList.add(new Knowledge("응급처치, 예방", R.drawable.if_cat_laptop_185531));
         knowList.add(new Knowledge("관리", R.drawable.cat4));
         knowList.add(new Knowledge("사료", R.drawable.cat6));
         knowList.add(new Knowledge("성", R.drawable.cat1));

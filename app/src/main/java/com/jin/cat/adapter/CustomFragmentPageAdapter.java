@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.jin.cat.fragments.Blank1Fragment;
+import com.jin.cat.fragments.BlankFragment;
 import com.jin.cat.fragments.DictionaryFragment;
 import com.jin.cat.fragments.KnowledgeFragment;
 import com.jin.cat.fragments.MapFragment;
@@ -14,7 +16,7 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
 
     private static final String TAG = CustomFragmentPageAdapter.class.getSimpleName();
 
-    private static final int FRAGMENT_COUNT = 4;
+    private static final int FRAGMENT_COUNT = 5;
 
     public CustomFragmentPageAdapter(FragmentManager fm) {
         super(fm);
@@ -30,7 +32,10 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
             case 2:
                 return new KnowledgeFragment();
             case 3:
-                return new MapFragment();
+                //return new MapFragment();
+                return new BlankFragment();
+            case 4:
+                return new Blank1Fragment();
         }
         return null;
     }

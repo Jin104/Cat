@@ -53,7 +53,7 @@ public class CatDescActivity extends AppCompatActivity {
         //final ImageView image = (ImageView)findViewById(R.id.cat_image);
         final TextView name = (TextView)findViewById(R.id.cat_name);
         final TextView nameEng= (TextView)findViewById(R.id.cat_name_eng);
-        final TextView country = (TextView)findViewById(R.id.cat_country);
+        //final TextView country = (TextView)findViewById(R.id.cat_country);
         final TextView origin = (TextView)findViewById(R.id.cat_origin);
         final TextView looks = (TextView)findViewById(R.id.cat_looks);
         final TextView personality = (TextView)findViewById(R.id.cat_personality);
@@ -76,7 +76,7 @@ public class CatDescActivity extends AppCompatActivity {
                 //Picasso.with(context).load(cat.getImage()).into(image);
                 name.setText(cat.getName());
                 nameEng.setText(cat.getKey());
-                country.setText(cat.getCountry());
+                //country.setText(cat.getCountry());
                 origin.setText(cat.getOrigin());
                 looks.setText(cat.getLooks());
                 personality.setText(cat.getPersonality());

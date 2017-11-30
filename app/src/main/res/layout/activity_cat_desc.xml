@@ -163,32 +163,32 @@
                     android:orientation="vertical">
 
 
-                    <TextView
-                        fontPath="fonts/NanumBarunGothicBold.otf"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_8sdp"
-                        android:layout_marginTop="@dimen/_6sdp"
-                        android:text="원산지"
-                        android:textSize="@dimen/_13sdp"
-                        tools:ignore="MissingPrefix" />
+                    <!--<TextView-->
+                        <!--fontPath="fonts/NanumBarunGothicBold.otf"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="@dimen/_8sdp"-->
+                        <!--android:layout_marginTop="@dimen/_6sdp"-->
+                        <!--android:text="원산지"-->
+                        <!--android:textSize="@dimen/_13sdp"-->
+                        <!--tools:ignore="MissingPrefix" />-->
 
-                    <TextView
-                        android:id="@+id/cat_country"
-                        fontPath="fonts/NanumBarunGothic.otf"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_8sdp"
-                        android:text="abcd"
-                        android:textSize="@dimen/_11sdp"
-                        tools:ignore="MissingPrefix" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/cat_country"-->
+                        <!--fontPath="fonts/NanumBarunGothic.otf"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="@dimen/_8sdp"-->
+                        <!--android:text="abcd"-->
+                        <!--android:textSize="@dimen/_11sdp"-->
+                        <!--tools:ignore="MissingPrefix" />-->
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:layout_marginBottom="@dimen/_4sdp"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:background="@color/colorGray" />
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1px"-->
+                        <!--android:layout_marginBottom="@dimen/_4sdp"-->
+                        <!--android:layout_marginTop="@dimen/_4sdp"-->
+                        <!--android:background="@color/colorGray" />-->
 
                     <TextView
                         fontPath="fonts/NanumBarunGothicBold.otf"
