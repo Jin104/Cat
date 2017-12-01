@@ -62,6 +62,7 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
     private EditText mEditYear;
     private EditText mEditMonth;
     private EditText mEditDay;
+    private EditText mEditWeight;
 
     private String catId;
 
@@ -84,6 +85,7 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
         mEditYear = (EditText)mRootView.findViewById(R.id.edit_year);
         mEditMonth = (EditText)mRootView.findViewById(R.id.edit_month);
         mEditDay = (EditText)mRootView.findViewById(R.id.edit_day);
+        mEditWeight = (EditText)mRootView.findViewById(R.id.edit_cat_weight);
         mButton = (Button)mRootView.findViewById(R.id.doneBtn);
 
         mStorageRef = FirebaseStorage.getInstance().getReference().child(Constants.USER_CAT_IMAGES);
@@ -104,6 +106,7 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
                             mEditYear.setText(myCat.getYear());
                             mEditMonth.setText(myCat.getMonth());
                             mEditDay.setText(myCat.getDay());
+                            mEditWeight.setText(myCat.getWeight());
                             if(myCat.getSex().equals("암컷")){
                                 mRadioButtonFemale.setChecked(true);
                                 mRadioButtonMale.setChecked(false);
@@ -205,9 +208,12 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
         final String year = mEditYear.getText().toString().trim();
         final String month = mEditMonth.getText().toString().trim();
         final String day = mEditDay.getText().toString().trim();
+        final String weight = mEditWeight.getText().toString().trim();
         final String uid = FirebaseUtils.getUid();
 
-        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(type) && mSelectedUri!=null){
+        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(type)
+                && !TextUtils.isEmpty(weight) && !TextUtils.isEmpty(year)
+                && !TextUtils.isEmpty(month) && !TextUtils.isEmpty(day) && mSelectedUri!=null){
 
             if(mRadioButtonMale.isChecked() || mRadioButtonFemale.isChecked()){
 
@@ -229,10 +235,25 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
                         myCat.setYear(year);
                         myCat.setMonth(month);
                         myCat.setDay(day);
+                        myCat.setWeight(weight);
                         myCat.setUid(uid);
 
                         FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),myCat.getUid())
                                 .setValue(myCat);
+
+                        long now = System.currentTimeMillis();
+                        Date date = new Date(now);
+                        SimpleDateFormat CurYearFormat = new SimpleDateFormat("yyyy");
+                        SimpleDateFormat CurMonthFormat = new SimpleDateFormat("MM");
+                        SimpleDateFormat CurDayFormat = new SimpleDateFormat("dd");
+                        String strCurYear = CurYearFormat.format(date);
+                        String strCurMonth = CurMonthFormat.format(date);
+                        String strCurDay = CurDayFormat.format(date);
+
+                        FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),myCat.getUid())
+                                .child("weight_record")
+                                .child(strCurYear+strCurMonth+strCurDay)
+                                .setValue(weight);
                     }
                 });
 
@@ -253,8 +274,11 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
         final String year = mEditYear.getText().toString().trim();
         final String month = mEditMonth.getText().toString().trim();
         final String day = mEditDay.getText().toString().trim();
+        final String weight = mEditWeight.getText().toString().trim();
 
-        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(type)){
+        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(type)
+                && !TextUtils.isEmpty(weight) && !TextUtils.isEmpty(year)
+                && !TextUtils.isEmpty(month) && !TextUtils.isEmpty(day)){
 
             if(mRadioButtonMale.isChecked() || mRadioButtonFemale.isChecked()){
 
@@ -263,8 +287,6 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
 
                 FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),catId)
                         .child("day").setValue(day);
-
-
 
                 FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),catId)
                         .child("month").setValue(month);
@@ -275,10 +297,27 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
                 FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),catId)
                         .child("year").setValue(year);
 
+                FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),catId)
+                        .child("weight").setValue(weight);
+
+                long now = System.currentTimeMillis();
+                Date date = new Date(now);
+                SimpleDateFormat CurYearFormat = new SimpleDateFormat("yyyy");
+                SimpleDateFormat CurMonthFormat = new SimpleDateFormat("MM");
+                SimpleDateFormat CurDayFormat = new SimpleDateFormat("dd");
+                String strCurYear = CurYearFormat.format(date);
+                String strCurMonth = CurMonthFormat.format(date);
+                String strCurDay = CurDayFormat.format(date);
+
+
+                FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),myCat.getUid())
+                        .child("weight_record").child(strCurYear+strCurMonth+strCurDay)
+                        .setValue(weight);
 
                 if(mRadioButtonMale.isChecked())
                     FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),catId)
                             .child("sex").setValue("수컷");
+
                 else if(mRadioButtonFemale.isChecked())
                     FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),catId)
                             .child("sex").setValue("암컷");

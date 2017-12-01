@@ -39,7 +39,13 @@
         <item>중성화를 받은 성묘(일반)</item>
         <item>비만 20% 미만 성묘</item>
         <item>체중 감량이 필요한 성묘</item>
-        <item>고령묘(Senior)</item>
+        <item>고령묘(Senior 7세~)</item>
+        <item>노령묘(Mature 11세~)</item>
+        <item>임신묘</item>
+        <item>수유묘</item>
+        <item>4개월 미만 자묘</item>
+        <item>4~6개월 성장중인 자묘</item>
+        <item>7~12개월 성장중인 자묘</item>
     </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
