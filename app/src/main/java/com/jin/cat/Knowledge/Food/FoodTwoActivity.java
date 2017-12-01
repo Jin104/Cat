@@ -67,12 +67,64 @@ public class FoodTwoActivity extends AppCompatActivity {
         checkFirst.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (checkFirst.isChecked()) {
+                if (checkFirst.isChecked() && !(checkSecond.isChecked())) {
                     for (String name : countryNames) {
                         names.add(name);
                     }
 
                     for (int flag : countryFlags) {
+                        flags.add(flag);
+                    }
+                } else if (checkFirst.isChecked() && (checkSecond.isChecked())) {
+                    List<String> removeNames = new ArrayList<String>();
+                    List<Integer> removeFlags = new ArrayList<Integer>();
+
+                    for (String name : names) {
+                        for (String firstName : countryNames) {
+                            if (name.equals(firstName)) {
+                                int index = names.indexOf(name);
+                                int flag = flags.get(index);
+
+                                removeNames.add(name);
+                                removeFlags.add(flag);
+                            }
+                        }
+                    }
+                    for (String name : names) {
+                        for (String firstName : countryNames2) {
+                            if (name.equals(firstName)) {
+                                int index = names.indexOf(name);
+                                int flag = flags.get(index);
+
+                                removeNames.add(name);
+                                removeFlags.add(flag);
+                            }
+                        }
+                    }
+                    for (String removeName : removeNames) {
+                        names.remove(removeName);
+                    }
+                    for (Integer removeFlag : removeFlags) {
+                        flags.remove(removeFlag);
+                    }
+                    for (String removeName : removeNames) {
+                        names.remove(removeName);
+                    }
+                    for (Integer removeFlag : removeFlags) {
+                        flags.remove(removeFlag);
+                    }
+                    for (String name : countryNames) {
+                        names.add(name);
+                    }
+
+                    for (int flag : countryFlags) {
+                        flags.add(flag);
+                    }
+                    for (String name : countryNames2) {
+                        names.add(name);
+                    }
+
+                    for (int flag : countryFlags2) {
                         flags.add(flag);
                     }
                 } else {
@@ -90,13 +142,23 @@ public class FoodTwoActivity extends AppCompatActivity {
                             }
                         }
                     }
-
                     for (String removeName : removeNames) {
                         names.remove(removeName);
                     }
                     for (Integer removeFlag : removeFlags) {
                         flags.remove(removeFlag);
                     }
+
+
+
+                String[] nameList = new String[names.size()];
+                System.arraycopy(names.toArray(), 0, nameList, 0, nameList.length);
+
+                int[] flagList = new int[names.size()];
+                int index = 0;
+                for (int val : flags) {
+                    flagList[index++] = val;
+                }
                 }
 
                 String[] nameList = new String[names.size()];
@@ -124,6 +186,58 @@ public class FoodTwoActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (checkSecond.isChecked()) {
+                    for (String name : countryNames2) {
+                        names.add(name);
+                    }
+
+                    for (int flag : countryFlags2) {
+                        flags.add(flag);
+                    }
+                } else if (checkFirst.isChecked() && (checkSecond.isChecked())) {
+                    List<String> removeNames = new ArrayList<String>();
+                    List<Integer> removeFlags = new ArrayList<Integer>();
+
+                    for (String name : names) {
+                        for (String firstName : countryNames) {
+                            if (name.equals(firstName)) {
+                                int index = names.indexOf(name);
+                                int flag = flags.get(index);
+
+                                removeNames.add(name);
+                                removeFlags.add(flag);
+                            }
+                        }
+                    }
+                    for (String name : names) {
+                        for (String firstName : countryNames2) {
+                            if (name.equals(firstName)) {
+                                int index = names.indexOf(name);
+                                int flag = flags.get(index);
+
+                                removeNames.add(name);
+                                removeFlags.add(flag);
+                            }
+                        }
+                    }
+                    for (String removeName : removeNames) {
+                        names.remove(removeName);
+                    }
+                    for (Integer removeFlag : removeFlags) {
+                        flags.remove(removeFlag);
+                    }
+                    for (String removeName : removeNames) {
+                        names.remove(removeName);
+                    }
+                    for (Integer removeFlag : removeFlags) {
+                        flags.remove(removeFlag);
+                    }
+                    for (String name : countryNames) {
+                        names.add(name);
+                    }
+
+                    for (int flag : countryFlags) {
+                        flags.add(flag);
+                    }
                     for (String name : countryNames2) {
                         names.add(name);
                     }
