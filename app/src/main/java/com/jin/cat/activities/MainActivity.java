@@ -4,9 +4,11 @@ package com.jin.cat.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,6 +20,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -87,7 +90,16 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
 
                 if (id == R.id.nav_like) {
-                    startActivity(new Intent(MainActivity.this, LikeCatListActivity.class));
+                    if(FirebaseUtils.getCurrentUser()!=null){
+                        startActivity(new Intent(MainActivity.this, LikeCatListActivity.class));
+                    }else{
+                        Snackbar.make(getWindow().getDecorView().getRootView(),  Html.fromHtml("<font color=\"#ffffff\">로그인 하시겠습니까?</font>"), 2000).setActionTextColor(Color.parseColor("#FF0000")).setAction("YES", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                            }
+                        }).show();
+                    }
                     //fragment = new TapFragment();
                 } else if (id == R.id.nav_comment) {
 
