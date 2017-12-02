@@ -53,6 +53,9 @@ public class HealthActivity extends AppCompatActivity {
                     case 1:
                         startActivity(new Intent(HealthActivity.this, VaccinationActivity.class));
                         break;
+                    case 2:
+                        startActivity(new Intent(HealthActivity.this, DiseaseActivity.class));
+                        break;
                 }
 
             }

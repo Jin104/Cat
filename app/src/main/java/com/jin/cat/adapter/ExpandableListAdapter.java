@@ -159,7 +159,6 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
                 viewHolder.childButton.setRotation(expandState.get(position)?180f:0f);
 
-                //Toast
                 viewHolder.childButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -167,8 +166,10 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     }
                 });
 
-                //Toast
+
                 viewHolder.textViewChild.setText(items.get(position).getDesc());
+
+                //Toast
                 viewHolder.textViewChild.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
