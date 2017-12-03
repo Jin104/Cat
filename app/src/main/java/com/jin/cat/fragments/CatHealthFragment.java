@@ -33,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.jin.cat.R;
+import com.jin.cat.interfaces.MyXAxisValueFormatter;
 import com.jin.cat.models.Cat;
 import com.jin.cat.models.MyCat;
 import com.jin.cat.models.Weight;
@@ -70,9 +71,9 @@ public class CatHealthFragment extends Fragment {
     private List<Entry> entries;
     //private List<Weight> weightList;
 
-    private static List<String> weightList;
-    private static int max;
-    private static int min;
+    private  List<String> weightList;
+    private  int max;
+    private  int min;
 
     //private double[] mArrType={1.8, };
 
@@ -280,8 +281,6 @@ public class CatHealthFragment extends Fragment {
                 final String strCurMonth = CurMonthFormat.format(date);
                 final String strCurDay = CurDayFormat.format(date);
 
-                //Toast.makeText(getActivity(), "플러스클릭", Toast.LENGTH_SHORT).show();
-
                 FirebaseDatabase.getInstance().getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid())
                         .child(catId).child("water_record").child(strCurYear+strCurMonth+strCurDay).addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -313,95 +312,72 @@ public class CatHealthFragment extends Fragment {
         });
 
 
-//        Query weightQuery = FirebaseDatabase.getInstance().getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid())
-//                .child(catId).child("weight_record").orderByChild("date").equalTo(strCurYear+strCurMonth+strCurDay);
-//
-//        Toast.makeText(getActivity(), weightQuery.toString(), Toast.LENGTH_SHORT).show();
-//
-//
-//        if(weightQuery!=null){
-//            weightQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    //Toast.makeText(getActivity(), dataSnapshot.getKey().toString(), Toast.LENGTH_SHORT).show();
-//                }
-//
-//                @Override
-//                public void onCancelled(DatabaseError databaseError) {
-//                    //Toast.makeText(getActivity(), "없음", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        }
-
-//        for(int i=0;i<2;i++) {
-//             FirebaseDatabase.getInstance().getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid())
-//                    .child(catId).child("weight_record").child(String.valueOf(i)).child("date").addListenerForSingleValueEvent(new ValueEventListener() {
-//                 @Override
-//                 public void onDataChange(DataSnapshot dataSnapshot) {
-//                     //Toast.makeText(getActivity(), dataSnapshot.getValue().toString(), Toast.LENGTH_SHORT).show();
-//                 }
-//
-//                 @Override
-//                 public void onCancelled(DatabaseError databaseError) {
-//
-//                 }
-//             });
-//
-//        }
         lineChart = (LineChart)view.findViewById(R.id.chart);
 
-        FirebaseDatabase.getInstance().getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid())
-                .child(catId).child("weight_record").addListenerForSingleValueEvent(new ValueEventListener() {
+        final List<Entry> entries = new ArrayList<>();
+        final String[] xValues;
+
+        xValues = new String[5];
+
+        Query weightQuery = FirebaseDatabase.getInstance().getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid())
+                .child(catId).child("weight_record").orderByKey().limitToLast(5);
+
+        weightQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
+                int count = 0;
+                for(DataSnapshot issue : dataSnapshot.getChildren()){
+                    count++;
 
-                    entries = new ArrayList<>();
+                    float tmp = Integer.parseInt(issue.getValue().toString());
+                    tmp = tmp/1000;
 
-                    max = (int)dataSnapshot.getChildrenCount();
+                    int date = Integer.parseInt(issue.getKey().toString());
+                    int month = (date/1000%10)*10 + (date/100%10);
+                    int day = (date/10%10)*10 + (date%10);
 
-                    if(max<6){
-                        min = 0;
-                    }else{
-                        min = max-6;
-                    }
+                    xValues[count-1] = month +"월 "+ day +"일";
 
-                    for(int i= max ; i>min ;i--){
-                        final int j=i;
-                        //Toast.makeText(getActivity(), dataSnapshot.getValue().toString(), Toast.LENGTH_SHORT).show();
-                        FirebaseDatabase.getInstance().getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid())
-                                .child(catId).child("weight_record").child(String.valueOf(i-1)).child("weight").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                weightList.add(dataSnapshot.getValue().toString());
-                                //Toast.makeText(getActivity(), weightList.get(max-j).toString(), Toast.LENGTH_SHORT).show();
+                    entries.add(new Entry(count, tmp));
+                }
+                LineDataSet lineDataSet = new LineDataSet(entries, "몸무게kg");
+                lineDataSet.setLineWidth(2);
+                lineDataSet.setCircleRadius(3);
+                lineDataSet.setCircleColor(Color.parseColor("#77B3D4"));
+                lineDataSet.setCircleColorHole(Color.BLUE);
+                lineDataSet.setColor(Color.parseColor("#77B3D4"));
+                lineDataSet.setDrawCircleHole(true);
+                lineDataSet.setDrawCircles(true);
+                lineDataSet.setDrawHorizontalHighlightIndicator(false);
+                lineDataSet.setDrawHighlightIndicators(false);
+                lineDataSet.setDrawValues(false);
 
-                                //entries.add(new Entry(max-j+1, Integer.parseInt(dataSnapshot.getValue().toString())));
+                LineData lineData = new LineData(lineDataSet);
+                lineChart.setData(lineData);
 
-                                //Toast.makeText(getActivity(), dataSnapshot.getValue().toString(), Toast.LENGTH_SHORT).show();
-                                //entries.add(new Entry(max-j+1, Integer.parseInt(dataSnapshot.getValue().toString())));
-                                //Toast.makeText(getActivity(), dataSnapshot.getValue().toString(), Toast.LENGTH_SHORT).show();
-                            }
+                XAxis xAxis = lineChart.getXAxis();
+                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                xAxis.setTextColor(Color.BLACK);
+                xAxis.enableGridDashedLine(8, 24, 0);
+                xAxis.setValueFormatter(new MyXAxisValueFormatter(xValues));
 
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
+                YAxis yLAxis = lineChart.getAxisLeft();
+                yLAxis.setTextColor(Color.BLACK);
 
-                            }
-                        });
+                YAxis yRAxis = lineChart.getAxisRight();
+                yRAxis.setDrawLabels(false);
+                yRAxis.setDrawAxisLine(false);
+                yRAxis.setDrawGridLines(false);
 
+                Description description = new Description();
+                description.setText("");
 
-
-                        for(int k= max ; k>min ;k--){
-
-                            entries.add(new Entry(max-k+1, Integer.parseInt(weightList.get(max-k).toString())));
-                        }
-                        //entries.add(new Entry(max-i+1, Integer.parseInt(weightList.get(max-i).toString())));
-                        //entries.add(new Entry(max-i+1, weightList.indexOf(max-i+1)));
-
-                    }
-
-
-
+                lineChart.setDoubleTapToZoomEnabled(false);
+                lineChart.setDrawGridBackground(false);
+                lineChart.setDescription(description);
+                lineChart.animateY(2000, Easing.EasingOption.EaseInCubic);
+                lineChart.invalidate();
 
             }
 
@@ -411,70 +387,6 @@ public class CatHealthFragment extends Fragment {
             }
         });
 
-
         return view;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-
-
-//        for(int i= max ; i>min ;i--){
-//
-//            entries.add(new Entry(max-i+1, Integer.parseInt(weightList.get(max-i).toString())));
-//        }
-//
-//        LineDataSet lineDataSet = new LineDataSet(entries, "몸무게");
-//        lineDataSet.setLineWidth(2);
-//        lineDataSet.setCircleRadius(3);
-//        lineDataSet.setCircleColor(Color.parseColor("#77B3D4"));
-//        lineDataSet.setCircleColorHole(Color.BLUE);
-//        lineDataSet.setColor(Color.parseColor("#77B3D4"));
-//        lineDataSet.setDrawCircleHole(true);
-//        lineDataSet.setDrawCircles(true);
-//        lineDataSet.setDrawHorizontalHighlightIndicator(false);
-//        lineDataSet.setDrawHighlightIndicators(false);
-//        lineDataSet.setDrawValues(false);
-//
-//        LineData lineData = new LineData(lineDataSet);
-//        lineChart.setData(lineData);
-//
-//        XAxis xAxis = lineChart.getXAxis();
-//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-//        xAxis.setTextColor(Color.BLACK);
-//        xAxis.enableGridDashedLine(8, 24, 0);
-//
-//        YAxis yLAxis = lineChart.getAxisLeft();
-//        yLAxis.setTextColor(Color.BLACK);
-//
-//        YAxis yRAxis = lineChart.getAxisRight();
-//        yRAxis.setDrawLabels(false);
-//        yRAxis.setDrawAxisLine(false);
-//        yRAxis.setDrawGridLines(false);
-//
-//        Description description = new Description();
-//        description.setText("");
-//
-//        lineChart.setDoubleTapToZoomEnabled(false);
-//        lineChart.setDrawGridBackground(false);
-//        lineChart.setDescription(description);
-//        lineChart.animateY(2000, Easing.EasingOption.EaseInCubic);
-//        lineChart.invalidate();
-
-
     }
 }

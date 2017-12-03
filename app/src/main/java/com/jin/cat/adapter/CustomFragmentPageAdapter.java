@@ -17,7 +17,7 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
 
     private static final String TAG = CustomFragmentPageAdapter.class.getSimpleName();
 
-    private static final int FRAGMENT_COUNT = 4;
+    private static final int FRAGMENT_COUNT = 3;
 
     public CustomFragmentPageAdapter(FragmentManager fm) {
         super(fm);
@@ -32,8 +32,8 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
                 return new DictionaryFragment();
             case 2:
                 return new KnowledgeFragment();
-            case 3:
-                return new MapFragment();
+//            case 3:
+//                return new MapFragment();
         }
         return null;
     }
@@ -52,8 +52,8 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
                 return "DICTIONARY";
             case 2:
                 return "KNOWLEDGE";
-            case 3:
-                return "MAP";
+//            case 3:
+//                return "MAP";
         }
         return null;
     }

@@ -40,9 +40,6 @@ public class CatFragment extends Fragment {
     private TextView textView3;
 
     private String catId;
-    private Boolean isChecked = false;
-
-
 
     public CatFragment() {
 
@@ -84,6 +81,14 @@ public class CatFragment extends Fragment {
         textView1 = (TextView)view.findViewById(R.id.textView_tap1);
         textView2 = (TextView)view.findViewById(R.id.textView_tap2);
         textView3= (TextView)view.findViewById(R.id.textView_tap3);
+
+
+        Fragment fragment;
+        fragment = new MyCatBasicFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_mycat_tap, fragment);
+        fragmentTransaction.commit();
 
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,7 +139,7 @@ public class CatFragment extends Fragment {
                     viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            isChecked = true;
+                            //isChecked = true;
                             Bundle bundle = new Bundle();
                             bundle.putString("catId", model.getUid());
                             catId = model.getUid();
@@ -214,8 +219,6 @@ public class CatFragment extends Fragment {
 
     public void fragmentTap1(){
 
-        if(isChecked) {
-
             Bundle bundle = new Bundle();
             bundle.putString("catId", catId);
 
@@ -226,12 +229,9 @@ public class CatFragment extends Fragment {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragment_mycat_tap, fragment);
             fragmentTransaction.commit();
-        }
     }
 
     public void fragmentTap2(){
-
-        if(isChecked) {
 
             Bundle bundle = new Bundle();
             bundle.putString("catId", catId);
@@ -243,14 +243,10 @@ public class CatFragment extends Fragment {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragment_mycat_tap, fragment);
             fragmentTransaction.commit();
-
-        }
     }
 
 
     public void fragmentTap3(){
-
-        if(isChecked) {
 
             Bundle bundle = new Bundle();
             bundle.putString("catId", catId);
@@ -262,8 +258,6 @@ public class CatFragment extends Fragment {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragment_mycat_tap, fragment);
             fragmentTransaction.commit();
-
-        }
     }
 
 }
