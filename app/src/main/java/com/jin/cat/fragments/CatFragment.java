@@ -42,6 +42,8 @@ public class CatFragment extends Fragment {
     private String catId;
     private Boolean isChecked = false;
 
+
+
     public CatFragment() {
 
     }

@@ -20,7 +20,7 @@ public class SexActivity extends AppCompatActivity {
     private Intent mFirst;
 
     private String[] countryNames = {"발정", "발정 과정", "교배 적기", "중성화 수술", "임신", "분만"};
-    private int[] countryFlags = {R.drawable.grape, R.drawable.grape,
+    private int[] countryFlags = {R.drawable.asdf, R.drawable.grape,
             R.drawable.grape, R.drawable.grape, R.drawable.grape, R.drawable.grape};
 
     @Override

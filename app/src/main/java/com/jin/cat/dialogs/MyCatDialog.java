@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -131,36 +132,6 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
         mRootView.findViewById(R.id.doneBtn).setOnClickListener(this);
         builder.setView(mRootView);
 
-//        long time = System.currentTimeMillis();
-//        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy");
-//        String nowTime = dayTime.format(new Date(time));
-
-//        final ArrayList<Integer> year = new ArrayList<>();
-//        for(int i=1996;i<Integer.parseInt(nowTime)+1;i++){
-//            year.add(i);
-//        }
-//
-//        final ArrayList<Integer> month = new ArrayList<>();
-//        for(int i=1;i<13;i++){
-//            month.add(i);
-//        }
-//
-//        final ArrayList<Integer> day = new ArrayList<>();
-//        for(int i=1;i<32;i++){
-//            day.add(i);
-//        }
-//
-//        mSpinnerYear = (Spinner)mRootView.findViewById(R.id.spinner_year);
-//        SpinnerAdapter spinnerYearAdapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, year);
-//        mSpinnerYear.setAdapter(spinnerYearAdapter);
-//
-//        mSinnerMonth = (Spinner)mRootView.findViewById(R.id.spinner_month);
-//        SpinnerAdapter spinnerMonthAdapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, month);
-//        mSinnerMonth.setAdapter(spinnerMonthAdapter);
-//
-//        mSinnerDay = (Spinner)mRootView.findViewById(R.id.spinner_day);
-//        SpinnerAdapter spinnerDayAdapter = new ArrayAdapter(getActivity(), R.layout.support_simple_spinner_dropdown_item, day);
-//        mSinnerDay.setAdapter(spinnerDayAdapter);
 
         return builder.create();
     }
@@ -250,6 +221,8 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
                         String strCurMonth = CurMonthFormat.format(date);
                         String strCurDay = CurDayFormat.format(date);
 
+
+
                         FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),myCat.getUid())
                                 .child("weight_record")
                                 .child(strCurYear+strCurMonth+strCurDay)
@@ -309,10 +282,25 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
                 String strCurMonth = CurMonthFormat.format(date);
                 String strCurDay = CurDayFormat.format(date);
 
+//                Query weightQuery = FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),myCat.getUid()).child("weight_record").equalTo(strCurYear+strCurMonth+strCurDay);
+//
+//                if(weightQuery!=null){
+//                    weightQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                            dataSnapshot.getValue()
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(DatabaseError databaseError) {
+//
+//                        }
+//                    });
+//                }
 
-                FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),myCat.getUid())
-                        .child("weight_record").child(strCurYear+strCurMonth+strCurDay)
-                        .setValue(weight);
+//                FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),myCat.getUid())
+//                        .child("weight_record").child(strCurYear+strCurMonth+strCurDay)
+//                        .setValue(weight);
 
                 if(mRadioButtonMale.isChecked())
                     FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),catId)
