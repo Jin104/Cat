@@ -7,8 +7,8 @@
     <TextView
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_117sdp"
-        android:text="고양이를 눌러주세요"
+        android:layout_height="@dimen/_400sdp"
+        android:text="고양이를 선택해주세요"
         android:background="@color/colorGray0"/>
 
 </FrameLayout>

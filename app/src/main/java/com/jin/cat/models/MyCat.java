@@ -14,11 +14,12 @@ public class MyCat {
     private String year;
     private String month;
     private String day;
+    private String weight;
     private String uid;
 
     public MyCat(){}
 
-    public MyCat(String key, String name, String image, String sex, String type, String year, String month, String day, String uid) {
+    public MyCat(String key, String name, String image, String sex, String type, String year, String month, String day, String weight, String uid) {
         this.key = key;
         this.name = name;
         this.image = image;
@@ -27,6 +28,7 @@ public class MyCat {
         this.year = year;
         this.month = month;
         this.day = day;
+        this.weight = weight;
         this.uid = uid;
     }
 
@@ -92,6 +94,14 @@ public class MyCat {
 
     public void setDay(String day) {
         this.day = day;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
     }
 
     public String getUid() {

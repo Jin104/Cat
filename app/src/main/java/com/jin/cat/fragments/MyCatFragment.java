@@ -2,12 +2,14 @@ package com.jin.cat.fragments;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,7 +20,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jin.cat.R;
@@ -147,13 +148,56 @@ public class MyCatFragment extends Fragment {
                             fragmentTransaction.commit();
 
                             Fragment fragment1;
-                            fragment1 = new MyCatInoculationFragment();
+                            fragment1 = new MyCatTodayFragment();
                             fragment1.setArguments(bundle);
                             FragmentManager fragmentManager1 = getFragmentManager();
                             FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
-                            fragmentTransaction1.replace(R.id.fragment_mycat_detail, fragment1);
+                            fragmentTransaction1.replace(R.id.fragment_mycat_tap, fragment1);
                             fragmentTransaction1.commit();
                             //Toast.makeText(getActivity(),model.getName(),Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                        @Override
+                        public boolean onLongClick(View v) {
+
+                            AlertDialog.Builder ab = new AlertDialog.Builder(getContext());
+                            ab.setTitle("주의");
+                            ab.setMessage("삭제하시겠습니까?");
+
+                            ab.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    mDatabase.child(model.getUid()).removeValue();
+
+                                    Fragment fragment;
+                                    fragment = new MyCatBasicFragment();
+                                    FragmentManager fragmentManager = getFragmentManager();
+                                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                    fragmentTransaction.replace(R.id.fragment_mycat_basic, fragment);
+                                    fragmentTransaction.commit();
+
+                                    Fragment fragment1;
+                                    fragment1 = new MyCatBasicFragment();
+                                    FragmentManager fragmentManager1 = getFragmentManager();
+                                    FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
+                                    fragmentTransaction1.replace(R.id.fragment_mycat_tap, fragment1);
+                                    fragmentTransaction1.commit();
+                                }
+                            });
+
+                            ab.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+                            ab.show();
+
+                            return true;
+
+
                         }
                     });
 
@@ -191,11 +235,11 @@ public class MyCatFragment extends Fragment {
             bundle.putString("catId", catId);
 
             Fragment fragment;
-            fragment = new MyCatInoculationFragment();
+            fragment = new MyCatTodayFragment();
             fragment.setArguments(bundle);
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_mycat_detail, fragment);
+            fragmentTransaction.replace(R.id.fragment_mycat_tap, fragment);
             fragmentTransaction.commit();
         }
     }
@@ -208,12 +252,13 @@ public class MyCatFragment extends Fragment {
             bundle.putString("catId", catId);
 
             Fragment fragment;
-            fragment = new MyCatDetailFragment();
+            fragment = new MyCatInoculationFragment();
             fragment.setArguments(bundle);
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_mycat_detail, fragment);
+            fragmentTransaction.replace(R.id.fragment_mycat_tap, fragment);
             fragmentTransaction.commit();
+
         }
     }
 

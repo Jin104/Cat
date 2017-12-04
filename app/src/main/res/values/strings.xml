@@ -12,6 +12,8 @@
     <string name="sound_cloud">Sound Cloud</string>
     <string name="music_library">Library</string>
 
+    <string name="hello">Hello World, NMapViewer!</string>
+    <string name="str_done">완료</string>
 
     <string name="app_name_language">Language</string>
     <string name="app_name_dictionary">Dictionary</string>
@@ -31,17 +33,21 @@
         <item>기타</item>
     </string-array>
 
-    <string-array name="board_array">
-        <item>정보</item>
-        <item>질문</item>
+    <string-array name="type">
+        <item>운동량이 많고 활발한 성묘</item>
+        <item>중성화를 받지 않은 성묘</item>
+        <item>중성화를 받은 성묘(일반)</item>
+        <item>비만 20% 미만 성묘</item>
+        <item>체중 감량이 필요한 성묘</item>
+        <item>고령묘(Senior 7세~)</item>
+        <item>노령묘(Mature 11세~)</item>
+        <item>임신묘</item>
+        <item>수유묘</item>
+        <item>4개월 미만 자묘</item>
+        <item>4~6개월 성장중인 자묘</item>
+        <item>7~12개월 성장중인 자묘</item>
     </string-array>
 
-    <string-array name="board_array2">
-        <item>제목</item>
-        <item>닉네임</item>
-    </string-array>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--<string name="hello_blank_fragment">Hello blank fragment</string>-->
