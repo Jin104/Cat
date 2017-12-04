@@ -82,7 +82,6 @@ public class CatFragment extends Fragment {
         textView2 = (TextView)view.findViewById(R.id.textView_tap2);
         textView3= (TextView)view.findViewById(R.id.textView_tap3);
 
-
         Fragment fragment;
         fragment = new MyCatBasicFragment();
         FragmentManager fragmentManager = getFragmentManager();
@@ -119,6 +118,7 @@ public class CatFragment extends Fragment {
         super.onStart();
 
         if(FirebaseUtils.getCurrentUser() != null) {
+
             FirebaseRecyclerAdapter<MyCat, CatViewHolder> FBRA = new FirebaseRecyclerAdapter<MyCat, CatViewHolder>(
 
                     MyCat.class,

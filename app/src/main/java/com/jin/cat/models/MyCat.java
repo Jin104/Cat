@@ -6,7 +6,6 @@ package com.jin.cat.models;
 
 public class MyCat {
 
-    private String key;
     private String name;
     private String image;
     private String sex;
@@ -19,8 +18,7 @@ public class MyCat {
 
     public MyCat(){}
 
-    public MyCat(String key, String name, String image, String sex, String type, String year, String month, String day, String weight, String uid) {
-        this.key = key;
+    public MyCat(String name, String image, String sex, String type, String year, String month, String day, String weight, String uid) {
         this.name = name;
         this.image = image;
         this.sex = sex;
@@ -30,14 +28,6 @@ public class MyCat {
         this.day = day;
         this.weight = weight;
         this.uid = uid;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
     }
 
     public String getName() {
