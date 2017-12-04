@@ -26,8 +26,11 @@
     <color name="colorGray5">#535353</color>
     <color name="colorGray6">#252525</color>
 
+    <color name="colorGray7">#eaeaea</color>
+
     <!-- DoNotEat -->
     <color name="colorRow">#B0191919</color>
+
 
     <array name="array_dot_active">
         <item>@color/colorBlack</item>
