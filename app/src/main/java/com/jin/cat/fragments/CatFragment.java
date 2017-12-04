@@ -67,6 +67,7 @@ public class CatFragment extends Fragment {
         if(FirebaseUtils.getCurrentUser() != null){
 
             mDatabase = FirebaseDatabase.getInstance().getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid());
+
         }
 
         CircleImageView circleImageView = (CircleImageView)view.findViewById(R.id.add_mycat);
@@ -120,11 +121,10 @@ public class CatFragment extends Fragment {
 
         if(FirebaseUtils.getCurrentUser() != null) {
             FirebaseRecyclerAdapter<MyCat, CatViewHolder> FBRA = new FirebaseRecyclerAdapter<MyCat, CatViewHolder>(
-
                     MyCat.class,
                     R.layout.row_mycat_list,
                     CatViewHolder.class,
-                    mDatabase
+                    FirebaseDatabase.getInstance().getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid())
             ) {
 
                 @Override
