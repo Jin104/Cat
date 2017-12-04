@@ -4,12 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.ListView;
 
 import com.jin.cat.R;
+import com.jin.cat.adapter.CatList1Acdapter;
+import com.jin.cat.adapter.SexAdapter;
 import com.jin.cat.fragments.DictionaryFragment;
 import com.jin.cat.models.Dictionary;
 
@@ -22,88 +28,49 @@ public class DictionaryActivity extends AppCompatActivity {
 
     private Intent intent;
 
+    private ListView mlistView;
+    private Intent mFirst;
+
+    private String[] countryNames = {"장모종", "중모종", "단모종"};
+    private int[] countryFlags = {R.drawable.dictionary_cat3, R.drawable.dictionary_cat2, R.drawable.dictionary_cat1};
+    private String[] count={"17 cats", "5 cats", "32 cats"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dictionary);
 
-        RecyclerView dictionlistRecyclerView = (RecyclerView)findViewById(R.id.dictionary_list_view);
-        LinearLayoutManager linearLayout = new LinearLayoutManager(this);
-        dictionlistRecyclerView.setLayoutManager(linearLayout);
-        dictionlistRecyclerView.setHasFixedSize(true);
-    }
+        setTitle("고양이 사전");
+        mlistView = (ListView) findViewById(R.id.dictionary_list_view);
+        CatList1Acdapter mAdapter = new CatList1Acdapter(DictionaryActivity.this, countryNames, count, countryFlags);
+        //LinearLayoutManager linearLayout = new LinearLayoutManager(DictionaryActivity.this);
+       mlistView.setAdapter(mAdapter);
 
+        intent = new Intent(DictionaryActivity.this, CatListActivity.class);
+        mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-    private List<Dictionary> getDictionaryData(){
-        List<Dictionary> dictionList = new ArrayList<Dictionary>();
-        dictionList.add(new Dictionary(R.drawable.dictionary_cat3,"장모종","17 cats"));
-        dictionList.add(new Dictionary(R.drawable.dictionary_cat2,"중모종", "5 cats"));
-        dictionList.add(new Dictionary(R.drawable.dictionary_cat1,"단모종", "32 cats"));
-        return dictionList;
-    }
+                switch (position){
+                    case 0:
+                        intent.putExtra("contentId", "Long");
+                        intent.putExtra("title","장모종");
+                        break;
 
-    public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryFragment.DictionaryViewHolder>{
+                    case 1:
+                        intent.putExtra("contentId", "Middle");
+                        intent.putExtra("title","중모종");
+                        break;
 
-        private final String TAG = DictionaryFragment.DictionaryAdapter.class.getSimpleName();
-
-        private Context context;
-        private List<Dictionary> dictionLists;
-
-        public DictionaryAdapter(Context context, List<Dictionary> dictionLists) {
-            this.context = context;
-            this.dictionLists = dictionLists;
-        }
-
-
-        public DictionaryAdapter(ViewGroup parent, int viewType) {
-            setContentView(R.layout.row_dictionary);
-        }
-
-
-        @Override
-        public DictionaryFragment.DictionaryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return null;
-        }
-
-        @Override
-        public void onBindViewHolder(DictionaryFragment.DictionaryViewHolder holder, final int position) {
-
-            final Dictionary dictionlistObject = dictionLists.get(position);
-            holder.dictionListCover.setImageResource(dictionlistObject.getDictionaryImage());
-            holder.dictionListTitle.setText(dictionlistObject.getDictionaryTitle());
-            holder.dictionListCount.setText(dictionlistObject.getDictionaryCount());
-
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    switch (valueOf(position)){
-
-                        case 0:
-                            intent.putExtra("contentId", "Long");
-                            intent.putExtra("title","장모종");
-                            break;
-
-                        case 1:
-                            intent.putExtra("contentId", "Middle");
-                            intent.putExtra("title","중모종");
-                            break;
-
-                        case 2:
-                            intent.putExtra("contentId", "Short");
-                            intent.putExtra("title","단모종");
-                            break;
-                    }
-
-                    startActivity(intent);
+                    case 2:
+                        intent.putExtra("contentId", "Short");
+                        intent.putExtra("title","단모종");
+                        break;
+                    default:
+                        break;
                 }
-            });
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return dictionLists.size();
-        }
+                startActivity(intent);
+            }
+        });
     }
 }
