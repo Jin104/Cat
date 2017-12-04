@@ -1,22 +1,237 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorWhite"
-    tools:context="com.jin.cat.fragments.KnowledgeFragment">
+    tools:context="com.jin.cat.fragments.KnowledgeFragment"
+    android:background="@color/colorWhite">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/knowledge_list_view"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/_8sdp"
-        android:paddingBottom="@dimen/_4sdp"
-        android:paddingLeft="@dimen/_4sdp"
-        android:paddingRight="@dimen/_4sdp"
-        android:paddingHorizontal="@dimen/_4sdp"
-        android:paddingVertical="@dimen/_4sdp"
-        android:scrollbars="none" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-</LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/dic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/test"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_130sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/catttt" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:text="고양이 사전"
+                        android:textColor="@color/colorGray5"
+                        android:textSize="@dimen/_18sdp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.54"
+                    android:background="@drawable/test"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_130sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/if_cat_paper_185526" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:text="고양이 행동언어"
+                        android:textColor="@color/colorGray5"
+                        android:textSize="@dimen/_18sdp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/steroids"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.4"
+                    android:background="@drawable/test"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_130sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/steroids" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:text="예방접종"
+                        android:textColor="@color/colorGray5"
+                        android:textSize="@dimen/_18sdp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/food"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.85"
+                    android:background="@drawable/test"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_130sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/animal_feed" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:text="고양이 사료"
+                        android:textColor="@color/colorGray5"
+                        android:textSize="@dimen/_18sdp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/care"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/test"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_130sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/if_cat_laptop_185531" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:text="고양이 관리"
+                        android:textColor="@color/colorGray5"
+                        android:textSize="@dimen/_18sdp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/health"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/test"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_130sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/if_cat_sleep_185528" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:text="고양이 건강"
+                        android:textColor="@color/colorGray5"
+                        android:textSize="@dimen/_18sdp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.13"
+                    android:background="@drawable/test"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_130sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/goods2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:text="용품"
+                        android:textColor="@color/colorGray5"
+                        android:textSize="@dimen/_18sdp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.54"
+                    android:background="@drawable/test"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_130sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:src="@drawable/if_cat_paper_185526" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:text="무엇을넣을까"
+                        android:textColor="@color/colorGray5"
+                        android:textSize="@dimen/_18sdp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

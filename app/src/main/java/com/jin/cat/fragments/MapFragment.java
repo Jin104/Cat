@@ -148,7 +148,7 @@ public class MapFragment extends Fragment {
         mMapContext =  new NMapContext(super.getActivity());
         mMapContext.onCreate();
 
-        mMapLocationManager = new NMapLocationManager(getContext());
+        mMapLocationManager = new NMapLocationManager(getActivity());
         currentPoint = new NGeoPoint(126.922522, 35.183415);
         //mMapLocationManager.setOnLocationChangeListener(new NMapLocationManager.OnLocationChangeListener() {
     }

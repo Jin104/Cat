@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:text="날짜"/>
 
+
         </LinearLayout>
 
         <LinearLayout
@@ -105,7 +106,7 @@
                 android:layout_margin="@dimen/_4sdp"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-               />
+                android:text=""/>
 
 
         </LinearLayout>
@@ -129,6 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="날짜"/>
+
 
         </LinearLayout>
 
@@ -163,7 +165,7 @@
                 android:layout_margin="@dimen/_4sdp"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-                android:text="전염성기관지염(FeBb)"/>
+                android:text="심장사상충(H/W)"/>
 
             <android.support.v7.widget.RecyclerView
                 android:layout_margin="@dimen/_4sdp"
@@ -184,7 +186,7 @@
                 android:layout_margin="@dimen/_4sdp"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-                android:text="고양이AIDS(FIV)"/>
+                android:text="피부병(RW)"/>
 
             <android.support.v7.widget.RecyclerView
                 android:layout_margin="@dimen/_4sdp"
@@ -194,31 +196,10 @@
             </android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
-
-        <LinearLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_margin="@dimen/_4sdp"
-                android:layout_width="@dimen/_100sdp"
-                android:layout_height="wrap_content"
-                android:text="심장사상충(H/W)"/>
-
-            <android.support.v7.widget.RecyclerView
-                android:layout_margin="@dimen/_4sdp"
-                android:id="@+id/recycler7"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </android.support.v7.widget.RecyclerView>
-
-        </LinearLayout>
         <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorGray0"/>
+            android:layout_height="match_parent"/>
+
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton

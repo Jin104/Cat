@@ -18,7 +18,7 @@ public class CareActivity extends AppCompatActivity {
 
     private ListView mListView;
 
-    private String[] countryNames = {"나이대별","일반","용품"};
+    private String[] countryNames = {"나이대별","일반"};
     private int[] countryFlags = {R.drawable.cat1,
             R.drawable.cat2,
             R.drawable.cat3};
@@ -29,8 +29,8 @@ public class CareActivity extends AppCompatActivity {
         setContentView(R.layout.activity_care);
 
         setTitle("관리");
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         final Intent intent = new Intent(this, CareDescActivity.class);
         mListView = (ListView) findViewById(R.id.health_listview);
         CareAdapter myAdapter = new CareAdapter(CareActivity.this, countryNames, countryFlags);
@@ -53,19 +53,11 @@ public class CareActivity extends AppCompatActivity {
                         intent.putExtra("contentId", "General");
                         intent.putExtra("title","일반 관리");
                         break;
-
-                    case 2:
-                        intent.putExtra("contentId", "Goods");
-                        intent.putExtra("title","용품");
-                        break;
                 }
 
                 startActivity(intent);
-
             }
         });
-
-
     }
 
 

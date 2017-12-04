@@ -29,9 +29,6 @@
             android:text="사전"
             android:textSize="@dimen/_10sdp"
             android:textColor="@color/colorBlack"/>
-
     </LinearLayout>
-
-
 
 </LinearLayout>

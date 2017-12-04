@@ -1,0 +1,107 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jin.cat.fragments.BoardFragment">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:fab="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="62dp">
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:prompt="@array/board_array" />
+
+            <!-- <TextView
+                 android:layout_width="100dp"
+                 android:layout_height="wrap_content"
+                 android:layout_alignTop="@+id/spinner"
+                 android:layout_alignParentEnd="true"
+                 android:text="글쓰기"
+                 android:id="@+id/textView7" /> -->
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/spinner"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/board_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/spinner"
+                android:layout_weight="0.76"
+                android:orientation="vertical"></android.support.v7.widget.RecyclerView>
+
+            <com.melnykov.fab.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginBottom="32dp"
+                android:layout_marginEnd="26dp"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/ic_border_color_black_24dp"
+                fab:fab_colorNormal="@color/colorAccent"
+                fab:fab_colorPressed="@color/colorGray5"
+                fab:fab_colorRipple="@color/colorWhite" />
+            <!--android:layout_marginRight="16dp"/>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_weight="0.08"
+                    android:prompt="@array/board_array2" />
+
+                <EditText
+                    android:id="@+id/edit_search"
+                    android:layout_width="132dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.62"
+                    android:gravity="center"
+                    android:background="@android:color/transparent"
+                    android:hint="검색" />
+
+                <ImageButton
+                    android:id="@+id/search_send"
+                    android:layout_width="46dp"
+                    android:layout_height="44dp"
+                    android:layout_marginLeft="@dimen/_3sdp"
+                    android:background="@color/colorGray6"
+                    android:src="@drawable/ic_check_black_24dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>
