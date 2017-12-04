@@ -17,5 +17,4 @@ public class VaccinationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vaccination);
         setTitle("예방접종");
     }
-
 }

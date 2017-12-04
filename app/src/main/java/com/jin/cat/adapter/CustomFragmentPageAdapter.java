@@ -5,13 +5,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.jin.cat.fragments.Blank1Fragment;
-import com.jin.cat.fragments.BlankFragment;
 import com.jin.cat.fragments.CatFragment;
 import com.jin.cat.fragments.DictionaryFragment;
 import com.jin.cat.fragments.KnowledgeFragment;
 import com.jin.cat.fragments.MapFragment;
-import com.jin.cat.fragments.MyCatFragment;
 
 public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
 
