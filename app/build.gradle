@@ -25,6 +25,7 @@ ext {
 }
 
 dependencies {
+    compile 'com.melnykov:floatingactionbutton:1.3.0'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -49,6 +50,9 @@ dependencies {
 
     //Map
     //Add Library
+
+    //floating action button
+   // compile 'com.melnykov:floatingactionbutton:1.3.0'
 
     compile 'com.naver.maps.open:naver-map-api:2.1.2@aar'
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
