@@ -3,6 +3,7 @@ package com.jin.cat.Knowledge.Food;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -40,7 +41,8 @@ public class FoodActivity extends AppCompatActivity {
         welcomeTwoIntent = new Intent(FoodActivity.this, WelcomeActivity_Two.class);
         twoIntent = new Intent(FoodActivity.this, FoodTwoActivity.class);
 
-        setTitle("Food");
+        setTitle("사료");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mListView = (ListView) findViewById(R.id.listView2);
         LanguageAdapter myAdapter = new LanguageAdapter(FoodActivity.this, countryNames, countryFlags);
@@ -68,5 +70,15 @@ public class FoodActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

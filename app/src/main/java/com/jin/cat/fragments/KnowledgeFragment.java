@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import com.jin.cat.Knowledge.Food.FoodActivity;
 import com.jin.cat.R;
 import com.jin.cat.activities.CareActivity;
-import com.jin.cat.activities.DictionaryActivity;
 import com.jin.cat.activities.HealthActivity;
 import com.jin.cat.activities.LanguageActivity;
 
@@ -48,7 +47,7 @@ public class KnowledgeFragment extends Fragment {
         dic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), DictionaryActivity.class));
+                //startActivity(new Intent(getActivity(), DictionaryFragment.class));
                 //이거를 fragment에서 activity로 해야되는데 하하하
             }
         });
