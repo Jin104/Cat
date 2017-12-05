@@ -12,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -40,6 +41,8 @@ public class CatFragment extends Fragment {
     private TextView textView3;
 
     private String catId;
+
+    private Boolean mIsClicked = false;
 
     public CatFragment() {
 
@@ -90,26 +93,7 @@ public class CatFragment extends Fragment {
         fragmentTransaction.replace(R.id.fragment_mycat_tap, fragment);
         fragmentTransaction.commit();
 
-        textView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fragmentTap1();
-            }
-        });
 
-        textView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fragmentTap2();
-            }
-        });
-
-        textView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fragmentTap3();
-            }
-        });
         return view;
     }
 
@@ -139,7 +123,6 @@ public class CatFragment extends Fragment {
                     viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            //isChecked = true;
                             Bundle bundle = new Bundle();
                             bundle.putString("catId", model.getUid());
                             catId = model.getUid();
@@ -151,7 +134,27 @@ public class CatFragment extends Fragment {
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.fragment_mycat_tap, fragment);
                             fragmentTransaction.commit();
-                            //Toast.makeText(getActivity(),model.getName(),Toast.LENGTH_SHORT).show();
+
+                            textView1.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    fragmentTap1();
+                                }
+                            });
+
+                            textView2.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    fragmentTap2();
+                                }
+                            });
+
+                            textView3.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    fragmentTap3();
+                                }
+                            });
                         }
                     });
 
