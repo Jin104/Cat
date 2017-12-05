@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class DiseaseActivity extends AppCompatActivity {
+public class AgeCareActivity extends AppCompatActivity {
 
     private ExpandableListView expandableListView;
 
@@ -46,7 +46,7 @@ public class DiseaseActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference("Knowledge").child("Health").child(contentId);
+        reference = database.getReference("Knowledge").child("Care").child(contentId);
 
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView2);
         expandableListDetail = new HashMap<String, List<String>>();

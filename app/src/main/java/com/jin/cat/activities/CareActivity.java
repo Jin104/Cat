@@ -11,30 +11,29 @@ import android.widget.ListView;
 import com.jin.cat.R;
 import com.jin.cat.adapter.CareAdapter;
 
-import static java.lang.Integer.valueOf;
-
+/**
+ * Created by inhye on 2017-12-06.
+ */
 
 public class CareActivity extends AppCompatActivity {
 
     private ListView mListView;
 
-    private String[] countryNames = {"나이대별","일반"};
-    private int[] countryFlags = {R.drawable.cat1,
-            R.drawable.cat2,
-            R.drawable.cat3};
+    private String[] countryNames = {"나이","일반"};
+    private int[] countryFlags = {R.drawable.cat, R.drawable.cat2};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_care);
+        setContentView(R.layout.activity_health);
 
         setTitle("관리");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final Intent intent = new Intent(this, CareDescActivity.class);
         mListView = (ListView) findViewById(R.id.health_listview);
+        //HealthAdapter myAdapter = new HealthAdapter(CareActivity.this, countryNames, countryFlags);
         CareAdapter myAdapter = new CareAdapter(CareActivity.this, countryNames, countryFlags);
-
         mListView.setAdapter(myAdapter);
 
 
@@ -42,24 +41,23 @@ public class CareActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                switch (valueOf(position)){
-
+                switch (position){
                     case 0:
-                        intent.putExtra("contentId", "Age");
-                        intent.putExtra("title","나이대별 고양이 관리");
+                        Intent intent1 = new Intent(CareActivity.this, AgeCareActivity.class);
+                        intent1.putExtra("contentId", "Age");
+                        intent1.putExtra("title","Age");
+                        startActivity(intent1);
                         break;
-
                     case 1:
-                        intent.putExtra("contentId", "General");
-                        intent.putExtra("title","일반 관리");
+                        Intent intent2 = new Intent(CareActivity.this, GeneralCareActivity.class);
+                        intent2.putExtra("contentId", "General");
+                        intent2.putExtra("title","General");
+                        startActivity(intent2);
                         break;
                 }
-
-                startActivity(intent);
             }
         });
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

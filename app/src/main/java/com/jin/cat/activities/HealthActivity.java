@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.jin.cat.Knowledge.Food.Health.HealthOneActivity;
 import com.jin.cat.R;
 import com.jin.cat.adapter.HealthAdapter;
 
@@ -21,9 +20,8 @@ public class HealthActivity extends AppCompatActivity {
 
     private ListView mListView;
 
-    private String[] countryNames = {"응급처치","병"};
-    private int[] countryFlags = {R.drawable.cat,
-            R.drawable.cat2};
+    private String[] countryNames = {"예방접종","병"};
+    private int[] countryFlags = {R.drawable.cat, R.drawable.cat2};
 
 
     @Override
@@ -45,15 +43,17 @@ public class HealthActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 switch (position){
-
                     case 0:
-                        startActivity(new Intent(HealthActivity.this, HealthOneActivity.class));
+                        Intent intent1 = new Intent(HealthActivity.this, VaccinationActivity.class);
+                        startActivity(intent1);
                         break;
                     case 1:
-                        startActivity(new Intent(HealthActivity.this, DiseaseActivity.class));
+                        Intent intent2 = new Intent(HealthActivity.this, DiseaseActivity.class);
+                        intent2.putExtra("contentId", "병");
+                        intent2.putExtra("title","병");
+                        startActivity(intent2);
                         break;
                 }
-
             }
         });
     }

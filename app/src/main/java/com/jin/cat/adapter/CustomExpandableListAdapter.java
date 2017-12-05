@@ -1,4 +1,4 @@
-package com.jin.cat.Knowledge.Food.Health;
+package com.jin.cat.adapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
