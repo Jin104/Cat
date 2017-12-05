@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jin.cat.R;
+import com.jin.cat.activities.PostCreateActivity;
 import com.melnykov.fab.FloatingActionButton;
 
 /**
@@ -37,7 +38,7 @@ public class BoardFragment extends Fragment {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(getActivity(), PostCreateActivity.class));
+                startActivity(new Intent(getActivity(), PostCreateActivity.class));
             }
         });
         return view;

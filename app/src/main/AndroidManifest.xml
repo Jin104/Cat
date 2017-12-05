@@ -58,7 +58,8 @@
         <activity android:name=".Knowledge.Food.Health.HealthOneActivity" />
         <activity android:name=".activities.VaccinationActivity" />
         <activity android:name=".activities.DiseaseActivity" />
-        <activity android:name=".activities.DictionaryActivity"></activity>
+        <activity android:name=".activities.DictionaryActivity" />
+        <activity android:name=".activities.PostCreateActivity"></activity>
     </application>
 
 </manifest>
