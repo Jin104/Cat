@@ -11,8 +11,10 @@ import android.widget.LinearLayout;
 import com.jin.cat.Knowledge.Food.FoodActivity;
 import com.jin.cat.R;
 import com.jin.cat.activities.CareActivity;
+import com.jin.cat.activities.GoodsActivity;
 import com.jin.cat.activities.HealthActivity;
 import com.jin.cat.activities.LanguageActivity;
+import com.jin.cat.activities.VaccinationActivity;
 
 /**
  * Created by rakha on 2017-10-21.
@@ -26,6 +28,7 @@ public class KnowledgeFragment extends Fragment {
     private LinearLayout food;
     private LinearLayout care;
     private LinearLayout health;
+    private LinearLayout goods;
 
     public KnowledgeFragment() {
     }
@@ -62,13 +65,13 @@ public class KnowledgeFragment extends Fragment {
         });
 
 //        //예방접종
-//        steroids = (LinearLayout)view.findViewById(R.id.standard);
-//        steroids.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getActivity(), VaccinationActivity.class));
-//            }
-//        });
+        steroids = (LinearLayout)view.findViewById(R.id.steroids);
+        steroids.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), VaccinationActivity.class));
+            }
+        });
 
 
 
@@ -98,6 +101,16 @@ public class KnowledgeFragment extends Fragment {
                 startActivity(new Intent(getActivity(), HealthActivity.class));
             }
         });
+
+        //용품
+        goods = (LinearLayout)view.findViewById(R.id.goods);
+        goods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), GoodsActivity.class));
+            }
+        });
+
 
 
         return view;

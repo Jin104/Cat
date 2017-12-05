@@ -59,6 +59,7 @@
         <activity android:name=".activities.VaccinationActivity" />
         <activity android:name=".activities.DiseaseActivity" />
         <activity android:name=".activities.DictionaryActivity"></activity>
+        <activity android:name=".activities.GoodsActivity" />
     </application>
 
 </manifest>
