@@ -15,11 +15,18 @@ import com.jin.cat.Knowledge.Food.IntroSlider.WelcomeActivity;
 import com.jin.cat.R;
 import com.jin.cat.adapter.LanguageAdapter;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FoodOneActivity extends AppCompatActivity {
 
+    private String CLIENT_ID="h0jOnpEEU05opv5JOxw9";//애플리케이션 클라이언트 아이디값";
+    private String CLIENT_SECRET = "gq56_i7NEP";//애플리케이션 클라이언트 시크릿값";
     private ListView mListView;
 
     private String[] countryNames = {"먹이1", "먹이2", "먹이3"};
@@ -68,14 +75,18 @@ public class FoodOneActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (checkFirst.isChecked() && !(checkSecond.isChecked())) {
-                    for (String name : countryNames) {
-                        names.add(name);
-                    }
+//                    for (String name : countryNames) {
+//                        names.add(name);
+//                    }
+//                    ShoppingApi();
+//                    for (int flag : countryFlags) {
+//                        flags.add(flag);
+//                    }
 
-                    for (int flag : countryFlags) {
-                        flags.add(flag);
-                    }
-                } else if (checkFirst.isChecked() && (checkSecond.isChecked())) {
+                    ShoppingApi();
+                }
+
+                else if (checkFirst.isChecked() && (checkSecond.isChecked())) {
                     List<String> removeNames = new ArrayList<String>();
                     List<Integer> removeFlags = new ArrayList<Integer>();
 
@@ -127,7 +138,8 @@ public class FoodOneActivity extends AppCompatActivity {
                     for (int flag : countryFlags2) {
                         flags.add(flag);
                     }
-                } else {
+                }
+                else {
                     List<String> removeNames = new ArrayList<String>();
                     List<Integer> removeFlags = new ArrayList<Integer>();
 
@@ -148,15 +160,16 @@ public class FoodOneActivity extends AppCompatActivity {
                     for (Integer removeFlag : removeFlags) {
                         flags.remove(removeFlag);
                     }
-
-
                 }
+
                 String[] nameList = new String[names.size()];
                 System.arraycopy(names.toArray(), 0, nameList, 0, nameList.length);
 
                 int[] flagList = new int[names.size()];
                 int index = 0;
-                for (int val : flags) {
+
+                for (int val : flags)
+                {
                     flagList[index++] = val;
                 }
                 //리스트 정렬 (names 랑 flags 동시에 )
@@ -211,6 +224,7 @@ public class FoodOneActivity extends AppCompatActivity {
                             }
                         }
                     }
+
                     for (String removeName : removeNames) {
                         names.remove(removeName);
                     }
@@ -294,4 +308,37 @@ public class FoodOneActivity extends AppCompatActivity {
         }
         mListView.setAdapter(new LanguageAdapter(FoodOneActivity.this, nameList, flagList));
     }
+
+    public void ShoppingApi()
+    {
+            try {
+            String text = URLEncoder.encode("고양이사료", "UTF-8");
+            //String apiURL = "https://openapi.naver.com/v1/search/shop.json?query="+ text+ "display=10" + "&start=1"; // json 결과
+            String apiURL = "https://openapi.naver.com/v1/search/shop.xml?query="+ text + "display=10" + "&start=1"; // xml 결과
+            URL url = new URL(apiURL);
+            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("X-Naver-Client-Id", CLIENT_ID);
+            con.setRequestProperty("X-Naver-Client-Secret", CLIENT_SECRET);
+            int responseCode = con.getResponseCode();
+            BufferedReader br;
+            if(responseCode==200) { // 정상 호출
+                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            } else {  // 에러 발생
+                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+            }
+            String inputLine;
+//            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = br.readLine()) != null) {
+//                response.append(inputLine);
+                names.add(inputLine);
+            }
+            br.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
 }

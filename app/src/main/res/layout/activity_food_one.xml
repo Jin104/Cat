@@ -30,7 +30,7 @@
                     android:layout_width="74dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:text="first" />
+                    android:text="오가닉" />
 
                 <CheckBox
                     android:id="@+id/checkBox2"
