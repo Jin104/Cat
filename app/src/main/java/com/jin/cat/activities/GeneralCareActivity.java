@@ -1,40 +1,42 @@
 package com.jin.cat.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.jin.cat.adapter.ExpandableListAdapter;
 import com.jin.cat.R;
+import com.jin.cat.adapter.CustomExpandableListAdapter;
 import com.jin.cat.models.ExpandableList;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class CareDescActivity extends AppCompatActivity {
+public class GeneralCareActivity extends AppCompatActivity {
 
-    private RecyclerView list;
-    private RecyclerView.LayoutManager layoutManager;
+    private ExpandableListView expandableListView;
+
+    private ExpandableListAdapter expandableListAdapter;
+    private List<String> expandableListTitle;
+    private HashMap<String, List<String> > expandableListDetail;
+
     private List<ExpandableList> result = new ArrayList<>();
-    private ExpandableListAdapter adapter;
 
     private FirebaseDatabase database;
     private DatabaseReference reference;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_care_desc);
+        setContentView(R.layout.activity_general_care);
 
         Intent intent = getIntent();
         String contentId = intent.getExtras().getString("contentId");
@@ -46,43 +48,36 @@ public class CareDescActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Knowledge").child("Care").child(contentId);
 
-        list = (RecyclerView)findViewById(R.id.recycler);
-        list.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        list.setLayoutManager(layoutManager);
+        expandableListView = (ExpandableListView) findViewById(R.id.expandableListView3);
+        expandableListDetail = new HashMap<String, List<String>>();
+        expandableListTitle = new ArrayList<String>();
 
-        adapter = new ExpandableListAdapter(result);
-        list.setAdapter(adapter);
         updateList();
+
+        expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
+        expandableListView.setAdapter(expandableListAdapter);
     }
 
     private void updateList() {
-
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                result.add(dataSnapshot.getValue(ExpandableList.class));
-                adapter.notifyDataSetChanged();
+                ExpandableList item = dataSnapshot.getValue(ExpandableList.class);
+                expandableListTitle.add(item.getTitle());
+
+                List<String> list = new ArrayList<String>();
+                list.add(item.getDesc());
+                expandableListDetail.put(item.getTitle(), list);
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                ExpandableList item = dataSnapshot.getValue(ExpandableList.class);
 
-                int index = getItemIndex(item);
-
-                result.set(index, item);
-                adapter.notifyItemChanged(index);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-                ExpandableList item = dataSnapshot.getValue(ExpandableList.class);
 
-                int index = getItemIndex(item);
-
-                result.remove(index);
-                adapter.notifyItemRemoved(index);
             }
 
             @Override
@@ -97,19 +92,6 @@ public class CareDescActivity extends AppCompatActivity {
         });
     }
 
-    private int getItemIndex(ExpandableList item) {
-
-        int index = -1;
-
-        for (int i = 0; i < result.size(); i++) {
-            if (result.get(i).getKey().equals(item.getKey())) {
-                index = i;
-                break;
-            }
-        }
-        return index;
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -118,16 +100,5 @@ public class CareDescActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public boolean onContextItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case 0:
-                break;
-            case 1:
-                break;
-        }
-        return super.onContextItemSelected(item);
     }
 }

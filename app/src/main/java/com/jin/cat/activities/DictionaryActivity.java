@@ -1,28 +1,15 @@
 package com.jin.cat.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.ListView;
 
 import com.jin.cat.R;
 import com.jin.cat.adapter.CatList1Acdapter;
-import com.jin.cat.adapter.SexAdapter;
-import com.jin.cat.fragments.DictionaryFragment;
-import com.jin.cat.models.Dictionary;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.lang.Integer.valueOf;
 
 public class DictionaryActivity extends AppCompatActivity {
 
@@ -41,6 +28,8 @@ public class DictionaryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dictionary);
 
         setTitle("고양이 사전");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mlistView = (ListView) findViewById(R.id.dictionary_list_view);
         CatList1Acdapter mAdapter = new CatList1Acdapter(DictionaryActivity.this, countryNames, count, countryFlags);
         //LinearLayoutManager linearLayout = new LinearLayoutManager(DictionaryActivity.this);
@@ -72,5 +61,15 @@ public class DictionaryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
