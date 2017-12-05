@@ -315,17 +315,17 @@ public class CatHealthFragment extends Fragment {
         lineChart = (LineChart)view.findViewById(R.id.chart);
 
         final List<Entry> entries = new ArrayList<>();
-        final String[] xValues;
-
-        xValues = new String[5];
 
         Query weightQuery = FirebaseDatabase.getInstance().getReference("User_Cat").child(FirebaseUtils.getCurrentUser().getUid())
                 .child(catId).child("weight_record").orderByKey().limitToLast(5);
 
+
         weightQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                int queryMax = (int) dataSnapshot.getChildrenCount();
 
+                String[] xValues = new String[queryMax];
                 int count = 0;
                 for(DataSnapshot issue : dataSnapshot.getChildren()){
                     count++;
@@ -376,7 +376,7 @@ public class CatHealthFragment extends Fragment {
                 lineChart.setDoubleTapToZoomEnabled(false);
                 lineChart.setDrawGridBackground(false);
                 lineChart.setDescription(description);
-                lineChart.animateY(2000, Easing.EasingOption.EaseInCubic);
+                lineChart.animateY(1500, Easing.EasingOption.EaseInCubic);
                 lineChart.invalidate();
 
             }

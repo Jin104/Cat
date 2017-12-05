@@ -36,6 +36,7 @@ import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import static android.app.Activity.RESULT_OK;
@@ -254,6 +255,23 @@ public class MyCatDialog extends DialogFragment implements View.OnClickListener{
                                 .child("weight_record")
                                 .child(strCurYear+strCurMonth+strCurDay)
                                 .setValue(weight);
+
+                        Calendar cDateCal = Calendar.getInstance();
+                        cDateCal.add(Calendar.DATE, -1);
+                        String yesYear = String.valueOf(cDateCal.get(Calendar.YEAR));
+                        String yesMonth = String.valueOf(cDateCal.get(Calendar.MONTH)+1);
+                        String yesDay = String.valueOf(cDateCal.get(Calendar.DATE));
+                        if(yesMonth.length()<2){
+                            yesMonth = "0"+yesMonth;
+                        }
+                        if(yesDay.length()<2){
+                            yesDay = "0"+yesDay;
+                        }
+
+                        FirebaseUtils.getMyCatRef(FirebaseUtils.getCurrentUser().getUid(),myCat.getUid())
+                                .child("weight_record")
+                                .child(yesYear+yesMonth+yesDay)
+                                .setValue(0);
                     }
                 });
 
