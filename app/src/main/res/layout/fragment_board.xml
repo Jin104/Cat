@@ -50,6 +50,20 @@
                 android:textColor="@color/colorWhite"
                 android:background="@color/colorGray4"/>
 
+            <View
+                android:layout_weight="1"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="match_parent"/>
+
+            <ImageButton
+                android:id="@+id/board_search"
+                android:layout_margin="@dimen/_2sdp"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:src="@drawable/icon_search"
+                android:textColor="@color/colorWhite"
+                android:background="@color/colorGray5"/>
+
         </LinearLayout>
 
         <View
