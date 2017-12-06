@@ -6,7 +6,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
-    tools:context="com.jin.cat.Knowledge.Food.Health.HealthOneActivity">
+    tools:context="com.jin.cat.activities.FirstAidActivity">
 
     <ExpandableListView
         android:id="@+id/expandableListView"

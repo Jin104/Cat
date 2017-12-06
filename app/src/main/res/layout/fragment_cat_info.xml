@@ -19,8 +19,7 @@
             android:layout_margin="@dimen/_5sdp"
             android:scaleType="fitCenter"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_130sdp"
-            android:src="@drawable/cat2"/>
+            android:layout_height="@dimen/_130sdp"/>
 
         <View
             android:layout_width="match_parent"
@@ -51,7 +50,6 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="콩이"
                 android:textSize="@dimen/_13sdp"/>
         </LinearLayout>
 
@@ -89,7 +87,6 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="수컷"
                 android:id="@+id/textView_catSex"
                 android:textSize="@dimen/_13sdp"/>
         </LinearLayout>
@@ -129,7 +126,6 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2017. 10. 4"
                 android:textSize="@dimen/_13sdp"/>
         </LinearLayout>
 
@@ -174,7 +170,6 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="28개월"
                 android:textSize="@dimen/_13sdp"/>
 
                 <TextView
@@ -186,7 +181,6 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="사람나이로 2세"
                     android:textSize="@dimen/_13sdp"/>
             </LinearLayout>
 
@@ -239,7 +233,6 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="먼치킨"
                 android:textSize="@dimen/_13sdp"/>
         </LinearLayout>
 
@@ -279,7 +272,6 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="40.5"
                 android:textSize="@dimen/_13sdp"/>
         </LinearLayout>
 

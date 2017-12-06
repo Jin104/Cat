@@ -11,8 +11,12 @@ import android.widget.LinearLayout;
 import com.jin.cat.Knowledge.Food.FoodActivity;
 import com.jin.cat.R;
 import com.jin.cat.activities.CareActivity;
-import com.jin.cat.activities.HealthActivity;
+import com.jin.cat.activities.DictionaryActivity;
+import com.jin.cat.activities.DiseaseActivity;
+import com.jin.cat.activities.FirstAidActivity;
+import com.jin.cat.activities.GoodsActivity;
 import com.jin.cat.activities.LanguageActivity;
+import com.jin.cat.activities.VaccinationActivity;
 
 /**
  * Created by rakha on 2017-10-21.
@@ -25,7 +29,9 @@ public class KnowledgeFragment extends Fragment {
     private LinearLayout steroids;
     private LinearLayout food;
     private LinearLayout care;
-    private LinearLayout health;
+    private LinearLayout goods;
+    private LinearLayout firstaid;
+    private LinearLayout virus;
 
     public KnowledgeFragment() {
     }
@@ -47,8 +53,7 @@ public class KnowledgeFragment extends Fragment {
         dic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(getActivity(), DictionaryFragment.class));
-                //이거를 fragment에서 activity로 해야되는데 하하하
+                startActivity(new Intent(getActivity(), DictionaryActivity.class));
             }
         });
 
@@ -61,16 +66,18 @@ public class KnowledgeFragment extends Fragment {
             }
         });
 
-//        //예방접종
-//        steroids = (LinearLayout)view.findViewById(R.id.standard);
-//        steroids.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getActivity(), VaccinationActivity.class));
-//            }
-//        });
-
-
+        //응급처치
+        firstaid = (LinearLayout)view.findViewById(R.id.firstaid);
+        firstaid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getActivity(), FirstAidActivity.class);
+                intent1.putExtra("contentId", "응급처치");
+                intent1.putExtra("title","응급처치");
+                startActivity(intent1);
+                //startActivity(new Intent(getActivity(), VaccinationActivity.class));
+            }
+        });
 
         //사료
         food = (LinearLayout)view.findViewById(R.id.food);
@@ -90,15 +97,37 @@ public class KnowledgeFragment extends Fragment {
             }
         });
 
-        //건강
-        health = (LinearLayout)view.findViewById(R.id.health);
-        health.setOnClickListener(new View.OnClickListener() {
+        //예방접종
+        steroids = (LinearLayout)view.findViewById(R.id.steroids);
+        steroids.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), HealthActivity.class));
+                startActivity(new Intent(getActivity(), VaccinationActivity.class));
             }
         });
 
+        //용품
+        goods = (LinearLayout)view.findViewById(R.id.goods);
+        goods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), GoodsActivity.class));
+            }
+        });
+
+        //병
+        virus = (LinearLayout)view.findViewById(R.id.virus);
+        virus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent2 = new Intent(getActivity(), DiseaseActivity.class);
+                intent2.putExtra("contentId", "병");
+                intent2.putExtra("title","병");
+                startActivity(intent2);
+                //startActivity(new Intent(getActivity(), GoodsActivity.class));
+            }
+        });
 
         return view;
     }

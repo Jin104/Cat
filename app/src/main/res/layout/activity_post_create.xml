@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jin.cat.activities.PostCreateActivity">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorGray2"/>
+    <LinearLayout
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:layout_marginRight="@dimen/_4sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textSize="@dimen/_12sdp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="wrap_content"
+            android:text="카테고리"/>
+
+        <Spinner
+            android:id="@+id/post_create_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Spinner>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorGray2"/>
+    <LinearLayout
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:layout_marginRight="@dimen/_4sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textSize="@dimen/_12sdp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="wrap_content"
+            android:text="제목"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_post_title"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorGray2"/>
+
+    <ScrollView
+        android:background="@drawable/white"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:layout_margin="@dimen/_4sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_post_desc"
+                android:hint="내용을 입력하세요..."
+                android:background="@null"/>
+
+            <ImageView
+                android:layout_marginTop="@dimen/_5sdp"
+                android:id="@+id/post_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/colorBlack"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/post_image_add"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:src="@drawable/add_image1"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/post_upload"
+            android:layout_margin="@dimen/_3sdp"
+            android:background="@drawable/uploadshape"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:text="Upload"/>
+
+        <!--<Button-->
+        <!--android:id="@+id/board_all"-->
+        <!--android:layout_margin="@dimen/_2sdp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="@dimen/_25sdp"-->
+        <!--android:text="Upload"-->
+        <!--android:background="@color/colorGray5"/>-->
+
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:background="@color/colorGray1">-->
+
+    <!--<ImageButton-->
+    <!--android:layout_width="48dp"-->
+    <!--android:layout_height="48dp"-->
+    <!--android:layout_marginLeft="@dimen/_7sdp"-->
+    <!--android:layout_marginTop="@dimen/_5sdp"-->
+    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+    <!--android:background="@color/colorGray1"-->
+    <!--android:src="@drawable/ic_close_black_24dp" />-->
+    <!--<ImageButton-->
+    <!--android:layout_width="48dp"-->
+    <!--android:layout_height="48dp"-->
+    <!--android:layout_marginTop="@dimen/_5sdp"-->
+    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+    <!--android:layout_marginRight="@dimen/_5sdp"-->
+    <!--android:layout_marginLeft="200dp"-->
+    <!--android:background="@color/colorGray1"-->
+    <!--android:src="@drawable/ic_image_black_24dp" />-->
+
+    <!--<Button-->
+    <!--android:layout_width="70dp"-->
+    <!--android:layout_height="48dp"-->
+    <!--android:background="@drawable/dictab_hair_btn"-->
+    <!--android:layout_marginTop="@dimen/_5sdp"-->
+    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+    <!--android:text="작성" />-->
+    <!--</LinearLayout>-->
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1px"-->
+    <!--android:background="@color/colorGray" />-->
+    <!--<Spinner-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:prompt="@array/board_array2">-->
+    <!--</Spinner>-->
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1px"-->
+    <!--android:background="@color/colorGray" />-->
+
+    <!--<EditText-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="@dimen/_5sdp"-->
+    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+    <!--android:layout_marginLeft="@dimen/_7sdp"-->
+    <!--android:layout_marginRight="@dimen/_5sdp"-->
+    <!--android:background="@android:color/transparent"-->
+    <!--android:textColor="@color/colorGray4"-->
+    <!--android:text="제목"/>-->
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1px"-->
+    <!--android:background="@color/colorGray" />-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<EditText-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@android:color/transparent"-->
+    <!--android:layout_marginTop="@dimen/_5sdp"-->
+    <!--android:layout_marginBottom="@dimen/_5sdp"-->
+    <!--android:layout_marginLeft="@dimen/_7sdp"-->
+    <!--android:layout_marginRight="@dimen/_5sdp"-->
+    <!--android:textColor="@color/colorGray4"-->
+    <!--android:text="내용"/>-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:src="@drawable/cat" />-->
+
+    <!--</LinearLayout>-->
+
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@color/colorWhite"
+            android:src="@drawable/ic_image_black_24dp" />
+    </LinearLayout>-->
+
+
+</LinearLayout>

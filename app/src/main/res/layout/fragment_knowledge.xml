@@ -75,7 +75,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/steroids"
+                    android:id="@+id/firstaid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2.4"
@@ -86,14 +86,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_130sdp"
                         android:padding="@dimen/_10sdp"
-                        android:src="@drawable/steroids" />
+                        android:src="@drawable/firstaid" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="@dimen/_10sdp"
-                        android:text="예방접종"
+                        android:text="응급처치"
                         android:textColor="@color/colorGray5"
                         android:textSize="@dimen/_18sdp" />
                 </LinearLayout>
@@ -133,7 +133,7 @@
                     android:id="@+id/care"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.78"
                     android:background="@drawable/test"
                     android:orientation="vertical">
 
@@ -154,7 +154,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/health"
+                    android:id="@+id/steroids"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -165,14 +165,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_130sdp"
                         android:padding="@dimen/_10sdp"
-                        android:src="@drawable/if_cat_sleep_185528" />
+                        android:src="@drawable/steroids" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="@dimen/_10sdp"
-                        android:text="고양이 건강"
+                        android:text="예방접종"
                         android:textColor="@color/colorGray5"
                         android:textSize="@dimen/_18sdp" />
                 </LinearLayout>
@@ -186,9 +186,10 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/goods"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.13"
+                    android:layout_weight="0.47"
                     android:background="@drawable/test"
                     android:orientation="vertical">
 
@@ -196,7 +197,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_130sdp"
                         android:padding="@dimen/_10sdp"
-                        android:src="@drawable/goods" />
+                        android:src="@drawable/goods2" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -209,6 +210,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/virus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.54"
@@ -219,14 +221,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_130sdp"
                         android:padding="@dimen/_10sdp"
-                        android:src="@drawable/if_cat_paper_185526" />
+                        android:src="@drawable/virus" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="@dimen/_10sdp"
-                        android:text="무엇을넣을까"
+                        android:text="병"
                         android:textColor="@color/colorGray5"
                         android:textSize="@dimen/_18sdp" />
                 </LinearLayout>
