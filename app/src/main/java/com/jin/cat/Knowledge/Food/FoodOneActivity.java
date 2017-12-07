@@ -159,7 +159,6 @@ public class FoodOneActivity extends AppCompatActivity {
                 for (int val : flags) {
                     flagList[index++] = val;
                 }
-                //리스트 정렬 (names 랑 flags 동시에 )
 
                 mListView = (ListView) findViewById(R.id.listView6);
                 mListView.setAdapter(new LanguageAdapter(FoodOneActivity.this, nameList, flagList));
@@ -294,4 +293,6 @@ public class FoodOneActivity extends AppCompatActivity {
         }
         mListView.setAdapter(new LanguageAdapter(FoodOneActivity.this, nameList, flagList));
     }
+
+
 }

@@ -16,17 +16,15 @@ import com.jin.cat.R;
  * Created by Jin on 2017-12-04.
  */
 
-public class CatList1Acdapter extends ArrayAdapter<String> {
+public class KnowledgeAdapter extends ArrayAdapter<String> {
 
     private String[] names;
-    private String[] count;
     private int[] flags;
     private Context mContext;
 
-    public CatList1Acdapter(Context context, String[] countryNames, String[] counts, int[] countryFlags) {
-        super(context, R.layout.row_dictionary);
+    public KnowledgeAdapter(Context context, String[] countryNames, int[] countryFlags) {
+        super(context, R.layout.row_knowledge);
         this.names = countryNames;
-        this.count=counts;
         this.flags = countryFlags;
         this.mContext = context;
     }
@@ -38,27 +36,24 @@ public class CatList1Acdapter extends ArrayAdapter<String> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        CatList1Acdapter.ViewHolder mViewHolder = new CatList1Acdapter.ViewHolder();
+        KnowledgeAdapter.ViewHolder mViewHolder = new KnowledgeAdapter.ViewHolder();
         if(convertView==null) {
             LayoutInflater mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.row_dictionary, parent, false);
-            mViewHolder.mFlag = (ImageView)convertView.findViewById(R.id.dictionary_image);
-            mViewHolder.mName = (TextView)convertView.findViewById(R.id.dictionary_title);
-            mViewHolder.mCount = (TextView)convertView.findViewById(R.id.dictionary_cat_count);
+            convertView = mInflater.inflate(R.layout.row_knowledge, parent, false);
+            mViewHolder.mFlag = (ImageView)convertView.findViewById(R.id.knowledge_list_image);
+            mViewHolder.mName = (TextView)convertView.findViewById(R.id.knowledge_list_title);
             convertView.setTag(mViewHolder);
         }
         else {
-            mViewHolder = (CatList1Acdapter.ViewHolder)convertView.getTag();
+            mViewHolder = (KnowledgeAdapter.ViewHolder)convertView.getTag();
         }
         mViewHolder.mFlag.setImageResource(flags[position]);
         mViewHolder.mName.setText(names[position]);
-        mViewHolder.mCount.setText(count[position]);
 
         return convertView;
     }
     static class ViewHolder {
         ImageView mFlag;
         TextView mName;
-        TextView mCount;
     }
 }

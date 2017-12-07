@@ -3,20 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/_8sdp"
-    android:paddingLeft="@dimen/_2sdp"
-    android:paddingRight="@dimen/_2sdp"
-    android:orientation="vertical">
+    android:padding="@dimen/_2sdp"
+    android:orientation="vertical"
+    android:background="@drawable/editshape1">
 
     <ImageView
+        android:padding="@dimen/_20sdp"
         android:id="@+id/knowledge_list_image"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_100sdp"
+        android:layout_height="wrap_content"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
         android:src="@drawable/one"
         android:contentDescription="@string/app_name"/>
 
     <LinearLayout
+        android:background="@color/colorWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/_8sdp"
@@ -26,9 +28,12 @@
             android:id="@+id/knowledge_list_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="사전"
-            android:textSize="@dimen/_10sdp"
-            android:textColor="@color/colorBlack"/>
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="지식"
+            android:textColor="@color/colorGray5"
+            android:textSize="@dimen/_18sdp" />
+        />
     </LinearLayout>
 
 </LinearLayout>
