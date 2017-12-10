@@ -13,11 +13,20 @@ import android.widget.Toast;
 import com.jin.cat.Knowledge.Food.IntroSlider.PrefManager;
 import com.jin.cat.Knowledge.Food.IntroSlider.WelcomeActivity;
 import com.jin.cat.R;
-import com.jin.cat.adapter.LanguageAdapter;
+import com.jin.cat.adapter.*;
+import com.jin.cat.adapter.FoodAdapter;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -25,25 +34,14 @@ import java.util.List;
 
 public class FoodOneActivity extends AppCompatActivity {
 
-    private String CLIENT_ID="h0jOnpEEU05opv5JOxw9";//애플리케이션 클라이언트 아이디값";
+    private String CLIENT_ID = "h0jOnpEEU05opv5JOxw9";//애플리케이션 클라이언트 아이디값";
     private String CLIENT_SECRET = "gq56_i7NEP";//애플리케이션 클라이언트 시크릿값";
     private ListView mListView;
 
-    private String[] countryNames = {"먹이1", "먹이2", "먹이3"};
-    private int[] countryFlags = {
-            R.drawable.food_one,
-            R.drawable.food_two,
-            R.drawable.cat4};
+    private List<String> contents;
+    private List<String> images;
 
-    private String[] countryNames2 = {"안녕", "응 안녕", "어 안녕"};
-    private int[] countryFlags2 = {
-            R.drawable.cat,
-            R.drawable.cat1,
-            R.drawable.cat2};
-
-    private List<String> names;
-    private List<Integer> flags;
-
+    private boolean isSearch = false;
     // ListView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +61,10 @@ public class FoodOneActivity extends AppCompatActivity {
             }
         });
 
-        setTitle("건식");
+        setTitle("건 식");
 
-        names = new ArrayList<String>();
-        flags = new ArrayList<Integer>();
+        contents = new ArrayList<String>();
+        images = new ArrayList<String>();
 
         final CheckBox checkFirst = (CheckBox) findViewById(R.id.checkBox1);
         final CheckBox checkSecond = (CheckBox) findViewById(R.id.checkBox2);
@@ -74,222 +72,28 @@ public class FoodOneActivity extends AppCompatActivity {
         checkFirst.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (checkFirst.isChecked() && !(checkSecond.isChecked())) {
-//                    for (String name : countryNames) {
-//                        names.add(name);
-//                    }
-//                    ShoppingApi();
-//                    for (int flag : countryFlags) {
-//                        flags.add(flag);
-//                    }
+                if (checkFirst.isChecked()) {
+                    isSearch = true;
 
-                    ShoppingApi();
-                }
-
-                else if (checkFirst.isChecked() && (checkSecond.isChecked())) {
-                    List<String> removeNames = new ArrayList<String>();
-                    List<Integer> removeFlags = new ArrayList<Integer>();
-
-                    for (String name : names) {
-                        for (String firstName : countryNames) {
-                            if (name.equals(firstName)) {
-                                int index = names.indexOf(name);
-                                int flag = flags.get(index);
-
-                                removeNames.add(name);
-                                removeFlags.add(flag);
-                            }
+                    new Thread() {
+                        public void run() {
+                            ShoppingApi();
                         }
-                    }
-                    for (String name : names) {
-                        for (String firstName : countryNames2) {
-                            if (name.equals(firstName)) {
-                                int index = names.indexOf(name);
-                                int flag = flags.get(index);
-
-                                removeNames.add(name);
-                                removeFlags.add(flag);
-                            }
-                        }
-                    }
-                    for (String removeName : removeNames) {
-                        names.remove(removeName);
-                    }
-                    for (Integer removeFlag : removeFlags) {
-                        flags.remove(removeFlag);
-                    }
-                    for (String removeName : removeNames) {
-                        names.remove(removeName);
-                    }
-                    for (Integer removeFlag : removeFlags) {
-                        flags.remove(removeFlag);
-                    }
-                    for (String name : countryNames) {
-                        names.add(name);
-                    }
-
-                    for (int flag : countryFlags) {
-                        flags.add(flag);
-                    }
-                    for (String name : countryNames2) {
-                        names.add(name);
-                    }
-
-                    for (int flag : countryFlags2) {
-                        flags.add(flag);
-                    }
-                }
-                else {
-                    List<String> removeNames = new ArrayList<String>();
-                    List<Integer> removeFlags = new ArrayList<Integer>();
-
-                    for (String name : names) {
-                        for (String firstName : countryNames) {
-                            if (name.equals(firstName)) {
-                                int index = names.indexOf(name);
-                                int flag = flags.get(index);
-
-                                removeNames.add(name);
-                                removeFlags.add(flag);
-                            }
-                        }
-                    }
-                    for (String removeName : removeNames) {
-                        names.remove(removeName);
-                    }
-                    for (Integer removeFlag : removeFlags) {
-                        flags.remove(removeFlag);
-                    }
-                }
-
-                String[] nameList = new String[names.size()];
-                System.arraycopy(names.toArray(), 0, nameList, 0, nameList.length);
-
-                int[] flagList = new int[names.size()];
-                int index = 0;
-
-                for (int val : flags)
-                {
-                    flagList[index++] = val;
-                }
-                //리스트 정렬 (names 랑 flags 동시에 )
-
-                mListView = (ListView) findViewById(R.id.listView6);
-                mListView.setAdapter(new LanguageAdapter(FoodOneActivity.this, nameList, flagList));
-
-                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        String name = names.get(i);
-                        Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
-
-        checkSecond.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (checkSecond.isChecked()) {
-                    for (String name : countryNames2) {
-                        names.add(name);
-                    }
-
-                    for (int flag : countryFlags2) {
-                        flags.add(flag);
-                    }
-                } else if (checkFirst.isChecked() && (checkSecond.isChecked())) {
-                    List<String> removeNames = new ArrayList<String>();
-                    List<Integer> removeFlags = new ArrayList<Integer>();
-
-                    for (String name : names) {
-                        for (String firstName : countryNames) {
-                            if (name.equals(firstName)) {
-                                int index = names.indexOf(name);
-                                int flag = flags.get(index);
-
-                                removeNames.add(name);
-                                removeFlags.add(flag);
-                            }
-                        }
-                    }
-                    for (String name : names) {
-                        for (String firstName : countryNames2) {
-                            if (name.equals(firstName)) {
-                                int index = names.indexOf(name);
-                                int flag = flags.get(index);
-
-                                removeNames.add(name);
-                                removeFlags.add(flag);
-                            }
-                        }
-                    }
-
-                    for (String removeName : removeNames) {
-                        names.remove(removeName);
-                    }
-                    for (Integer removeFlag : removeFlags) {
-                        flags.remove(removeFlag);
-                    }
-                    for (String removeName : removeNames) {
-                        names.remove(removeName);
-                    }
-                    for (Integer removeFlag : removeFlags) {
-                        flags.remove(removeFlag);
-                    }
-                    for (String name : countryNames) {
-                        names.add(name);
-                    }
-
-                    for (int flag : countryFlags) {
-                        flags.add(flag);
-                    }
-                    for (String name : countryNames2) {
-                        names.add(name);
-                    }
-
-                    for (int flag : countryFlags2) {
-                        flags.add(flag);
-                    }
+                    }.start();
                 } else {
-                    List<String> removeNames = new ArrayList<String>();
-                    List<Integer> removeFlags = new ArrayList<Integer>();
-
-                    for (String name : names) {
-                        for (String firstName : countryNames2) {
-                            if (name.equals(firstName)) {
-                                int index = names.indexOf(name);
-                                int flag = flags.get(index);
-
-                                removeNames.add(name);
-                                removeFlags.add(flag);
-                            }
-                        }
-                    }
-
-                    for (String removeName : removeNames) {
-                        names.remove(removeName);
-                    }
-                    for (Integer removeFlag : removeFlags) {
-                        flags.remove(removeFlag);
-                    }
+                    contents.clear();
+                    images.clear();
                 }
 
-                String[] nameList = new String[names.size()];
-                System.arraycopy(names.toArray(), 0, nameList, 0, nameList.length);
+                while(isSearch);
 
-                int[] flagList = new int[names.size()];
-                int index = 0;
-                for (int val : flags) {
-                    flagList[index++] = val;
-                }
                 mListView = (ListView) findViewById(R.id.listView6);
-                mListView.setAdapter(new LanguageAdapter(FoodOneActivity.this, nameList, flagList));
+                mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
 
                 mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        String name = names.get(i);
+                        String name = contents.get(i);
                         Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -297,48 +101,87 @@ public class FoodOneActivity extends AppCompatActivity {
         });
 
         mListView = (ListView) findViewById(R.id.listView6);
-
-        String[] nameList = new String[names.size()];
-        System.arraycopy(names.toArray(), 0, nameList, 0, nameList.length);
-
-        int[] flagList = new int[names.size()];
-        int index = 0;
-        for (int val : flags) {
-            flagList[index++] = val;
-        }
-        mListView.setAdapter(new LanguageAdapter(FoodOneActivity.this, nameList, flagList));
+        mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
     }
 
-    public void ShoppingApi()
-    {
-            try {
+    public void ShoppingApi() {
+        try {
             String text = URLEncoder.encode("고양이사료", "UTF-8");
             //String apiURL = "https://openapi.naver.com/v1/search/shop.json?query="+ text+ "display=10" + "&start=1"; // json 결과
-            String apiURL = "https://openapi.naver.com/v1/search/shop.xml?query="+ text + "display=10" + "&start=1"; // xml 결과
+            String apiURL = "https://openapi.naver.com/v1/search/shop.xml?query=" + text + "&start=1&target=shop&short=data"; // xml 결과
             URL url = new URL(apiURL);
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("X-Naver-Client-Id", CLIENT_ID);
             con.setRequestProperty("X-Naver-Client-Secret", CLIENT_SECRET);
+
             int responseCode = con.getResponseCode();
             BufferedReader br;
-            if(responseCode==200) { // 정상 호출
+
+            if (responseCode == 200) { // 정상 호출
                 br = new BufferedReader(new InputStreamReader(con.getInputStream()));
             } else {  // 에러 발생
                 br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
             }
-            String inputLine;
-//            StringBuffer response = new StringBuffer();
 
-            while ((inputLine = br.readLine()) != null) {
-//                response.append(inputLine);
-                names.add(inputLine);
+            XmlPullParserFactory parserCreator = XmlPullParserFactory.newInstance();
+            XmlPullParser parser = parserCreator.newPullParser();
+
+            parser.setInput(br);
+
+            int parserEvent = parser.getEventType();
+
+            boolean isFirst = true;
+            boolean isTitle = false;
+            boolean isImage = false;
+
+            String title = "";
+            String image = "";
+
+            while (parserEvent != XmlPullParser.END_DOCUMENT){
+                switch(parserEvent){
+                    case XmlPullParser.START_TAG:
+                        if(parser.getName().equals("title")){
+                            isTitle = true;
+                        }
+                        else if(parser.getName().equals("image")){ //title 만나면 내용을 받을수 있게 하자
+                            isImage = true;
+                        }
+                        break;
+                    case XmlPullParser.TEXT:
+                        if(isTitle){
+                            title = parser.getText();
+                            if(isFirst){
+                                isFirst = false;
+                            } else {
+                                contents.add(title);
+                            }
+
+                            isTitle = false;
+                        }
+                        if(isImage){
+                            image = parser.getText();
+                            images.add(image);
+
+                            isImage = false;
+                        }
+                        break;
+                }
+                parserEvent = parser.next();
             }
-            br.close();
 
-        } catch (Exception e) {
-            System.out.println(e);
+            isSearch = false;
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
         }
     }
-
 }

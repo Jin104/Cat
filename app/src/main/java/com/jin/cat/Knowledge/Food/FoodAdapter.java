@@ -16,6 +16,13 @@ import com.jin.cat.R;
  * Created by inhye on 2017-11-08.
  */
 
+
+/*
+ *
+ * Changed
+ * This class is not used.
+ *
+ */
 public class FoodAdapter extends ArrayAdapter<String> {
 
     String[] names;
