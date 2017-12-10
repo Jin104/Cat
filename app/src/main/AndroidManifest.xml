@@ -53,13 +53,14 @@
         <activity android:name=".activities.LanguageListActivity" />
         <activity android:name=".activities.CatListActivity" />
         <activity android:name=".activities.CareActivity" />
-        <activity android:name=".activities.CareDescActivity" />
         <activity android:name=".activities.LikeCatListActivity" />
-        <activity android:name=".Knowledge.Food.Health.HealthOneActivity" />
+        <activity android:name=".activities.FirstAidActivity" />
         <activity android:name=".activities.VaccinationActivity" />
         <activity android:name=".activities.DiseaseActivity" />
         <activity android:name=".activities.DictionaryActivity" />
-        <activity android:name=".activities.PostCreateActivity"></activity>
+        <activity android:name=".activities.AgeCareActivity" />
+        <activity android:name=".activities.GoodsActivity"/>
+        <activity android:name=".activities.GeneralCareActivity"></activity>
     </application>
 
 </manifest>
