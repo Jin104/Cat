@@ -105,8 +105,16 @@ public class MainActivity extends AppCompatActivity {
 
 
                 } else if (id == R.id.nav_my_post_list) {
-                   // Intent intent = new Intent(MainActivity.this, MyPostActivity.class);
-                   // startActivity(intent);
+                    if(FirebaseUtils.getCurrentUser()!=null){
+                        startActivity(new Intent(MainActivity.this, MyPostListActivity.class));
+                    }else{
+                        Snackbar.make(getWindow().getDecorView().getRootView(),  Html.fromHtml("<font color=\"#ffffff\">로그인 하시겠습니까?</font>"), 2000).setActionTextColor(Color.parseColor("#FF0000")).setAction("YES", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                            }
+                        }).show();
+                    }
 
                 } else if (id == R.id.nav_sound_cound) {
 

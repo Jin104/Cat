@@ -59,8 +59,13 @@
         <activity android:name=".activities.DiseaseActivity" />
         <activity android:name=".activities.DictionaryActivity" />
         <activity android:name=".activities.AgeCareActivity" />
-        <activity android:name=".activities.GoodsActivity"/>
-        <activity android:name=".activities.GeneralCareActivity"></activity>
+        <activity android:name=".activities.GoodsActivity" />
+        <activity android:name=".activities.GeneralCareActivity" />
+        <activity android:name=".activities.PostCreateActivity" />
+        <activity android:name=".activities.PostActivity"
+            android:theme="@style/AppTheme.NoWindowNoTitle"></activity>
+        <activity android:name=".activities.PostCommentActivity"/>
+        <activity android:name=".activities.MyPostListActivity"/>
     </application>
 
 </manifest>

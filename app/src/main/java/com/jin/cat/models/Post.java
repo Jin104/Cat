@@ -6,6 +6,7 @@ package com.jin.cat.models;
 
 public class Post {
 
+    private String key;
     private User user;
     private String postType;
     private String postTitle;
@@ -17,7 +18,8 @@ public class Post {
 
     public Post(){}
 
-    public Post(User user,String postType, String postTitle, String postDesc, String postImageUrl, String postId, long numComments, long timeCreated) {
+    public Post(String key, User user, String postType, String postTitle, String postDesc, String postImageUrl, String postId, long numComments, long timeCreated) {
+        this.key = key;
         this.user = user;
         this.postType = postType;
         this.postTitle = postTitle;
@@ -26,6 +28,14 @@ public class Post {
         this.postId = postId;
         this.numComments = numComments;
         this.timeCreated = timeCreated;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public User getUser() {

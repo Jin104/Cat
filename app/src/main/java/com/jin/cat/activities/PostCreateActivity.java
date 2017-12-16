@@ -22,17 +22,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.jin.cat.R;
 import com.jin.cat.models.Post;
 import com.jin.cat.models.User;
+import com.jin.cat.utils.Constants;
 import com.jin.cat.utils.FirebaseUtils;
 
 import java.util.ArrayList;
 
 public class PostCreateActivity extends AppCompatActivity {
 
-    private static final int GALLERY_REQUEST = 2;
+    private static final int GALLERY_REQ=1;
     private Post mPost;
     private Uri uri = null;
     private ImageView mImageView;
@@ -41,6 +44,7 @@ public class PostCreateActivity extends AppCompatActivity {
     private ImageButton mImageButton;
     private Button btnUpload;
     private Spinner mSpinner;
+    private StorageReference mStorageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,8 @@ public class PostCreateActivity extends AppCompatActivity {
         ArrayList<String> list = new ArrayList<>();
         list.add("질문");
         list.add("기타");
+
+        mStorageRef = FirebaseStorage.getInstance().getReference().child(Constants.POST_IMAGES);
 
         mSpinner = (Spinner)findViewById(R.id.post_create_type);
         SpinnerAdapter spinnerAdapter = new ArrayAdapter(PostCreateActivity.this, R.layout.support_simple_spinner_dropdown_item, list);
@@ -80,138 +86,106 @@ public class PostCreateActivity extends AppCompatActivity {
 
     public void imageButtonClicked(View view){
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        startActivityForResult(intent,GALLERY_REQUEST);
+        intent.setType("image/jpeg");
+        intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+        startActivityForResult(Intent.createChooser(intent, "Complete action using"), GALLERY_REQ);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        try{
-            if(requestCode == GALLERY_REQUEST && resultCode == RESULT_OK && null!=data){
-// &&
+
+        if (requestCode == GALLERY_REQ) {
+            if (resultCode == RESULT_OK) {
                 uri = data.getData();
                 mImageView.setImageURI(uri);
-
-//                    uri = data.getData();
-//
-//                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
-//
-//                    int nh = (int) (bitmap.getHeight() * (1024.0 / bitmap.getWidth()));
-//                    Bitmap scaled = Bitmap.createScaledBitmap(bitmap, 1024, nh, true);
-//
-//                    imageButton = (ImageButton)findViewById(R.id.imageButton);
-//                    imageButton.setImageBitmap(scaled);
-//                    imageButton.setBackgroundResource(R.drawable.white);
-            }else {
-                Toast.makeText(this, "취소 되었습니다.", Toast.LENGTH_LONG).show();
             }
-
-        } catch (Exception e) {
-            Toast.makeText(this, "로딩에 오류가 있습니다.", Toast.LENGTH_LONG).show();
-            e.printStackTrace();
         }
     }
 
-    public void uploadButtonClicked(View view){
+    public void uploadButtonClicked(View view) {
+
 
         final String titleValue = editTitle.getText().toString().trim();
         final String descValue = editDesc.getText().toString().trim();
         final String typeValue = mSpinner.getSelectedItem().toString();
+        final String postID = FirebaseUtils.getUid();
 
-        if(!TextUtils.isEmpty(descValue) && !TextUtils.isEmpty(titleValue) && !TextUtils.isEmpty(typeValue)){
+        if (!TextUtils.isEmpty(descValue) && !TextUtils.isEmpty(titleValue) && !TextUtils.isEmpty(typeValue)) {
 
-            FirebaseUtils.getUserRef(FirebaseUtils.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+            if (uri != null) {
+                StorageReference filepath = mStorageRef.child(uri.getLastPathSegment());
+                filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        String downloadUrl = taskSnapshot.getDownloadUrl().toString();
 
-                    User user = dataSnapshot.getValue(User.class);
-                    final String postID = FirebaseUtils.getUid();
+                        mPost.setPostImageUrl(downloadUrl);
 
-                    mPost.setUser(user);
-                    mPost.setNumComments(0);
-                    mPost.setTimeCreated(System.currentTimeMillis());
-                    mPost.setPostId(postID);
-                    mPost.setPostTitle(titleValue);
-                    mPost.setPostDesc(descValue);
-                    mPost.setPostType(typeValue);
+                        FirebaseUtils.getUserRef(FirebaseUtils.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    if(uri != null) {
-                        Toast.makeText(PostCreateActivity.this, uri.toString(), Toast.LENGTH_SHORT).show();
-                        FirebaseUtils.getImagesRef()
-                                .child(uri.getLastPathSegment())
-                                .putFile(uri)
-                                .addOnSuccessListener(PostCreateActivity.this,
-                                        new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                            @Override
-                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                                final Uri downloadurl = taskSnapshot.getDownloadUrl();
-                                                //String url = FirebaseUtils.Constants.POST_IMAGES + "/" + uri.getLastPathSegment();
-                                                mPost.setPostImageUrl(downloadurl.toString());
+                                User user = dataSnapshot.getValue(User.class);
 
-                                                addToMyPostList(postID);
-                                            }
-                                        });
+                                mPost.setUser(user);
+                                mPost.setNumComments(0);
+                                mPost.setTimeCreated(System.currentTimeMillis());
+                                mPost.setPostId(postID);
+                                mPost.setPostDesc(descValue);
+                                mPost.setPostType(typeValue);
+                                mPost.setPostTitle(titleValue);
+                                addToMyPostList(postID);
+                                Toast.makeText(PostCreateActivity.this, "업로드 성공", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
 
-                    }else{
-                        addToMyPostList(postID);
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Toast.makeText(PostCreateActivity.this, "업로드 실패", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+
+                        });
                     }
-                    Toast.makeText(PostCreateActivity.this, "업로드 완료", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
+                });
+            }
+            else{
+                FirebaseUtils.getUserRef(FirebaseUtils.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Toast.makeText(PostCreateActivity.this, "업로드 실패", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-            });
-//            if(mImageView.getVisibility() == View.VISIBLE)
-//            {
-//
-//            }
-//            StorageReference filePath = storageReference.child("PostImage").child(uri.getLastPathSegment());
-//            filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                    @SuppressWarnings("VisibleForTests")
-//                    final Uri downloadurl = taskSnapshot.getDownloadUrl();
-//                    Toast.makeText(PostCreateActivity.this, "Upload Complete",Toast.LENGTH_SHORT).show();
-//                    final DatabaseReference newPost = databaseReference.push();
-//
-//                    mDatabaseUsers.addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(DataSnapshot dataSnapshot) {
-//                            newPost.child("title").setValue(titleValue);
-//                            newPost.child("desc").setValue(descValue);
-//                            newPost.child("image").setValue(downloadurl.toString());
-//                            newPost.child("uid").setValue(mCurrentUser.getUid());
-//                            newPost.child("username").setValue(dataSnapshot.child("name").getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<Void> task) {
-//                                    if(task.isSuccessful()){
-//                                        //Intent postFragmentIntent = new Intent(PostCreateActivity.this, PostFragment.class);
-//                                        //startActivity(postFragmentIntent);
-//                                        finish();
-//                                    }
-//                                }
-//                            });
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(DatabaseError databaseError) {
-//
-//                        }
-//                    });
-//                }
-//            });
+                        User user = dataSnapshot.getValue(User.class);
+
+                        mPost.setUser(user);
+                        mPost.setNumComments(0);
+                        mPost.setTimeCreated(System.currentTimeMillis());
+                        mPost.setPostId(postID);
+                        mPost.setPostDesc(descValue);
+                        mPost.setPostType(typeValue);
+                        mPost.setPostTitle(titleValue);
+                        addToMyPostList(postID);
+                        Toast.makeText(PostCreateActivity.this, "업로드 성공", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Toast.makeText(PostCreateActivity.this, "업로드 실패", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+
+                });
+            }
         }
     }
 
     private void addToMyPostList(String postId) {
-        FirebaseUtils.getPostRef().child(postId)
+        FirebaseUtils.getPostRef().child("All").child(postId)
                 .setValue(mPost);
-        FirebaseUtils.getMyPostRef().child(postId).setValue(true)
+        FirebaseUtils.getPostRef().child(mPost.getPostType()).child(postId)
+                .setValue(mPost);
+        FirebaseUtils.getMyPostRef().child(postId).setValue(mPost)
                 .addOnCompleteListener(PostCreateActivity.this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -219,6 +193,5 @@ public class PostCreateActivity extends AppCompatActivity {
                     }
                 });
 
-        //FirebaseUtils.addToMyRecord(FirebaseUtils.Constants.POST_KEY, postId);
     }
 }
