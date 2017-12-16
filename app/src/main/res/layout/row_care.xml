@@ -8,14 +8,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_margin="@dimen/_6sdp"
-                android:id="@+id/care_image"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_135sdp"
-                android:scaleType="fitXY"
-                android:src="@drawable/one" />
         </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/care_image"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginLeft="@dimen/_6sdp"
+        android:layout_marginRight="@dimen/_6sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/one" />
 
     <TextView
         android:id="@+id/care_title"
@@ -24,6 +27,7 @@
         android:layout_alignBottom="@+id/care_image"
         android:layout_alignStart="@+id/care_image"
         android:layout_marginLeft="@dimen/_5sdp"
+        android:gravity="center"
         android:text="고양이 이름"
         android:textColor="@color/cardview_dark_background"
         android:textSize="@dimen/_20sdp" />
