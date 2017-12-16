@@ -41,7 +41,7 @@ public class FoodOneActivity extends AppCompatActivity {
     private List<String> contents;
     private List<String> images;
 
-    private String key;
+  //  private String key;
     private boolean isSearch = false;
     // ListView
     @Override
@@ -104,38 +104,37 @@ public class FoodOneActivity extends AppCompatActivity {
         });
 
 
-
-        checkSecond.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (checkSecond.isChecked()) {
-                    isSearch = true;
-
-                    new Thread() {
-                        public void run() {
-                            ShoppingApi("고양이 사료 프리미엄");
-                        }
-                    }.start();
-                }
-                else {
-                    contents.clear();
-                    images.clear();
-                }
-
-                while(isSearch);
-
-                mListView = (ListView) findViewById(R.id.listView6);
-                mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
-
-                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        String name = contents.get(i);
-                        Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
+//        checkSecond.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if (checkSecond.isChecked()) {
+//                    isSearch = true;
+//
+//                    new Thread() {
+//                        public void run() {
+//                            ShoppingApi("고양이 사료 프리미엄");
+//                        }
+//                    }.start();
+//                }
+//                else {
+//                    contents.clear();
+//                    images.clear();
+//                }
+//
+//                while(isSearch);
+//
+//                mListView = (ListView) findViewById(R.id.listView6);
+//                mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
+//
+//                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                        String name = contents.get(i);
+//                        Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            }
+//        });
 
         mListView = (ListView) findViewById(R.id.listView6);
         mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
