@@ -46,7 +46,7 @@ public class GoodsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_goods);
 
 
-        //setTitle(title);
+        setTitle("용품");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         database = FirebaseDatabase.getInstance();
