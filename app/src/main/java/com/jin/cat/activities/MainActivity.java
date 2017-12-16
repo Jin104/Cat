@@ -101,9 +101,6 @@ public class MainActivity extends AppCompatActivity {
                         }).show();
                     }
                     //fragment = new TapFragment();
-                } else if (id == R.id.nav_comment) {
-
-
                 } else if (id == R.id.nav_my_post_list) {
                     if(FirebaseUtils.getCurrentUser()!=null){
                         startActivity(new Intent(MainActivity.this, MyPostListActivity.class));
@@ -117,8 +114,6 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 } else if (id == R.id.nav_sound_cound) {
-
-                }else if (id == R.id.nav_raw_folder) {
 
                 }
 
