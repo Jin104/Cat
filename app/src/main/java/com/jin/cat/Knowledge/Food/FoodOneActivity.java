@@ -4,13 +4,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jin.cat.Knowledge.Food.IntroSlider.WelcomeActivity;
 import com.jin.cat.R;
@@ -24,7 +24,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -66,6 +65,7 @@ public class FoodOneActivity extends AppCompatActivity {
         });
 
         setTitle("건 식");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         contents = new ArrayList<String>();
         images = new ArrayList<String>();
@@ -82,6 +82,7 @@ public class FoodOneActivity extends AppCompatActivity {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     links = new ArrayList<String>();
+
                     if (checkFirst.isChecked()) {
                         isSearch = true;
 
@@ -113,6 +114,7 @@ public class FoodOneActivity extends AppCompatActivity {
                     });
                 }
         });
+
 
 
         checkSecond.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -322,9 +324,14 @@ public class FoodOneActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-
-
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }
