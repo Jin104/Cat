@@ -55,31 +55,31 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-//        Button guestBtn = (Button)findViewById(R.id.guest_btn);
-//        guestBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new DictionaryFragment();
-//                Bundle bundle = new Bundle(1);
-//                bundle.putString("guest", "1");
-//                fragment.setArguments(bundle);
-//
-//                finish();
-//            }
-//        });
+        Button guestBtn = (Button)findViewById(R.id.guest_btn);
+        guestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new DictionaryFragment();
+                Bundle bundle = new Bundle(1);
+                bundle.putString("guest", "1");
+                fragment.setArguments(bundle);
 
-//        ImageView guestView = (ImageView)findViewById(R.id.guest_view);
-//        guestView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new DictionaryFragment();
-//                Bundle bundle = new Bundle(1);
-//                bundle.putString("guest", "1");
-//                fragment.setArguments(bundle);
-//
-//                finish();
-//            }
-//        });
+                finish();
+            }
+        });
+
+        ImageView guestView = (ImageView)findViewById(R.id.guest_view);
+        guestView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new DictionaryFragment();
+                Bundle bundle = new Bundle(1);
+                bundle.putString("guest", "1");
+                fragment.setArguments(bundle);
+
+                finish();
+            }
+        });
 
         mSinginBtn = (SignInButton) findViewById(R.id.sign_in_btn);
         mFirebaseAuth = FirebaseAuth.getInstance();
