@@ -22,7 +22,7 @@
                 android:layout_width="300dp"
                 android:layout_height="150dp"
                 android:indeterminate="false"
-                android:max="10"
+                android:max="100"
                 android:progress="0"
                 android:progressDrawable="@drawable/progress_water"
                 android:secondaryProgress="100" />

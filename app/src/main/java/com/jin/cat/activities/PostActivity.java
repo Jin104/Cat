@@ -1,10 +1,12 @@
 package com.jin.cat.activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -23,6 +25,7 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jin.cat.R;
 import com.jin.cat.adapter.ViewPagerAdapter;
@@ -38,6 +41,7 @@ public class PostActivity extends AppCompatActivity {
     private String postID;
     private String postTYPE;
     private TextView mComment;
+    private ImageButton mDeleteBtn;
 
     private Post post;
 
@@ -59,6 +63,8 @@ public class PostActivity extends AppCompatActivity {
         final TextView postDesc = (TextView) findViewById(R.id.post_desc);
         final TextView postTime = (TextView) findViewById(R.id.post_time);
         final TextView postType = (TextView) findViewById(R.id.post_type);
+
+        mDeleteBtn = (ImageButton)findViewById(R.id.post_delete);
 
         TextView comment = (TextView) findViewById(R.id.post_go_comment);
 
@@ -88,6 +94,10 @@ public class PostActivity extends AppCompatActivity {
                 postTime.setText(DateUtils.getRelativeTimeSpanString(post.getTimeCreated()));
                 postType.setText("["+post.getPostType()+"]");
 
+                if(FirebaseUtils.getCurrentUser().getUid().equals(post.getUser().getUid())){
+                    mDeleteBtn.setVisibility(View.VISIBLE);
+                }
+
             }
 
             @Override
@@ -103,6 +113,37 @@ public class PostActivity extends AppCompatActivity {
                 intent.putExtra("postID", postID);
                 intent.putExtra("postTYPE", postTYPE);
                 startActivity(intent);
+            }
+        });
+
+        mDeleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder ab = new AlertDialog.Builder(PostActivity.this);
+                ab.setTitle("주의");
+                ab.setMessage("삭제하시겠습니까?");
+
+                ab.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //mDatabaseReference.child(inoculation.getUid()).removeValue();
+                        FirebaseDatabase.getInstance().getReference().child("My_Posts").child(FirebaseUtils.getCurrentUser().getUid()).child(post.getPostId()).removeValue();
+                        FirebaseDatabase.getInstance().getReference().child("Posts").child("All").child(post.getPostId()).removeValue();
+                        FirebaseDatabase.getInstance().getReference().child("Posts").child(post.getPostType()).child(post.getPostId()).removeValue();
+                        FirebaseDatabase.getInstance().getReference().child("Post_Comments").child(post.getPostId()).removeValue();
+
+                        finish();
+
+                    }
+                });
+
+                ab.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                ab.show();
             }
         });
     }
