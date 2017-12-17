@@ -4,15 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ExpandableListView
+
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/expandableGoods"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:layout_marginRight="30dp"
-        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft" >
-    </ExpandableListView>
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
 </LinearLayout>
 
 

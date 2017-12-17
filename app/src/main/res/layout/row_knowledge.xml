@@ -21,7 +21,6 @@
         android:background="@color/colorWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_8sdp"
         android:orientation="vertical">
 
         <TextView
@@ -29,11 +28,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/_10sdp"
             android:text="지식"
             android:textColor="@color/colorGray5"
-            android:textSize="@dimen/_18sdp" />
-        />
+            android:textSize="@dimen/_18sdp"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+
     </LinearLayout>
 
 </LinearLayout>
