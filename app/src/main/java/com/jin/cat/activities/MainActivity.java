@@ -113,8 +113,8 @@ public class MainActivity extends AppCompatActivity {
                         }).show();
                     }
 
-                } else if (id == R.id.nav_sound_cound) {
-
+                } else if (id == R.id.app_desc) {
+                    startActivity(new Intent(MainActivity.this, AppDescActivity.class));
                 }
 
                 FragmentTransaction transaction = fragmentManager.beginTransaction();

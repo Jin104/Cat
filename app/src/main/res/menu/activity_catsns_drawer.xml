@@ -33,7 +33,7 @@
     <item android:title="setting">
         <menu>
             <item
-                android:id="@+id/nav_sound_cound"
+                android:id="@+id/app_desc"
                 android:icon="@drawable/ic_menu_camera"
                 android:title="앱 정보" />
         </menu>
