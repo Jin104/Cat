@@ -57,7 +57,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 R.layout.organic,
                 R.layout.holistic,
                 R.layout.super_premium,
-                R.layout.premium,
                 R.layout.grocery_brand
         };
 

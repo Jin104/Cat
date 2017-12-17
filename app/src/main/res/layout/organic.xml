@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="오가닉 Organic / 유기농 사료"
+            android:text="오가닉 / 유기농 사료"
             android:textSize="@dimen/_20sdp"
             tools:ignore="MissingPrefix" />
 

@@ -17,8 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="프리미엄 Premium / 일반 사료"
-            android:textSize="@dimen/_15sdp"
+            android:text="습식 사료 단점"
+            android:textSize="@dimen/_20sdp"
             tools:ignore="MissingPrefix" />
 
         <TextView
@@ -28,7 +28,7 @@
             android:layout_marginTop="21dp"
             android:textSize="@dimen/_15sdp"
             android:gravity="center"
-            android:text="영양가 없는 재료들이 필러로 많이 사용되는 사료이다.\n주 성분이 고기 부산물 고기 분말 등으로 만들어 졌다."
+            android:text="개봉한 뒤에 수분이 증발하거나\n쉽게 상할 수 있어 보관에 유의해야 한다.\n습식사료를 주식으로 하실 경우\n영양이 고르게 배합되어 있는지 체크해야 된다.\n건식 사료에 비해 치석이 생기기 쉽다.\n건식 사료에 비해 비용도 많이든다."
             tools:ignore="MissingPrefix" />
 
     </LinearLayout>

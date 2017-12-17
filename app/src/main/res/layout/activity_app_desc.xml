@@ -1,9 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.jin.cat.activities.AppDescActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/_13sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:src="@drawable/pussy_cat" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:text="고양이가 알고 싶다"
+                    android:textSize="@dimen/_17sdp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="사용자가 고양이 양육에 관하여 좀 더 다양하고 종합적인 정보를 쉽고 간편하게 접근할 수 있도록 하기 위함과,\n일방적인 정보전달이 아닌 사용자들간의 소통을 통해 행복한 반려묘 문화 조성에 기여할 수 있도록 하였습니다."
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="\n▶ 구글로그인 연동을 통한 간편한 회원가입\n▶ 고양이 좋아요 기능과 댓글을 작성하여 고양이에 대한 정보 공유\n내가 작성한 게시판 글과 댓글 확인 기능"
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="▶ 나의 고양이 등록\n▶ 체계적인 관리(예방접종, 음수량, 체중변화, 섭취 권장량)"
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="▶ 지식"
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="┍ 고양이 사전\n├ 행동언어\n├ 응급처치\n├ 사료\n├ 관리\n├ 예방접종\n├ 용품\n└ 병"
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="▶ 글과 댓글 작성이 가능한 게시판"
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />
+
+            <!--<TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="\n⊙ ?"
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="\n▶ MY CAT"
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_29sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="- 내 고양이 등록\n- 체계적인 관리(예방접종, 음수량, 체중변화, 섭취 권장량)"
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="\n▶ KNOWLEDGE"
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_29sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="┌ 고양이 사전\n├ 행동언어\n├ 응급처치\n├ 사료\n├ 관리\n├ 예방접종\n├ 용품\n└ 병"
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="\n▶ BOARD"
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_29sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="글과 댓글 작성이 가능한 게시판"
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="\n⊙ 개발자"
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="선문대학교 컴퓨터공학과"
+                android:textColor="@color/colorGray5"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

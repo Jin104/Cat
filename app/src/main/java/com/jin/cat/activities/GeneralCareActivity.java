@@ -1,12 +1,10 @@
 package com.jin.cat.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -15,11 +13,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jin.cat.R;
-import com.jin.cat.adapter.CustomExpandableListAdapter;
 import com.jin.cat.models.ExpandableList;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class GeneralCareActivity extends AppCompatActivity {
@@ -38,7 +34,7 @@ public class GeneralCareActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods);
-        setTitle("응급처치");
+        setTitle("일반 관리");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         database = FirebaseDatabase.getInstance();

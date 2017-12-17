@@ -23,14 +23,14 @@ import com.jin.cat.R;
  * This class is not used.
  *
  */
-public class FoodAdapter extends ArrayAdapter<String> {
+public class FoodAdapterList extends ArrayAdapter<String> {
 
     String[] names;
     int[] flags;
     Context mContext;
 
-    public FoodAdapter(Context context, String[] countryNames, int[] countryFlags) {
-        super(context, R.layout.row_food);
+    public FoodAdapterList(Context context, String[] countryNames, int[] countryFlags) {
+        super(context, R.layout.row_food_list);
         this.names = countryNames;
         this.flags = countryFlags;
         this.mContext = context;
@@ -48,7 +48,7 @@ public class FoodAdapter extends ArrayAdapter<String> {
         if (convertView == null)
         {
             LayoutInflater mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.row_food, parent, false);
+            convertView = mInflater.inflate(R.layout.row_food_list, parent, false);
             mViewHolder.mFlag = (ImageView) convertView.findViewById(R.id.languageImage);
             mViewHolder.mName = (TextView) convertView.findViewById(R.id.languageName);
             convertView.setTag(mViewHolder);
