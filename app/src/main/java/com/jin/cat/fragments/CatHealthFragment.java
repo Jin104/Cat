@@ -92,6 +92,7 @@ public class CatHealthFragment extends Fragment {
 
         mSpinner = (Spinner)view.findViewById(R.id.spinner);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.type, android.R.layout.simple_spinner_item);
+
         mSpinner.setAdapter(adapter);
         mTextWater = (TextView)view.findViewById(R.id.water);
         //mTextKcal = (TextView)view.findViewById(R.id.kcal);
@@ -162,7 +163,6 @@ public class CatHealthFragment extends Fragment {
 
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
-
                     }
                 });
 

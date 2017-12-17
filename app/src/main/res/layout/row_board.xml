@@ -3,64 +3,68 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_50sdp"
+    android:layout_height="wrap_content"
     android:background="@color/colorWhite">
 
-    <RelativeLayout
+
+    <LinearLayout
+        android:id="@+id/board_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/relativeLayout"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="5dp"
+        <LinearLayout
             android:layout_marginLeft="15dp"
-            android:text="제목"
-            android:textSize="@dimen/_13sdp" />
-
-        <ImageView
-            android:id="@+id/board_img"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="19dp"
-            android:layout_toStartOf="@+id/linearLayout4"
-            android:src="@drawable/cat5" />
-
-
-        <RelativeLayout
-            android:id="@+id/relativeLayout"
+            android:layout_weight="10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/board_img">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/board_title"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:orientation="horizontal"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="@dimen/_9sdp"
-                android:id="@+id/linearLayout3">
+                android:layout_marginBottom="5dp"
+                android:text="제목"
+                android:textSize="@dimen/_13sdp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/board_name"
                     android:textSize="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="작성자" />
 
                 <TextView
+                    android:id="@+id/board_time"
                     android:textSize="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:text="시간" />
-            </LinearLayout>
-        </RelativeLayout>
 
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/board_img"
+            android:scaleType="fitCenter"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_toStartOf="@+id/linearLayout4"
+            android:src="@drawable/cat5" />
 
         <LinearLayout
             android:layout_width="@dimen/_40sdp"
@@ -68,15 +72,15 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:orientation="vertical"
-            android:id="@+id/linearLayout4"
             android:gravity="center"
             android:background="@color/colorGray0">
 
             <TextView
+                android:id="@+id/board_comment"
                 android:textSize="@dimen/_12sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4"/>
+                android:text="0"/>
 
             <TextView
                 android:textSize="@dimen/_10sdp"
@@ -86,7 +90,9 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
+
+    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"

@@ -39,6 +39,10 @@ public class FirebaseUtils {
         return FirebaseDatabase.getInstance().getReference(Constants.COMMENTS_KEY).child(hairId).child(catId);
     }
 
+    public static DatabaseReference getPostCommentRef(String postId){
+        return FirebaseDatabase.getInstance().getReference(Constants.POST_COMMENTS_KEY).child(postId);
+    }
+
     public static DatabaseReference getCatRef(){
         return FirebaseDatabase.getInstance().getReference(Constants.CAT_KEY);
     }

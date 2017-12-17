@@ -30,9 +30,6 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
                 return new KnowledgeFragment();
             case 2:
                 return new BoardFragment();
-                //return new DictionaryFragment();
-//            case 3:
-//                return new MapFragment();
         }
         return null;
     }
@@ -51,8 +48,6 @@ public class CustomFragmentPageAdapter extends FragmentPagerAdapter {
                 return "KNOWLEDGE";
             case 2:
                 return "BOARD";
-//            case 3:
-//                return "MAP";
         }
         return null;
     }

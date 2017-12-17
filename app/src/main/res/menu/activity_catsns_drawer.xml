@@ -1,43 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:id="@+id/one">
-        <item
-            android:id="@+id/nav_like"
-            android:icon="@drawable/icon_dislike"
-            android:title="좋아요 누른 고양이" />
-    </group>
+    <item android:title="My Logs">
+        <menu>
+            <item
+                android:id="@+id/nav_like"
+                android:icon="@drawable/icon_dislike"
+                android:title="좋아요 누른 고양이" />
 
-    <group android:id="@+id/two" android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_comment"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="내가 남긴 댓글" />
-    </group>
+            <item
+                android:id="@+id/nav_my_post_list"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="내가 작성한 글" />
+        </menu>
+    </item>
 
-    <group android:id="@+id/three" android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_my_post_list"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="My Posts" />
-    </group>
 
-    <item android:title="@string/remote_services">
+    <!--<group android:id="@+id/two" android:checkableBehavior="single">-->
+        <!--<item-->
+            <!--android:id="@+id/nav_comment"-->
+            <!--android:icon="@drawable/ic_menu_gallery"-->
+            <!--android:title="내가 남긴 댓글" />-->
+    <!--</group>-->
+
+    <!--<group android:id="@+id/two" >-->
+        <!--<item-->
+            <!--android:id="@+id/nav_sound_cound"-->
+            <!--android:icon="@drawable/ic_menu_camera"-->
+            <!--android:title="앱정보" />-->
+    <!--</group>-->
+
+    <item android:title="setting">
         <menu>
             <item
                 android:id="@+id/nav_sound_cound"
                 android:icon="@drawable/ic_menu_camera"
-                android:title="@string/sound_cloud" />
+                android:title="앱 정보" />
         </menu>
     </item>
 
-    <item android:title="@string/local_services">
-        <menu>
-            <item
-                android:id="@+id/nav_raw_folder"
-                android:icon="@drawable/ic_menu_camera"
-                android:title="@string/app_raw_folder" />
-        </menu>
-    </item>
+    <!--<item android:title="@string/local_services">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_raw_folder"-->
+                <!--android:icon="@drawable/ic_menu_camera"-->
+                <!--android:title="@string/app_raw_folder" />-->
+        <!--</menu>-->
+    <!--</item>-->
 
 </menu>
