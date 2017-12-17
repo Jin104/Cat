@@ -23,14 +23,19 @@
             <!--android:title="내가 남긴 댓글" />-->
     <!--</group>-->
 
+    <!--<group android:id="@+id/two" >-->
+        <!--<item-->
+            <!--android:id="@+id/nav_sound_cound"-->
+            <!--android:icon="@drawable/ic_menu_camera"-->
+            <!--android:title="앱정보" />-->
+    <!--</group>-->
 
-
-    <item android:title="제작자">
+    <item android:title="setting">
         <menu>
             <item
                 android:id="@+id/nav_sound_cound"
                 android:icon="@drawable/ic_menu_camera"
-                android:title="만든이" />
+                android:title="앱 정보" />
         </menu>
     </item>
 
