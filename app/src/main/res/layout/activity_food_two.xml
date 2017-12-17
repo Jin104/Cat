@@ -24,18 +24,18 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBox1"
+                    android:id="@+id/checkBox5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:text="프리미엄" />
+                    android:text="고가" />
 
                 <CheckBox
-                    android:id="@+id/checkBox2"
+                    android:id="@+id/checkBox6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:text="오가닉" />
+                    android:text="저가" />
             </LinearLayout>
 
             <ImageButton

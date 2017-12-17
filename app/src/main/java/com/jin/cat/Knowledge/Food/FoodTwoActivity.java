@@ -15,6 +15,7 @@ import com.jin.cat.Knowledge.Food.IntroSlider.PrefManager;
 import com.jin.cat.Knowledge.Food.IntroSlider.WelcomeActivity_Two;
 import com.jin.cat.R;
 import com.jin.cat.adapter.*;
+import com.jin.cat.adapter.FoodAdapter;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -54,9 +55,9 @@ public class FoodTwoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                PrefManager prefManager = new PrefManager(getApplicationContext());
+                //PrefManager prefManager = new PrefManager(getApplicationContext());
 
-                prefManager.setFirstTimeLaunch(true);
+              //  prefManager.setFirstTimeLaunch(true);
 
                 startActivity(new Intent(FoodTwoActivity.this, WelcomeActivity_Two.class));
                 finish();
@@ -70,18 +71,19 @@ public class FoodTwoActivity extends AppCompatActivity {
         images = new ArrayList<String>();
         links = new ArrayList<String>();
 
-        final CheckBox checkFirst = (CheckBox) findViewById(R.id.checkBox1);
-        final CheckBox checkSecond = (CheckBox) findViewById(R.id.checkBox2);
+        final CheckBox checkFirst = (CheckBox) findViewById(R.id.checkBox5);
+        final CheckBox checkSecond = (CheckBox) findViewById(R.id.checkBox6);
 
         checkFirst.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                links = new ArrayList<String>();
                 if (checkFirst.isChecked()) {
                     isSearch = true;
 
                     new Thread() {
                         public void run() {
-                            ShoppingApi("고양이 습식 지위픽");
+                            ShoppingApi("고양이 주식 캔","sort=dsc");
                         }
                     }.start();
                 }
@@ -93,7 +95,7 @@ public class FoodTwoActivity extends AppCompatActivity {
                 while(isSearch);
 
                 mListView = (ListView) findViewById(R.id.listView7);
-                mListView.setAdapter(new com.jin.cat.adapter.FoodAdapter(FoodTwoActivity.this, contents, images));
+                mListView.setAdapter(new FoodAdapter(FoodTwoActivity.this, contents, images));
 
                 mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -110,12 +112,13 @@ public class FoodTwoActivity extends AppCompatActivity {
         checkSecond.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                links = new ArrayList<String>();
                 if (checkSecond.isChecked()) {
                     isSearch = true;
 
                     new Thread() {
                         public void run() {
-                            ShoppingApi("고양이 습식 캔");
+                            ShoppingApi("고양이 주식 캔","&sort=asc");
                         }
                     }.start();
                 }
@@ -127,7 +130,7 @@ public class FoodTwoActivity extends AppCompatActivity {
                 while(isSearch);
 
                 mListView = (ListView) findViewById(R.id.listView7);
-                mListView.setAdapter(new com.jin.cat.adapter.FoodAdapter(FoodTwoActivity.this, contents, images));
+                mListView.setAdapter(new FoodAdapter(FoodTwoActivity.this, contents, images));
 
                 mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -144,10 +147,11 @@ public class FoodTwoActivity extends AppCompatActivity {
         mListView.setAdapter(new com.jin.cat.adapter.FoodAdapter(FoodTwoActivity.this, contents, images));
     }
 
-    public void ShoppingApi(String key) {
+    public void ShoppingApi(String key,String word) {
         try {
             String text = URLEncoder.encode(key, "UTF-8");
-            String apiURL = "https://openapi.naver.com/v1/search/shop.xml?query=" + text + "&start=1&target=shop&short=data"; // xml 결과
+            //String apiURL = "https://openapi.naver.com/v1/search/shop.json?query="+ text+ "display=10" + "&start=1"; // json 결과
+            String apiURL = "https://openapi.naver.com/v1/search/shop.xml?query=" + text + "&start=1&target=shop&short=data"+word; // xml 결과
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
@@ -197,7 +201,8 @@ public class FoodTwoActivity extends AppCompatActivity {
                         break;
                     case XmlPullParser.TEXT:
                         if(isTitle){
-                            title = parser.getText().replace("<b>","").replace("</b>","").replace("&amp;","");
+                            title = parser.getText().replace("<b>","").replace("</b>","").replace("amp;","");
+                            // textview
                             if(isFirst){
                                 isFirst = false;
                             } else {
@@ -222,7 +227,6 @@ public class FoodTwoActivity extends AppCompatActivity {
                 }
                 parserEvent = parser.next();
             }
-
 
             isSearch = false;
 
