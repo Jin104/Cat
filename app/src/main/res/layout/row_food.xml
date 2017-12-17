@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/languageImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/one" />
+
+    <TextView
+        tools:ignore="MissingPrefix"
+        fontPath="fonts/NanumBarunGothic.otf"
+        android:id="@+id/languageName"
+        android:layout_width="match_parent"
+        android:layout_height="152dp"
+        android:autoText="false"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="TextView"
+        android:textSize="@dimen/_10sdp" />
+
+</LinearLayout>

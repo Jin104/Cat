@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jin.cat.Knowledge.Food.IntroSlider.WelcomeActivity;
@@ -36,6 +37,7 @@ public class FoodOneActivity extends AppCompatActivity {
     private String CLIENT_ID = "h0jOnpEEU05opv5JOxw9";//애플리케이션 클라이언트 아이디값";
     private String CLIENT_SECRET = "gq56_i7NEP";//애플리케이션 클라이언트 시크릿값";
     private ListView mListView;
+    private TextView textview;
 
     private List<String> contents;
     private List<String> images;
@@ -268,6 +270,7 @@ public class FoodOneActivity extends AppCompatActivity {
                     case XmlPullParser.TEXT:
                         if(isTitle){
                             title = parser.getText().replace("<b>","").replace("</b>","");
+                           // textview
                             if(isFirst){
                                 isFirst = false;
                             } else {

@@ -40,7 +40,7 @@ public class FoodAdapter extends ArrayAdapter<String> {
     private boolean isNotEnd = false;
 
     public FoodAdapter(Context context, List<String> contents, List<String> urls) {
-        super(context, R.layout.row_language);
+        super(context, R.layout.row_food);
 
         this.contents = new String[contents.size()];
         contents.toArray(this.contents);
@@ -62,7 +62,7 @@ public class FoodAdapter extends ArrayAdapter<String> {
         ViewHolder mViewHolder = new ViewHolder();
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.row_language, parent, false);
+            convertView = mInflater.inflate(R.layout.row_food, parent, false);
             mViewHolder.mFlag = (ImageView) convertView.findViewById(R.id.languageImage);
             mViewHolder.mName = (TextView) convertView.findViewById(R.id.languageName);
             convertView.setTag(mViewHolder);
