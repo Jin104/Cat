@@ -3,6 +3,8 @@ package com.jin.cat.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -24,11 +26,10 @@ public class FirstAidActivity extends AppCompatActivity {
 
     private ExpandableListView expandableListView;
 
-    private ExpandableListAdapter expandableListAdapter;
-    private List<String> expandableListTitle;
-    private HashMap<String, List<String> > expandableListDetail;
-
+    private RecyclerView list;
+    private RecyclerView.LayoutManager layoutManager;
     private List<ExpandableList> result = new ArrayList<>();
+    private com.jin.cat.adapter.ExpandableListAdapter adapter;
 
     private FirebaseDatabase database;
     private DatabaseReference reference;
@@ -36,48 +37,50 @@ public class FirstAidActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.expandablelist_layout);
-
-        Intent intent = getIntent();
-        String contentId = intent.getExtras().getString("contentId");
-        String title = intent.getExtras().getString("title");
-
-        setTitle(title);
+        setContentView(R.layout.activity_goods);
+        setTitle("응급처치");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference("Knowledge").child("Health").child(contentId);
+        reference = database.getReference("Knowledge").child("Health").child("응급처치");
 
-        expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
-        expandableListDetail = new HashMap<String, List<String>>();
-        expandableListTitle = new ArrayList<String>();
+        list = (RecyclerView)findViewById(R.id.expandableGoods);
+        list.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        list.setLayoutManager(layoutManager);
 
+        adapter = new com.jin.cat.adapter.ExpandableListAdapter(result);
+        list.setAdapter(adapter);
         updateList();
-
-        expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
-        expandableListView.setAdapter(expandableListAdapter);
     }
 
     private void updateList() {
+
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                ExpandableList item = dataSnapshot.getValue(ExpandableList.class);
-                expandableListTitle.add(item.getTitle());
-
-                List<String> list = new ArrayList<String>();
-                list.add(item.getDesc());
-                expandableListDetail.put(item.getTitle(), list);
+                result.add(dataSnapshot.getValue(ExpandableList.class));
+                adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                ExpandableList item = dataSnapshot.getValue(ExpandableList.class);
 
+                int index = getItemIndex(item);
+
+                result.set(index, item);
+                adapter.notifyItemChanged(index);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
+                ExpandableList item = dataSnapshot.getValue(ExpandableList.class);
 
+                int index = getItemIndex(item);
+
+                result.remove(index);
+                adapter.notifyItemRemoved(index);
             }
 
             @Override
@@ -92,6 +95,19 @@ public class FirstAidActivity extends AppCompatActivity {
         });
     }
 
+    private int getItemIndex(ExpandableList item) {
+
+        int index = -1;
+
+        for (int i = 0; i < result.size(); i++) {
+            if (result.get(i).getKey().equals(item.getKey())) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -100,5 +116,16 @@ public class FirstAidActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onContextItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case 0:
+                break;
+            case 1:
+                break;
+        }
+        return super.onContextItemSelected(item);
     }
 }
