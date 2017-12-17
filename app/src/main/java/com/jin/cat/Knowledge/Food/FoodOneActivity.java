@@ -41,6 +41,7 @@ public class FoodOneActivity extends AppCompatActivity {
     private List<String> contents;
     private List<String> images;
 
+  //  private String key;
     private boolean isSearch = false;
     // ListView
     @Override
@@ -69,44 +70,79 @@ public class FoodOneActivity extends AppCompatActivity {
         final CheckBox checkFirst = (CheckBox) findViewById(R.id.checkBox1);
         final CheckBox checkSecond = (CheckBox) findViewById(R.id.checkBox2);
 
-        checkFirst.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (checkFirst.isChecked()) {
-                    isSearch = true;
 
-                    new Thread() {
-                        public void run() {
-                            ShoppingApi();
-                        }
-                    }.start();
-                } else {
-                    contents.clear();
-                    images.clear();
-                }
+            checkFirst.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    if (checkFirst.isChecked()) {
+                        isSearch = true;
 
-                while(isSearch);
-
-                mListView = (ListView) findViewById(R.id.listView6);
-                mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
-
-                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        String name = contents.get(i);
-                        Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
+                        new Thread() {
+                            public void run() {
+                                ShoppingApi("고양이 사료 오가닉");
+                            }
+                        }.start();
                     }
-                });
-            }
+                    else {
+                        contents.clear();
+                        images.clear();
+                    }
+
+                    while(isSearch);
+
+                    mListView = (ListView) findViewById(R.id.listView6);
+                    mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
+
+                    mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            String name = contents.get(i);
+                            Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
         });
+
+
+//        checkSecond.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if (checkSecond.isChecked()) {
+//                    isSearch = true;
+//
+//                    new Thread() {
+//                        public void run() {
+//                            ShoppingApi("고양이 사료 프리미엄");
+//                        }
+//                    }.start();
+//                }
+//                else {
+//                    contents.clear();
+//                    images.clear();
+//                }
+//
+//                while(isSearch);
+//
+//                mListView = (ListView) findViewById(R.id.listView6);
+//                mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
+//
+//                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                        String name = contents.get(i);
+//                        Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            }
+//        });
 
         mListView = (ListView) findViewById(R.id.listView6);
         mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
     }
 
-    public void ShoppingApi() {
+    public void ShoppingApi(String key) {
         try {
-            String text = URLEncoder.encode("고양이사료", "UTF-8");
+            String text = URLEncoder.encode(key, "UTF-8");
             //String apiURL = "https://openapi.naver.com/v1/search/shop.json?query="+ text+ "display=10" + "&start=1"; // json 결과
             String apiURL = "https://openapi.naver.com/v1/search/shop.xml?query=" + text + "&start=1&target=shop&short=data"; // xml 결과
             URL url = new URL(apiURL);
