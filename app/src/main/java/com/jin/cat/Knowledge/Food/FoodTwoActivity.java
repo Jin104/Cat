@@ -1,6 +1,7 @@
 package com.jin.cat.Knowledge.Food;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -39,6 +40,7 @@ public class FoodTwoActivity extends AppCompatActivity {
 
     private List<String> contents;
     private List<String> images;
+    private List<String> links;
 
    // private String key;
     private boolean isSearch = false;
@@ -66,6 +68,7 @@ public class FoodTwoActivity extends AppCompatActivity {
 
         contents = new ArrayList<String>();
         images = new ArrayList<String>();
+        links = new ArrayList<String>();
 
         final CheckBox checkFirst = (CheckBox) findViewById(R.id.checkBox1);
         final CheckBox checkSecond = (CheckBox) findViewById(R.id.checkBox2);
@@ -95,45 +98,47 @@ public class FoodTwoActivity extends AppCompatActivity {
                 mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        String name = contents.get(i);
-                        Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
+                        String url = links.get(i + 1);
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(browserIntent);
                     }
                 });
             }
         });
 
-//
-//        checkSecond.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-//                if (checkSecond.isChecked()) {
-//                    isSearch = true;
-//
-//                    new Thread() {
-//                        public void run() {
-//                            ShoppingApi("고양이 습식 캔");
-//                        }
-//                    }.start();
-//                }
-//                else {
-//                    contents.clear();
-//                    images.clear();
-//                }
-//
-//                while(isSearch);
-//
-//                mListView = (ListView) findViewById(R.id.listView6);
-//                mListView.setAdapter(new FoodAdapter(FoodTwoActivity.this, contents, images));
-//
-//                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                        String name = contents.get(i);
-//                        Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//            }
-//        });
+
+        checkSecond.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (checkSecond.isChecked()) {
+                    isSearch = true;
+
+                    new Thread() {
+                        public void run() {
+                            ShoppingApi("고양이 습식 캔");
+                        }
+                    }.start();
+                }
+                else {
+                    contents.clear();
+                    images.clear();
+                }
+
+                while(isSearch);
+
+                mListView = (ListView) findViewById(R.id.listView7);
+                mListView.setAdapter(new com.jin.cat.adapter.FoodAdapter(FoodTwoActivity.this, contents, images));
+
+                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        String url = links.get(i + 1);
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(browserIntent);
+                    }
+                });
+            }
+        });
 
         mListView = (ListView) findViewById(R.id.listView7);
         mListView.setAdapter(new com.jin.cat.adapter.FoodAdapter(FoodTwoActivity.this, contents, images));
@@ -142,7 +147,6 @@ public class FoodTwoActivity extends AppCompatActivity {
     public void ShoppingApi(String key) {
         try {
             String text = URLEncoder.encode(key, "UTF-8");
-            //String apiURL = "https://openapi.naver.com/v1/search/shop.json?query="+ text+ "display=10" + "&start=1"; // json 결과
             String apiURL = "https://openapi.naver.com/v1/search/shop.xml?query=" + text + "&start=1&target=shop&short=data"; // xml 결과
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -168,24 +172,32 @@ public class FoodTwoActivity extends AppCompatActivity {
 
             boolean isFirst = true;
             boolean isTitle = false;
+            boolean isLink = false;
             boolean isImage = false;
+
+            List<String> xmlData = new ArrayList<String>();
 
             String title = "";
             String image = "";
+            String link = "";
 
             while (parserEvent != XmlPullParser.END_DOCUMENT){
+
+                xmlData.add(parser.getName());
+
                 switch(parserEvent){
                     case XmlPullParser.START_TAG:
                         if(parser.getName().equals("title")){
                             isTitle = true;
-                        }
-                        else if(parser.getName().equals("image")){ //title 만나면 내용을 받을수 있게 하자
+                        } else if (parser.getName().equals("image")){ //title 만나면 내용을 받을수 있게 하자
                             isImage = true;
+                        } else if (parser.getName().equals("link")){
+                            isLink = true;
                         }
                         break;
                     case XmlPullParser.TEXT:
                         if(isTitle){
-                            title = parser.getText();
+                            title = parser.getText().replace("<b>","").replace("</b>","").replace("&amp;","");
                             if(isFirst){
                                 isFirst = false;
                             } else {
@@ -200,10 +212,17 @@ public class FoodTwoActivity extends AppCompatActivity {
 
                             isImage = false;
                         }
+                        if(isLink){
+                            link = parser.getText();
+                            links.add(link);
+
+                            isLink = false;
+                        }
                         break;
                 }
                 parserEvent = parser.next();
             }
+
 
             isSearch = false;
 
