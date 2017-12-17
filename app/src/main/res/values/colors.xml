@@ -37,13 +37,15 @@
         <item>@color/colorBlack</item>
         <item>@color/colorBlack</item>
         <item>@color/colorBlack</item>
+        <item>@color/colorBlack</item>
     </array>
 
     <array name="array_dot_inactive">
-        <item>@color/colorWhite</item>
-        <item>@color/colorWhite</item>
-        <item>@color/colorWhite</item>
-        <item>@color/colorWhite</item>
+        <item>@color/colorGray2</item>
+        <item>@color/colorGray2</item>
+        <item>@color/colorGray2</item>
+        <item>@color/colorGray2</item>
+        <item>@color/colorGray2</item>
     </array>
 
 </resources>

@@ -19,8 +19,8 @@ public class CareActivity extends AppCompatActivity {
 
     private ListView mListView;
 
-    private String[] countryNames = {"나이","일반"};
-    private int[] countryFlags = {R.drawable.cat, R.drawable.cat2};
+    private String[] countryNames = {"나이대별 관리","일반 관리"};
+    private int[] countryFlags = {R.drawable.cat6, R.drawable.cat2};
 
 
     @Override

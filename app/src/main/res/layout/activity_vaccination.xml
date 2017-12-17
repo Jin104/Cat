@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -20,73 +20,92 @@
             android:background="@color/colorWhite"
             android:orientation="vertical">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_8sdp"
-                android:layout_marginTop="15sp"
-                android:text="예방접종"
-                android:textStyle="bold"
-                android:textSize="20sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:text="예방접종은 반드시 6주령 이상에서 3주 간격으로 12-14주까지 접종한다."
-                android:textSize="@dimen/_13sdp" />
-            <View
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginBottom="@dimen/_4sdp"
-                android:layout_marginTop="@dimen/_4sdp"
-                android:background="@color/colorGray" />
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:text="주의사항"
-                android:textStyle="bold"
-                android:textSize="20sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:text="수의사의 검진 하에 실시하여야 한다."
-                android:textSize="@dimen/_13sdp" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginBottom="@dimen/_4sdp"
-                android:layout_marginTop="@dimen/_4sdp"
-                android:background="@color/colorGray" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:text="부작용"
-                android:textStyle="bold"
-                android:textSize="20sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:text="예방접종후 주사부위의 통증이나 미열 식욕감소 및 의기소침 등이 2-3일 정도 관찰될 수 있으나 특별한 치료는 필요치 않다."
-                android:textSize="@dimen/_13sdp" />
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        fontPath="fonts/BMDOHYEON.otf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginTop="15sp"
+                        android:text="예방접종"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="MissingPrefix" />
+
+                    <TextView
+                        tools:ignore="MissingPrefix"
+                        fontPath="fonts/NanumBarunGothicLight.otf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:text="한번 감염되면 평생 면역되는 것도 있지만, 대부분은 면역체계의 기억이 소실되어 항체가 사라지므로 일정한 항체를 유지하기 위해서는 1년에 1-2회씩 추가 접종을 실시해야 한다.\n\n고양이가 접종해야 할 백신은 백혈구 감소증, 바이러스성 비기관염, 칼리시 바이러스, 클라미디아는 기초 예방접종 항목들이다.\n\n예방접종은 반드시 6주령 이상에서 3주 간격으로 12-14주까지 접종한다."
+                        android:textSize="@dimen/_13sdp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_marginBottom="@dimen/_4sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:background="@color/colorGray" />
+
+                    <TextView
+                        fontPath="fonts/BMDOHYEON.otf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:text="주의사항"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="MissingPrefix" />
+
+                    <TextView
+                        tools:ignore="MissingPrefix"
+                        fontPath="fonts/NanumBarunGothicLight.otf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:text="신체검사, 영양불량, 급작스런 환경변화, 기생충 감염 및 잠복질병 여부를 확인 후 수의사의 검진 하에 예방 접종을 실시하여야한다.\n\n임신중일 때는 순환 혈액을 통해서 간접적으로 태아에게 영향을 줄 수 있기 때문에 피해야 한다.\n\n접종 후에는 스트레스와 심한 운동을 피해야 하고 감기에 걸리지 않도록 접종 후 3일간은 미용 목욕 등을 피해야 한다."
+                        android:textSize="@dimen/_13sdp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_marginBottom="@dimen/_4sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:background="@color/colorGray" />
+
+                    <TextView
+                        fontPath="fonts/BMDOHYEON.otf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:text="부작용"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:ignore="MissingPrefix" />
+
+                    <TextView
+                        tools:ignore="MissingPrefix"
+                        fontPath="fonts/NanumBarunGothicLight.otf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:text="예방접종후 주사부위의 통증이나 미열 식욕감소 및 의기소침 등이 2-3일 정도 관찰될 수 있으나 특별한 치료는 필요하지 않다.\n\n비강용 백신이 눈 입 코에 들어가면 4-7일간 재채기 등의 부작용있다.\n\n탈리시 바이러스 및 클라미디아 예방 접종후 3주 이내에 파행과 미열 및 식욕저하가 3-4일 정도 지속될 수 있으며 심각할 경우 수액 항생제 요법 등의 치료가 필요하다.\n\n매우 드물게는 예방 접종 직후부터 1시간 내내 생명을 위협하는 알러지 반응을 나타낼 수 있다.\n\n"
+                        android:textSize="@dimen/_13sdp" />
                 </LinearLayout>
             </ScrollView>
 

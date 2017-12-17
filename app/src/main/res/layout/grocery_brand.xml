@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout5">
+
+        <TextView
+            fontPath="fonts/BMDOHYEON.otf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="그로서리 Grocery Brand / 마트용 저급사료"
+            android:textSize="@dimen/_15sdp"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            fontPath="fonts/NanumBarunGothicLight.otf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:textSize="@dimen/_15sdp"
+            android:gravity="center"
+            android:text="농약, 저급 재료, 곡물 찌꺼기, 방부제, 향신료 등 고양이의 몸에 안좋은 재료들이 많이 사용되는 경우가 많다.\n일반적으로 길고양이들에게 제공해줄때 많이 사용되는 사료이다."
+            tools:ignore="MissingPrefix" />
+
+    </LinearLayout>
+
+</RelativeLayout>

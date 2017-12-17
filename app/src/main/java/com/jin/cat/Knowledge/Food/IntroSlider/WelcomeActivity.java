@@ -21,6 +21,8 @@ import android.widget.TextView;
 import com.jin.cat.Knowledge.Food.FoodOneActivity;
 import com.jin.cat.R;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 /**
  * Created by inhye on 2017-11-15.
  */
@@ -31,6 +33,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private int[] layouts;
+    //private ArrayList<integer> layouts;
     private Button btnSkip, btnNext;
 
     @Override
@@ -41,6 +44,7 @@ public class WelcomeActivity extends AppCompatActivity {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
 
+
         setContentView(R.layout.activity_welcome);
 
         viewPager = (ViewPager) findViewById(R.id.view_pager2);
@@ -50,10 +54,14 @@ public class WelcomeActivity extends AppCompatActivity {
 
 
         layouts = new int[]{
-                R.layout.intro_slide1,
-                R.layout.intro_slide1,
-                R.layout.intro_slide1,
-                R.layout.intro_slide1};
+                R.layout.organic,
+                R.layout.holistic,
+                R.layout.super_premium,
+                R.layout.premium,
+                R.layout.grocery_brand
+        };
+
+
 
         addBottomDots(0);
 
@@ -113,7 +121,6 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
-
         @Override
         public void onPageSelected(int position) {
             addBottomDots(position);
@@ -172,11 +179,15 @@ public class WelcomeActivity extends AppCompatActivity {
             return view == obj;
         }
 
-
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             View view = (View) object;
             container.removeView(view);
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

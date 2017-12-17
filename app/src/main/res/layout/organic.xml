@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout5">
+
+        <TextView
+            fontPath="fonts/BMDOHYEON.otf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="오가닉 Organic / 유기농 사료"
+            android:textSize="@dimen/_20sdp"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            fontPath="fonts/NanumBarunGothicLight.otf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:textSize="@dimen/_15sdp"
+            android:gravity="center"
+            android:text="제조과정에서 합성비료, 항생제, 환경호르몬 등이\n사용되거나 검출되지 않아야 한다.\n유기농 제품을 재배한 농장은\n최근 3년간 유기농 방식으로 경작이\n이루어져야 인정을 받는다."
+            tools:ignore="MissingPrefix" />
+
+    </LinearLayout>
+
+</RelativeLayout>

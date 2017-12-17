@@ -10,10 +10,8 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.jin.cat.Knowledge.Food.IntroSlider.PrefManager;
 import com.jin.cat.Knowledge.Food.IntroSlider.WelcomeActivity;
 import com.jin.cat.R;
-import com.jin.cat.adapter.*;
 import com.jin.cat.adapter.FoodAdapter;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -52,9 +50,9 @@ public class FoodOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                PrefManager prefManager = new PrefManager(getApplicationContext());
-
-                prefManager.setFirstTimeLaunch(true);
+//                PrefManager prefManager = new PrefManager(getApplicationContext());
+//
+//                prefManager.setFirstTimeLaunch(true);
 
                 startActivity(new Intent(FoodOneActivity.this, WelcomeActivity.class));
                 finish();

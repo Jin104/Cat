@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout5">
+
+        <TextView
+            fontPath="fonts/BMDOHYEON.otf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="슈퍼 프리미엄 Super Premium / 고급 사료"
+            android:textSize="@dimen/_15sdp"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            fontPath="fonts/NanumBarunGothicLight.otf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:textSize="@dimen/_15sdp"
+            android:gravity="center"
+            android:text="육류의 함량이 곡물보다 높으면서 부산물, 육분, 골분등을 사용하지 않고 생산한 사료이다.\n하지만 옥수수, 콩, 밀과같은 알레르기 유발이\n있을 수 있는 재료를 갈아사용한다.\n양을 채우기 위해 필러라는 재료를 사용하는 경우도 있다.\n따라서 사료를 급여하실 때는 소량을 구입해서\n일단 잘 먹는지 별탈이 없는지등을 확인한 후에\n다시 구매하는게 좋다."
+            tools:ignore="MissingPrefix" />
+
+    </LinearLayout>
+
+</RelativeLayout>
