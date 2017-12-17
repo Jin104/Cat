@@ -37,6 +37,7 @@ public class GoodsActivity extends AppCompatActivity {
 
     private List<Goods> result = new ArrayList<>();
 
+    //firebase
     private FirebaseDatabase database;
     private DatabaseReference reference;
 
