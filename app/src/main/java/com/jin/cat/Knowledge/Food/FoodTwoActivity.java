@@ -102,38 +102,39 @@ public class FoodTwoActivity extends AppCompatActivity {
             }
         });
 
-//
-//        checkSecond.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-//                if (checkSecond.isChecked()) {
-//                    isSearch = true;
-//
-//                    new Thread() {
-//                        public void run() {
-//                            ShoppingApi("고양이 습식 캔");
-//                        }
-//                    }.start();
-//                }
-//                else {
-//                    contents.clear();
-//                    images.clear();
-//                }
-//
-//                while(isSearch);
-//
-//                mListView = (ListView) findViewById(R.id.listView6);
-//                mListView.setAdapter(new FoodAdapter(FoodTwoActivity.this, contents, images));
-//
-//                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                        String name = contents.get(i);
-//                        Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//            }
-//        });
+
+        checkSecond.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (checkSecond.isChecked()) {
+                    isSearch = true;
+
+                    new Thread() {
+                        public void run() {
+                            ShoppingApi("고양이 습식 캔");
+                        }
+                    }.start();
+                }
+                else {
+                    contents.clear();
+                    images.clear();
+                }
+
+                while(isSearch);
+
+                mListView = (ListView) findViewById(R.id.listView7);
+                mListView.setAdapter(new com.jin.cat.adapter.FoodAdapter(FoodTwoActivity.this, contents, images));
+
+                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        String name = contents.get(i);
+                        //요기 클릭하면 사이트 넘어가게
+                        Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
 
         mListView = (ListView) findViewById(R.id.listView7);
         mListView.setAdapter(new com.jin.cat.adapter.FoodAdapter(FoodTwoActivity.this, contents, images));
@@ -142,7 +143,6 @@ public class FoodTwoActivity extends AppCompatActivity {
     public void ShoppingApi(String key) {
         try {
             String text = URLEncoder.encode(key, "UTF-8");
-            //String apiURL = "https://openapi.naver.com/v1/search/shop.json?query="+ text+ "display=10" + "&start=1"; // json 결과
             String apiURL = "https://openapi.naver.com/v1/search/shop.xml?query=" + text + "&start=1&target=shop&short=data"; // xml 결과
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();

@@ -1,6 +1,7 @@
 package com.jin.cat.Knowledge.Food;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -38,6 +39,7 @@ public class FoodOneActivity extends AppCompatActivity {
 
     private List<String> contents;
     private List<String> images;
+    private List<String> links;
 
   //  private String key;
     private boolean isSearch = false;
@@ -64,12 +66,15 @@ public class FoodOneActivity extends AppCompatActivity {
 
         contents = new ArrayList<String>();
         images = new ArrayList<String>();
+        links = new ArrayList<String>();
 
         final CheckBox checkFirst = (CheckBox) findViewById(R.id.checkBox1);
         final CheckBox checkSecond = (CheckBox) findViewById(R.id.checkBox2);
+        final CheckBox checkThird = (CheckBox)findViewById(R.id.checkBox3);
+        final CheckBox checkFourth = (CheckBox)findViewById(R.id.checkBox4);
 
 
-            checkFirst.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        checkFirst.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     if (checkFirst.isChecked()) {
@@ -94,45 +99,115 @@ public class FoodOneActivity extends AppCompatActivity {
                     mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            String name = contents.get(i);
-                            Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
+                            String url = links.get(i + 1);
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                            startActivity(browserIntent);
                         }
                     });
                 }
         });
 
 
-//        checkSecond.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-//                if (checkSecond.isChecked()) {
-//                    isSearch = true;
-//
-//                    new Thread() {
-//                        public void run() {
-//                            ShoppingApi("고양이 사료 프리미엄");
-//                        }
-//                    }.start();
-//                }
-//                else {
-//                    contents.clear();
-//                    images.clear();
-//                }
-//
-//                while(isSearch);
-//
-//                mListView = (ListView) findViewById(R.id.listView6);
-//                mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
-//
-//                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                        String name = contents.get(i);
-//                        Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//            }
-//        });
+        checkSecond.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (checkSecond.isChecked()) {
+                    isSearch = true;
+
+                    new Thread() {
+                        public void run() {
+                            ShoppingApi("고양이 사료 홀리스틱");
+                        }
+                    }.start();
+                }
+                else {
+                    contents.clear();
+                    images.clear();
+                }
+
+                while(isSearch);
+
+                mListView = (ListView) findViewById(R.id.listView6);
+                mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
+
+                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        String url = links.get(i + 1);
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(browserIntent);
+                    }
+                });
+            }
+        });
+
+        checkThird.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (checkThird.isChecked()) {
+                    isSearch = true;
+
+                    new Thread() {
+                        public void run() {
+                            ShoppingApi("고양이 사료 슈퍼 프리미엄");
+                        }
+                    }.start();
+                }
+                else {
+                    contents.clear();
+                    images.clear();
+                }
+
+                while(isSearch);
+
+                mListView = (ListView) findViewById(R.id.listView6);
+                mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
+
+                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        String url = links.get(i + 1);
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(browserIntent);
+                    }
+                });
+            }
+        });
+
+        checkFourth.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (checkFourth.isChecked()) {
+                    isSearch = true;
+
+                    new Thread() {
+                        public void run() {
+                            ShoppingApi("고양이 사료 프리미엄");
+                        }
+                    }.start();
+                }
+                else {
+                    contents.clear();
+                    images.clear();
+                }
+
+                while(isSearch);
+
+                mListView = (ListView) findViewById(R.id.listView6);
+                mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
+
+                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        String url = links.get(i + 1);
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(browserIntent);
+                    }
+                });
+            }
+        });
+
+
 
         mListView = (ListView) findViewById(R.id.listView6);
         mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
@@ -167,24 +242,32 @@ public class FoodOneActivity extends AppCompatActivity {
 
             boolean isFirst = true;
             boolean isTitle = false;
+            boolean isLink = false;
             boolean isImage = false;
+
+            List<String> xmlData = new ArrayList<String>();
 
             String title = "";
             String image = "";
+            String link = "";
 
             while (parserEvent != XmlPullParser.END_DOCUMENT){
+
+                xmlData.add(parser.getName());
+
                 switch(parserEvent){
                     case XmlPullParser.START_TAG:
                         if(parser.getName().equals("title")){
                             isTitle = true;
-                        }
-                        else if(parser.getName().equals("image")){ //title 만나면 내용을 받을수 있게 하자
+                        } else if (parser.getName().equals("image")){ //title 만나면 내용을 받을수 있게 하자
                             isImage = true;
+                        } else if (parser.getName().equals("link")){
+                            isLink = true;
                         }
                         break;
                     case XmlPullParser.TEXT:
                         if(isTitle){
-                            title = parser.getText();
+                            title = parser.getText().replace("<b>","").replace("</b>","");
                             if(isFirst){
                                 isFirst = false;
                             } else {
@@ -198,6 +281,12 @@ public class FoodOneActivity extends AppCompatActivity {
                             images.add(image);
 
                             isImage = false;
+                        }
+                        if(isLink){
+                            link = parser.getText();
+                            links.add(link);
+
+                            isLink = false;
                         }
                         break;
                 }
