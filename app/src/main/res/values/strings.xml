@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Cat</string>
+    <string name="app_name">고양이가 알고싶다</string>
     <string name="action_settings">로그아웃</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
