@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_7sdp"
-                android:text="┌ 고양이 사전\n├ 행동언어\n├ 응급처치\n├ 사료\n├ 관리\n├ 예방접종\n├ 용품\n└ 병"
+                android:text="┍ 고양이 사전\n├ 행동언어\n├ 응급처치\n├ 사료\n├ 관리\n├ 예방접종\n├ 용품\n└ 병"
                 android:textColor="@color/colorGray5"
                 android:textSize="@dimen/_12sdp" />
             <TextView
