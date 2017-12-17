@@ -4,17 +4,16 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.jin.cat.Knowledge.Food.IntroSlider.PrefManager;
 import com.jin.cat.Knowledge.Food.IntroSlider.WelcomeActivity_Two;
 import com.jin.cat.R;
-import com.jin.cat.adapter.*;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -63,8 +62,8 @@ public class FoodTwoActivity extends AppCompatActivity {
             }
         });
 
-        setTitle("습식");
-
+        setTitle("습 식");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         contents = new ArrayList<String>();
         images = new ArrayList<String>();
@@ -239,4 +238,13 @@ public class FoodTwoActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

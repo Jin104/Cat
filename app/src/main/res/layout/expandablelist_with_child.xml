@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="1dp"
@@ -22,15 +23,18 @@
     </RelativeLayout>
 
     <TextView
+        fontPath="fonts/BMHANNA_11yrs.ttf"
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/childButton"
         android:padding="8dp"
+        android:textStyle="bold"
         android:text="This is item with child"
         android:layout_alignParentTop="true"
         android:textColor="@android:color/black"
-        android:textSize="18sp" />
+        android:textSize="15sp"
+        tools:ignore="MissingPrefix"/>
 
     <com.github.aakira.expandablelayout.ExpandableLinearLayout
         android:id="@+id/expandableLayout"
@@ -41,12 +45,13 @@
         app:ael_expanded="false">
 
         <TextView
+            fontPath="fonts/NanumBarunGothicLight.otf"
+            tools:ignore="MissingPrefix"
             android:id="@+id/textViewChild"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/childButton"
             android:padding="8dp"
-            android:textStyle="bold"
             android:layout_alignParentTop="true"
             android:textColor="@android:color/black"
             android:textSize="15sp" />

@@ -1,5 +1,6 @@
 package com.jin.cat.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,8 @@ import android.widget.ListView;
 
 import com.jin.cat.R;
 import com.jin.cat.adapter.CatList1Acdapter;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class DictionaryActivity extends AppCompatActivity {
 
@@ -71,5 +74,10 @@ public class DictionaryActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

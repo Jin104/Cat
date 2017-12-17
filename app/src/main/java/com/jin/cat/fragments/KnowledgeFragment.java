@@ -55,7 +55,6 @@ public class KnowledgeFragment extends Fragment {
         KnowledgeAdapter mAdapter = new KnowledgeAdapter(getActivity(), countryNames, countryFlags);
         GridLayoutManager linearLayout = new GridLayoutManager(getActivity(), 2);
 
-        //mlistView.setLayoutMode(linearLayout);
         mlistView.setAdapter(mAdapter);
 
         mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -114,163 +113,8 @@ public class KnowledgeFragment extends Fragment {
                 }
             }
         });
-
-
-//        //사전
-//        dic = (LinearLayout) view.findViewById(R.id.dic);
-//        dic.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getActivity(), DictionaryActivity.class));
-//            }
-//        });
-//
-//        //언어
-//        language = (LinearLayout)view.findViewById(R.id.language);
-//        language.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getActivity(), LanguageActivity.class));
-//            }
-//        });
-//
-//        //응급처치
-//        firstaid = (LinearLayout)view.findViewById(R.id.firstaid);
-//        firstaid.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent1 = new Intent(getActivity(), FirstAidActivity.class);
-//                intent1.putExtra("contentId", "응급처치");
-//                intent1.putExtra("title","응급처치");
-//                startActivity(intent1);
-//                //startActivity(new Intent(getActivity(), VaccinationActivity.class));
-//            }
-//        });
-//
-//        //사료
-//        food = (LinearLayout)view.findViewById(R.id.food);
-//        food.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getActivity(), FoodActivity.class));
-//            }
-//        });
-//
-//        //관리
-//        care = (LinearLayout)view.findViewById(R.id.care);
-//        care.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getActivity(), CareActivity.class));
-//            }
-//        });
-//
-//        //예방접종
-//        steroids = (LinearLayout)view.findViewById(R.id.steroids);
-//        steroids.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getActivity(), VaccinationActivity.class));
-//            }
-//        });
-//
-//        //용품
-//        goods = (LinearLayout)view.findViewById(R.id.goods);
-//        goods.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getActivity(), GoodsActivity.class));
-//            }
-//        });
-//
-//        //병
-//        virus = (LinearLayout)view.findViewById(R.id.virus);
-//        virus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intent2 = new Intent(getActivity(), DiseaseActivity.class);
-//                intent2.putExtra("contentId", "병");
-//                intent2.putExtra("title","병");
-//                startActivity(intent2);
-//                //startActivity(new Intent(getActivity(), GoodsActivity.class));
-//            }
-//        });
-
         return view;
     }
-
-//    public List<Knowledge> getKnowledgeData() {
-//        List<Knowledge> knowList = new ArrayList<Knowledge>();
-//        knowList.add(new Knowledge("고양이몸짓의 의미", R.drawable.if_cat_paper_185526));
-//        knowList.add(new Knowledge("응급처치, 예방", R.drawable.if_cat_laptop_185531));
-//        knowList.add(new Knowledge("관리", R.drawable.cat4));
-//        knowList.add(new Knowledge("사료", R.drawable.cat6));
-//        knowList.add(new Knowledge("성", R.drawable.cat1));
-//        return knowList;
-//    }
-//
-//    public class KnowledgeAdapter extends RecyclerView.Adapter<KnowledgeViewHolder>{
-//
-//        private final String TAG = KnowledgeAdapter.class.getSimpleName();
-//
-//        private Context context;
-//        private List<Knowledge> knowLists;
-//
-//        public KnowledgeAdapter(Context context, List<Knowledge> knowLists) {
-//            this.context = context;
-//            this.knowLists = knowLists;
-//        }
-
-//        @Override
-//        public KnowledgeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//            View view = LayoutInflater.from(context).inflate(R.layout.row_knowledge, parent, false);
-//
-//            return new KnowledgeViewHolder(view);
-//        }
-//
-//        @Override
-//        public void onBindViewHolder(KnowledgeViewHolder holder, final int position) {
-//
-//            final Knowledge playlistObject = knowLists.get(position);
-//            holder.knowListCover.setImageResource(playlistObject.getKnowledgeImage());
-//            holder.knowListTitle.setText(playlistObject.getKnowledgeTitle());
-//
-//            holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                    switch (valueOf(position)){
-//
-//                        case 0:
-//                            startActivity(new Intent(getActivity(), LanguageActivity.class));
-//                            break;
-//                        case 1:
-//                            startActivity(new Intent(getActivity(), HealthActivity.class));
-//                            break;
-//                        case 2:
-//                            startActivity(new Intent(getActivity(), CareActivity.class));
-//                            break;
-//                        case 3:
-//                            startActivity(new Intent(getActivity(), FoodActivity.class));
-//                            break;
-//                        case 4:
-//                            startActivity(new Intent(getActivity(), SexActivity.class));
-//                            break;
-//                        default:
-//                            break;
-//                    }
-//                }
-//            });
-//
-//        }
-//
-//        @Override
-//        public int getItemCount() {
-//            return knowLists.size();
-//        }
-//    }
-
 
     public class KnowledgeViewHolder extends RecyclerView.ViewHolder {
 
@@ -288,6 +132,4 @@ public class KnowledgeFragment extends Fragment {
             knowListTitle.setTypeface(typeFace1);
         }
     }
-
-
 }

@@ -13,22 +13,13 @@
         android:id="@+id/linearLayout5">
 
         <TextView
-            fontPath="fonts/BMDOHYEON.otf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="홀리스틱 / 최고급 사료"
-            android:textSize="@dimen/_20sdp"
-            tools:ignore="MissingPrefix" />
-
-        <TextView
             fontPath="fonts/NanumBarunGothicLight.otf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="21dp"
             android:textSize="@dimen/_15sdp"
             android:gravity="center"
-            android:text="미국 농무성(USDA)에서 인증받은 재료를 사용한다.\n합성 방부제, 살충제, 항생제, 황경호르몬이\n검출되지 않아야 한다.\n육류의 함량이 높고, 허브, 과일, 야채 등을 사용해서 변 냄새를 잡아준다.\n영양가가 파괴되지 않게 저온으로 조리된다."
+            android:text="습식사료를 주식으로 준다면\n단백질, 지방, 미네랄, 비타민 등이\n골고루 들어가 영양 균형이 잘 잡혀있지만,\n간식으로 줄 경우에는 단백질이 주원료로 들어있어\n영양균형이 잘 잡히질 않는다.\n\n습식사료는 수분함량이 75%가 될 정도여서\n수분 섭취량을 높혀줄 수 있다."
             tools:ignore="MissingPrefix" />
 
     </LinearLayout>

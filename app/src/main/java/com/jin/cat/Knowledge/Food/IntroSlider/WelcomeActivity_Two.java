@@ -21,6 +21,8 @@ import android.widget.TextView;
 import com.jin.cat.Knowledge.Food.FoodTwoActivity;
 import com.jin.cat.R;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 /**
  * Created by inhye on 2017-11-16.
  */
@@ -50,10 +52,9 @@ public class WelcomeActivity_Two extends AppCompatActivity {
 
 
         layouts = new int[]{
-                R.layout.intro_slide2,
-                R.layout.intro_slide2,
-                R.layout.intro_slide2,
-                R.layout.intro_slide2};
+                R.layout.food_two_one,
+                R.layout.food_two_two,
+                R.layout.food_tow_three};
 
         addBottomDots(0);
 
@@ -178,5 +179,10 @@ public class WelcomeActivity_Two extends AppCompatActivity {
             View view = (View) object;
             container.removeView(view);
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

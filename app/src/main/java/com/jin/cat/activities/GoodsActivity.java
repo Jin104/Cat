@@ -1,5 +1,6 @@
 package com.jin.cat.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +18,8 @@ import com.jin.cat.models.ExpandableList;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Created by sunmoon on 2017-12-06.
@@ -126,5 +129,10 @@ public class GoodsActivity extends AppCompatActivity {
                 break;
         }
         return super.onContextItemSelected(item);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

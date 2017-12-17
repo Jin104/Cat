@@ -1,5 +1,6 @@
 package com.jin.cat.Knowledge.Food;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,8 @@ import android.widget.ListView;
 import com.jin.cat.Knowledge.Food.IntroSlider.WelcomeActivity;
 import com.jin.cat.Knowledge.Food.IntroSlider.WelcomeActivity_Two;
 import com.jin.cat.R;
-import com.jin.cat.adapter.LanguageAdapter;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class FoodActivity extends AppCompatActivity {
     private boolean isFirstOne = true;
@@ -27,8 +29,8 @@ public class FoodActivity extends AppCompatActivity {
 
     private String[] countryNames = {"건 식", "습 식"};
     private int[] countryFlags = {
-            R.drawable.one,
-            R.drawable.two,};
+            R.drawable.food_one,
+            R.drawable.food_two,};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class FoodActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mListView = (ListView) findViewById(R.id.listView2);
-        LanguageAdapter myAdapter = new LanguageAdapter(FoodActivity.this, countryNames, countryFlags);
+        FoodAdapterList myAdapter = new FoodAdapterList(FoodActivity.this, countryNames, countryFlags);
 
         mListView.setAdapter(myAdapter);
 
@@ -70,6 +72,11 @@ public class FoodActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override
