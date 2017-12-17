@@ -38,6 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:text="홀리스틱" />
+                
                 <CheckBox
                     android:id="@+id/checkBox3"
                     android:layout_width="110dp"
