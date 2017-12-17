@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="홀리스틱 / 최고급 사료"
+            android:text="습식 사료 장점"
             android:textSize="@dimen/_20sdp"
             tools:ignore="MissingPrefix" />
 
@@ -28,7 +28,7 @@
             android:layout_marginTop="21dp"
             android:textSize="@dimen/_15sdp"
             android:gravity="center"
-            android:text="미국 농무성(USDA)에서 인증받은 재료를 사용한다.\n합성 방부제, 살충제, 항생제, 황경호르몬이\n검출되지 않아야 한다.\n육류의 함량이 높고, 허브, 과일, 야채 등을 사용해서 변 냄새를 잡아준다.\n영양가가 파괴되지 않게 저온으로 조리된다."
+            android:text="수분을 잔뜩 머금고 있는것이 장점이다.\n부드러운 식감과 풍부한 향으로\n고양이들이 맛있게 잘 먹는다."
             tools:ignore="MissingPrefix" />
 
     </LinearLayout>

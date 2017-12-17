@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="그로서리 Grocery Brand / 마트용 저급사료"
+            android:text="보급형 / 마트용 저급사료"
             android:textSize="@dimen/_15sdp"
             tools:ignore="MissingPrefix" />
 
@@ -28,7 +28,7 @@
             android:layout_marginTop="21dp"
             android:textSize="@dimen/_15sdp"
             android:gravity="center"
-            android:text="농약, 저급 재료, 곡물 찌꺼기, 방부제, 향신료 등 고양이의 몸에 안좋은 재료들이 많이 사용되는 경우가 많다.\n일반적으로 길고양이들에게 제공해줄때 많이 사용되는 사료이다."
+            android:text="일반 마트에서 판매되는 사료이다.\n가격이 싸지만 영양소가 흡수되지 않고 배설물로 나온다.\n적정량의 영양을 섭취하기 위해 고품질 사료보다\n많은 양을 먹어야 하므로 쓸데 없는 열량을 섭취하게 된다."
             tools:ignore="MissingPrefix" />
 
     </LinearLayout>

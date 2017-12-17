@@ -9,18 +9,19 @@
         android:id="@+id/languageImage"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:padding="@dimen/_20sdp"
         android:scaleType="centerCrop"
         android:src="@drawable/one" />
 
     <TextView
         tools:ignore="MissingPrefix"
-        fontPath="fonts/NanumBarunGothic.otf"
+        fontPath="fonts/NanumBarunGothicBold.otf"
         android:id="@+id/languageName"
         android:layout_width="match_parent"
         android:layout_height="152dp"
         android:autoText="false"
         android:gravity="center_vertical|center_horizontal"
         android:text="TextView"
-        android:textSize="@dimen/_13sdp" />
+        android:textSize="@dimen/_30sdp" />
 
 </LinearLayout>

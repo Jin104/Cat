@@ -37,11 +37,9 @@
         <item>@color/colorBlack</item>
         <item>@color/colorBlack</item>
         <item>@color/colorBlack</item>
-        <item>@color/colorBlack</item>
     </array>
 
     <array name="array_dot_inactive">
-        <item>@color/colorGray2</item>
         <item>@color/colorGray2</item>
         <item>@color/colorGray2</item>
         <item>@color/colorGray2</item>

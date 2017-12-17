@@ -24,6 +24,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -42,7 +43,7 @@ public class FoodOneActivity extends AppCompatActivity {
     private List<String> contents;
     private List<String> images;
     private List<String> links;
-
+    private String key;
   //  private String key;
     private boolean isSearch = false;
     // ListView
@@ -77,14 +78,17 @@ public class FoodOneActivity extends AppCompatActivity {
 
 
         checkFirst.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    links = new ArrayList<String>();
                     if (checkFirst.isChecked()) {
                         isSearch = true;
 
                         new Thread() {
                             public void run() {
-                                ShoppingApi("고양이 사료 오가닉");
+                                key="고양이 사료 오가닉";
+                                ShoppingApi();
                             }
                         }.start();
                     }
@@ -92,6 +96,7 @@ public class FoodOneActivity extends AppCompatActivity {
                         contents.clear();
                         images.clear();
                     }
+
 
                     while(isSearch);
 
@@ -113,12 +118,14 @@ public class FoodOneActivity extends AppCompatActivity {
         checkSecond.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                links = new ArrayList<String>();
                 if (checkSecond.isChecked()) {
                     isSearch = true;
 
                     new Thread() {
                         public void run() {
-                            ShoppingApi("고양이 사료 홀리스틱");
+                            key = "고양이 사료 홀리스틱";
+                            ShoppingApi();
                         }
                     }.start();
                 }
@@ -138,6 +145,7 @@ public class FoodOneActivity extends AppCompatActivity {
                         String url = links.get(i + 1);
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                         startActivity(browserIntent);
+
                     }
                 });
             }
@@ -146,12 +154,14 @@ public class FoodOneActivity extends AppCompatActivity {
         checkThird.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                links = new ArrayList<String>();
                 if (checkThird.isChecked()) {
                     isSearch = true;
 
                     new Thread() {
                         public void run() {
-                            ShoppingApi("고양이 사료 슈퍼 프리미엄");
+                            key="고양이 사료 슈퍼 프리미엄";
+                            ShoppingApi();
                         }
                     }.start();
                 }
@@ -159,6 +169,7 @@ public class FoodOneActivity extends AppCompatActivity {
                     contents.clear();
                     images.clear();
                 }
+
 
                 while(isSearch);
 
@@ -179,12 +190,14 @@ public class FoodOneActivity extends AppCompatActivity {
         checkFourth.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                links = new ArrayList<String>();
                 if (checkFourth.isChecked()) {
                     isSearch = true;
 
                     new Thread() {
                         public void run() {
-                            ShoppingApi("고양이 사료 프리미엄");
+                            key="고양이 마트 사료";
+                            ShoppingApi();
                         }
                     }.start();
                 }
@@ -215,10 +228,9 @@ public class FoodOneActivity extends AppCompatActivity {
         mListView.setAdapter(new FoodAdapter(FoodOneActivity.this, contents, images));
     }
 
-    public void ShoppingApi(String key) {
+    public void ShoppingApi() {
         try {
             String text = URLEncoder.encode(key, "UTF-8");
-            //String apiURL = "https://openapi.naver.com/v1/search/shop.json?query="+ text+ "display=10" + "&start=1"; // json 결과
             String apiURL = "https://openapi.naver.com/v1/search/shop.xml?query=" + text + "&start=1&target=shop&short=data"; // xml 결과
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -269,7 +281,7 @@ public class FoodOneActivity extends AppCompatActivity {
                         break;
                     case XmlPullParser.TEXT:
                         if(isTitle){
-                            title = parser.getText().replace("<b>","").replace("</b>","");
+                            title = parser.getText().replace("<b>","").replace("</b>","").replace("amp;","");
                            // textview
                             if(isFirst){
                                 isFirst = false;
@@ -310,4 +322,9 @@ public class FoodOneActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+
+
+
+
 }
