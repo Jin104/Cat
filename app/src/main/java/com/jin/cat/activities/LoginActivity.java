@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 //                finish();
 //            }
 //        });
-
+//
 //        ImageView guestView = (ImageView)findViewById(R.id.guest_view);
 //        guestView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -163,5 +163,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
     }
 }

@@ -4,18 +4,22 @@ package com.jin.cat.fragments;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -23,6 +27,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jin.cat.R;
+import com.jin.cat.activities.CommentActivity;
 import com.jin.cat.activities.LoginActivity;
 import com.jin.cat.dialogs.MyCatDialog;
 import com.jin.cat.models.MyCat;
@@ -43,6 +48,7 @@ public class CatFragment extends Fragment {
     private String catId;
 
     private Boolean mIsClicked = false;
+    private LinearLayout linearLayout;
 
     public CatFragment() {
 
@@ -60,8 +66,8 @@ public class CatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_cat, container, false);
-
+        final View view = inflater.inflate(R.layout.fragment_cat, container, false);
+        linearLayout = (LinearLayout)view.findViewById(R.id.layout);
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
@@ -77,8 +83,20 @@ public class CatFragment extends Fragment {
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyCatDialog dialog = new MyCatDialog();
-                dialog.show(getFragmentManager(), null);
+
+                if(FirebaseUtils.getCurrentUser()!=null) {
+                    MyCatDialog dialog = new MyCatDialog();
+                    dialog.show(getFragmentManager(), null);
+                }else{
+                    Snackbar.make(view,  Html.fromHtml("<font color=\"#ffffff\">로그인 하시겠습니까?</font>"), 2000).setActionTextColor(Color.parseColor("#FF0000")).setAction("YES", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(new Intent(getActivity(), LoginActivity.class));
+                        }
+                    }).show();
+                }
+
+
             }
         });
 
@@ -93,6 +111,11 @@ public class CatFragment extends Fragment {
         fragmentTransaction.replace(R.id.fragment_mycat_tap, fragment);
         fragmentTransaction.commit();
 
+        if(FirebaseUtils.getCurrentUser()!=null) {
+            recyclerView.setVisibility(View.VISIBLE);
+        }else{
+            recyclerView.setVisibility(View.INVISIBLE);
+        }
 
         return view;
     }
@@ -101,7 +124,11 @@ public class CatFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
+        if(FirebaseUtils.getCurrentUser()!=null) {
+            recyclerView.setVisibility(View.VISIBLE);
+        }else{
+            recyclerView.setVisibility(View.INVISIBLE);
+        }
         if(FirebaseUtils.getCurrentUser() != null) {
 
             FirebaseRecyclerAdapter<MyCat, CatViewHolder> FBRA = new FirebaseRecyclerAdapter<MyCat, CatViewHolder>(
