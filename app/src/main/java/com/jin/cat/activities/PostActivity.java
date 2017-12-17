@@ -94,8 +94,10 @@ public class PostActivity extends AppCompatActivity {
                 postTime.setText(DateUtils.getRelativeTimeSpanString(post.getTimeCreated()));
                 postType.setText("["+post.getPostType()+"]");
 
-                if(FirebaseUtils.getCurrentUser().getUid().equals(post.getUser().getUid())){
-                    mDeleteBtn.setVisibility(View.VISIBLE);
+                if(FirebaseUtils.getCurrentUser()!=null) {
+                    if (FirebaseUtils.getCurrentUser().getUid().equals(post.getUser().getUid())) {
+                        mDeleteBtn.setVisibility(View.VISIBLE);
+                    }
                 }
 
             }

@@ -4,10 +4,13 @@ package com.jin.cat.fragments;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +29,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.jin.cat.R;
+import com.jin.cat.activities.CommentActivity;
+import com.jin.cat.activities.LoginActivity;
 import com.jin.cat.activities.PostActivity;
 import com.jin.cat.activities.PostCreateActivity;
 import com.jin.cat.dialogs.PostSearchDialog;
@@ -78,9 +83,22 @@ public class BoardFragment extends Fragment {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), PostCreateActivity.class));
+
+                if(FirebaseUtils.getCurrentUser()!=null){
+                    startActivity(new Intent(getActivity(), PostCreateActivity.class));
+                }
+                else{
+                    Snackbar.make(mView,  Html.fromHtml("<font color=\"#ffffff\">로그인 하시겠습니까?</font>"), 2000).setActionTextColor(Color.parseColor("#FF0000")).setAction("YES", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(new Intent(getActivity(), LoginActivity.class));
+                        }
+                    }).show();
+                }
             }
         });
+
+
 
         mButton1.setOnClickListener(new View.OnClickListener() {
             @Override
